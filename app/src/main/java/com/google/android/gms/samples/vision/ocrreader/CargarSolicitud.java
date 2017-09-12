@@ -13,6 +13,13 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.w3c.dom.Document;
+import org.xml.sax.InputSource;
+import org.xml.sax.SAXException;
+
+import java.io.IOException;
+import java.io.StringReader;
+
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -27,11 +34,15 @@ public class CargarSolicitud extends AppCompatActivity {
     EditText txtSolicitanteGeneral, txtSegundoNombreGeneral, txtPaternoGeneral, txtMaternoGeneral, txtTipoGeneral, txtNumeroIdentificacion, txtNacionalidad, txtNacimiento,
             txtRFC, txtEstadoCivil, txtNumeroDependientes;
 
-    Switch switchHombre, switchMujer;
+    Switch switchGeneral;
+    TextView textHombre, textMujer;
 
     NestedScrollView scrollCargarSolicitud;
 
     String IdSolicitud, solicitudxml;
+
+    //Variables generales
+    String Pmrnombre, Sdonombre, Apaterno, Amaterno, Sexo, Nacionalidad, Fechanacdia, FechanacMes, FechanacAnio, Rfc, Edocivil, Nodependientes;
 
     @SuppressLint("NewApi")
     @Override
@@ -76,8 +87,9 @@ public class CargarSolicitud extends AppCompatActivity {
         txtEstadoCivil = (EditText) findViewById(R.id.txtEstadoCivil);
         txtNumeroDependientes = (EditText) findViewById(R.id.txtNumeroDependientes);
 
-        switchHombre = (Switch) findViewById(R.id.switchHombre);
-        switchMujer = (Switch) findViewById(R.id.switchMujer);
+        switchGeneral = (Switch) findViewById(R.id.switchGeneral);
+        textMujer = (TextView) findViewById(R.id.textMujer);
+        textHombre = (TextView) findViewById(R.id.textHombre);
 
         textGeneralesHead.setBackgroundColor(Color.parseColor("#00E676"));
 
@@ -159,8 +171,53 @@ public class CargarSolicitud extends AppCompatActivity {
 
         try {
             DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+            InputSource src = new InputSource();
+            src.setCharacterStream(new StringReader(solicitudxml));
+
+            Document doc = builder.parse(src);
+
+            //Variables para generales
+            Pmrnombre = doc.getElementsByTagName("Pmrnombre").item(0).getTextContent();
+            Sdonombre = doc.getElementsByTagName("Sdonombre").item(0).getTextContent();
+            Apaterno = doc.getElementsByTagName("Apaterno").item(0).getTextContent();
+            Amaterno = doc.getElementsByTagName("Amaterno").item(0).getTextContent();
+            Sexo = doc.getElementsByTagName("Sexo").item(0).getTextContent();
+            Nacionalidad = doc.getElementsByTagName("Nacionalidad").item(0).getTextContent();
+            Fechanacdia = doc.getElementsByTagName("Fechanacdia").item(0).getTextContent();
+            FechanacMes = doc.getElementsByTagName("FechasnacMes").item(0).getTextContent();
+            FechanacAnio = doc.getElementsByTagName("FechanacAnio").item(0).getTextContent();
+            Rfc = doc.getElementsByTagName("Rfc").item(0).getTextContent();
+            Edocivil = doc.getElementsByTagName("Edocivil").item(0).getTextContent();
+            Nodependientes = doc.getElementsByTagName("Nodependiente").item(0).getTextContent();
+
         } catch (ParserConfigurationException e) {
             e.printStackTrace();
+        } catch (SAXException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        //Fijar variables a los edittext de generales
+        txtSolicitanteGeneral.setText(Pmrnombre);
+        txtSegundoNombreGeneral.setText(Sdonombre);
+        txtPaternoGeneral.setText(Apaterno);
+        txtMaternoGeneral.setText(Amaterno);
+        txtNacionalidad.setText(Nacionalidad);
+        txtNacimiento.setText(Fechanacdia + "/" + FechanacMes + "/" + FechanacAnio);
+        txtRFC.setText(Rfc);
+        txtEstadoCivil.setText(Edocivil);
+        txtNumeroDependientes.setText(Nodependientes);
+
+        if (Sexo.equals("MASCULINO")) {
+
+            switchGeneral.setChecked(true);
+            textMujer.setEnabled(false);
+        } else {
+
+            switchGeneral.setChecked(false);
+            textHombre.setEnabled(false);
+
         }
     }
 
