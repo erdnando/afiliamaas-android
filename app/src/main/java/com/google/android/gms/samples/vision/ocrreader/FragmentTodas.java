@@ -108,6 +108,8 @@ public class FragmentTodas extends Fragment {
                         Nombre[i] = nombre + " " + paterno + " " + materno;
                         FechaAlta[i] = consulta.getString(1);
 
+                        toast("hola v");
+
                     }
 
                 }
