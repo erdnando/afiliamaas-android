@@ -158,7 +158,7 @@ public class CargarSolicitud extends AppCompatActivity {
         });
 
         try {
-            DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();    
+            DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
         } catch (ParserConfigurationException e) {
             e.printStackTrace();
         }
