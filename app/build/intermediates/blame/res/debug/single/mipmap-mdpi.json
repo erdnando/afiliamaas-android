@@ -1,0 +1,26 @@
+[
+    {
+        "merged": "C:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi\\ic_contact.png",
+        "source": "C:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\src\\main\\res\\mipmap-mdpi\\ic_contact.png"
+    },
+    {
+        "merged": "C:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi\\ic_home.png",
+        "source": "C:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\src\\main\\res\\mipmap-mdpi\\ic_home.png"
+    },
+    {
+        "merged": "C:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi\\ic_empresa.png",
+        "source": "C:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\src\\main\\res\\mipmap-mdpi\\ic_empresa.png"
+    },
+    {
+        "merged": "C:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi\\ic_candado.png",
+        "source": "C:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\src\\main\\res\\mipmap-mdpi\\ic_candado.png"
+    },
+    {
+        "merged": "C:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi\\ic_launcher_round.png",
+        "source": "C:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi\\ic_launcher.png",
+        "source": "C:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.png"
+    }
+]

@@ -1,0 +1,1338 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/RelativePrincipal"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_below="@+id/toolbar"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <TextView
+            android:id="@+id/textGeneralesHead"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_width="40dp"
+            android:layout_height="30dp"
+            android:text="G"
+            android:textColor="#FFFFFF"
+            android:background="#64B5F6"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="30dp"
+            android:layout_height="10dp"
+            android:background="#64B5F6"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/textGeneralesHead"
+            android:layout_toEndOf="@+id/textGeneralesHead"
+            android:id="@+id/conector1" />
+
+        <TextView
+            android:id="@+id/textDomicilioHead"
+            android:layout_width="40dp"
+            android:layout_height="30dp"
+            android:text="D"
+            android:textColor="#FFFFFF"
+            android:background="#64B5F6"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:layout_alignBaseline="@+id/textGeneralesHead"
+            android:layout_alignBottom="@+id/textGeneralesHead"
+            android:layout_toRightOf="@+id/conector1"
+            android:layout_toEndOf="@+id/conector1" />
+
+        <TextView
+            android:layout_width="30dp"
+            android:layout_height="10dp"
+            android:background="#64B5F6"
+            android:layout_alignBaseline="@+id/conector1"
+            android:layout_alignBottom="@+id/conector1"
+            android:layout_toRightOf="@+id/textDomicilioHead"
+            android:layout_toEndOf="@+id/textDomicilioHead"
+            android:id="@+id/conector2" />
+
+        <TextView
+            android:id="@+id/textDatosEconomicosHead"
+            android:layout_width="40dp"
+            android:layout_height="30dp"
+            android:text="DE"
+            android:textColor="#FFFFFF"
+            android:background="#64B5F6"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/conector2"
+            android:layout_toEndOf="@+id/conector2" />
+
+        <TextView
+            android:layout_width="30dp"
+            android:layout_height="10dp"
+            android:background="#64B5F6"
+            android:layout_alignBaseline="@+id/conector2"
+            android:layout_alignBottom="@+id/conector2"
+            android:layout_toRightOf="@+id/textDatosEconomicosHead"
+            android:layout_toEndOf="@+id/textDatosEconomicosHead"
+            android:id="@+id/conector3" />
+
+        <TextView
+            android:id="@+id/textPersonaPoliticaHead"
+            android:layout_width="40dp"
+            android:layout_height="30dp"
+            android:text="PP"
+            android:textColor="#FFFFFF"
+            android:background="#64B5F6"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:layout_alignBaseline="@+id/textReferenciasFamiliaresHead"
+            android:layout_alignBottom="@+id/textReferenciasFamiliaresHead"
+            android:layout_toRightOf="@+id/conector3"
+            android:layout_toEndOf="@+id/conector3" />
+
+        <TextView
+            android:layout_width="30dp"
+            android:layout_height="10dp"
+            android:background="#64B5F6"
+            android:layout_alignBaseline="@+id/conector3"
+            android:layout_alignBottom="@+id/conector3"
+            android:layout_toRightOf="@+id/textPersonaPoliticaHead"
+            android:layout_toEndOf="@+id/textPersonaPoliticaHead"
+            android:id="@+id/conector4" />
+
+        <TextView
+            android:id="@+id/textReferenciasFamiliaresHead"
+            android:layout_width="40dp"
+            android:layout_height="30dp"
+            android:textAlignment="center"
+            android:text="RF"
+            android:textColor="#FFFFFF"
+            android:background="#64B5F6"
+            android:textSize="20sp"
+            android:layout_alignBaseline="@+id/textDomicilioHead"
+            android:layout_alignBottom="@+id/textDomicilioHead"
+            android:layout_toRightOf="@+id/conector4"
+            android:layout_toEndOf="@+id/conector4" />
+    </RelativeLayout>
+
+    <android.support.v4.widget.NestedScrollView
+        android:id="@+id/scrollNuevaSolicitud"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/RelativePrincipal">
+
+        <RelativeLayout
+            android:id="@+id/RelativeGenerales"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/TextGenerales"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:text="Generales"
+                android:textColor="#000000"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/editText2"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/TextGenerales"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/edittext_redondo"
+                android:ems="10"
+                android:hint="Nombre del Solicitante"
+                android:inputType="textPersonName"
+                android:textAlignment="center" />
+
+            <EditText
+                android:id="@+id/editText"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="17dp"
+                android:background="@drawable/edittext_redondo"
+                android:ems="10"
+                android:hint="Segundo Nombre"
+                android:inputType="textPersonName"
+                android:textAlignment="center"
+                android:layout_below="@+id/editText2"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
+
+            <EditText
+                android:id="@+id/editText3"
+                android:layout_marginRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/editText"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/edittext_redondo"
+                android:ems="10"
+                android:hint="Apellido Paterno"
+                android:inputType="textPersonName"
+                android:textAlignment="center"
+                android:layout_alignLeft="@+id/editText"
+                android:layout_alignStart="@+id/editText" />
+
+            <EditText
+                android:id="@+id/editText4"
+                android:layout_marginRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/editText3"
+                android:layout_marginTop="18dp"
+                android:background="@drawable/edittext_redondo"
+                android:ems="10"
+                android:hint="Apellido Materno"
+                android:inputType="textPersonName"
+                android:textAlignment="center"
+                android:layout_alignLeft="@+id/editText5"
+                android:layout_alignStart="@+id/editText5" />
+
+            <EditText
+                android:id="@+id/editText5"
+                android:layout_width="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/editText4"
+                android:layout_marginTop="16dp"
+                android:layout_toLeftOf="@+id/btnOCR"
+                android:layout_toStartOf="@+id/btnOCR"
+                android:background="@drawable/edittext_redondo"
+                android:ems="10"
+                android:hint="Tipo de Identificación"
+                android:inputType="textPersonName"
+                android:textAlignment="center" />
+
+            <EditText
+                android:id="@+id/editText6"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/btnOCR"
+                android:layout_marginTop="14dp"
+                android:background="@drawable/edittext_redondo"
+                android:ems="10"
+                android:hint="Numero de Identificación"
+                android:inputType="textPersonName"
+                android:textAlignment="center" />
+
+            <EditText
+                android:id="@+id/editText7"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/switch1"
+                android:layout_marginTop="17dp"
+                android:background="@drawable/edittext_redondo"
+                android:ems="10"
+                android:hint="Nacionalidad"
+                android:inputType="textPersonName"
+                android:textAlignment="center" />
+
+            <EditText
+                android:id="@+id/editText9"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/editText7"
+                android:layout_marginTop="11dp"
+                android:background="@drawable/edittext_redondo"
+                android:ems="10"
+                android:hint="Fecha de Nacimiento"
+                android:inputType="textPersonName"
+                android:textAlignment="center" />
+
+            <EditText
+                android:id="@+id/editText13"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/editText9"
+                android:layout_marginTop="14dp"
+                android:background="@drawable/edittext_redondo"
+                android:hint="RFC"
+                android:textAlignment="center" />
+
+            <EditText
+                android:id="@+id/editText8"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/editText13"
+                android:layout_marginTop="14dp"
+                android:background="@drawable/edittext_redondo"
+                android:hint="Estado Civil"
+                android:textAlignment="center" />
+
+            <EditText
+                android:id="@+id/editText10"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/editText8"
+                android:layout_marginTop="11dp"
+                android:background="@drawable/edittext_redondo"
+                android:hint="Número de Dependientes"
+                android:textAlignment="center" />
+
+
+            <Button
+                android:id="@+id/btnOCR"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignTop="@+id/editText5"
+                android:background="@drawable/botonredondo"
+                android:text="Scanear" />
+
+            <Switch
+                android:id="@+id/switch1"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="27dp"
+                android:text="Mujer"
+                tools:targetApi="ice_cream_sandwich"
+                android:layout_below="@+id/editText6"
+                android:layout_alignRight="@+id/textView3"
+                android:layout_alignEnd="@+id/textView3" />
+
+            <Switch
+                android:id="@+id/switch2"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hombre"
+                tools:targetApi="ice_cream_sandwich"
+                android:layout_above="@+id/editText7"
+                android:layout_alignLeft="@+id/editText7"
+                android:layout_alignStart="@+id/editText7" />
+
+            <TextView
+                android:id="@+id/TextDomicilio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/TextGenerales"
+                android:layout_alignRight="@+id/TextGenerales"
+                android:layout_below="@+id/editText10"
+                android:layout_marginTop="57dp"
+                android:text="Domicilio"
+                android:textColor="#000000"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/editText11"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/TextDomicilio"
+                android:layout_marginTop="18dp"
+                android:background="@drawable/edittext_redondo"
+                android:ems="10"
+                android:hint="Calle"
+                android:inputType="textPersonName"
+                android:textAlignment="center" />
+
+            <EditText
+                android:id="@+id/editText12"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/editText11"
+                android:layout_marginTop="27dp"
+                android:background="@drawable/edittext_redondo"
+                android:ems="10"
+                android:hint="No. Exterior"
+                android:inputType="textPersonName"
+                android:textAlignment="center" />
+
+            <EditText
+                android:id="@+id/editText14"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/editText12"
+                android:layout_marginTop="25dp"
+                android:background="@drawable/edittext_redondo"
+                android:ems="10"
+                android:hint="No. Interior"
+                android:inputType="textPersonName"
+                android:textAlignment="center" />
+
+            <EditText
+                android:id="@+id/editText15"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/editText14"
+                android:layout_marginTop="26dp"
+                android:background="@drawable/edittext_redondo"
+                android:ems="10"
+                android:hint="Colonia"
+                android:inputType="textPersonName"
+                android:textAlignment="center" />
+
+            <EditText
+                android:id="@+id/editText16"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/editText15"
+                android:layout_marginTop="17dp"
+                android:background="@drawable/edittext_redondo"
+                android:ems="10"
+                android:hint="Estado"
+                android:inputType="textPersonName"
+                android:textAlignment="center" />
+
+            <EditText
+                android:id="@+id/editText17"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/editText16"
+                android:layout_marginTop="21dp"
+                android:background="@drawable/edittext_redondo"
+                android:ems="10"
+                android:hint="Delegacion/Municipio"
+                android:inputType="textPersonName"
+                android:textAlignment="center" />
+
+            <EditText
+                android:id="@+id/editText18"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/editText17"
+                android:layout_marginTop="19dp"
+                android:background="@drawable/edittext_redondo"
+                android:ems="10"
+                android:hint="CP"
+                android:inputType="textPersonName"
+                android:textAlignment="center" />
+
+            <EditText
+                android:id="@+id/editText19"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/editText18"
+                android:layout_marginTop="18dp"
+                android:background="@drawable/edittext_redondo"
+                android:ems="10"
+                android:hint="Tiempo de Residencia"
+                android:inputType="textPersonName"
+                android:textAlignment="center" />
+
+            <EditText
+                android:id="@+id/editText20"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/editText19"
+                android:layout_marginTop="17dp"
+                android:background="@drawable/edittext_redondo"
+                android:ems="10"
+                android:hint="Estatus de Referencia"
+                android:inputType="textPersonName"
+                android:textAlignment="center" />
+
+            <EditText
+                android:id="@+id/editText21"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/editText20"
+                android:layout_marginTop="18dp"
+                android:background="@drawable/edittext_redondo"
+                android:ems="10"
+                android:hint="Monto de Vivienda"
+                android:inputType="textPersonName"
+                android:textAlignment="center" />
+
+            <EditText
+                android:id="@+id/editText22"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/editText21"
+                android:layout_marginTop="18dp"
+                android:background="@drawable/edittext_redondo"
+                android:ems="10"
+                android:hint="Correo Electronico"
+                android:inputType="textPersonName"
+                android:textAlignment="center" />
+
+            <EditText
+                android:id="@+id/editText23"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/editText22"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/edittext_redondo"
+                android:ems="10"
+                android:hint="Telefono de Casa"
+                android:inputType="textPersonName"
+                android:textAlignment="center" />
+
+            <EditText
+                android:id="@+id/editText24"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/editText23"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/edittext_redondo"
+                android:ems="10"
+                android:hint="Telefono Celular"
+                android:inputType="textPersonName"
+                android:textAlignment="center" />
+
+            <EditText
+                android:id="@+id/editText25"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/editText24"
+                android:layout_marginTop="23dp"
+                android:background="@drawable/edittext_redondo"
+                android:ems="10"
+                android:hint="Compañia Movil"
+                android:inputType="textPersonName"
+                android:textAlignment="center" />
+
+            <TextView
+                android:id="@+id/TextDatosEconomicos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/editText25"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="65dp"
+                android:text="Datos Económicos"
+                android:textColor="#000000"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/editText26"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/TextDatosEconomicos"
+                android:layout_marginTop="19dp"
+                android:background="@drawable/edittext_redondo"
+                android:ems="10"
+                android:hint="Nombre de la Empresa"
+                android:inputType="textPersonName"
+                android:textAlignment="center" />
+
+            <EditText
+                android:id="@+id/editText27"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/editText26"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/edittext_redondo"
+                android:ems="10"
+                android:hint="Giro"
+                android:inputType="textPersonName"
+                android:textAlignment="center" />
+
+            <EditText
+                android:id="@+id/editText28"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/editText27"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/edittext_redondo"
+                android:ems="10"
+                android:hint="Antigüedad Empleo"
+                android:inputType="textPersonName"
+                android:textAlignment="center" />
+
+            <EditText
+                android:id="@+id/editText29"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/editText28"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/edittext_redondo"
+                android:ems="10"
+                android:hint="Tipo de Contrato"
+                android:inputType="textPersonName"
+                android:textAlignment="center" />
+
+            <EditText
+                android:id="@+id/editText30"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/editText29"
+                android:layout_marginTop="18dp"
+                android:background="@drawable/edittext_redondo"
+                android:ems="10"
+                android:hint="Puesto"
+                android:inputType="textPersonName"
+                android:textAlignment="center" />
+
+            <EditText
+                android:id="@+id/editText31"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/editText30"
+                android:layout_marginTop="17dp"
+                android:background="@drawable/edittext_redondo"
+                android:ems="10"
+                android:hint="Ingreso"
+                android:inputType="textPersonName"
+                android:textAlignment="center" />
+
+            <EditText
+                android:id="@+id/editText32"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/editText31"
+                android:layout_marginTop="22dp"
+                android:background="@drawable/edittext_redondo"
+                android:ems="10"
+                android:hint="Años de Casado"
+                android:inputType="textPersonName"
+                android:textAlignment="center" />
+
+            <EditText
+                android:id="@+id/editText34"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/editText32"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/edittext_redondo"
+                android:ems="10"
+                android:hint="Fuente Otros Ingresos"
+                android:inputType="textPersonName"
+                android:textAlignment="center" />
+
+            <EditText
+                android:id="@+id/editText35"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/editText34"
+                android:layout_marginTop="17dp"
+                android:background="@drawable/edittext_redondo"
+                android:ems="10"
+                android:hint="Otros Ingresos"
+                android:inputType="textPersonName"
+                android:textAlignment="center" />
+
+            <EditText
+                android:id="@+id/editText36"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/editText35"
+                android:layout_marginTop="21dp"
+                android:background="@drawable/edittext_redondo"
+                android:ems="10"
+                android:hint="Calle"
+                android:inputType="textPersonName"
+                android:textAlignment="center" />
+
+            <EditText
+                android:id="@+id/editText37"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/editText36"
+                android:layout_marginTop="31dp"
+                android:background="@drawable/edittext_redondo"
+                android:ems="10"
+                android:hint="No. Exterior"
+                android:inputType="textPersonName"
+                android:textAlignment="center" />
+
+            <EditText
+                android:id="@+id/editText38"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/editText37"
+                android:layout_marginTop="18dp"
+                android:background="@drawable/edittext_redondo"
+                android:ems="10"
+                android:hint="No. Interior"
+                android:inputType="textPersonName"
+                android:textAlignment="center" />
+
+            <EditText
+                android:id="@+id/editText39"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/editText38"
+                android:layout_marginTop="22dp"
+                android:background="@drawable/edittext_redondo"
+                android:ems="10"
+                android:hint="Colonia"
+                android:inputType="textPersonName"
+                android:textAlignment="center" />
+
+            <EditText
+                android:id="@+id/editText40"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/editText39"
+                android:layout_marginTop="19dp"
+                android:background="@drawable/edittext_redondo"
+                android:ems="10"
+                android:hint="Estado"
+                android:inputType="textPersonName"
+                android:textAlignment="center" />
+
+            <EditText
+                android:id="@+id/editText41"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/editText40"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/edittext_redondo"
+                android:ems="10"
+                android:hint="Delegacion/Municipio"
+                android:inputType="textPersonName"
+                android:textAlignment="center" />
+
+            <EditText
+                android:id="@+id/editText42"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/editText41"
+                android:layout_marginTop="17dp"
+                android:background="@drawable/edittext_redondo"
+                android:ems="10"
+                android:hint="CP"
+                android:inputType="textPersonName"
+                android:textAlignment="center" />
+
+            <EditText
+                android:id="@+id/editText43"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/editText42"
+                android:layout_marginTop="21dp"
+                android:layout_toLeftOf="@+id/editText44"
+                android:layout_toStartOf="@+id/editText44"
+                android:background="@drawable/edittext_redondo"
+                android:ems="10"
+                android:hint="Telefono Oficina"
+                android:inputType="textPersonName"
+                android:textAlignment="center" />
+
+            <EditText
+                android:id="@+id/editText44"
+                android:layout_marginRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/editText43"
+                android:layout_alignBottom="@+id/editText43"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/edittext_redondo"
+                android:ems="10"
+                android:hint="EXT."
+                android:inputType="textPersonName"
+                android:textAlignment="center"
+                android:layout_toRightOf="@+id/editText5"
+                android:layout_toEndOf="@+id/editText5" />
+
+            <TextView
+                android:id="@+id/TextPersonaPolitica"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/editText43"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="57dp"
+                android:text="Persona Politica"
+                android:textColor="#000000"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/TextPersonaPolitica"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="33dp"
+                android:text="¿Usted es o ha sido una persona politicamente expuesta?"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="20sp" />
+
+            <RadioButton
+                android:id="@+id/radioButton"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/textView3"
+                android:layout_alignStart="@+id/textView3"
+                android:layout_below="@+id/textView3"
+                android:layout_marginLeft="87dp"
+                android:layout_marginStart="87dp"
+                android:layout_marginTop="44dp"
+                android:text="SI" />
+
+            <RadioButton
+                android:id="@+id/radioButton2"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/textView4"
+                android:layout_alignEnd="@+id/textView3"
+                android:layout_alignRight="@+id/textView3"
+                android:layout_marginEnd="66dp"
+                android:layout_marginRight="66dp"
+                android:text="NO" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/textView3"
+                android:layout_alignStart="@+id/textView3"
+                android:layout_below="@+id/radioButton"
+                android:layout_marginTop="89dp"
+                android:text="¿Tiene parentesco con alguien que haya sido una persona politicamente expuesta?"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="20sp" />
+
+            <RadioButton
+                android:id="@+id/radioButton5"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/radioButton"
+                android:layout_alignStart="@+id/radioButton"
+                android:layout_below="@+id/textView4"
+                android:layout_marginTop="50dp"
+                android:text="SI" />
+
+            <RadioButton
+                android:id="@+id/radioButton6"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/radioButton5"
+                android:layout_alignEnd="@+id/radioButton2"
+                android:layout_alignRight="@+id/radioButton2"
+                android:text="NO" />
+
+            <TextView
+                android:id="@+id/TextReferenciasFamiliares"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/radioButton5"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="102dp"
+                android:text="Referencias Familiares"
+                android:textColor="#000000"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/editText33"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/TextReferenciasFamiliares"
+                android:layout_marginTop="28dp"
+                android:background="@drawable/edittext_redondo"
+                android:ems="10"
+                android:hint="Nombre 1ra Referencia"
+                android:inputType="textPersonName"
+                android:textAlignment="center" />
+
+            <EditText
+                android:id="@+id/editText45"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/editText33"
+                android:layout_marginTop="21dp"
+                android:background="@drawable/edittext_redondo"
+                android:ems="10"
+                android:hint="Apellido Paterno"
+                android:inputType="textPersonName"
+                android:textAlignment="center" />
+
+            <EditText
+                android:id="@+id/editText46"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/editText45"
+                android:layout_marginTop="18dp"
+                android:background="@drawable/edittext_redondo"
+                android:ems="10"
+                android:hint="Apellido Materno"
+                android:inputType="textPersonName"
+                android:textAlignment="center" />
+
+            <EditText
+                android:id="@+id/editText47"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/editText46"
+                android:layout_marginTop="21dp"
+                android:background="@drawable/edittext_redondo"
+                android:ems="10"
+                android:hint="Nacionalidad"
+                android:inputType="textPersonName"
+                android:textAlignment="center" />
+
+            <EditText
+                android:id="@+id/editText48"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/editText47"
+                android:layout_marginTop="21dp"
+                android:background="@drawable/edittext_redondo"
+                android:ems="10"
+                android:hint="Telefono de Casa"
+                android:inputType="textPersonName"
+                android:textAlignment="center" />
+
+            <EditText
+                android:id="@+id/editText49"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/editText48"
+                android:layout_marginTop="51dp"
+                android:background="@drawable/edittext_redondo"
+                android:ems="10"
+                android:hint="Nombre 2da Referencia"
+                android:inputType="textPersonName"
+                android:textAlignment="center" />
+
+            <EditText
+                android:id="@+id/editText50"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/editText49"
+                android:layout_marginTop="17dp"
+                android:background="@drawable/edittext_redondo"
+                android:ems="10"
+                android:hint="Apellido Paterno"
+                android:inputType="textPersonName"
+                android:textAlignment="center" />
+
+            <EditText
+                android:id="@+id/editText51"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/editText50"
+                android:layout_marginTop="21dp"
+                android:background="@drawable/edittext_redondo"
+                android:ems="10"
+                android:hint="Apellido Materno"
+                android:inputType="textPersonName"
+                android:textAlignment="center" />
+
+            <EditText
+                android:id="@+id/editText52"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/editText51"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/edittext_redondo"
+                android:ems="10"
+                android:hint="Nacionalidad"
+                android:inputType="textPersonName"
+                android:textAlignment="center" />
+
+            <EditText
+                android:id="@+id/editText53"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/editText52"
+                android:layout_marginTop="21dp"
+                android:background="@drawable/edittext_redondo"
+                android:ems="10"
+                android:hint="Telefono de Casa"
+                android:inputType="textPersonName"
+                android:textAlignment="center" />
+
+            <EditText
+                android:id="@+id/editText54"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/editText53"
+                android:layout_marginTop="63dp"
+                android:background="@drawable/edittext_redondo"
+                android:ems="10"
+                android:hint="Nombre 3ra Referencia"
+                android:inputType="textPersonName"
+                android:textAlignment="center" />
+
+            <EditText
+                android:id="@+id/editText55"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/editText54"
+                android:layout_marginTop="18dp"
+                android:background="@drawable/edittext_redondo"
+                android:ems="10"
+                android:hint="Apellido Paterno"
+                android:inputType="textPersonName"
+                android:textAlignment="center" />
+
+            <EditText
+                android:id="@+id/editText56"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/editText55"
+                android:layout_marginTop="22dp"
+                android:background="@drawable/edittext_redondo"
+                android:ems="10"
+                android:hint="Apellido Materno"
+                android:inputType="textPersonName"
+                android:textAlignment="center" />
+
+            <EditText
+                android:id="@+id/editText57"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/editText56"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/edittext_redondo"
+                android:ems="10"
+                android:hint="Nacionalidad"
+                android:inputType="textPersonName"
+                android:textAlignment="center" />
+
+            <EditText
+                android:id="@+id/editText58"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/editText57"
+                android:layout_marginTop="18dp"
+                android:background="@drawable/edittext_redondo"
+                android:hint="Telefono de Casa"
+                android:textAlignment="center" />
+
+            <Button
+                android:id="@+id/btnEnviarSolicitud"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/editText58"
+                android:layout_marginTop="26dp"
+                android:background="@drawable/botonredondo"
+                android:text="Enviar" />
+
+        </RelativeLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+</RelativeLayout>

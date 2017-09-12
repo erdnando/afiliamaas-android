@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.google.android.gms.samples.vision.ocrreader.MenuPrincipal"
+    tools:showIn="@layout/app_bar_menu_principal"
+    android:background="#FFFFFF">
+
+    <ImageButton
+        android:id="@+id/btnAceptadas"
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:onClick="principal"
+        android:src="@drawable/aceptadas_1"
+        android:background="#FFFFFF"
+        android:layout_above="@+id/btnEnviadas"
+        android:layout_alignLeft="@+id/btnTodas"
+        android:layout_alignStart="@+id/btnTodas" />
+
+    <ImageButton
+        android:id="@+id/btnNuevas"
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:onClick="principal"
+        android:src="@drawable/nuevas_1"
+        android:background="#FFFFFF"
+        android:layout_above="@+id/btnRechazadas"
+        android:layout_alignRight="@+id/btnRechazadas"
+        android:layout_alignEnd="@+id/btnRechazadas" />
+
+    <ImageButton
+        android:id="@+id/btnTodas"
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="42dp"
+        android:layout_marginStart="42dp"
+        android:onClick="principal"
+        android:src="@drawable/todas_1"
+        android:background="#FFFFFF"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="20dp" />
+
+    <ImageButton
+        android:id="@+id/btnEnviadas"
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:onClick="principal"
+        android:src="@drawable/enviadas_1"
+        android:background="#FFFFFF"
+        android:layout_marginTop="23dp"
+        android:layout_below="@+id/btnRechazadas"
+        android:layout_alignRight="@+id/btnRechazadas"
+        android:layout_alignEnd="@+id/btnRechazadas" />
+
+    <ImageButton
+        android:id="@+id/btnCanceladas"
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:onClick="principal"
+        android:src="@drawable/canceladas_1"
+        android:background="#FFFFFF"
+        android:layout_alignBaseline="@+id/btnEnviadas"
+        android:layout_alignBottom="@+id/btnEnviadas"
+        android:layout_alignRight="@+id/btnAceptadas"
+        android:layout_alignEnd="@+id/btnAceptadas" />
+
+    <ImageButton
+        android:id="@+id/btnRechazadas"
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:onClick="principal"
+        android:src="@drawable/rechazada_1"
+        android:background="#FFFFFF"
+        android:layout_marginRight="26dp"
+        android:layout_marginEnd="26dp"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/btnTodas"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <FrameLayout
+        android:id="@+id/fragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/btnEnviadas">
+    </FrameLayout>
+
+</RelativeLayout>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/MisSolicitudes"
+            android:title="Mis Solicitudes" />
+        <item
+            android:id="@+id/NuevaSolicitud"
+            android:title="Nueva Solicitud" />
+        <item
+            android:id="@+id/MisCitas"
+            android:title="Mis Citas" />
+
+        <item
+            android:id="@+id/Configuracion"
+            android:title="Configuración" />
+
+        <item
+            android:id="@+id/Salir"
+            android:title="Salir" />
+    </group>
+
+</menu>

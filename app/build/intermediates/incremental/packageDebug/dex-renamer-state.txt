@@ -1,0 +1,7 @@
+#Tue Sep 12 16:17:43 CDT 2017
+base.0=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_868d28b0dc39e16b6b8a27a7d48f44adec4ab35d
+renamed.1=classes2.dex
+renamed.0=classes.dex
+file.1=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_6047ab914199fa8e09a8bdb2a26fb22a58573c38\\classes.dex
+base.1=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_6047ab914199fa8e09a8bdb2a26fb22a58573c38
+file.0=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_868d28b0dc39e16b6b8a27a7d48f44adec4ab35d\\classes.dex

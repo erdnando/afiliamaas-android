@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "C:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\merged\\debug\\menu\\activity_menu_principal_drawer.xml",
+        "source": "C:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\src\\main\\res\\menu\\activity_menu_principal_drawer.xml"
+    },
+    {
+        "merged": "C:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\merged\\debug\\menu\\menu_principal.xml",
+        "source": "C:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\src\\main\\res\\menu\\menu_principal.xml"
+    },
+    {
+        "merged": "C:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\merged\\debug\\menu\\global.xml",
+        "source": "C:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\src\\main\\res\\menu\\global.xml"
+    }
+]

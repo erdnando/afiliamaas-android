@@ -1,0 +1,79 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.google.android.gms.samples.vision.ocrreader.FragmentTodas">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <TextView
+                android:id="@+id/textView26"
+                android:layout_width="170dp"
+                android:layout_height="wrap_content"
+                android:background="#D50000"
+                android:text="ID: 172"
+                android:textAlignment="center"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                android:layout_marginTop="22dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+            <TextView
+                android:id="@+id/textView27"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Prueba Registro Bueno"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                tools:ignore="RtlCompat"
+                android:layout_marginTop="17dp"
+                android:layout_below="@+id/textView26"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignRight="@+id/textView26"
+                android:layout_alignEnd="@+id/textView26" />
+
+            <TextView
+                android:id="@+id/textView28"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Fecha de alta: 21/08/2017"
+                android:textAlignment="center"
+                android:textSize="16sp"
+                tools:ignore="RtlCompat"
+                android:layout_marginTop="16dp"
+                android:layout_below="@+id/textView27"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignRight="@+id/textView27"
+                android:layout_alignEnd="@+id/textView27" />
+
+            <TextView
+                android:id="@+id/textView29"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Comentario:"
+                android:textAlignment="center"
+                tools:ignore="RtlCompat"
+                android:layout_marginTop="75dp"
+                android:layout_below="@+id/textView27"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignRight="@+id/textView28"
+                android:layout_alignEnd="@+id/textView28" />
+
+        </RelativeLayout>
+    </ScrollView>
+</RelativeLayout>
