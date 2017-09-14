@@ -137,13 +137,19 @@
 
             <TextView
                 android:id="@+id/TextGenerales"
-                android:layout_width="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/textview_redondo"
+                android:textAlignment="center"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
                 android:text="Generales"
                 android:textColor="#000000"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:layout_alignLeft="@+id/editText2"
+                android:layout_alignStart="@+id/editText2"
+                android:layout_alignRight="@+id/editText2"
+                android:layout_alignEnd="@+id/editText2" />
 
             <EditText
                 android:id="@+id/editText2"
@@ -369,7 +375,9 @@
 
             <TextView
                 android:id="@+id/TextDomicilio"
-                android:layout_width="wrap_content"
+                android:background="@drawable/textview_redondo"
+                android:textAlignment="center"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignEnd="@+id/TextGenerales"
                 android:layout_alignRight="@+id/TextGenerales"
@@ -377,7 +385,9 @@
                 android:layout_marginTop="57dp"
                 android:text="Domicilio"
                 android:textColor="#000000"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:layout_alignLeft="@+id/editText11"
+                android:layout_alignStart="@+id/editText11" />
 
             <EditText
                 android:id="@+id/editText11"
@@ -633,14 +643,19 @@
 
             <TextView
                 android:id="@+id/TextDatosEconomicos"
-                android:layout_width="wrap_content"
+                android:background="@drawable/textview_redondo"
+                android:textAlignment="center"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/editText25"
-                android:layout_centerHorizontal="true"
                 android:layout_marginTop="65dp"
                 android:text="Datos Económicos"
                 android:textColor="#000000"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:layout_alignLeft="@+id/editText26"
+                android:layout_alignStart="@+id/editText26"
+                android:layout_alignRight="@+id/editText26"
+                android:layout_alignEnd="@+id/editText26" />
 
             <EditText
                 android:id="@+id/editText26"
@@ -967,14 +982,19 @@
 
             <TextView
                 android:id="@+id/TextPersonaPolitica"
-                android:layout_width="wrap_content"
+                android:background="@drawable/textview_redondo"
+                android:textAlignment="center"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/editText43"
-                android:layout_centerHorizontal="true"
                 android:layout_marginTop="57dp"
                 android:text="Persona Politica"
                 android:textColor="#000000"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:layout_alignLeft="@+id/editText43"
+                android:layout_alignStart="@+id/editText43"
+                android:layout_alignRight="@+id/editText44"
+                android:layout_alignEnd="@+id/editText44" />
 
             <TextView
                 android:id="@+id/textView3"
@@ -1045,14 +1065,19 @@
 
             <TextView
                 android:id="@+id/TextReferenciasFamiliares"
-                android:layout_width="wrap_content"
+                android:background="@drawable/textview_redondo"
+                android:textAlignment="center"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/radioButton5"
-                android:layout_centerHorizontal="true"
                 android:layout_marginTop="102dp"
                 android:text="Referencias Familiares"
                 android:textColor="#000000"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:layout_alignLeft="@+id/editText33"
+                android:layout_alignStart="@+id/editText33"
+                android:layout_alignRight="@+id/editText33"
+                android:layout_alignEnd="@+id/editText33" />
 
             <EditText
                 android:id="@+id/editText33"
@@ -1095,17 +1120,17 @@
 
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentStart="true"
                 android:layout_below="@+id/editText45"
                 android:layout_marginTop="18dp"
                 android:background="@drawable/edittext_redondo"
                 android:ems="10"
                 android:hint="Apellido Materno"
                 android:inputType="textPersonName"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:layout_alignLeft="@+id/editText45"
+                android:layout_alignStart="@+id/editText45"
+                android:layout_alignRight="@+id/editText45"
+                android:layout_alignEnd="@+id/editText45" />
 
             <EditText
                 android:id="@+id/editText47"

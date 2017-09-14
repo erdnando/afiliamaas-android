@@ -2,9 +2,9 @@ package com.google.android.gms.samples.vision.ocrreader;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.Bundle;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -40,14 +40,14 @@ public class NuevaSolicitud extends AppCompatActivity {
 
         textGeneralesHead.setBackgroundColor(Color.parseColor("#00E676"));
 
-        btnScaner.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+       btnScaner.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
 
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(intent);
-            }
-        });
+               Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+               startActivity(intent);
+           }
+       });
 
         scrollNuevaSolicitud.setOnScrollChangeListener(new NestedScrollView.OnScrollChangeListener() {
             @Override

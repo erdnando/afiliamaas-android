@@ -37,7 +37,7 @@ public class Login extends AppCompatActivity {
 
     Button btnAcceder;
 
-    String usuario, password, empresa, IdUsuario, Compania, Nombre, Paterno, Tipo_Usuario, User, UUID, validaUUIDResult, letraBuzon, letraCatalago;
+    String usuario, password, empresa, IdUsuario, Compania, Nombre, Paterno, Materno, Tipo_Usuario, User, UUID, validaUUIDResult, letraBuzon, letraCatalago, Token;
 
     TextView textLocalizacion;
 
@@ -142,7 +142,9 @@ public class Login extends AppCompatActivity {
                 Compania = jsonObject.getString("Compania");
                 Nombre = jsonObject.getString("Nombre");
                 Paterno = jsonObject.getString("Paterno");
+                Materno = jsonObject.getString("Materno");
                 Tipo_Usuario = jsonObject.getString("Tipo_Usuario");
+                Token = jsonObject.getString("Token");
                 User = jsonObject.getString("User");
 
             } catch (JSONException e1) {
@@ -199,7 +201,7 @@ public class Login extends AppCompatActivity {
 
             StringEntity e = null;
 
-            String json = "{'idUsuario':'" + IdUsuario + "', 'UUID':'" + UUID + "'}";
+            String json = "{'idUsuario':'" + IdUsuario + "', 'UUID':'" + UUID + "', 'llave': {'Usuario':'"+User+"', 'Compania':'"+Compania+"', 'Token':'"+Token+"'}}";
             String mystring = json.replace("\'", "\"");
 
             try {
@@ -238,7 +240,9 @@ public class Login extends AppCompatActivity {
 
                 validaUUIDResult = jsonObject.getString("validaUUIDResult");
 
-                if (validaUUIDResult.equals("true")) {
+                toast(validaUUIDResult);
+
+                /*if (validaUUIDResult.equals("true")) {
 
                     toast("Ya está vinculado");
 
@@ -249,7 +253,7 @@ public class Login extends AppCompatActivity {
                 } else {
 
                     toast("Este perfil del promotor: " + usuario + " no puede instalarse en este dispositivo " + UUID + ". Ya esta instalado en otro dispositivo. Solicite al administrador el permiso correspondiente");
-                }
+                }*/
 
 
             } catch (JSONException e1) {
@@ -295,7 +299,7 @@ public class Login extends AppCompatActivity {
 
             StringEntity e = null;
 
-            String json = "{'Promotoria':'','RegPromotor':'','Compania':'" + empresa + "','Formato':'','Usuario':'" + usuario + "','Contrasenia':'" + password + "','Coordinador':{'ClaveC':'','NombreC':''},'Gerente':{'ClaveG':'','NombreG':''},'TipoUsuario':'4'}";
+            String json = "{'Promotoria':'','RegPromotor':'','Compania':'" + empresa + "','Formato':'','Usuario':'" + usuario + "','Contrasenia':'" + password + "','Coordinador':{'ClaveC':'','NombreC':''},'Gerente':{'ClaveG':'','NombreG':''},'TipoUsuario':'4'}, 'llave': {'Usuario':'"+User+"', 'Compania':'"+Compania+"', 'Token':'"+Token+"'}";
             String mystring = json.replace("\'", "\"");
 
             try {
@@ -398,7 +402,7 @@ public class Login extends AppCompatActivity {
 
             StringEntity e = null;
 
-            String json = "{'Promotoria':'','RegPromotor':'','Compania':'" + empresa + "','Formato':'','Usuario':'" + usuario + "','Contrasenia':'" + password + "','Coordinador':{'ClaveC':'','NombreC':''},'Gerente':{'ClaveG':'','NombreG':''},'TipoUsuario':'4'}";
+            String json = "{'Promotoria':'','RegPromotor':'','Compania':'" + empresa + "','Formato':'','Usuario':'" + usuario + "','Contrasenia':'" + password + "','Coordinador':{'ClaveC':'','NombreC':''},'Gerente':{'ClaveG':'','NombreG':''},'TipoUsuario':'4'}, 'llave': {'Usuario':'"+User+"', 'Compania':'"+Compania+"', 'Token':'"+Token+"'}";
             String mystring = json.replace("\'", "\"");
 
             try {

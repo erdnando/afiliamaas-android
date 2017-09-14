@@ -9,11 +9,15 @@ import android.os.Bundle;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.EditText;
-import android.widget.Switch;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
@@ -26,23 +30,60 @@ import javax.xml.parsers.ParserConfigurationException;
 
 public class CargarSolicitud extends AppCompatActivity {
 
+    //TextView de cabecera y separadores
     TextView textIdSolicitud, textGenerales, textDomicilio, textDatosEconomicos, textPersonaPolitica, textReferenciasFamiliares,
             textGeneralesHead, textDomicilioHead, textDatosEconomicosHead, textPersonaPoliticaHead, textReferenciasFamiliaresHead,
             conector1, conector2, conector3, conector4;
 
-    //Cajas de texto generales
+    //Cajas de texto y radiButton generales
     EditText txtSolicitanteGeneral, txtSegundoNombreGeneral, txtPaternoGeneral, txtMaternoGeneral, txtTipoGeneral, txtNumeroIdentificacion, txtNacionalidad, txtNacimiento,
             txtRFC, txtEstadoCivil, txtNumeroDependientes;
 
-    Switch switchGeneral;
-    TextView textHombre, textMujer;
+    RadioGroup GrupoSexo;
+    RadioButton RadioHombre, RadioMujer;
+
+    //Variables generales
+    String Pmrnombre, Sdonombre, Apaterno, Amaterno, Sexo, Nacionalidad, Fechanacdia, FechanacMes, FechanacAnio, Rfc, Edocivil, Nodependientes, TipoIdentificacion, NumeroIdentificacion;
+
+    //Cajas de texto de Domicilio
+    EditText txtCalle, txtNoExterior, txtNoInterior, txtCP, txtEstado, txtMunicipio, txtColonia, txtTiempoResidencia, txtEstatusResidencia, txtMontoVivienda,
+            txtCorreo, txtTelCasa, txtTelCelular, txtCompaniaMovil;
+
+    //Variables domicilio
+    String Calle, NoInt, NoExt, Cpdom, Estado, Delegacion, Colonia, TiempoResidencia, EstatusResidencia, MontoVivienda, Email, Telcasa, TelMovil, CompaniaMovil;
+
+    //Cajas de texto de datos económicos
+    EditText txtNombreEmpresa, txtGiro, txtAntiguedad, txtTipo, txtPuesto, txtIngresos, txtTiempoCasado, txtFuenteIngresos, txtOtrosIngresos, txtCalleIngresos,
+            txtNoExteriorIngresos, txtNoInteriorIngresos, txtColoniaIngresos, txtEstadoIngresos, txtDelegacionIngresos, txtCPIngresos, txtTelOficina;
+
+    //Variables Datos Económicos
+    String NombreEmpresa, GiroEmpresa, AntiguedadEmpleo, TipoContrato, Puesto, Ingresos, AniosCasada, FuenteOtrosIngresos, OtrosIngresos, CalleIngresos, NoExtIngresos, NoIntIngresos,
+            ColoniaIngresos, EstadoIngresos, DelegacionIngresos, CpdomIngresos, TelcasaIngresos;
+
+    //RadioButton y Radio Group de persona politica
+    RadioGroup Grupo1, Grupo2;
+    RadioButton radioButton, radioButton2, radioButton5, radioButton6;
+
+    //Variables de persona politica
+    String TieneParentesco, EsPersonaPolitica;
+
+    //Cajas de texto para referencias familiares
+    EditText txtNombrePrimera, txtPaternoPrimera, txtMaternoPrimera, txtNacionalidadPrimera, txtTelefonoPrimera,
+            txtNombreSegunda, txtPaternoSegunda, txtMaternoSegunda, txtNacionalidadSegunda, txtTelefonoSegunda,
+            txtNombreTercera, txtPaternoTercera, txtMaternoTercera, txtNacionalidadTercera, txtTelefonoTercera;
+
+    //Variables para referencias familiares
+    String NombrePrimera, PaternoPrimera, MaternoPrimera, NacionalidadPrimera, TelefonoPrimera,
+            NombreSegunda, PaternoSegunda, MaternoSegunda, NacionalidadSegunda, TelefonoSegunda,
+            NombreTercera, PaternoTercera, MaternoTercera, NacionalidadTercera, TelefonoTercera;
+
+    //Variables para la consulta de la tabla catalogos
+    String consultaTipoIdentificacion, consultaNacionalidadGeneral, consultaNacionalidadPrimera, consultaNacionalidadSegunda, consultaNacionalidadTercera, consultaEdocivil,
+            consultaEstadoDomicilio, consultaEstadoIngresos, consultaDelegacionDomicilio, consultaDelegacionIngresos, consultaCompaniaMovil, consultaEstatusResidencia, consultaTipoContrato;
 
     NestedScrollView scrollCargarSolicitud;
 
     String IdSolicitud, solicitudxml;
-
-    //Variables generales
-    String Pmrnombre, Sdonombre, Apaterno, Amaterno, Sexo, Nacionalidad, Fechanacdia, FechanacMes, FechanacAnio, Rfc, Edocivil, Nodependientes;
 
     @SuppressLint("NewApi")
     @Override
@@ -74,7 +115,7 @@ public class CargarSolicitud extends AppCompatActivity {
 
         scrollCargarSolicitud = (NestedScrollView) findViewById(R.id.scrollCargarSolicitud);
 
-        //Creacion de las cajas de texto y switch de generales
+        //Creacion de las cajas de texto y RadioButton de generales
         txtSolicitanteGeneral = (EditText) findViewById(R.id.txtSolicitanteGeneral);
         txtSegundoNombreGeneral = (EditText) findViewById(R.id.txtSegundoNombreGeneral);
         txtPaternoGeneral = (EditText) findViewById(R.id.txtPaternoGeneral);
@@ -87,15 +128,79 @@ public class CargarSolicitud extends AppCompatActivity {
         txtEstadoCivil = (EditText) findViewById(R.id.txtEstadoCivil);
         txtNumeroDependientes = (EditText) findViewById(R.id.txtNumeroDependientes);
 
-        switchGeneral = (Switch) findViewById(R.id.switchGeneral);
-        textMujer = (TextView) findViewById(R.id.textMujer);
-        textHombre = (TextView) findViewById(R.id.textHombre);
+        GrupoSexo = (RadioGroup) findViewById(R.id.GrupoSexo);
+        RadioHombre = (RadioButton) findViewById(R.id.RadioHombre);
+        RadioMujer = (RadioButton) findViewById(R.id.RadioMujer);
+
+        //Creacion cajas de texto de Domicilio
+        txtCalle = (EditText) findViewById(R.id.txtCalle);
+        txtNoExterior = (EditText) findViewById(R.id.txtNoExterior);
+        txtNoInterior = (EditText) findViewById(R.id.txtNoInterior);
+        txtCP = (EditText) findViewById(R.id.txtCP);
+        txtEstado = (EditText) findViewById(R.id.txtEstado);
+        txtMunicipio = (EditText) findViewById(R.id.txtMunicipio);
+        txtColonia = (EditText) findViewById(R.id.txtColonia);
+        txtTiempoResidencia = (EditText) findViewById(R.id.txtTiempoResidencia);
+        txtEstatusResidencia = (EditText) findViewById(R.id.txtEstatusResidencia);
+        txtMontoVivienda = (EditText) findViewById(R.id.txtMontoVivienda);
+        txtCorreo = (EditText) findViewById(R.id.txtCorreo);
+        txtTelCasa = (EditText) findViewById(R.id.txtTelefonoCasa);
+        txtTelCelular = (EditText) findViewById(R.id.txtTelefonoCelular);
+        txtCompaniaMovil = (EditText) findViewById(R.id.txtCompañiaMovil);
+
+        //Creación cajas de texto de datos Económicos
+        txtNombreEmpresa = (EditText) findViewById(R.id.txtNombreEmpresa);
+        txtGiro = (EditText) findViewById(R.id.txtGiro);
+        txtAntiguedad = (EditText) findViewById(R.id.txtAnguedadEmpleo);
+        txtTipo = (EditText) findViewById(R.id.txtTipoContrato);
+        txtPuesto = (EditText) findViewById(R.id.txtPuesto);
+        txtIngresos = (EditText) findViewById(R.id.txtIngreso);
+        txtTiempoCasado = (EditText) findViewById(R.id.txtTiempoCasado);
+        txtFuenteIngresos = (EditText) findViewById(R.id.txtFuenteIngresos);
+        txtOtrosIngresos = (EditText) findViewById(R.id.txtOtrosIngresos);
+        txtCalleIngresos = (EditText) findViewById(R.id.txtCalleIngresos);
+        txtNoExteriorIngresos = (EditText) findViewById(R.id.txtNoExteriorIngresos);
+        txtNoInteriorIngresos = (EditText) findViewById(R.id.txtNoInteriorIngresos);
+        txtColoniaIngresos = (EditText) findViewById(R.id.txtColoniaIngresos);
+        txtEstadoIngresos = (EditText) findViewById(R.id.txtEstadoIngresos);
+        txtDelegacionIngresos = (EditText) findViewById(R.id.txtDelegacionIngresos);
+        txtCPIngresos = (EditText) findViewById(R.id.txtCPIngresos);
+        txtTelOficina = (EditText) findViewById(R.id.txtTelefonoOficina);
+
+        //Creación del radioGroup y radioButton de persona politica
+        Grupo1 = (RadioGroup) findViewById(R.id.Grupo1);
+        Grupo2 = (RadioGroup) findViewById(R.id.Grupo2);
+
+        radioButton = (RadioButton) findViewById(R.id.radioButton);
+        radioButton2 = (RadioButton) findViewById(R.id.radioButton2);
+        radioButton5 = (RadioButton) findViewById(R.id.radioButton5);
+        radioButton6 = (RadioButton) findViewById(R.id.radioButton6);
+
+        //Creación de cajas de texto de referencias familiares
+        txtNombrePrimera = (EditText) findViewById(R.id.txtNombrePrimera);
+        txtPaternoPrimera = (EditText) findViewById(R.id.txtPaternoPrimera);
+        txtMaternoPrimera = (EditText) findViewById(R.id.txtMaternoPrimera);
+        txtNacionalidadPrimera = (EditText) findViewById(R.id.txtNacionalidadPrimera);
+        txtTelefonoPrimera = (EditText) findViewById(R.id.txtTelefonoPrimera);
+
+        txtNombreSegunda = (EditText) findViewById(R.id.txtNombreSegundaR);
+        txtPaternoSegunda = (EditText) findViewById(R.id.txtPaternoSegunda);
+        txtMaternoSegunda = (EditText) findViewById(R.id.txtMaternoSegunda);
+        txtNacionalidadSegunda = (EditText) findViewById(R.id.txtNacionalidadSegunda);
+        txtTelefonoSegunda = (EditText) findViewById(R.id.txtTelefonoSegunda);
+
+        txtNombreTercera = (EditText) findViewById(R.id.txtNombreTercera);
+        txtPaternoTercera = (EditText) findViewById(R.id.txtPaternoTercera);
+        txtMaternoTercera = (EditText) findViewById(R.id.txtMaternoTercera);
+        txtNacionalidadTercera = (EditText) findViewById(R.id.txtNacionalidadTercera);
+        txtTelefonoTercera = (EditText) findViewById(R.id.txtTelefonoTercera);
 
         textGeneralesHead.setBackgroundColor(Color.parseColor("#00E676"));
 
         textIdSolicitud.setText("Id Solicitud: " + IdSolicitud);
 
         buzonActivo();
+        catalogoActivo();
 
         scrollCargarSolicitud.setOnScrollChangeListener(new NestedScrollView.OnScrollChangeListener() {
             @Override
@@ -175,20 +280,176 @@ public class CargarSolicitud extends AppCompatActivity {
             src.setCharacterStream(new StringReader(solicitudxml));
 
             Document doc = builder.parse(src);
+            doc.getDocumentElement().normalize();
 
-            //Variables para generales
-            Pmrnombre = doc.getElementsByTagName("Pmrnombre").item(0).getTextContent();
-            Sdonombre = doc.getElementsByTagName("Sdonombre").item(0).getTextContent();
-            Apaterno = doc.getElementsByTagName("Apaterno").item(0).getTextContent();
-            Amaterno = doc.getElementsByTagName("Amaterno").item(0).getTextContent();
-            Sexo = doc.getElementsByTagName("Sexo").item(0).getTextContent();
-            Nacionalidad = doc.getElementsByTagName("Nacionalidad").item(0).getTextContent();
-            Fechanacdia = doc.getElementsByTagName("Fechanacdia").item(0).getTextContent();
-            FechanacMes = doc.getElementsByTagName("FechasnacMes").item(0).getTextContent();
-            FechanacAnio = doc.getElementsByTagName("FechanacAnio").item(0).getTextContent();
-            Rfc = doc.getElementsByTagName("Rfc").item(0).getTextContent();
-            Edocivil = doc.getElementsByTagName("Edocivil").item(0).getTextContent();
-            Nodependientes = doc.getElementsByTagName("Nodependiente").item(0).getTextContent();
+            NodeList Generales = doc.getElementsByTagName("generales");
+
+            for (int i = 0; i < Generales.getLength(); i++) {
+
+                Node node = Generales.item(i);
+
+                if (node.getNodeType() == Node.ELEMENT_NODE) {
+
+                    Element element = (Element) node;
+
+                    //Asignacion de valores para variables generales
+                    Pmrnombre = element.getElementsByTagName("Pmrnombre").item(0).getTextContent();
+                    Sdonombre = element.getElementsByTagName("Sdonombre").item(0).getTextContent();
+                    Apaterno = element.getElementsByTagName("Apaterno").item(0).getTextContent();
+                    Amaterno = element.getElementsByTagName("Amaterno").item(0).getTextContent();
+                    TipoIdentificacion = element.getElementsByTagName("Tpoidentif").item(0).getTextContent();
+                    NumeroIdentificacion = element.getElementsByTagName("Noidenficacion").item(0).getTextContent();
+                    Sexo = element.getElementsByTagName("Sexo").item(0).getTextContent();
+                    Nacionalidad = element.getElementsByTagName("Nacionalidad").item(0).getTextContent();
+                    Fechanacdia = element.getElementsByTagName("Fechanacdia").item(0).getTextContent();
+                    FechanacMes = element.getElementsByTagName("FechasnacMes").item(0).getTextContent();
+                    FechanacAnio = element.getElementsByTagName("FechanacAnio").item(0).getTextContent();
+                    Rfc = element.getElementsByTagName("Rfc").item(0).getTextContent();
+                    Edocivil = element.getElementsByTagName("Edocivil").item(0).getTextContent();
+                    Nodependientes = element.getElementsByTagName("Nodependiente").item(0).getTextContent();
+                }
+            }
+
+            NodeList Domilicio = doc.getElementsByTagName("domicilio");
+
+            for (int i = 0; i < Domilicio.getLength(); i++) {
+
+                Node node = Domilicio.item(i);
+
+                if (node.getNodeType() == Node.ELEMENT_NODE) {
+
+                    Element element = (Element) node;
+
+                    //Asignacion de valores para variables de domicilio
+                    Calle = element.getElementsByTagName("Calle").item(0).getTextContent();
+                    NoExt = element.getElementsByTagName("NoExt").item(0).getTextContent();
+                    NoInt = element.getElementsByTagName("NoInt").item(0).getTextContent();
+                    Cpdom = element.getElementsByTagName("Cpdom").item(0).getTextContent();
+                    Estado = element.getElementsByTagName("Estado").item(0).getTextContent();
+                    Delegacion = element.getElementsByTagName("Delegacion").item(0).getTextContent();
+                    Colonia = element.getElementsByTagName("Colonia").item(0).getTextContent();
+                    TiempoResidencia = element.getElementsByTagName("TiempoResidencia").item(0).getTextContent();
+                    EstatusResidencia = element.getElementsByTagName("EstatusResidencia").item(0).getTextContent();
+                    MontoVivienda = element.getElementsByTagName("MontoVivienda").item(0).getTextContent();
+                    Email = element.getElementsByTagName("Email").item(0).getTextContent();
+                    Telcasa = element.getElementsByTagName("Telcasa").item(0).getTextContent();
+                    TelMovil = element.getElementsByTagName("Telmovil").item(0).getTextContent();
+                    CompaniaMovil = element.getElementsByTagName("CompaniaMovil").item(0).getTextContent();
+                }
+            }
+
+            NodeList DatosEconomicos = doc.getElementsByTagName("Deconominos");
+            NodeList DomicilioEconomico = doc.getElementsByTagName("Domicilio");
+
+            for (int i = 0; i < DatosEconomicos.getLength(); i++) {
+
+                Node node = DatosEconomicos.item(i);
+                Node nodeDomicilio = DomicilioEconomico.item(i);
+
+                if (node.getNodeType() == Node.ELEMENT_NODE) {
+
+                    Element element = (Element) node;
+
+                    //Asignacion de valores para las variables de datos economicos
+                    NombreEmpresa = element.getElementsByTagName("NombreEmpresa").item(0).getTextContent();
+                    GiroEmpresa = element.getElementsByTagName("GiroEmpresa").item(0).getTextContent();
+                    AntiguedadEmpleo = element.getElementsByTagName("AntiguedadEmpleo").item(0).getTextContent();
+                    TipoContrato = element.getElementsByTagName("TipoContrato").item(0).getTextContent();
+                    Puesto = element.getElementsByTagName("Puesto").item(0).getTextContent();
+                    Ingresos = element.getElementsByTagName("Ingresos").item(0).getTextContent();
+                    AniosCasada = element.getElementsByTagName("AniosCasada").item(0).getTextContent();
+                    FuenteOtrosIngresos = element.getElementsByTagName("FuenteOtrosIngresos").item(0).getTextContent();
+                    OtrosIngresos = element.getElementsByTagName("OtrosIngresos").item(0).getTextContent();
+                }
+
+                if (nodeDomicilio.getNodeType() == Node.ELEMENT_NODE){
+
+                    Element element = (Element) nodeDomicilio;
+
+                    //Asignacion de valores para las variables de domicilio de datos económicos
+                    CalleIngresos = element.getElementsByTagName("Calle").item(0).getTextContent();
+                    NoExtIngresos = element.getElementsByTagName("NoExt").item(0).getTextContent();
+                    NoIntIngresos = element.getElementsByTagName("NoInt").item(0).getTextContent();
+                    ColoniaIngresos = element.getElementsByTagName("Colonia").item(0).getTextContent();
+                    EstadoIngresos = element.getElementsByTagName("Estado").item(0).getTextContent();
+                    DelegacionIngresos = element.getElementsByTagName("Delegacion").item(0).getTextContent();
+                    CpdomIngresos = element.getElementsByTagName("Cpdom").item(0).getTextContent();
+                    TelcasaIngresos = element.getElementsByTagName("Telcasa").item(0).getTextContent();
+                }
+            }
+
+            NodeList Personapolitica = doc.getElementsByTagName("Personapolitica");
+
+            for (int i = 0; i < Personapolitica.getLength(); i++){
+
+                Node node = Personapolitica.item(i);
+
+                if (node.getNodeType() == Node.ELEMENT_NODE){
+
+                    Element element = (Element) node;
+
+                    //Asignacion de valores para las variables de persona politica
+                    TieneParentesco = element.getElementsByTagName("TieneParentesco").item(0).getTextContent();
+                    EsPersonaPolitica = element.getElementsByTagName("EsPersonaPolitica").item(0).getTextContent();
+                }
+            }
+
+            NodeList Refer = doc.getElementsByTagName("Refer");
+
+            for (int i = 0; i < Refer.getLength(); i++) {
+
+                Node node = Refer.item(i);
+
+                if (node.getNodeType() == Node.ELEMENT_NODE) {
+
+                    Element element = (Element) node;
+
+                    //Asignacion de valores para las variables de primera referencia
+                    NombrePrimera = element.getElementsByTagName("Pmrnombre").item(0).getTextContent();
+                    PaternoPrimera = element.getElementsByTagName("Apaterno").item(0).getTextContent();
+                    MaternoPrimera = element.getElementsByTagName("Amaterno").item(0).getTextContent();
+                    NacionalidadPrimera = element.getElementsByTagName("Nacionalidad").item(0).getTextContent();
+                    TelefonoPrimera = element.getElementsByTagName("TelefonoCasa").item(0).getTextContent();
+                }
+            }
+
+            NodeList Refer2 = doc.getElementsByTagName("Refer2");
+
+            for (int i = 0; i < Refer2.getLength(); i++){
+
+                Node node = Refer2.item(i);
+
+                if (node.getNodeType() == Node.ELEMENT_NODE){
+
+                    Element element = (Element) node;
+
+                    //Asignacion de valores para las variables de segunda referencia
+                    NombreSegunda = element.getElementsByTagName("Pmrnombre").item(0).getTextContent();
+                    PaternoSegunda = element.getElementsByTagName("Apaterno").item(0).getTextContent();
+                    MaternoSegunda = element.getElementsByTagName("Amaterno").item(0).getTextContent();
+                    NacionalidadSegunda = element.getElementsByTagName("Nacionalidad").item(0).getTextContent();
+                    TelefonoSegunda = element.getElementsByTagName("TelefonoCasa").item(0).getTextContent();
+                }
+            }
+
+            NodeList Refer3 = doc.getElementsByTagName("Refer3");
+
+            for (int i = 0; i < Refer3.getLength(); i++){
+
+                Node node = Refer3.item(i);
+
+                if (node.getNodeType() == Node.ELEMENT_NODE){
+
+                    Element element = (Element) node;
+
+                    //Asignacion de valores para las variables de tercera referencia
+                    NombreTercera = element.getElementsByTagName("Pmrnombre").item(0).getTextContent();
+                    PaternoTercera = element.getElementsByTagName("Apaterno").item(0).getTextContent();
+                    MaternoTercera = element.getElementsByTagName("Amaterno").item(0).getTextContent();
+                    NacionalidadTercera = element.getElementsByTagName("Nacionalidad").item(0).getTextContent();
+                    TelefonoTercera = element.getElementsByTagName("TelefonoCasa").item(0).getTextContent();
+                }
+            }
 
         } catch (ParserConfigurationException e) {
             e.printStackTrace();
@@ -198,27 +459,105 @@ public class CargarSolicitud extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        //Fijar variables a los edittext de generales
+        catalogoActivo();
+
+        //Asignar variables a los edittext y RadioButton de generales
         txtSolicitanteGeneral.setText(Pmrnombre);
         txtSegundoNombreGeneral.setText(Sdonombre);
         txtPaternoGeneral.setText(Apaterno);
         txtMaternoGeneral.setText(Amaterno);
-        txtNacionalidad.setText(Nacionalidad);
+        txtTipoGeneral.setText(consultaTipoIdentificacion);
+        txtNumeroIdentificacion.setText(NumeroIdentificacion);
+        txtNacionalidad.setText(consultaNacionalidadGeneral);
         txtNacimiento.setText(Fechanacdia + "/" + FechanacMes + "/" + FechanacAnio);
         txtRFC.setText(Rfc);
-        txtEstadoCivil.setText(Edocivil);
+        txtEstadoCivil.setText(consultaEdocivil);
         txtNumeroDependientes.setText(Nodependientes);
 
         if (Sexo.equals("MASCULINO")) {
 
-            switchGeneral.setChecked(true);
-            textMujer.setEnabled(false);
-        } else {
+            RadioHombre.setChecked(true);
+            RadioMujer.setEnabled(false);
+        } else if (Sexo.equals("FEMENINO")) {
 
-            switchGeneral.setChecked(false);
-            textHombre.setEnabled(false);
-
+            RadioMujer.setChecked(true);
+            RadioHombre.setEnabled(false);
         }
+
+        //Asignar variables a los edittext de domicilio
+        txtCalle.setText(Calle);
+        txtNoExterior.setText(NoExt);
+        txtNoInterior.setText(NoInt);
+        txtCP.setText(Email);
+        txtEstado.setText(consultaEstadoDomicilio);
+        txtMunicipio.setText(consultaDelegacionDomicilio);
+        txtColonia.setText(Colonia);
+        txtTiempoResidencia.setText(TiempoResidencia);
+        txtEstatusResidencia.setText(consultaEstatusResidencia);
+        txtMontoVivienda.setText(MontoVivienda);
+        txtCorreo.setText(Email);
+        txtTelCasa.setText(Telcasa);
+        txtTelCelular.setText(TelMovil);
+        txtCompaniaMovil.setText(consultaCompaniaMovil);
+
+        //Asignar variables a los edittext de datos económicos
+        txtNombreEmpresa.setText(NombreEmpresa);
+        txtGiro.setText(GiroEmpresa);
+        txtAntiguedad.setText(AntiguedadEmpleo);
+        txtTipo.setText(consultaTipoContrato);
+        txtPuesto.setText(Puesto);
+        txtIngresos.setText(Ingresos);
+        txtTiempoCasado.setText(AniosCasada);
+        txtFuenteIngresos.setText(FuenteOtrosIngresos);
+        txtOtrosIngresos.setText(OtrosIngresos);
+        txtCalleIngresos.setText(CalleIngresos);
+        txtNoExteriorIngresos.setText(NoExtIngresos);
+        txtNoInteriorIngresos.setText(NoIntIngresos);
+        txtColoniaIngresos.setText(ColoniaIngresos);
+        txtEstadoIngresos.setText(consultaEstadoIngresos);
+        txtDelegacionIngresos.setText(consultaDelegacionIngresos);
+        txtCPIngresos.setText(CpdomIngresos);
+        txtTelOficina.setText(TelcasaIngresos);
+
+        //Asignar variables a los RadioButton de persona politica
+        if (EsPersonaPolitica.equals("SI")) {
+
+            radioButton.setChecked(true);
+            radioButton2.setEnabled(false);
+        } else if (EsPersonaPolitica.equals("NO")) {
+
+            radioButton2.setChecked(true);
+            radioButton.setEnabled(false);
+        }
+
+        if (TieneParentesco.equals("SI")) {
+
+            radioButton5.setChecked(true);
+            radioButton6.setEnabled(false);
+        } else if (TieneParentesco.equals("NO")) {
+
+            radioButton6.setChecked(true);
+            radioButton5.setEnabled(false);
+        }
+
+        //Asignar valores a los edittext de referencias familiares
+        txtNombrePrimera.setText(NombrePrimera);
+        txtPaternoPrimera.setText(PaternoPrimera);
+        txtMaternoPrimera.setText(MaternoPrimera);
+        txtNacionalidadPrimera.setText(consultaNacionalidadPrimera);
+        txtTelefonoPrimera.setText(TelefonoPrimera);
+
+        txtNombreSegunda.setText(NombreSegunda);
+        txtPaternoSegunda.setText(PaternoSegunda);
+        txtMaternoSegunda.setText(MaternoSegunda);
+        txtNacionalidadSegunda.setText(consultaNacionalidadSegunda);
+        txtTelefonoSegunda.setText(TelefonoSegunda);
+
+        txtNombreTercera.setText(NombreTercera);
+        txtPaternoTercera.setText(PaternoTercera);
+        txtMaternoTercera.setText(MaternoTercera);
+        txtNacionalidadTercera.setText(consultaNacionalidadTercera);
+        txtTelefonoTercera.setText(TelefonoTercera);
     }
 
     public void toast(final String mensaje) {
@@ -280,5 +619,227 @@ public class CargarSolicitud extends AppCompatActivity {
         db.close();
     }
 
+    public void catalogoActivo(){
 
+        AdminSQLite admin = new AdminSQLite(getApplicationContext(), "usuario", null, 1);
+
+        SQLiteDatabase db = admin.getWritableDatabase();
+
+        Cursor consulta = db.rawQuery("select * from PARAMETRO where id_parametro = 2", null);
+
+        if (consulta.moveToNext()){
+
+            consultaCatalogoActivo(consulta.getString(2));
+        }
+
+        db.close();
+    }
+
+    public void consultaCatalogoActivo(String letra){
+
+        AdminSQLite admin = new AdminSQLite(getApplicationContext(), "usuario", null, 1);
+
+        SQLiteDatabase db = admin.getWritableDatabase();
+
+        if (letra.equals("A")) {
+
+            Cursor consulta = db.rawQuery("select * from CATALOGO_A where id_catalogo = "+TipoIdentificacion, null);
+
+            if (consulta.moveToNext()){
+
+                consultaTipoIdentificacion = consulta.getString(1);
+            }
+
+            Cursor consulta2 = db.rawQuery("select * from CATALOGO_A where id_catalogo = "+Nacionalidad, null);
+
+            if (consulta2.moveToNext()){
+
+                consultaNacionalidadGeneral = consulta2.getString(1);
+            }
+
+            Cursor consulta3 = db.rawQuery("select * from CATALOGO_A where id_catalogo = "+NacionalidadPrimera, null);
+
+            if (consulta3.moveToNext()){
+
+                consultaNacionalidadPrimera = consulta3.getString(1);
+            }
+
+            Cursor consulta4 = db.rawQuery("select * from CATALOGO_A where id_catalogo = "+NacionalidadSegunda, null);
+
+            if (consulta4.moveToNext()){
+
+                consultaNacionalidadSegunda = consulta4.getString(1);
+            }
+
+            if (NacionalidadTercera == null || NacionalidadTercera.isEmpty()) {
+
+                toast("No existen registro en 3ra referencia");
+            }else {
+
+                Cursor consulta5 = db.rawQuery("select * from CATALOGO_A where id_catalogo = " + NacionalidadTercera, null);
+
+                if (consulta5.moveToNext()) {
+
+                    consultaNacionalidadTercera = consulta5.getString(1);
+                }
+            }
+
+            Cursor consulta6 = db.rawQuery("select * from CATALOGO_A where id_catalogo = "+Edocivil, null);
+
+            if (consulta6.moveToNext()){
+
+                consultaEdocivil = consulta6.getString(1);
+            }
+
+            Cursor consulta7 = db.rawQuery("select * from CATALOGO_A where id_catalogo = "+Estado, null);
+
+            if (consulta7.moveToNext()){
+
+                consultaEstadoDomicilio = consulta7.getString(1);
+            }
+
+            Cursor consulta8 = db.rawQuery("select * from CATALOGO_A where id_catalogo = "+EstadoIngresos, null);
+
+            if (consulta8.moveToNext()){
+
+                consultaEstadoIngresos = consulta8.getString(1);
+            }
+
+            Cursor consulta9 = db.rawQuery("select * from CATALOGO_A where id_catalogo = "+Delegacion, null);
+
+            if (consulta9.moveToNext()){
+
+                consultaDelegacionDomicilio = consulta9.getString(1);
+            }
+
+            Cursor consulta10 = db.rawQuery("select * from CATALOGO_A where id_catalogo = "+DelegacionIngresos, null);
+
+            if (consulta10.moveToNext()){
+
+                consultaDelegacionIngresos = consulta10.getString(1);
+            }
+
+            Cursor consulta11 = db.rawQuery("select * from CATALOGO_A where id_catalogo = "+CompaniaMovil, null);
+
+            if (consulta11.moveToNext()){
+
+                consultaCompaniaMovil = consulta11.getString(1);
+            }
+
+            Cursor consulta12 = db.rawQuery("select * from CATALOGO_A where id_catalogo = "+EstatusResidencia, null);
+
+            if (consulta12.moveToNext()){
+
+                consultaEstatusResidencia = consulta12.getString(1);
+            }
+
+            Cursor consulta13 = db.rawQuery("select * from CATALOGO_A where id_catalogo = "+TipoContrato, null);
+
+            if (consulta13.moveToNext()){
+
+                consultaTipoContrato = consulta13.getString(1);
+            }
+
+        }else if (letra.equals("B")){
+
+            Cursor consulta = db.rawQuery("select * from CATALOGO_B where id_catalogo = "+TipoIdentificacion, null);
+
+            if (consulta.moveToNext()){
+
+                consultaTipoIdentificacion = consulta.getString(1);
+            }
+
+            Cursor consulta2 = db.rawQuery("select * from CATALOGO_B where id_catalogo = "+Nacionalidad, null);
+
+            if (consulta2.moveToNext()){
+
+                consultaNacionalidadGeneral = consulta2.getString(1);
+            }
+
+            Cursor consulta3 = db.rawQuery("select * from CATALOGO_B where id_catalogo = "+NacionalidadPrimera, null);
+
+            if (consulta3.moveToNext()){
+
+                consultaNacionalidadPrimera = consulta3.getString(1);
+            }
+
+            Cursor consulta4 = db.rawQuery("select * from CATALOGO_B where id_catalogo = "+NacionalidadSegunda, null);
+
+            if (consulta4.moveToNext()){
+
+                consultaNacionalidadSegunda = consulta4.getString(1);
+            }
+
+            if (NacionalidadTercera == null || NacionalidadTercera.isEmpty()) {
+
+                toast("No existen registro en 3ra referencia");
+            }else {
+
+                Cursor consulta5 = db.rawQuery("select * from CATALOGO_B where id_catalogo = " + NacionalidadTercera, null);
+
+                if (consulta5.moveToNext()) {
+
+                    consultaNacionalidadTercera = consulta5.getString(1);
+                }
+            }
+
+            Cursor consulta6 = db.rawQuery("select * from CATALOGO_B where id_catalogo = "+Edocivil, null);
+
+            if (consulta6.moveToNext()){
+
+                consultaEdocivil = consulta6.getString(1);
+            }
+
+            Cursor consulta7 = db.rawQuery("select * from CATALOGO_B where id_catalogo = "+Estado, null);
+
+            if (consulta7.moveToNext()){
+
+                consultaEstadoDomicilio = consulta7.getString(1);
+            }
+
+            Cursor consulta8 = db.rawQuery("select * from CATALOGO_B where id_catalogo = "+EstadoIngresos, null);
+
+            if (consulta8.moveToNext()){
+
+                consultaEstadoIngresos = consulta8.getString(1);
+            }
+
+            Cursor consulta9 = db.rawQuery("select * from CATALOGO_B where id_catalogo = "+Delegacion, null);
+
+            if (consulta9.moveToNext()){
+
+                consultaDelegacionDomicilio = consulta9.getString(1);
+            }
+
+            Cursor consulta10 = db.rawQuery("select * from CATALOGO_B where id_catalogo = "+DelegacionIngresos, null);
+
+            if (consulta10.moveToNext()){
+
+                consultaDelegacionIngresos = consulta10.getString(1);
+            }
+
+            Cursor consulta11 = db.rawQuery("select * from CATALOGO_B where id_catalogo = "+CompaniaMovil, null);
+
+            if (consulta11.moveToNext()){
+
+                consultaCompaniaMovil = consulta11.getString(1);
+            }
+
+            Cursor consulta12 = db.rawQuery("select * from CATALOGO_B where id_catalogo = "+EstatusResidencia, null);
+
+            if (consulta12.moveToNext()){
+
+                consultaEstatusResidencia = consulta12.getString(1);
+            }
+
+            Cursor consulta13 = db.rawQuery("select * from CATALOGO_B where id_catalogo = "+TipoContrato, null);
+
+            if (consulta13.moveToNext()){
+
+                consultaTipoContrato = consulta13.getString(1);
+            }
+        }
+
+        db.close();
+    }
 }
