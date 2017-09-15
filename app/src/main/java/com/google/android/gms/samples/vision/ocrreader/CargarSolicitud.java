@@ -362,7 +362,7 @@ public class CargarSolicitud extends AppCompatActivity {
                     OtrosIngresos = element.getElementsByTagName("OtrosIngresos").item(0).getTextContent();
                 }
 
-                if (nodeDomicilio.getNodeType() == Node.ELEMENT_NODE){
+                if (nodeDomicilio.getNodeType() == Node.ELEMENT_NODE) {
 
                     Element element = (Element) nodeDomicilio;
 
@@ -380,11 +380,11 @@ public class CargarSolicitud extends AppCompatActivity {
 
             NodeList Personapolitica = doc.getElementsByTagName("Personapolitica");
 
-            for (int i = 0; i < Personapolitica.getLength(); i++){
+            for (int i = 0; i < Personapolitica.getLength(); i++) {
 
                 Node node = Personapolitica.item(i);
 
-                if (node.getNodeType() == Node.ELEMENT_NODE){
+                if (node.getNodeType() == Node.ELEMENT_NODE) {
 
                     Element element = (Element) node;
 
@@ -415,11 +415,11 @@ public class CargarSolicitud extends AppCompatActivity {
 
             NodeList Refer2 = doc.getElementsByTagName("Refer2");
 
-            for (int i = 0; i < Refer2.getLength(); i++){
+            for (int i = 0; i < Refer2.getLength(); i++) {
 
                 Node node = Refer2.item(i);
 
-                if (node.getNodeType() == Node.ELEMENT_NODE){
+                if (node.getNodeType() == Node.ELEMENT_NODE) {
 
                     Element element = (Element) node;
 
@@ -434,11 +434,11 @@ public class CargarSolicitud extends AppCompatActivity {
 
             NodeList Refer3 = doc.getElementsByTagName("Refer3");
 
-            for (int i = 0; i < Refer3.getLength(); i++){
+            for (int i = 0; i < Refer3.getLength(); i++) {
 
                 Node node = Refer3.item(i);
 
-                if (node.getNodeType() == Node.ELEMENT_NODE){
+                if (node.getNodeType() == Node.ELEMENT_NODE) {
 
                     Element element = (Element) node;
 
@@ -619,7 +619,7 @@ public class CargarSolicitud extends AppCompatActivity {
         db.close();
     }
 
-    public void catalogoActivo(){
+    public void catalogoActivo() {
 
         AdminSQLite admin = new AdminSQLite(getApplicationContext(), "usuario", null, 1);
 
@@ -627,7 +627,7 @@ public class CargarSolicitud extends AppCompatActivity {
 
         Cursor consulta = db.rawQuery("select * from PARAMETRO where id_parametro = 2", null);
 
-        if (consulta.moveToNext()){
+        if (consulta.moveToNext()) {
 
             consultaCatalogoActivo(consulta.getString(2));
         }
@@ -635,7 +635,7 @@ public class CargarSolicitud extends AppCompatActivity {
         db.close();
     }
 
-    public void consultaCatalogoActivo(String letra){
+    public void consultaCatalogoActivo(String letra) {
 
         AdminSQLite admin = new AdminSQLite(getApplicationContext(), "usuario", null, 1);
 
@@ -643,38 +643,38 @@ public class CargarSolicitud extends AppCompatActivity {
 
         if (letra.equals("A")) {
 
-            Cursor consulta = db.rawQuery("select * from CATALOGO_A where id_catalogo = "+TipoIdentificacion, null);
+            Cursor consulta = db.rawQuery("select * from CATALOGO_A where id_catalogo = " + TipoIdentificacion, null);
 
-            if (consulta.moveToNext()){
+            if (consulta.moveToNext()) {
 
                 consultaTipoIdentificacion = consulta.getString(1);
             }
 
-            Cursor consulta2 = db.rawQuery("select * from CATALOGO_A where id_catalogo = "+Nacionalidad, null);
+            Cursor consulta2 = db.rawQuery("select * from CATALOGO_A where id_catalogo = " + Nacionalidad, null);
 
-            if (consulta2.moveToNext()){
+            if (consulta2.moveToNext()) {
 
                 consultaNacionalidadGeneral = consulta2.getString(1);
             }
 
-            Cursor consulta3 = db.rawQuery("select * from CATALOGO_A where id_catalogo = "+NacionalidadPrimera, null);
+            Cursor consulta3 = db.rawQuery("select * from CATALOGO_A where id_catalogo = " + NacionalidadPrimera, null);
 
-            if (consulta3.moveToNext()){
+            if (consulta3.moveToNext()) {
 
                 consultaNacionalidadPrimera = consulta3.getString(1);
             }
 
-            Cursor consulta4 = db.rawQuery("select * from CATALOGO_A where id_catalogo = "+NacionalidadSegunda, null);
+            Cursor consulta4 = db.rawQuery("select * from CATALOGO_A where id_catalogo = " + NacionalidadSegunda, null);
 
-            if (consulta4.moveToNext()){
+            if (consulta4.moveToNext()) {
 
                 consultaNacionalidadSegunda = consulta4.getString(1);
             }
 
             if (NacionalidadTercera == null || NacionalidadTercera.isEmpty()) {
 
-                toast("No existen registro en 3ra referencia");
-            }else {
+                //toast("No existen registro en 3ra referencia");
+            } else {
 
                 Cursor consulta5 = db.rawQuery("select * from CATALOGO_A where id_catalogo = " + NacionalidadTercera, null);
 
@@ -684,96 +684,96 @@ public class CargarSolicitud extends AppCompatActivity {
                 }
             }
 
-            Cursor consulta6 = db.rawQuery("select * from CATALOGO_A where id_catalogo = "+Edocivil, null);
+            Cursor consulta6 = db.rawQuery("select * from CATALOGO_A where id_catalogo = " + Edocivil, null);
 
-            if (consulta6.moveToNext()){
+            if (consulta6.moveToNext()) {
 
                 consultaEdocivil = consulta6.getString(1);
             }
 
-            Cursor consulta7 = db.rawQuery("select * from CATALOGO_A where id_catalogo = "+Estado, null);
+            Cursor consulta7 = db.rawQuery("select * from CATALOGO_A where id_catalogo = " + Estado, null);
 
-            if (consulta7.moveToNext()){
+            if (consulta7.moveToNext()) {
 
                 consultaEstadoDomicilio = consulta7.getString(1);
             }
 
-            Cursor consulta8 = db.rawQuery("select * from CATALOGO_A where id_catalogo = "+EstadoIngresos, null);
+            Cursor consulta8 = db.rawQuery("select * from CATALOGO_A where id_catalogo = " + EstadoIngresos, null);
 
-            if (consulta8.moveToNext()){
+            if (consulta8.moveToNext()) {
 
                 consultaEstadoIngresos = consulta8.getString(1);
             }
 
-            Cursor consulta9 = db.rawQuery("select * from CATALOGO_A where id_catalogo = "+Delegacion, null);
+            Cursor consulta9 = db.rawQuery("select * from CATALOGO_A where id_catalogo = " + Delegacion, null);
 
-            if (consulta9.moveToNext()){
+            if (consulta9.moveToNext()) {
 
                 consultaDelegacionDomicilio = consulta9.getString(1);
             }
 
-            Cursor consulta10 = db.rawQuery("select * from CATALOGO_A where id_catalogo = "+DelegacionIngresos, null);
+            Cursor consulta10 = db.rawQuery("select * from CATALOGO_A where id_catalogo = " + DelegacionIngresos, null);
 
-            if (consulta10.moveToNext()){
+            if (consulta10.moveToNext()) {
 
                 consultaDelegacionIngresos = consulta10.getString(1);
             }
 
-            Cursor consulta11 = db.rawQuery("select * from CATALOGO_A where id_catalogo = "+CompaniaMovil, null);
+            Cursor consulta11 = db.rawQuery("select * from CATALOGO_A where id_catalogo = " + CompaniaMovil, null);
 
-            if (consulta11.moveToNext()){
+            if (consulta11.moveToNext()) {
 
                 consultaCompaniaMovil = consulta11.getString(1);
             }
 
-            Cursor consulta12 = db.rawQuery("select * from CATALOGO_A where id_catalogo = "+EstatusResidencia, null);
+            Cursor consulta12 = db.rawQuery("select * from CATALOGO_A where id_catalogo = " + EstatusResidencia, null);
 
-            if (consulta12.moveToNext()){
+            if (consulta12.moveToNext()) {
 
                 consultaEstatusResidencia = consulta12.getString(1);
             }
 
-            Cursor consulta13 = db.rawQuery("select * from CATALOGO_A where id_catalogo = "+TipoContrato, null);
+            Cursor consulta13 = db.rawQuery("select * from CATALOGO_A where id_catalogo = " + TipoContrato, null);
 
-            if (consulta13.moveToNext()){
+            if (consulta13.moveToNext()) {
 
                 consultaTipoContrato = consulta13.getString(1);
             }
 
-        }else if (letra.equals("B")){
+        } else if (letra.equals("B")) {
 
-            Cursor consulta = db.rawQuery("select * from CATALOGO_B where id_catalogo = "+TipoIdentificacion, null);
+            Cursor consulta = db.rawQuery("select * from CATALOGO_B where id_catalogo = " + TipoIdentificacion, null);
 
-            if (consulta.moveToNext()){
+            if (consulta.moveToNext()) {
 
                 consultaTipoIdentificacion = consulta.getString(1);
             }
 
-            Cursor consulta2 = db.rawQuery("select * from CATALOGO_B where id_catalogo = "+Nacionalidad, null);
+            Cursor consulta2 = db.rawQuery("select * from CATALOGO_B where id_catalogo = " + Nacionalidad, null);
 
-            if (consulta2.moveToNext()){
+            if (consulta2.moveToNext()) {
 
                 consultaNacionalidadGeneral = consulta2.getString(1);
             }
 
-            Cursor consulta3 = db.rawQuery("select * from CATALOGO_B where id_catalogo = "+NacionalidadPrimera, null);
+            Cursor consulta3 = db.rawQuery("select * from CATALOGO_B where id_catalogo = " + NacionalidadPrimera, null);
 
-            if (consulta3.moveToNext()){
+            if (consulta3.moveToNext()) {
 
                 consultaNacionalidadPrimera = consulta3.getString(1);
             }
 
-            Cursor consulta4 = db.rawQuery("select * from CATALOGO_B where id_catalogo = "+NacionalidadSegunda, null);
+            Cursor consulta4 = db.rawQuery("select * from CATALOGO_B where id_catalogo = " + NacionalidadSegunda, null);
 
-            if (consulta4.moveToNext()){
+            if (consulta4.moveToNext()) {
 
                 consultaNacionalidadSegunda = consulta4.getString(1);
             }
 
             if (NacionalidadTercera == null || NacionalidadTercera.isEmpty()) {
 
-                toast("No existen registro en 3ra referencia");
-            }else {
+                //toast("No existen registro en 3ra referencia");
+            } else {
 
                 Cursor consulta5 = db.rawQuery("select * from CATALOGO_B where id_catalogo = " + NacionalidadTercera, null);
 
@@ -783,58 +783,58 @@ public class CargarSolicitud extends AppCompatActivity {
                 }
             }
 
-            Cursor consulta6 = db.rawQuery("select * from CATALOGO_B where id_catalogo = "+Edocivil, null);
+            Cursor consulta6 = db.rawQuery("select * from CATALOGO_B where id_catalogo = " + Edocivil, null);
 
-            if (consulta6.moveToNext()){
+            if (consulta6.moveToNext()) {
 
                 consultaEdocivil = consulta6.getString(1);
             }
 
-            Cursor consulta7 = db.rawQuery("select * from CATALOGO_B where id_catalogo = "+Estado, null);
+            Cursor consulta7 = db.rawQuery("select * from CATALOGO_B where id_catalogo = " + Estado, null);
 
-            if (consulta7.moveToNext()){
+            if (consulta7.moveToNext()) {
 
                 consultaEstadoDomicilio = consulta7.getString(1);
             }
 
-            Cursor consulta8 = db.rawQuery("select * from CATALOGO_B where id_catalogo = "+EstadoIngresos, null);
+            Cursor consulta8 = db.rawQuery("select * from CATALOGO_B where id_catalogo = " + EstadoIngresos, null);
 
-            if (consulta8.moveToNext()){
+            if (consulta8.moveToNext()) {
 
                 consultaEstadoIngresos = consulta8.getString(1);
             }
 
-            Cursor consulta9 = db.rawQuery("select * from CATALOGO_B where id_catalogo = "+Delegacion, null);
+            Cursor consulta9 = db.rawQuery("select * from CATALOGO_B where id_catalogo = " + Delegacion, null);
 
-            if (consulta9.moveToNext()){
+            if (consulta9.moveToNext()) {
 
                 consultaDelegacionDomicilio = consulta9.getString(1);
             }
 
-            Cursor consulta10 = db.rawQuery("select * from CATALOGO_B where id_catalogo = "+DelegacionIngresos, null);
+            Cursor consulta10 = db.rawQuery("select * from CATALOGO_B where id_catalogo = " + DelegacionIngresos, null);
 
-            if (consulta10.moveToNext()){
+            if (consulta10.moveToNext()) {
 
                 consultaDelegacionIngresos = consulta10.getString(1);
             }
 
-            Cursor consulta11 = db.rawQuery("select * from CATALOGO_B where id_catalogo = "+CompaniaMovil, null);
+            Cursor consulta11 = db.rawQuery("select * from CATALOGO_B where id_catalogo = " + CompaniaMovil, null);
 
-            if (consulta11.moveToNext()){
+            if (consulta11.moveToNext()) {
 
                 consultaCompaniaMovil = consulta11.getString(1);
             }
 
-            Cursor consulta12 = db.rawQuery("select * from CATALOGO_B where id_catalogo = "+EstatusResidencia, null);
+            Cursor consulta12 = db.rawQuery("select * from CATALOGO_B where id_catalogo = " + EstatusResidencia, null);
 
-            if (consulta12.moveToNext()){
+            if (consulta12.moveToNext()) {
 
                 consultaEstatusResidencia = consulta12.getString(1);
             }
 
-            Cursor consulta13 = db.rawQuery("select * from CATALOGO_B where id_catalogo = "+TipoContrato, null);
+            Cursor consulta13 = db.rawQuery("select * from CATALOGO_B where id_catalogo = " + TipoContrato, null);
 
-            if (consulta13.moveToNext()){
+            if (consulta13.moveToNext()) {
 
                 consultaTipoContrato = consulta13.getString(1);
             }

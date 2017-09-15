@@ -59,28 +59,35 @@ public class Login extends AppCompatActivity {
         txtPassword.setText("12345678");
         txtEmpresa.setText("STF");
 
+        //Variables donde se guarda el Id del dispositivo
         UUID = Settings.Secure.getString(getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID);
 
+        //Métod que verifica si están registrados los catalogo y buzones en la tabla parametros
         consultaParametroBuzon();
 
         btnAcceder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
+                //Verifica que los campos iniciales no estén vacios
                 if (txtUsuario.getText().toString().isEmpty() || txtPassword.getText().toString().isEmpty() || txtEmpresa.getText().toString().isEmpty()) {
 
                     Toast.makeText(getApplicationContext(), "Verifique que los campos estén llenos", Toast.LENGTH_SHORT).show();
+
+                    //Si está marcado el checkbox quiere decir que la consulta la hará en el WS
                 } else if (checkNuevo.isChecked()) {
 
                     txtUsuario.setEnabled(false);
                     txtPassword.setEnabled(false);
                     txtEmpresa.setEnabled(false);
 
+                    //hace un llamado al Ws de logueo
                     Logueo logueo = new Logueo();
                     logueo.execute();
 
                 } else {
 
+                    //La consulta la hará en la base de datos local
                     consulta(txtUsuario.getText().toString(), txtPassword.getText().toString(), txtEmpresa.getText().toString());
                 }
 
@@ -101,6 +108,7 @@ public class Login extends AppCompatActivity {
 
             StringEntity e = null;
 
+            //Objeto de tipo promotor que se envía para que el WS retorne un response
             String json = "{'Promotoria':'','RegPromotor':'','Compania':'" + empresa + "','Formato':'','Usuario':'" + usuario + "','Contrasenia':'" + password + "','Coordinador':{'ClaveC':'','NombreC':''},'Gerente':{'ClaveG':'','NombreG':''},'TipoUsuario':'4'}";
             String mystring = json.replace("\'", "\"");
 
@@ -112,6 +120,7 @@ public class Login extends AppCompatActivity {
 
             request.setEntity(e);
 
+            //Asignación del formato Json
             request.setHeader("content-type", "application/json");
 
             HttpResponse response = null;
@@ -135,6 +144,7 @@ public class Login extends AppCompatActivity {
             }
 
 
+            //Obtencion del response del Ws y almacenamiento de las variables que nos retorna el response
             try {
                 JSONObject jsonObject = new JSONObject(res);
 
@@ -152,10 +162,12 @@ public class Login extends AppCompatActivity {
             }
 
 
+            //Validacion de que exista el usuario que se está logueando
             if (Integer.parseInt(IdUsuario) != 0) {
 
                 toast("Usuario existente en el WS");
 
+                //Llamada de meodos de consulta de Buzon y catalogo Activo
                 consultaBuzonActivo();
                 consultaCatalagoActivo();
             } else {
@@ -201,7 +213,8 @@ public class Login extends AppCompatActivity {
 
             StringEntity e = null;
 
-            String json = "{'idUsuario':'" + IdUsuario + "', 'UUID':'" + UUID + "', 'llave': {'Usuario':'"+User+"', 'Compania':'"+Compania+"', 'Token':'"+Token+"'}}";
+            //Objeto de tipo promotor que se le envía al WS para que retorne un response
+            String json = "{'idUsuario':'" + IdUsuario + "', 'UUID':'" + UUID + "', 'llave': {'Usuario':'" + User + "', 'Compania':'" + Compania + "', 'Token':'" + Token + "'}}";
             String mystring = json.replace("\'", "\"");
 
             try {
@@ -235,25 +248,39 @@ public class Login extends AppCompatActivity {
             }
 
 
+            //Resultado del response donde retorna un true o false pero se separa por las comillas dobles y el arroba
             try {
                 JSONObject jsonObject = new JSONObject(res);
 
                 validaUUIDResult = jsonObject.getString("validaUUIDResult");
 
-                toast(validaUUIDResult);
+                String[] separar = null;
+                String[] separarTrue = null;
 
-                /*if (validaUUIDResult.equals("true")) {
+                separar = validaUUIDResult.split("\"");
+
+                separarTrue = separar[0].split("@");
+
+                String respuesta = separarTrue[0];
+
+                //Validacion del resultado para ver si no ha sio ligado el usuario en otro dispositivo
+                if (respuesta.equals("true")) {
 
                     toast("Ya está vinculado");
 
+                    //Método para borrar el usuario de la bd local
+                    borrarUsuarios();
+
+                    //Método que primero verifica si el usuario ya existe en la BD loal y si no existe lo ingresa
                     insertarUsuario(IdUsuario, usuario, password, "4", empresa);
 
+                    //Llamado al método que con tiene en Ws de GetBuzon
                     llamarGetBuzon();
 
                 } else {
 
                     toast("Este perfil del promotor: " + usuario + " no puede instalarse en este dispositivo " + UUID + ". Ya esta instalado en otro dispositivo. Solicite al administrador el permiso correspondiente");
-                }*/
+                }
 
 
             } catch (JSONException e1) {
@@ -299,7 +326,8 @@ public class Login extends AppCompatActivity {
 
             StringEntity e = null;
 
-            String json = "{'Promotoria':'','RegPromotor':'','Compania':'" + empresa + "','Formato':'','Usuario':'" + usuario + "','Contrasenia':'" + password + "','Coordinador':{'ClaveC':'','NombreC':''},'Gerente':{'ClaveG':'','NombreG':''},'TipoUsuario':'4'}, 'llave': {'Usuario':'"+User+"', 'Compania':'"+Compania+"', 'Token':'"+Token+"'}";
+            //Objeto de tipo promotor que se envia al Ws getBuzon para que retorne un response
+            String json = "{'objPromotor': {'Promotoria':'','RegPromotor':'','Compania':'" + empresa + "','Formato':'','Usuario':'" + usuario + "','Contrasenia':'" + password + "','Coordinador':{'ClaveC':'','NombreC':''},'Gerente':{'ClaveG':'','NombreG':''},'TipoUsuario':'4'}, 'llave': {'Usuario':'" + usuario + "', 'Compania':'" + empresa + "', 'Token':'" + Token + "'}}";
             String mystring = json.replace("\'", "\"");
 
             try {
@@ -335,6 +363,8 @@ public class Login extends AppCompatActivity {
 
             try {
 
+                //Respnse del Ws que retorna un arreglo de tipo solicitudes de donde se toman los variables y se guardan a su vez
+                //en la tabla buzon A ó B a través de un ciclo for
                 JSONObject jsonObjectOld = new JSONObject(res);
 
                 JSONArray jsonArray = jsonObjectOld.getJSONArray("solicitudes");
@@ -343,7 +373,7 @@ public class Login extends AppCompatActivity {
 
                     JSONObject jsonObject = jsonArray.getJSONObject(i);
 
-                    String BuzonIdSolicitud = jsonObject.getString("ID_SOLICITUD");
+                    int BuzonIdSolicitud = Integer.parseInt(jsonObject.getString("ID_SOLICITUD"));
                     String BuzonFechaAlta = jsonObject.getString("FECHA_ALTA");
                     String BuzonEstatus = jsonObject.getString("ESTATUS");
                     String BuzonIdUsuario = IdUsuario;
@@ -402,7 +432,8 @@ public class Login extends AppCompatActivity {
 
             StringEntity e = null;
 
-            String json = "{'Promotoria':'','RegPromotor':'','Compania':'" + empresa + "','Formato':'','Usuario':'" + usuario + "','Contrasenia':'" + password + "','Coordinador':{'ClaveC':'','NombreC':''},'Gerente':{'ClaveG':'','NombreG':''},'TipoUsuario':'4'}, 'llave': {'Usuario':'"+User+"', 'Compania':'"+Compania+"', 'Token':'"+Token+"'}";
+            //Objeto de tipo promotor que se envia al Ws y este retorna un response de arreglos
+            String json = "{'objPromotor':{'Promotoria':'','RegPromotor':'','Compania':'" + empresa + "','Formato':'','Usuario':'" + usuario + "','Contrasenia':'" + password + "','Coordinador':{'ClaveC':'','NombreC':''},'Gerente':{'ClaveG':'','NombreG':''},'TipoUsuario':'4'}, 'llave': {'Usuario':'" + usuario + "', 'Compania':'" + empresa + "', 'Token':'" + Token + "'}}";
             String mystring = json.replace("\'", "\"");
 
             try {
@@ -438,6 +469,8 @@ public class Login extends AppCompatActivity {
 
             try {
 
+                //Response del llamadomal Ws getCatalogo y separación de datos del arreglo catalogos
+                //a través de un ciclo while e insertarlo a la Bd local en la tabla catalogos
                 JSONObject jsonObjectOld = new JSONObject(res);
 
                 JSONArray jsonArray = jsonObjectOld.getJSONArray("catalogos");
@@ -460,6 +493,8 @@ public class Login extends AppCompatActivity {
 
                 }
 
+                //Una vez hecho todo el proceso de inserciones de buzon y catalogos, iniciamos la actividad de menu principal
+                //donde se cargan todos los valores desde la Bd local
                 Intent intent = new Intent(getApplicationContext(), MenuPrincipal.class);
                 startActivity(intent);
 
@@ -577,6 +612,7 @@ public class Login extends AppCompatActivity {
 
         if (consultaA.moveToNext()) {
 
+            //retorna un result del buzon activo ya sea A ó B
             letraBuzon = consultaA.getString(2);
         }
 
@@ -584,11 +620,13 @@ public class Login extends AppCompatActivity {
 
             toast("El buzón activo es A pero se insertará en el Buzón B");
 
+            //Método que pregunta el estatus del buzón A para validar que no tenga solicitudes pendientes
             consultaBuzonEstatus(letraBuzon);
         } else if (letraBuzon.equals("B")) {
 
             toast("El buzón activo es B pero se insertará en el Buzón A");
 
+            //Método que pregunta el estatus del buzón B para validar que no tenga solicitudes pendientes
             consultaBuzonEstatus(letraBuzon);
         }
     }
@@ -603,6 +641,7 @@ public class Login extends AppCompatActivity {
 
         if (consultaA.moveToNext()) {
 
+            //retorna un result del catalogo activo ya sea A ó B
             letraCatalago = consultaA.getString(2);
         }
 
@@ -610,16 +649,20 @@ public class Login extends AppCompatActivity {
 
             toast("El catalago activo es A pero se insertará en el catalago B");
 
+            //Borra los elementos que estén el catalogo B ya que ahí se hará la nueva insercion
             borrarCatalagoB();
 
+            //Llamada del Ws GetCatalogos
             GetCatalogos getCatalogos = new GetCatalogos();
             getCatalogos.execute();
         } else if (letraCatalago.equals("B")) {
 
             toast("El catalago activo es B pero se insertará en el catalago A");
 
+            //Borra los elementos que estén el catalogo A ya que ahí se hará la nueva insercion
             borrarCatalagoA();
 
+            //Llamada del Ws GetCatalogos
             GetCatalogos getCatalogos = new GetCatalogos();
             getCatalogos.execute();
         }
@@ -652,18 +695,23 @@ public class Login extends AppCompatActivity {
 
         SQLiteDatabase db = admin.getWritableDatabase();
 
+        //Dependiendo quien es el buzon activo, hace una consulta en la cual le retorna si no hay solicitudes pendientes
+
         if (letra.equals("A")) {
 
             Cursor consultaA = db.rawQuery("select * from Buzon_A where ESTATUS = 6 or ESTATUS = 7", null);
 
             if (consultaA.moveToNext()) {
 
+                //Alertdialog donde pregunta si quieres borrar los elementos pendientes o no
                 AlertDialogA();
 
             } else {
 
+                //Borra los elemnetos del buzon a donde se insertarán los response del WS
                 borrarBuzonB();
 
+                //Llama el Ws de validacion para verificar si el usuario ingresado no está ligado a otro dispositivo
                 UUID uuid = new UUID();
                 uuid.execute();
             }
@@ -674,11 +722,15 @@ public class Login extends AppCompatActivity {
 
             if (consultaB.moveToNext()) {
 
+                //Alertdialog donde pregunta si quieres borrar los elementos pendientes o no
                 AlertDialogB();
 
             } else {
 
+                //Borra los elemnetos del buzon a donde se insertarán los response del WS
                 borrarBuzonA();
+
+                //Llama el Ws de validacion para verificar si el usuario ingresado no está ligado a otro dispositivo
                 UUID uuid = new UUID();
                 uuid.execute();
             }
@@ -802,11 +854,11 @@ public class Login extends AppCompatActivity {
 
         SQLiteDatabase db = admin.getWritableDatabase();
 
-        Cursor consultaA = db.rawQuery("select * from USUARIO where id_usuario = " + Integer.parseInt(IdUsuario), null);
+        Cursor consultaA = db.rawQuery("select * from USUARIO where id_usuario = " + Integer.parseInt(IdUsuario)+" and contrasenia = "+Contrasenia, null);
 
         if (consultaA.moveToNext()) {
 
-
+            toast("El usuario ya existe en la BD local");
         } else {
 
             ContentValues registro = new ContentValues();
@@ -818,12 +870,14 @@ public class Login extends AppCompatActivity {
             registro.put("compania", Empresa);
 
             db.insert("USUARIO", null, registro);
+
+            toast("Usuario ingresado a la Bd local");
         }
 
         db.close();
     }
 
-    public void insertarBuzon(String IdSolicitud, String FechaAlta, String Estatus, String IdUsuario, String Comentario, String Motivo, String FechaModificacion, String SolicitudXML, String PromedioScoring, String Producto) {
+    public void insertarBuzon(int IdSolicitud, String FechaAlta, String Estatus, String IdUsuario, String Comentario, String Motivo, String FechaModificacion, String SolicitudXML, String PromedioScoring, String Producto) {
 
         AdminSQLite admin = new AdminSQLite(getApplicationContext(), "usuario", null, 1);
 
@@ -834,7 +888,7 @@ public class Login extends AppCompatActivity {
             ContentValues registro1 = new ContentValues();
             ContentValues actualizar = new ContentValues();
 
-            registro1.put("id_solicitud", Integer.parseInt(IdSolicitud));
+            registro1.put("id_solicitud", IdSolicitud);
             registro1.put("fecha_alta", String.valueOf(FechaAlta));
             registro1.put("estatus", Integer.parseInt(Estatus));
             registro1.put("id_usuario", Integer.parseInt(IdUsuario));
@@ -847,6 +901,7 @@ public class Login extends AppCompatActivity {
 
             db.insert("BUZON_B", null, registro1);
 
+            //Al mismo tiempo que se insertan los valores se actualiza en la tabla parametro quien será el buzon activo
             actualizar.put("valor", "B");
 
             int cant = db.update("PARAMETRO", actualizar, "id_parametro = 1", null);
@@ -878,7 +933,7 @@ public class Login extends AppCompatActivity {
             ContentValues registro1 = new ContentValues();
             ContentValues actualizar = new ContentValues();
 
-            registro1.put("id_solicitud", Integer.parseInt(IdSolicitud));
+            registro1.put("id_solicitud", IdSolicitud);
             registro1.put("fecha_alta", String.valueOf(FechaAlta));
             registro1.put("estatus", Integer.parseInt(Estatus));
             registro1.put("id_usuario", Integer.parseInt(IdUsuario));
@@ -889,6 +944,7 @@ public class Login extends AppCompatActivity {
             registro1.put("promedio_scoring", PromedioScoring);
             registro1.put("producto", Producto);
 
+            //Al mismo tiempo que se insertan los valores se actualiza en la tabla parametro quien será el buzon activo
             db.insert("BUZON_A", null, registro1);
 
             actualizar.put("valor", "A");
@@ -937,6 +993,7 @@ public class Login extends AppCompatActivity {
 
             db.insert("CATALOGO_B", null, registro);
 
+            //Al mismo tiempo que se insertan los valores se actualiza en la tabla parametro quien será el catalogo activo
             actualizar.put("valor", "B");
 
             int cant = db.update("PARAMETRO", actualizar, "id_parametro = 2", null);
@@ -973,6 +1030,7 @@ public class Login extends AppCompatActivity {
 
             db.insert("CATALOGO_A", null, registroB);
 
+            //Al mismo tiempo que se insertan los valores se actualiza en la tabla parametro quien será el catalogo activo
             actualizar.put("valor", "A");
 
             int cant = db.update("PARAMETRO", actualizar, "id_parametro = 2", null);
@@ -999,7 +1057,7 @@ public class Login extends AppCompatActivity {
         }
     }
 
-    public void consultaParametroBuzon(){
+    public void consultaParametroBuzon() {
 
         AdminSQLite admin = new AdminSQLite(getApplicationContext(), "usuario", null, 1);
 
@@ -1007,9 +1065,9 @@ public class Login extends AppCompatActivity {
 
         Cursor consulta = db.rawQuery("select * from PARAMETRO where id_parametro = 1", null);
 
-        if (consulta.moveToNext()){
+        if (consulta.moveToNext()) {
 
-        }else {
+        } else {
 
             insertar();
         }
@@ -1017,7 +1075,7 @@ public class Login extends AppCompatActivity {
         db.close();
     }
 
-    public void insertar(){
+    public void insertar() {
 
         AdminSQLite admin = new AdminSQLite(getApplicationContext(), "usuario", null, 1);
         SQLiteDatabase db = admin.getWritableDatabase();
