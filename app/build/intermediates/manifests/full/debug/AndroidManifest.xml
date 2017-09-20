@@ -57,6 +57,7 @@
         <activity
             android:name="com.google.android.gms.samples.vision.ocrreader.CargarSolicitud"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name="com.google.android.gms.samples.vision.ocrreader.Imagen" />
         <activity
             android:name="com.google.android.gms.common.api.GoogleApiActivity"
             android:exported="false"

@@ -15,8 +15,8 @@ public class AdminSQLite extends SQLiteOpenHelper{
     public void onCreate(SQLiteDatabase db) {
 
         //Se crean la tablas de la bd
-        db.execSQL("create table BUZON_A (id_solicitud integer primary key, fecha_alta datetime, estatus integer, id_usuario integer, comentario text, motivo integer, fecha_modificacion datetime, solicitud_xml text, promedio_scoring text, producto text)");
-        db.execSQL("create table BUZON_B (id_solicitud integer primary key, fecha_alta datetime, estatus integer, id_usuario integer, comentario text, motivo integer, fecha_modificacion datetime, solicitud_xml text, promedio_scoring text, producto text)");
+        db.execSQL("create table BUZON_A (id_solicitud integer primary key, fecha_alta datetime, estatus integer, id_usuario integer, comentario text, motivo integer, fecha_modificacion datetime, solicitud_xml text, promedio_scoring text, producto text, Doc_C164 text, Doc_C264 text, Doc_IA64 text, Doc_IF64 text, F164 text, Ext1 text, Ext2 text, Ext3 text, Ext4 text, Ext5 text)");
+        db.execSQL("create table BUZON_B (id_solicitud integer primary key, fecha_alta datetime, estatus integer, id_usuario integer, comentario text, motivo integer, fecha_modificacion datetime, solicitud_xml text, promedio_scoring text, producto text, Doc_C164 text, Doc_C264 text, Doc_IA64 text, Doc_IF64 text, F164 text, Ext1 text, Ext2 text, Ext3 text, Ext4 text, Ext5 text)");
         db.execSQL("create table CATALOGO_A (id_catalogo integer primary key, descripcion text, id_tipo_catalogo text, estatus text, padre text)");
         db.execSQL("create table CATALOGO_B (id_catalogo integer primary key, descripcion text, id_tipo_catalogo text, estatus text, padre text)");
         db.execSQL("create table CITASMETRICA (total text, nueva text, cancelada text, realizada text, caducada text, exitosa text)");

@@ -44,7 +44,10 @@
             android:name=".MenuPrincipal"
             android:label="Home"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".CargarSolicitud" android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".CargarSolicitud"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Imagen"></activity>
     </application>
 
 </manifest>

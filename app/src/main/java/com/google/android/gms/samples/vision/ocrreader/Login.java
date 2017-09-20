@@ -62,7 +62,7 @@ public class Login extends AppCompatActivity {
         //Variables donde se guarda el Id del dispositivo
         UUID = Settings.Secure.getString(getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID);
 
-        //Métod que verifica si están registrados los catalogo y buzones en la tabla parametros
+        //Método que verifica si están registrados los catalogo y buzones en la tabla parametros
         consultaParametroBuzon();
 
         btnAcceder.setOnClickListener(new View.OnClickListener() {
@@ -167,7 +167,7 @@ public class Login extends AppCompatActivity {
 
                 toast("Usuario existente en el WS");
 
-                //Llamada de meodos de consulta de Buzon y catalogo Activo
+                //Llamada de metodos de consulta de Buzon y catalogo Activo
                 consultaBuzonActivo();
                 consultaCatalagoActivo();
             } else {
@@ -363,13 +363,15 @@ public class Login extends AppCompatActivity {
 
             try {
 
-                //Respnse del Ws que retorna un arreglo de tipo solicitudes de donde se toman los variables y se guardan a su vez
+                //Response del Ws que retorna un arreglo de tipo solicitudes de donde se toman los variables y se guardan a su vez
                 //en la tabla buzon A ó B a través de un ciclo for
                 JSONObject jsonObjectOld = new JSONObject(res);
 
                 JSONArray jsonArray = jsonObjectOld.getJSONArray("solicitudes");
 
-                for (int i = 0; i < jsonArray.length(); i++) {
+                int i = 0;
+
+                while (i < jsonArray.length()) {
 
                     JSONObject jsonObject = jsonArray.getJSONObject(i);
 
@@ -384,8 +386,21 @@ public class Login extends AppCompatActivity {
                     String BuzonPromedioScoring = jsonObject.getString("PROMEDIO_SCORING");
                     String BuzonProducto = jsonObject.getString("PRODUCTO");
 
-                    insertarBuzon(BuzonIdSolicitud, BuzonFechaAlta, BuzonEstatus, BuzonIdUsuario, BuzonComentario, BuzonMotivo, BuzonFechaModificacion, BuzonSolicitudXML, BuzonPromedioScoring, BuzonProducto);
+                    String DOC_C164 = jsonObject.getString("DOC_C164");
+                    String DOC_C264 = jsonObject.getString("DOC_C264");
+                    String DOC_IA64 = jsonObject.getString("DOC_IA64");
+                    String DOC_IF64 = jsonObject.getString("DOC_IF64");
+                    String F164 = jsonObject.getString("F164");
+                    String E164 = jsonObject.getString("E164");
+                    String E264 = jsonObject.getString("E264");
+                    String E364 = jsonObject.getString("E364");
+                    String E464 = jsonObject.getString("E464");
+                    String E564 = jsonObject.getString("E564");
 
+                    insertarBuzon(BuzonIdSolicitud, BuzonFechaAlta, BuzonEstatus, BuzonIdUsuario, BuzonComentario, BuzonMotivo, BuzonFechaModificacion, BuzonSolicitudXML, BuzonPromedioScoring, BuzonProducto, DOC_C164, DOC_C264, DOC_IA64, DOC_IF64, F164, E164, E264, E364, E464, E564);
+
+
+                    i++;
                 }
 
 
@@ -877,7 +892,7 @@ public class Login extends AppCompatActivity {
         db.close();
     }
 
-    public void insertarBuzon(int IdSolicitud, String FechaAlta, String Estatus, String IdUsuario, String Comentario, String Motivo, String FechaModificacion, String SolicitudXML, String PromedioScoring, String Producto) {
+    public void insertarBuzon(int IdSolicitud, String FechaAlta, String Estatus, String IdUsuario, String Comentario, String Motivo, String FechaModificacion, String SolicitudXML, String PromedioScoring, String Producto, String DocC1, String DocC2, String DocIA, String DocIF, String Fi, String Ext1, String Ext2, String Ext3, String Ext4, String Ext5) {
 
         AdminSQLite admin = new AdminSQLite(getApplicationContext(), "usuario", null, 1);
 
@@ -898,6 +913,17 @@ public class Login extends AppCompatActivity {
             registro1.put("solicitud_xml", SolicitudXML);
             registro1.put("promedio_scoring", PromedioScoring);
             registro1.put("producto", Producto);
+
+            registro1.put("Doc_C164", DocC1);
+            registro1.put("Doc_C264", DocC2);
+            registro1.put("Doc_IA64", DocIA);
+            registro1.put("Doc_IF64", DocIF);
+            registro1.put("F164", Fi);
+            registro1.put("Ext1", Ext1);
+            registro1.put("Ext2", Ext2);
+            registro1.put("Ext3", Ext3);
+            registro1.put("Ext4", Ext4);
+            registro1.put("Ext5", Ext5);
 
             db.insert("BUZON_B", null, registro1);
 
@@ -943,6 +969,17 @@ public class Login extends AppCompatActivity {
             registro1.put("solicitud_xml", SolicitudXML);
             registro1.put("promedio_scoring", PromedioScoring);
             registro1.put("producto", Producto);
+
+            registro1.put("Doc_C164", DocC1);
+            registro1.put("Doc_C264", DocC2);
+            registro1.put("Doc_IA64", DocIA);
+            registro1.put("Doc_IF64", DocIF);
+            registro1.put("F164", Fi);
+            registro1.put("Ext1", Ext1);
+            registro1.put("Ext2", Ext2);
+            registro1.put("Ext3", Ext3);
+            registro1.put("Ext4", Ext4);
+            registro1.put("Ext5", Ext5);
 
             //Al mismo tiempo que se insertan los valores se actualiza en la tabla parametro quien será el buzon activo
             db.insert("BUZON_A", null, registro1);

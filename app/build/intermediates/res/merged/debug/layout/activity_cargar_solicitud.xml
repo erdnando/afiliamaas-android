@@ -6,138 +6,162 @@
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
-        android:layout_height="wrap_content"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:background="@color/colorPrimary">
 
         <TextView
-            android:layout_marginLeft="100dp"
             android:id="@+id/TextIdSolicitud"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:textColor="#FFFFFF"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="100dp"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
 
-        </android.support.v7.widget.Toolbar>
+    </android.support.v7.widget.Toolbar>
 
     <RelativeLayout
         android:id="@+id/RelativePrincipal"
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:layout_below="@+id/toolbar"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/toolbar">
 
         <TextView
             android:id="@+id/textGeneralesHead"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="10dp"
             android:layout_width="40dp"
             android:layout_height="30dp"
-            android:text="G"
-            android:textColor="#FFFFFF"
-            android:background="#64B5F6"
-            android:textAlignment="center"
-            android:textSize="20sp"
-            android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:background="#64B5F6"
+            android:text="G"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
 
         <TextView
-            android:layout_width="30dp"
+            android:id="@+id/conector1"
+            android:layout_width="20dp"
             android:layout_height="10dp"
-            android:background="#64B5F6"
             android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/textGeneralesHead"
             android:layout_toEndOf="@+id/textGeneralesHead"
-            android:id="@+id/conector1" />
+            android:layout_toRightOf="@+id/textGeneralesHead"
+            android:background="#64B5F6" />
 
         <TextView
             android:id="@+id/textDomicilioHead"
             android:layout_width="40dp"
             android:layout_height="30dp"
-            android:text="D"
-            android:textColor="#FFFFFF"
-            android:background="#64B5F6"
-            android:textAlignment="center"
-            android:textSize="20sp"
             android:layout_alignBaseline="@+id/textGeneralesHead"
             android:layout_alignBottom="@+id/textGeneralesHead"
+            android:layout_toEndOf="@+id/conector1"
             android:layout_toRightOf="@+id/conector1"
-            android:layout_toEndOf="@+id/conector1" />
+            android:background="#64B5F6"
+            android:text="D"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
 
         <TextView
-            android:layout_width="30dp"
+            android:id="@+id/conector2"
+            android:layout_width="20dp"
             android:layout_height="10dp"
-            android:background="#64B5F6"
             android:layout_alignBaseline="@+id/conector1"
             android:layout_alignBottom="@+id/conector1"
-            android:layout_toRightOf="@+id/textDomicilioHead"
             android:layout_toEndOf="@+id/textDomicilioHead"
-            android:id="@+id/conector2" />
+            android:layout_toRightOf="@+id/textDomicilioHead"
+            android:background="#64B5F6" />
 
         <TextView
             android:id="@+id/textDatosEconomicosHead"
             android:layout_width="40dp"
             android:layout_height="30dp"
-            android:text="DE"
-            android:textColor="#FFFFFF"
-            android:background="#64B5F6"
-            android:textAlignment="center"
-            android:textSize="20sp"
             android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/conector2"
             android:layout_toRightOf="@+id/conector2"
-            android:layout_toEndOf="@+id/conector2" />
+            android:background="#64B5F6"
+            android:text="DE"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
 
         <TextView
-            android:layout_width="30dp"
+            android:id="@+id/conector3"
+            android:layout_width="20dp"
             android:layout_height="10dp"
-            android:background="#64B5F6"
             android:layout_alignBaseline="@+id/conector2"
             android:layout_alignBottom="@+id/conector2"
-            android:layout_toRightOf="@+id/textDatosEconomicosHead"
             android:layout_toEndOf="@+id/textDatosEconomicosHead"
-            android:id="@+id/conector3" />
+            android:layout_toRightOf="@+id/textDatosEconomicosHead"
+            android:background="#64B5F6" />
 
         <TextView
             android:id="@+id/textPersonaPoliticaHead"
             android:layout_width="40dp"
             android:layout_height="30dp"
-            android:text="PP"
-            android:textColor="#FFFFFF"
-            android:background="#64B5F6"
-            android:textAlignment="center"
-            android:textSize="20sp"
             android:layout_alignBaseline="@+id/textReferenciasFamiliaresHead"
             android:layout_alignBottom="@+id/textReferenciasFamiliaresHead"
+            android:layout_toEndOf="@+id/conector3"
             android:layout_toRightOf="@+id/conector3"
-            android:layout_toEndOf="@+id/conector3" />
+            android:background="#64B5F6"
+            android:text="PP"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
 
         <TextView
-            android:layout_width="30dp"
+            android:id="@+id/conector4"
+            android:layout_width="20dp"
             android:layout_height="10dp"
-            android:background="#64B5F6"
             android:layout_alignBaseline="@+id/conector3"
             android:layout_alignBottom="@+id/conector3"
-            android:layout_toRightOf="@+id/textPersonaPoliticaHead"
             android:layout_toEndOf="@+id/textPersonaPoliticaHead"
-            android:id="@+id/conector4" />
+            android:layout_toRightOf="@+id/textPersonaPoliticaHead"
+            android:background="#64B5F6" />
 
         <TextView
             android:id="@+id/textReferenciasFamiliaresHead"
             android:layout_width="40dp"
             android:layout_height="30dp"
-            android:textAlignment="center"
-            android:text="RF"
-            android:textColor="#FFFFFF"
-            android:background="#64B5F6"
-            android:textSize="20sp"
             android:layout_alignBaseline="@+id/textDomicilioHead"
             android:layout_alignBottom="@+id/textDomicilioHead"
+            android:layout_toEndOf="@+id/conector4"
             android:layout_toRightOf="@+id/conector4"
-            android:layout_toEndOf="@+id/conector4" />
+            android:background="#64B5F6"
+            android:text="RF"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/conector5"
+            android:layout_width="20dp"
+            android:layout_height="10dp"
+            android:layout_alignBaseline="@+id/conector4"
+            android:layout_alignBottom="@+id/conector4"
+            android:layout_toEndOf="@+id/textReferenciasFamiliaresHead"
+            android:layout_toRightOf="@+id/textReferenciasFamiliaresHead"
+            android:background="#64B5F6" />
+
+        <TextView
+            android:id="@+id/textDocumentosHead"
+            android:layout_width="40dp"
+            android:layout_height="30dp"
+            android:layout_alignBottom="@+id/textDatosEconomicosHead"
+            android:layout_alignTop="@+id/textDatosEconomicosHead"
+            android:layout_toEndOf="@+id/conector5"
+            android:layout_toRightOf="@+id/conector5"
+            android:background="#64B5F6"
+            android:text="Doc"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
     </RelativeLayout>
 
     <android.support.v4.widget.NestedScrollView
@@ -151,22 +175,26 @@
         <RelativeLayout
             android:id="@+id/RelativeGenerales"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
             <TextView
                 android:id="@+id/TextGenerales"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/txtSolicitanteGeneral"
+                android:layout_alignLeft="@+id/txtSolicitanteGeneral"
                 android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
+                android:layout_alignRight="@+id/txtSolicitanteGeneral"
+                android:layout_alignStart="@+id/txtSolicitanteGeneral"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/textview_redondo"
                 android:text="Generales"
+                android:textAlignment="center"
                 android:textColor="#000000"
                 android:textSize="18sp" />
 
             <EditText
                 android:id="@+id/txtSolicitanteGeneral"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
@@ -174,6 +202,8 @@
                 android:layout_alignParentRight="true"
                 android:layout_alignParentStart="true"
                 android:layout_below="@+id/TextGenerales"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:layout_marginTop="15dp"
                 android:background="@drawable/edittext_redondo"
                 android:ems="10"
@@ -183,76 +213,74 @@
 
             <EditText
                 android:id="@+id/txtSegundoNombreGeneral"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/txtSolicitanteGeneral"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:layout_marginTop="17dp"
                 android:background="@drawable/edittext_redondo"
                 android:ems="10"
                 android:hint="Segundo Nombre"
                 android:inputType="textPersonName"
-                android:textAlignment="center"
-                android:layout_below="@+id/txtSolicitanteGeneral"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true" />
+                android:textAlignment="center" />
 
             <EditText
                 android:id="@+id/txtPaternoGeneral"
-                android:layout_marginRight="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/txtSegundoNombreGeneral"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
+                android:layout_alignStart="@+id/txtSegundoNombreGeneral"
                 android:layout_below="@+id/txtSegundoNombreGeneral"
+                android:layout_marginRight="10dp"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/edittext_redondo"
                 android:ems="10"
                 android:hint="Apellido Paterno"
                 android:inputType="textPersonName"
-                android:textAlignment="center"
-                android:layout_alignLeft="@+id/txtSegundoNombreGeneral"
-                android:layout_alignStart="@+id/txtSegundoNombreGeneral" />
+                android:textAlignment="center" />
 
             <EditText
                 android:id="@+id/txtMaternoGeneral"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/txtTipoGeneral"
+                android:layout_alignLeft="@+id/txtTipoGeneral"
+                android:layout_alignRight="@+id/txtTipoGeneral"
+                android:layout_alignStart="@+id/txtTipoGeneral"
+                android:layout_below="@+id/txtPaternoGeneral"
                 android:layout_marginTop="18dp"
                 android:background="@drawable/edittext_redondo"
                 android:ems="10"
                 android:hint="Apellido Materno"
                 android:inputType="textPersonName"
-                android:textAlignment="center"
-                android:layout_below="@+id/txtPaternoGeneral"
-                android:layout_alignLeft="@+id/txtTipoGeneral"
-                android:layout_alignStart="@+id/txtTipoGeneral"
-                android:layout_alignRight="@+id/txtTipoGeneral"
-                android:layout_alignEnd="@+id/txtTipoGeneral" />
+                android:textAlignment="center" />
 
             <EditText
                 android:id="@+id/txtTipoGeneral"
                 android:layout_width="wrap_content"
-                android:layout_marginLeft="10dp"
                 android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/txtNumeroIdentificacion"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
+                android:layout_alignRight="@+id/txtNumeroIdentificacion"
                 android:layout_below="@+id/txtMaternoGeneral"
+                android:layout_marginLeft="10dp"
                 android:layout_marginTop="16dp"
                 android:background="@drawable/edittext_redondo"
                 android:ems="10"
                 android:hint="Tipo de Identificación"
                 android:inputType="textPersonName"
-                android:textAlignment="center"
-                android:layout_alignRight="@+id/txtNumeroIdentificacion"
-                android:layout_alignEnd="@+id/txtNumeroIdentificacion" />
+                android:textAlignment="center" />
 
             <EditText
                 android:id="@+id/txtNumeroIdentificacion"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
@@ -260,6 +288,8 @@
                 android:layout_alignParentRight="true"
                 android:layout_alignParentStart="true"
                 android:layout_below="@+id/txtTipoGeneral"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:layout_marginTop="14dp"
                 android:background="@drawable/edittext_redondo"
                 android:ems="10"
@@ -269,15 +299,15 @@
 
             <EditText
                 android:id="@+id/txtNacionalidad"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentStart="true"
-                android:layout_below="@+id/switchMujer"
+                android:layout_below="@+id/GrupoSexo"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:layout_marginTop="17dp"
                 android:background="@drawable/edittext_redondo"
                 android:ems="10"
@@ -287,8 +317,6 @@
 
             <EditText
                 android:id="@+id/txtNacimiento"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
@@ -296,6 +324,8 @@
                 android:layout_alignParentRight="true"
                 android:layout_alignParentStart="true"
                 android:layout_below="@+id/txtNacionalidad"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:layout_marginTop="11dp"
                 android:background="@drawable/edittext_redondo"
                 android:ems="10"
@@ -305,13 +335,13 @@
 
             <EditText
                 android:id="@+id/txtRFC"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:layout_below="@+id/txtNacimiento"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:layout_marginTop="14dp"
                 android:background="@drawable/edittext_redondo"
                 android:hint="RFC"
@@ -319,13 +349,13 @@
 
             <EditText
                 android:id="@+id/txtEstadoCivil"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:layout_below="@+id/txtRFC"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:layout_marginTop="14dp"
                 android:background="@drawable/edittext_redondo"
                 android:hint="Estado Civil"
@@ -333,60 +363,65 @@
 
             <EditText
                 android:id="@+id/txtNumeroDependientes"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:layout_below="@+id/txtEstadoCivil"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:layout_marginTop="11dp"
                 android:background="@drawable/edittext_redondo"
                 android:hint="Número de Dependientes"
                 android:textAlignment="center" />
 
-
-            <Switch
-                android:id="@+id/switchMujer"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_width="wrap_content"
+            <RadioGroup
+                android:id="@+id/GrupoSexo"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="27dp"
-                android:text="Mujer"
-                tools:targetApi="ice_cream_sandwich"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
                 android:layout_below="@+id/txtNumeroIdentificacion"
-                android:layout_alignRight="@+id/textView3"
-                android:layout_alignEnd="@+id/textView3" />
+                android:layout_marginTop="21dp"
+                android:gravity="center"
+                android:orientation="horizontal">
 
-            <Switch
-                android:id="@+id/switchHombre"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Hombre"
-                tools:targetApi="ice_cream_sandwich"
-                android:layout_above="@+id/txtNacionalidad"
-                android:layout_alignLeft="@+id/txtNacionalidad"
-                android:layout_alignStart="@+id/txtNacionalidad" />
+                <RadioButton
+                    android:id="@+id/RadioMujer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Mujer"
+                    tools:ignore="RtlCompat" />
+
+                <RadioButton
+                    android:id="@+id/RadioHombre"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:text="Hombre"
+                    tools:ignore="RtlCompat" />
+
+            </RadioGroup>
+
 
             <TextView
                 android:id="@+id/TextDomicilio"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignEnd="@+id/TextGenerales"
+                android:layout_alignLeft="@+id/txtCalle"
                 android:layout_alignRight="@+id/TextGenerales"
+                android:layout_alignStart="@+id/txtCalle"
                 android:layout_below="@+id/txtNumeroDependientes"
                 android:layout_marginTop="57dp"
+                android:background="@drawable/textview_redondo"
                 android:text="Domicilio"
+                android:textAlignment="center"
                 android:textColor="#000000"
                 android:textSize="18sp" />
 
             <EditText
-                android:id="@+id/editText11"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
+                android:id="@+id/txtCalle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
@@ -394,6 +429,8 @@
                 android:layout_alignParentRight="true"
                 android:layout_alignParentStart="true"
                 android:layout_below="@+id/TextDomicilio"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:layout_marginTop="18dp"
                 android:background="@drawable/edittext_redondo"
                 android:ems="10"
@@ -402,16 +439,16 @@
                 android:textAlignment="center" />
 
             <EditText
-                android:id="@+id/editText12"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
+                android:id="@+id/txtNoExterior"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentStart="true"
-                android:layout_below="@+id/editText11"
+                android:layout_below="@+id/txtCalle"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:layout_marginTop="27dp"
                 android:background="@drawable/edittext_redondo"
                 android:ems="10"
@@ -420,16 +457,16 @@
                 android:textAlignment="center" />
 
             <EditText
-                android:id="@+id/editText14"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
+                android:id="@+id/txtNoInterior"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentStart="true"
-                android:layout_below="@+id/editText12"
+                android:layout_below="@+id/txtNoExterior"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:layout_marginTop="25dp"
                 android:background="@drawable/edittext_redondo"
                 android:ems="10"
@@ -438,16 +475,16 @@
                 android:textAlignment="center" />
 
             <EditText
-                android:id="@+id/editText15"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
+                android:id="@+id/txtColonia"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentStart="true"
-                android:layout_below="@+id/editText14"
+                android:layout_below="@+id/txtNoInterior"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:layout_marginTop="26dp"
                 android:background="@drawable/edittext_redondo"
                 android:ems="10"
@@ -456,16 +493,16 @@
                 android:textAlignment="center" />
 
             <EditText
-                android:id="@+id/editText16"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
+                android:id="@+id/txtEstado"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentStart="true"
-                android:layout_below="@+id/editText15"
+                android:layout_below="@+id/txtColonia"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:layout_marginTop="17dp"
                 android:background="@drawable/edittext_redondo"
                 android:ems="10"
@@ -474,16 +511,16 @@
                 android:textAlignment="center" />
 
             <EditText
-                android:id="@+id/editText17"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
+                android:id="@+id/txtMunicipio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentStart="true"
-                android:layout_below="@+id/editText16"
+                android:layout_below="@+id/txtEstado"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:layout_marginTop="21dp"
                 android:background="@drawable/edittext_redondo"
                 android:ems="10"
@@ -492,16 +529,16 @@
                 android:textAlignment="center" />
 
             <EditText
-                android:id="@+id/editText18"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
+                android:id="@+id/txtCP"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentStart="true"
-                android:layout_below="@+id/editText17"
+                android:layout_below="@+id/txtMunicipio"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:layout_marginTop="19dp"
                 android:background="@drawable/edittext_redondo"
                 android:ems="10"
@@ -510,16 +547,16 @@
                 android:textAlignment="center" />
 
             <EditText
-                android:id="@+id/editText19"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
+                android:id="@+id/txtTiempoResidencia"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentStart="true"
-                android:layout_below="@+id/editText18"
+                android:layout_below="@+id/txtCP"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:layout_marginTop="18dp"
                 android:background="@drawable/edittext_redondo"
                 android:ems="10"
@@ -528,34 +565,34 @@
                 android:textAlignment="center" />
 
             <EditText
-                android:id="@+id/editText20"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
+                android:id="@+id/txtEstatusResidencia"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentStart="true"
-                android:layout_below="@+id/editText19"
+                android:layout_below="@+id/txtTiempoResidencia"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:layout_marginTop="17dp"
                 android:background="@drawable/edittext_redondo"
                 android:ems="10"
-                android:hint="Estatus de Referencia"
+                android:hint="Estatus de Residencia"
                 android:inputType="textPersonName"
                 android:textAlignment="center" />
 
             <EditText
-                android:id="@+id/editText21"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
+                android:id="@+id/txtMontoVivienda"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentStart="true"
-                android:layout_below="@+id/editText20"
+                android:layout_below="@+id/txtEstatusResidencia"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:layout_marginTop="18dp"
                 android:background="@drawable/edittext_redondo"
                 android:ems="10"
@@ -564,16 +601,16 @@
                 android:textAlignment="center" />
 
             <EditText
-                android:id="@+id/editText22"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
+                android:id="@+id/txtCorreo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentStart="true"
-                android:layout_below="@+id/editText21"
+                android:layout_below="@+id/txtMontoVivienda"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:layout_marginTop="18dp"
                 android:background="@drawable/edittext_redondo"
                 android:ems="10"
@@ -582,16 +619,16 @@
                 android:textAlignment="center" />
 
             <EditText
-                android:id="@+id/editText23"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
+                android:id="@+id/txtTelefonoCasa"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentStart="true"
-                android:layout_below="@+id/editText22"
+                android:layout_below="@+id/txtCorreo"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/edittext_redondo"
                 android:ems="10"
@@ -600,16 +637,16 @@
                 android:textAlignment="center" />
 
             <EditText
-                android:id="@+id/editText24"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
+                android:id="@+id/txtTelefonoCelular"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentStart="true"
-                android:layout_below="@+id/editText23"
+                android:layout_below="@+id/txtTelefonoCasa"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:layout_marginTop="16dp"
                 android:background="@drawable/edittext_redondo"
                 android:ems="10"
@@ -618,16 +655,16 @@
                 android:textAlignment="center" />
 
             <EditText
-                android:id="@+id/editText25"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
+                android:id="@+id/txtCompañiaMovil"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentStart="true"
-                android:layout_below="@+id/editText24"
+                android:layout_below="@+id/txtTelefonoCelular"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:layout_marginTop="23dp"
                 android:background="@drawable/edittext_redondo"
                 android:ems="10"
@@ -637,19 +674,22 @@
 
             <TextView
                 android:id="@+id/TextDatosEconomicos"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/editText25"
-                android:layout_centerHorizontal="true"
+                android:layout_alignEnd="@+id/txtNombreEmpresa"
+                android:layout_alignLeft="@+id/txtNombreEmpresa"
+                android:layout_alignRight="@+id/txtNombreEmpresa"
+                android:layout_alignStart="@+id/txtNombreEmpresa"
+                android:layout_below="@+id/txtCompañiaMovil"
                 android:layout_marginTop="65dp"
+                android:background="@drawable/textview_redondo"
                 android:text="Datos Económicos"
+                android:textAlignment="center"
                 android:textColor="#000000"
                 android:textSize="18sp" />
 
             <EditText
-                android:id="@+id/editText26"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
+                android:id="@+id/txtNombreEmpresa"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
@@ -657,6 +697,8 @@
                 android:layout_alignParentRight="true"
                 android:layout_alignParentStart="true"
                 android:layout_below="@+id/TextDatosEconomicos"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:layout_marginTop="19dp"
                 android:background="@drawable/edittext_redondo"
                 android:ems="10"
@@ -665,16 +707,16 @@
                 android:textAlignment="center" />
 
             <EditText
-                android:id="@+id/editText27"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
+                android:id="@+id/txtGiro"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentStart="true"
-                android:layout_below="@+id/editText26"
+                android:layout_below="@+id/txtNombreEmpresa"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:layout_marginTop="16dp"
                 android:background="@drawable/edittext_redondo"
                 android:ems="10"
@@ -683,16 +725,16 @@
                 android:textAlignment="center" />
 
             <EditText
-                android:id="@+id/editText28"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
+                android:id="@+id/txtAnguedadEmpleo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentStart="true"
-                android:layout_below="@+id/editText27"
+                android:layout_below="@+id/txtGiro"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:layout_marginTop="15dp"
                 android:background="@drawable/edittext_redondo"
                 android:ems="10"
@@ -701,16 +743,16 @@
                 android:textAlignment="center" />
 
             <EditText
-                android:id="@+id/editText29"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
+                android:id="@+id/txtTipoContrato"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentStart="true"
-                android:layout_below="@+id/editText28"
+                android:layout_below="@+id/txtAnguedadEmpleo"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/edittext_redondo"
                 android:ems="10"
@@ -719,16 +761,16 @@
                 android:textAlignment="center" />
 
             <EditText
-                android:id="@+id/editText30"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
+                android:id="@+id/txtPuesto"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentStart="true"
-                android:layout_below="@+id/editText29"
+                android:layout_below="@+id/txtTipoContrato"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:layout_marginTop="18dp"
                 android:background="@drawable/edittext_redondo"
                 android:ems="10"
@@ -737,16 +779,16 @@
                 android:textAlignment="center" />
 
             <EditText
-                android:id="@+id/editText31"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
+                android:id="@+id/txtIngreso"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentStart="true"
-                android:layout_below="@+id/editText30"
+                android:layout_below="@+id/txtPuesto"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:layout_marginTop="17dp"
                 android:background="@drawable/edittext_redondo"
                 android:ems="10"
@@ -755,16 +797,16 @@
                 android:textAlignment="center" />
 
             <EditText
-                android:id="@+id/editText32"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
+                android:id="@+id/txtTiempoCasado"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentStart="true"
-                android:layout_below="@+id/editText31"
+                android:layout_below="@+id/txtIngreso"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:layout_marginTop="22dp"
                 android:background="@drawable/edittext_redondo"
                 android:ems="10"
@@ -773,16 +815,16 @@
                 android:textAlignment="center" />
 
             <EditText
-                android:id="@+id/editText34"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
+                android:id="@+id/txtFuenteIngresos"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentStart="true"
-                android:layout_below="@+id/editText32"
+                android:layout_below="@+id/txtTiempoCasado"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:layout_marginTop="16dp"
                 android:background="@drawable/edittext_redondo"
                 android:ems="10"
@@ -791,16 +833,16 @@
                 android:textAlignment="center" />
 
             <EditText
-                android:id="@+id/editText35"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
+                android:id="@+id/txtOtrosIngresos"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentStart="true"
-                android:layout_below="@+id/editText34"
+                android:layout_below="@+id/txtFuenteIngresos"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:layout_marginTop="17dp"
                 android:background="@drawable/edittext_redondo"
                 android:ems="10"
@@ -809,16 +851,16 @@
                 android:textAlignment="center" />
 
             <EditText
-                android:id="@+id/editText36"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
+                android:id="@+id/txtCalleIngresos"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentStart="true"
-                android:layout_below="@+id/editText35"
+                android:layout_below="@+id/txtOtrosIngresos"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:layout_marginTop="21dp"
                 android:background="@drawable/edittext_redondo"
                 android:ems="10"
@@ -827,16 +869,16 @@
                 android:textAlignment="center" />
 
             <EditText
-                android:id="@+id/editText37"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
+                android:id="@+id/txtNoExteriorIngresos"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentStart="true"
-                android:layout_below="@+id/editText36"
+                android:layout_below="@+id/txtCalleIngresos"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:layout_marginTop="31dp"
                 android:background="@drawable/edittext_redondo"
                 android:ems="10"
@@ -845,16 +887,16 @@
                 android:textAlignment="center" />
 
             <EditText
-                android:id="@+id/editText38"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_width="wrap_content"
+                android:id="@+id/txtNoInteriorIngresos"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentStart="true"
-                android:layout_below="@+id/editText37"
+                android:layout_below="@+id/txtNoExteriorIngresos"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:layout_marginTop="18dp"
                 android:background="@drawable/edittext_redondo"
                 android:ems="10"
@@ -863,16 +905,16 @@
                 android:textAlignment="center" />
 
             <EditText
-                android:id="@+id/editText39"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
+                android:id="@+id/txtColoniaIngresos"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentStart="true"
-                android:layout_below="@+id/editText38"
+                android:layout_below="@+id/txtNoInteriorIngresos"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:layout_marginTop="22dp"
                 android:background="@drawable/edittext_redondo"
                 android:ems="10"
@@ -881,16 +923,16 @@
                 android:textAlignment="center" />
 
             <EditText
-                android:id="@+id/editText40"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
+                android:id="@+id/txtEstadoIngresos"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentStart="true"
-                android:layout_below="@+id/editText39"
+                android:layout_below="@+id/txtColoniaIngresos"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:layout_marginTop="19dp"
                 android:background="@drawable/edittext_redondo"
                 android:ems="10"
@@ -899,16 +941,16 @@
                 android:textAlignment="center" />
 
             <EditText
-                android:id="@+id/editText41"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
+                android:id="@+id/txtDelegacionIngresos"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentStart="true"
-                android:layout_below="@+id/editText40"
+                android:layout_below="@+id/txtEstadoIngresos"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:layout_marginTop="15dp"
                 android:background="@drawable/edittext_redondo"
                 android:ems="10"
@@ -917,16 +959,16 @@
                 android:textAlignment="center" />
 
             <EditText
-                android:id="@+id/editText42"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
+                android:id="@+id/txtCPIngresos"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentStart="true"
-                android:layout_below="@+id/editText41"
+                android:layout_below="@+id/txtDelegacionIngresos"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:layout_marginTop="17dp"
                 android:background="@drawable/edittext_redondo"
                 android:ems="10"
@@ -935,48 +977,50 @@
                 android:textAlignment="center" />
 
             <EditText
-                android:id="@+id/editText43"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
+                android:id="@+id/txtTelefonoOficina"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:layout_below="@+id/editText42"
+                android:layout_below="@+id/txtCPIngresos"
+                android:layout_marginLeft="10dp"
                 android:layout_marginTop="21dp"
-                android:layout_toLeftOf="@+id/editText44"
-                android:layout_toStartOf="@+id/editText44"
+                android:layout_toStartOf="@+id/txtExtension"
                 android:background="@drawable/edittext_redondo"
                 android:ems="10"
                 android:hint="Telefono Oficina"
                 android:inputType="textPersonName"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                tools:ignore="RtlCompat" />
 
             <EditText
-                android:id="@+id/editText44"
-                android:layout_marginRight="10dp"
+                android:id="@+id/txtExtension"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignBaseline="@+id/editText43"
-                android:layout_alignBottom="@+id/editText43"
+                android:layout_alignBaseline="@+id/txtTelefonoOficina"
+                android:layout_alignBottom="@+id/txtTelefonoOficina"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
+                android:layout_marginRight="10dp"
                 android:background="@drawable/edittext_redondo"
                 android:ems="10"
                 android:hint="EXT."
                 android:inputType="textPersonName"
-                android:textAlignment="center"
-                android:layout_toRightOf="@+id/editText5"
-                android:layout_toEndOf="@+id/editText5" />
+                android:textAlignment="center" />
 
             <TextView
                 android:id="@+id/TextPersonaPolitica"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/editText43"
-                android:layout_centerHorizontal="true"
+                android:layout_alignEnd="@+id/txtExtension"
+                android:layout_alignLeft="@+id/txtTelefonoOficina"
+                android:layout_alignRight="@+id/txtExtension"
+                android:layout_alignStart="@+id/txtTelefonoOficina"
+                android:layout_below="@+id/txtTelefonoOficina"
                 android:layout_marginTop="57dp"
+                android:background="@drawable/textview_redondo"
                 android:text="Persona Politica"
+                android:textAlignment="center"
                 android:textColor="#000000"
                 android:textSize="18sp" />
 
@@ -992,76 +1036,86 @@
                 android:textColor="#000000"
                 android:textSize="20sp" />
 
-            <RadioButton
-                android:id="@+id/radioButton"
-                android:layout_width="100dp"
+            <RadioGroup
+                android:id="@+id/Grupo1"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignLeft="@+id/textView3"
-                android:layout_alignStart="@+id/textView3"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
                 android:layout_below="@+id/textView3"
-                android:layout_marginLeft="87dp"
-                android:layout_marginStart="87dp"
-                android:layout_marginTop="44dp"
-                android:text="SI" />
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:orientation="horizontal">
 
-            <RadioButton
-                android:id="@+id/radioButton2"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:layout_above="@+id/textView4"
-                android:layout_alignEnd="@+id/textView3"
-                android:layout_alignRight="@+id/textView3"
-                android:layout_marginEnd="66dp"
-                android:layout_marginRight="66dp"
-                android:text="NO" />
+                <RadioButton
+                    android:id="@+id/radioButton"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="SI" />
+
+                <RadioButton
+                    android:id="@+id/radioButton2"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="NO" />
+
+            </RadioGroup>
 
             <TextView
                 android:id="@+id/textView4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignLeft="@+id/textView3"
-                android:layout_alignStart="@+id/textView3"
-                android:layout_below="@+id/radioButton"
-                android:layout_marginTop="89dp"
+                android:layout_below="@+id/Grupo1"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="42dp"
                 android:text="¿Tiene parentesco con alguien que haya sido una persona politicamente expuesta?"
                 android:textAlignment="center"
                 android:textColor="#000000"
                 android:textSize="20sp" />
 
-            <RadioButton
-                android:id="@+id/radioButton5"
-                android:layout_width="100dp"
+            <RadioGroup
+                android:id="@+id/Grupo2"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignLeft="@+id/radioButton"
-                android:layout_alignStart="@+id/radioButton"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
                 android:layout_below="@+id/textView4"
-                android:layout_marginTop="50dp"
-                android:text="SI" />
+                android:layout_marginTop="32dp"
+                android:gravity="center"
+                android:orientation="horizontal">
 
-            <RadioButton
-                android:id="@+id/radioButton6"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:layout_alignBottom="@+id/radioButton5"
-                android:layout_alignEnd="@+id/radioButton2"
-                android:layout_alignRight="@+id/radioButton2"
-                android:text="NO" />
+                <RadioButton
+                    android:id="@+id/radioButton5"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="SI" />
+
+                <RadioButton
+                    android:id="@+id/radioButton6"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="NO" />
+
+            </RadioGroup>
 
             <TextView
                 android:id="@+id/TextReferenciasFamiliares"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/radioButton5"
-                android:layout_centerHorizontal="true"
+                android:layout_alignEnd="@+id/txtNombrePrimera"
+                android:layout_alignLeft="@+id/txtNombrePrimera"
+                android:layout_alignRight="@+id/txtNombrePrimera"
+                android:layout_alignStart="@+id/txtNombrePrimera"
+                android:layout_below="@+id/Grupo2"
                 android:layout_marginTop="102dp"
+                android:background="@drawable/textview_redondo"
                 android:text="Referencias Familiares"
+                android:textAlignment="center"
                 android:textColor="#000000"
                 android:textSize="18sp" />
 
             <EditText
-                android:id="@+id/editText33"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
+                android:id="@+id/txtNombrePrimera"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
@@ -1069,6 +1123,8 @@
                 android:layout_alignParentRight="true"
                 android:layout_alignParentStart="true"
                 android:layout_below="@+id/TextReferenciasFamiliares"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:layout_marginTop="28dp"
                 android:background="@drawable/edittext_redondo"
                 android:ems="10"
@@ -1077,16 +1133,16 @@
                 android:textAlignment="center" />
 
             <EditText
-                android:id="@+id/editText45"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
+                android:id="@+id/txtPaternoPrimera"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentStart="true"
-                android:layout_below="@+id/editText33"
+                android:layout_below="@+id/txtNombrePrimera"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:layout_marginTop="21dp"
                 android:background="@drawable/edittext_redondo"
                 android:ems="10"
@@ -1095,15 +1151,14 @@
                 android:textAlignment="center" />
 
             <EditText
-                android:id="@+id/editText46"
-
+                android:id="@+id/txtMaternoPrimera"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentStart="true"
-                android:layout_below="@+id/editText45"
+                android:layout_alignEnd="@+id/txtPaternoPrimera"
+                android:layout_alignLeft="@+id/txtPaternoPrimera"
+                android:layout_alignRight="@+id/txtPaternoPrimera"
+                android:layout_alignStart="@+id/txtPaternoPrimera"
+                android:layout_below="@+id/txtPaternoPrimera"
                 android:layout_marginTop="18dp"
                 android:background="@drawable/edittext_redondo"
                 android:ems="10"
@@ -1112,16 +1167,16 @@
                 android:textAlignment="center" />
 
             <EditText
-                android:id="@+id/editText47"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
+                android:id="@+id/txtNacionalidadPrimera"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentStart="true"
-                android:layout_below="@+id/editText46"
+                android:layout_below="@+id/txtMaternoPrimera"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:layout_marginTop="21dp"
                 android:background="@drawable/edittext_redondo"
                 android:ems="10"
@@ -1130,16 +1185,16 @@
                 android:textAlignment="center" />
 
             <EditText
-                android:id="@+id/editText48"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
+                android:id="@+id/txtTelefonoPrimera"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentStart="true"
-                android:layout_below="@+id/editText47"
+                android:layout_below="@+id/txtNacionalidadPrimera"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:layout_marginTop="21dp"
                 android:background="@drawable/edittext_redondo"
                 android:ems="10"
@@ -1148,16 +1203,16 @@
                 android:textAlignment="center" />
 
             <EditText
-                android:id="@+id/editText49"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
+                android:id="@+id/txtNombreSegundaR"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentStart="true"
-                android:layout_below="@+id/editText48"
+                android:layout_below="@+id/txtTelefonoPrimera"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:layout_marginTop="51dp"
                 android:background="@drawable/edittext_redondo"
                 android:ems="10"
@@ -1166,16 +1221,16 @@
                 android:textAlignment="center" />
 
             <EditText
-                android:id="@+id/editText50"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
+                android:id="@+id/txtPaternoSegunda"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentStart="true"
-                android:layout_below="@+id/editText49"
+                android:layout_below="@+id/txtNombreSegundaR"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:layout_marginTop="17dp"
                 android:background="@drawable/edittext_redondo"
                 android:ems="10"
@@ -1184,16 +1239,16 @@
                 android:textAlignment="center" />
 
             <EditText
-                android:id="@+id/editText51"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
+                android:id="@+id/txtMaternoSegunda"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentStart="true"
-                android:layout_below="@+id/editText50"
+                android:layout_below="@+id/txtPaternoSegunda"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:layout_marginTop="21dp"
                 android:background="@drawable/edittext_redondo"
                 android:ems="10"
@@ -1202,16 +1257,16 @@
                 android:textAlignment="center" />
 
             <EditText
-                android:id="@+id/editText52"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
+                android:id="@+id/txtNacionalidadSegunda"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentStart="true"
-                android:layout_below="@+id/editText51"
+                android:layout_below="@+id/txtMaternoSegunda"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/edittext_redondo"
                 android:ems="10"
@@ -1220,16 +1275,16 @@
                 android:textAlignment="center" />
 
             <EditText
-                android:id="@+id/editText53"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
+                android:id="@+id/txtTelefonoSegunda"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentStart="true"
-                android:layout_below="@+id/editText52"
+                android:layout_below="@+id/txtNacionalidadSegunda"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:layout_marginTop="21dp"
                 android:background="@drawable/edittext_redondo"
                 android:ems="10"
@@ -1238,16 +1293,16 @@
                 android:textAlignment="center" />
 
             <EditText
-                android:id="@+id/editText54"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
+                android:id="@+id/txtNombreTercera"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentStart="true"
-                android:layout_below="@+id/editText53"
+                android:layout_below="@+id/txtTelefonoSegunda"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:layout_marginTop="63dp"
                 android:background="@drawable/edittext_redondo"
                 android:ems="10"
@@ -1256,16 +1311,16 @@
                 android:textAlignment="center" />
 
             <EditText
-                android:id="@+id/editText55"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
+                android:id="@+id/txtPaternoTercera"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentStart="true"
-                android:layout_below="@+id/editText54"
+                android:layout_below="@+id/txtNombreTercera"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:layout_marginTop="18dp"
                 android:background="@drawable/edittext_redondo"
                 android:ems="10"
@@ -1274,16 +1329,16 @@
                 android:textAlignment="center" />
 
             <EditText
-                android:id="@+id/editText56"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
+                android:id="@+id/txtMaternoTercera"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentStart="true"
-                android:layout_below="@+id/editText55"
+                android:layout_below="@+id/txtPaternoTercera"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:layout_marginTop="22dp"
                 android:background="@drawable/edittext_redondo"
                 android:ems="10"
@@ -1292,16 +1347,16 @@
                 android:textAlignment="center" />
 
             <EditText
-                android:id="@+id/editText57"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
+                android:id="@+id/txtNacionalidadTercera"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentStart="true"
-                android:layout_below="@+id/editText56"
+                android:layout_below="@+id/txtMaternoTercera"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/edittext_redondo"
                 android:ems="10"
@@ -1310,22 +1365,93 @@
                 android:textAlignment="center" />
 
             <EditText
-                android:id="@+id/editText58"
-                android:layout_marginBottom="20dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
+                android:id="@+id/txtTelefonoTercera"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:layout_below="@+id/editText57"
+                android:layout_below="@+id/txtNacionalidadTercera"
+                android:layout_marginBottom="20dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:layout_marginTop="18dp"
                 android:background="@drawable/edittext_redondo"
                 android:hint="Telefono de Casa"
                 android:textAlignment="center" />
 
+            <TextView
+                android:id="@+id/TextDocumentos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/txtTelefonoTercera"
+                android:layout_alignLeft="@+id/txtTelefonoTercera"
+                android:layout_alignRight="@+id/txtTelefonoTercera"
+                android:layout_alignStart="@+id/txtTelefonoTercera"
+                android:layout_below="@+id/txtTelefonoTercera"
+                android:layout_marginTop="27dp"
+                android:background="@drawable/textview_redondo"
+                android:text="Documentos"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="18sp" />
+
+            <ImageButton
+                android:id="@+id/ImgIdentificacionFrente"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:onClick="click"
+                android:layout_marginTop="28dp"
+                android:layout_below="@+id/TextDocumentos"
+                android:layout_alignLeft="@+id/textView3"
+                android:layout_alignStart="@+id/textView3" />
+
+            <ImageButton
+                android:id="@+id/ImgIdentificacionAtras"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:onClick="click"
+                android:layout_alignTop="@+id/ImgIdentificacionFrente"
+                android:layout_alignRight="@+id/textView3"
+                android:layout_alignEnd="@+id/textView3" />
+
+            <ImageButton
+                android:id="@+id/ImgContrato1"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_below="@+id/ImgIdentificacionAtras"
+                android:onClick="click"
+                android:layout_marginTop="27dp"
+                android:layout_alignRight="@+id/ImgIdentificacionFrente"
+                android:layout_alignEnd="@+id/ImgIdentificacionFrente"
+                android:layout_alignLeft="@+id/ImgIdentificacionFrente"
+                android:layout_alignStart="@+id/ImgIdentificacionFrente" />
+
+            <ImageButton
+                android:id="@+id/ImgContrato2"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:onClick="click"
+                android:layout_alignTop="@+id/ImgContrato1"
+                android:layout_alignLeft="@+id/ImgIdentificacionAtras"
+                android:layout_alignStart="@+id/ImgIdentificacionAtras" />
+
+            <ImageButton
+                android:id="@+id/ImgFirma"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_below="@+id/ImgContrato2"
+                android:layout_marginBottom="27dp"
+                android:layout_marginTop="27dp"
+                android:onClick="click"
+                tools:ignore="RtlCompat"
+                android:layout_alignRight="@+id/ImgContrato1"
+                android:layout_alignEnd="@+id/ImgContrato1"
+                android:layout_alignLeft="@+id/ImgContrato1"
+                android:layout_alignStart="@+id/ImgContrato1" />
+
         </RelativeLayout>
 
     </android.support.v4.widget.NestedScrollView>
+
 
 </RelativeLayout>

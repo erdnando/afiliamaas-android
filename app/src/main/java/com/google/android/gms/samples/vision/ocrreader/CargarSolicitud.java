@@ -4,11 +4,16 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Base64;
+import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -32,8 +37,8 @@ public class CargarSolicitud extends AppCompatActivity {
 
     //TextView de cabecera y separadores
     TextView textIdSolicitud, textGenerales, textDomicilio, textDatosEconomicos, textPersonaPolitica, textReferenciasFamiliares,
-            textGeneralesHead, textDomicilioHead, textDatosEconomicosHead, textPersonaPoliticaHead, textReferenciasFamiliaresHead,
-            conector1, conector2, conector3, conector4;
+            textGeneralesHead, textDomicilioHead, textDatosEconomicosHead, textPersonaPoliticaHead, textReferenciasFamiliaresHead, textDocumentosHead,
+            conector1, conector2, conector3, conector4, conector5;
 
     //Cajas de texto y radiButton generales
     EditText txtSolicitanteGeneral, txtSegundoNombreGeneral, txtPaternoGeneral, txtMaternoGeneral, txtTipoGeneral, txtNumeroIdentificacion, txtNacionalidad, txtNacimiento,
@@ -81,6 +86,12 @@ public class CargarSolicitud extends AppCompatActivity {
     String consultaTipoIdentificacion, consultaNacionalidadGeneral, consultaNacionalidadPrimera, consultaNacionalidadSegunda, consultaNacionalidadTercera, consultaEdocivil,
             consultaEstadoDomicilio, consultaEstadoIngresos, consultaDelegacionDomicilio, consultaDelegacionIngresos, consultaCompaniaMovil, consultaEstatusResidencia, consultaTipoContrato;
 
+    //Creación de imageButton para la parte de documentos
+    ImageButton ImgIdentificacionFrente, ImgIdentificacionAtras, ImgContrato1, ImgContrato2, ImgFirma;
+
+    //Variables para documentos
+    String Doc_C164, Doc_C264, Doc_IA64, Doc_IF64, F164;
+
     NestedScrollView scrollCargarSolicitud;
 
     String IdSolicitud, solicitudxml;
@@ -106,12 +117,14 @@ public class CargarSolicitud extends AppCompatActivity {
         conector2 = (TextView) findViewById(R.id.conector2);
         conector3 = (TextView) findViewById(R.id.conector3);
         conector4 = (TextView) findViewById(R.id.conector4);
+        conector5 = (TextView) findViewById(R.id.conector5);
 
         textGeneralesHead = (TextView) findViewById(R.id.textGeneralesHead);
         textDomicilioHead = (TextView) findViewById(R.id.textDomicilioHead);
         textDatosEconomicosHead = (TextView) findViewById(R.id.textDatosEconomicosHead);
         textPersonaPoliticaHead = (TextView) findViewById(R.id.textPersonaPoliticaHead);
         textReferenciasFamiliaresHead = (TextView) findViewById(R.id.textReferenciasFamiliaresHead);
+        textDocumentosHead = (TextView) findViewById(R.id.textDocumentosHead);
 
         scrollCargarSolicitud = (NestedScrollView) findViewById(R.id.scrollCargarSolicitud);
 
@@ -195,6 +208,13 @@ public class CargarSolicitud extends AppCompatActivity {
         txtNacionalidadTercera = (EditText) findViewById(R.id.txtNacionalidadTercera);
         txtTelefonoTercera = (EditText) findViewById(R.id.txtTelefonoTercera);
 
+        //Creacion de los imageButton para la asignación de documentos
+        ImgIdentificacionFrente = (ImageButton) findViewById(R.id.ImgIdentificacionFrente);
+        ImgIdentificacionAtras = (ImageButton) findViewById(R.id.ImgIdentificacionAtras);
+        ImgContrato1 = (ImageButton) findViewById(R.id.ImgContrato1);
+        ImgContrato2 = (ImageButton) findViewById(R.id.ImgContrato2);
+        ImgFirma = (ImageButton) findViewById(R.id.ImgFirma);
+
         textGeneralesHead.setBackgroundColor(Color.parseColor("#00E676"));
 
         textIdSolicitud.setText("Id Solicitud: " + IdSolicitud);
@@ -213,11 +233,13 @@ public class CargarSolicitud extends AppCompatActivity {
                     textDatosEconomicosHead.setBackgroundColor(Color.parseColor("#64B5F6"));
                     textPersonaPoliticaHead.setBackgroundColor(Color.parseColor("#64B5F6"));
                     textReferenciasFamiliaresHead.setBackgroundColor(Color.parseColor("#64B5F6"));
+                    textDocumentosHead.setBackgroundColor(Color.parseColor("#64B5F6"));
 
                     conector1.setBackgroundColor(Color.parseColor("#64B5F6"));
                     conector2.setBackgroundColor(Color.parseColor("#64B5F6"));
                     conector3.setBackgroundColor(Color.parseColor("#64B5F6"));
                     conector4.setBackgroundColor(Color.parseColor("#64B5F6"));
+                    conector5.setBackgroundColor(Color.parseColor("#64B5F6"));
 
                 } else if (scrollY > 1150 && scrollY < 3070) {
 
@@ -226,11 +248,13 @@ public class CargarSolicitud extends AppCompatActivity {
                     textDatosEconomicosHead.setBackgroundColor(Color.parseColor("#64B5F6"));
                     textPersonaPoliticaHead.setBackgroundColor(Color.parseColor("#64B5F6"));
                     textReferenciasFamiliaresHead.setBackgroundColor(Color.parseColor("#64B5F6"));
+                    textDocumentosHead.setBackgroundColor(Color.parseColor("#64B5F6"));
 
                     conector1.setBackgroundColor(Color.parseColor("#00E676"));
                     conector2.setBackgroundColor(Color.parseColor("#64B5F6"));
                     conector3.setBackgroundColor(Color.parseColor("#64B5F6"));
                     conector4.setBackgroundColor(Color.parseColor("#64B5F6"));
+                    conector5.setBackgroundColor(Color.parseColor("#64B5F6"));
 
                 } else if (scrollY > 3070 && scrollY < 5170) {
 
@@ -239,11 +263,13 @@ public class CargarSolicitud extends AppCompatActivity {
                     textDatosEconomicosHead.setBackgroundColor(Color.parseColor("#00E676"));
                     textPersonaPoliticaHead.setBackgroundColor(Color.parseColor("#64B5F6"));
                     textReferenciasFamiliaresHead.setBackgroundColor(Color.parseColor("#64B5F6"));
+                    textDocumentosHead.setBackgroundColor(Color.parseColor("#64B5F6"));
 
                     conector1.setBackgroundColor(Color.parseColor("#00E676"));
                     conector2.setBackgroundColor(Color.parseColor("#00E676"));
                     conector3.setBackgroundColor(Color.parseColor("#64B5F6"));
                     conector4.setBackgroundColor(Color.parseColor("#64B5F6"));
+                    conector5.setBackgroundColor(Color.parseColor("#64B5F6"));
 
                 } else if (scrollY > 5170 && scrollY < 6240) {
 
@@ -252,24 +278,43 @@ public class CargarSolicitud extends AppCompatActivity {
                     textDatosEconomicosHead.setBackgroundColor(Color.parseColor("#00E676"));
                     textPersonaPoliticaHead.setBackgroundColor(Color.parseColor("#00E676"));
                     textReferenciasFamiliaresHead.setBackgroundColor(Color.parseColor("#64B5F6"));
+                    textDocumentosHead.setBackgroundColor(Color.parseColor("#64B5F6"));
 
                     conector1.setBackgroundColor(Color.parseColor("#00E676"));
                     conector2.setBackgroundColor(Color.parseColor("#00E676"));
                     conector3.setBackgroundColor(Color.parseColor("#00E676"));
                     conector4.setBackgroundColor(Color.parseColor("#64B5F6"));
+                    conector5.setBackgroundColor(Color.parseColor("#64B5F6"));
 
-                } else if (scrollY > 6240) {
+                } else if (scrollY > 6240 && scrollY < 8350) {
 
                     textGeneralesHead.setBackgroundColor(Color.parseColor("#00E676"));
                     textDomicilioHead.setBackgroundColor(Color.parseColor("#00E676"));
                     textDatosEconomicosHead.setBackgroundColor(Color.parseColor("#00E676"));
                     textPersonaPoliticaHead.setBackgroundColor(Color.parseColor("#00E676"));
                     textReferenciasFamiliaresHead.setBackgroundColor(Color.parseColor("#00E676"));
+                    textDocumentosHead.setBackgroundColor(Color.parseColor("#64B5F6"));
 
                     conector1.setBackgroundColor(Color.parseColor("#00E676"));
                     conector2.setBackgroundColor(Color.parseColor("#00E676"));
                     conector3.setBackgroundColor(Color.parseColor("#00E676"));
                     conector4.setBackgroundColor(Color.parseColor("#00E676"));
+                    conector5.setBackgroundColor(Color.parseColor("#64B5F6"));
+
+                } else if (scrollY > 8350) {
+
+                    textGeneralesHead.setBackgroundColor(Color.parseColor("#00E676"));
+                    textDomicilioHead.setBackgroundColor(Color.parseColor("#00E676"));
+                    textDatosEconomicosHead.setBackgroundColor(Color.parseColor("#00E676"));
+                    textPersonaPoliticaHead.setBackgroundColor(Color.parseColor("#00E676"));
+                    textReferenciasFamiliaresHead.setBackgroundColor(Color.parseColor("#00E676"));
+                    textDocumentosHead.setBackgroundColor(Color.parseColor("#00E676"));
+
+                    conector1.setBackgroundColor(Color.parseColor("#00E676"));
+                    conector2.setBackgroundColor(Color.parseColor("#00E676"));
+                    conector3.setBackgroundColor(Color.parseColor("#00E676"));
+                    conector4.setBackgroundColor(Color.parseColor("#00E676"));
+                    conector5.setBackgroundColor(Color.parseColor("#00E676"));
                 }
             }
         });
@@ -451,6 +496,28 @@ public class CargarSolicitud extends AppCompatActivity {
                 }
             }
 
+            //Decodificacion de base64 a imagen para los documentos de los imageButton y asignación
+            byte[] BytesDocC1 = Base64.decode(Doc_C164, Base64.DEFAULT);
+            Bitmap docC1Decodificado = BitmapFactory.decodeByteArray(BytesDocC1, 0, BytesDocC1.length);
+            ImgContrato1.setImageBitmap(docC1Decodificado);
+
+            byte[] BytesDocC2 = Base64.decode(Doc_C264, Base64.DEFAULT);
+            Bitmap docC2Decodificado = BitmapFactory.decodeByteArray(BytesDocC2, 0, BytesDocC2.length);
+            ImgContrato2.setImageBitmap(docC2Decodificado);
+
+            byte[] BytesDocIF = Base64.decode(Doc_IF64, Base64.DEFAULT);
+            Bitmap docIFDecodificado = BitmapFactory.decodeByteArray(BytesDocIF, 0, BytesDocIF.length);
+            ImgIdentificacionFrente.setImageBitmap(docIFDecodificado);
+
+            byte[] BytesDocIA = Base64.decode(Doc_IA64, Base64.DEFAULT);
+            Bitmap docIADecodificado = BitmapFactory.decodeByteArray(BytesDocIA, 0, BytesDocIA.length);
+            ImgIdentificacionAtras.setImageBitmap(docIADecodificado);
+
+            byte[] BytesFirma = Base64.decode(F164, Base64.DEFAULT);
+            Bitmap docFirmaDecodificado = BitmapFactory.decodeByteArray(BytesFirma, 0, BytesFirma.length);
+            ImgFirma.setImageBitmap(docFirmaDecodificado);
+
+
         } catch (ParserConfigurationException e) {
             e.printStackTrace();
         } catch (SAXException e) {
@@ -558,7 +625,57 @@ public class CargarSolicitud extends AppCompatActivity {
         txtMaternoTercera.setText(MaternoTercera);
         txtNacionalidadTercera.setText(consultaNacionalidadTercera);
         txtTelefonoTercera.setText(TelefonoTercera);
+
     }
+
+    public void click(View v) {
+
+        Intent intent = new Intent(getApplicationContext(), Imagen.class);
+
+    switch(v.getId()){
+
+        case R.id.ImgIdentificacionFrente:
+
+            intent.putExtra("Datos", "Identificacion Frente");
+            intent.putExtra("Foto", Doc_IF64);
+            startActivity(intent);
+
+            break;
+
+        case R.id.ImgIdentificacionAtras:
+
+            intent.putExtra("Datos", "Identificion Atrás");
+            intent.putExtra("Foto", Doc_IA64);
+            startActivity(intent);
+
+            break;
+
+        case R.id.ImgContrato1:
+
+            intent.putExtra("Datos", "Contrato 1");
+            intent.putExtra("Foto", Doc_C164);
+            startActivity(intent);
+
+            break;
+
+        case R.id.ImgContrato2:
+
+            intent.putExtra("Datos", "Contrato 2");
+            intent.putExtra("Foto", Doc_C264);
+            startActivity(intent);
+
+            break;
+
+        case R.id.ImgFirma:
+
+            intent.putExtra("Datos", "Firma");
+            intent.putExtra("Foto", F164);
+            startActivity(intent);
+
+            break;
+    }
+
+}
 
     public void toast(final String mensaje) {
 
@@ -600,6 +717,11 @@ public class CargarSolicitud extends AppCompatActivity {
             if (consulta.moveToNext()) {
 
                 solicitudxml = consulta.getString(7);
+                Doc_C164 = consulta.getString(10);
+                Doc_C264 = consulta.getString(11);
+                Doc_IA64 = consulta.getString(12);
+                Doc_IF64 = consulta.getString(13);
+                F164 = consulta.getString(14);
             }
 
             db.close();
@@ -611,6 +733,11 @@ public class CargarSolicitud extends AppCompatActivity {
             if (consulta.moveToNext()) {
 
                 solicitudxml = consulta.getString(7);
+                Doc_C164 = consulta.getString(10);
+                Doc_C264 = consulta.getString(11);
+                Doc_IA64 = consulta.getString(12);
+                Doc_IF64 = consulta.getString(13);
+                F164 = consulta.getString(14);
             }
 
             db.close();

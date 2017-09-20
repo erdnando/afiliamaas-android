@@ -107,7 +107,6 @@ public class FragmentTodas extends Fragment {
                         IdSolicitud[i] = consulta.getString(0);
                         Nombre[i] = nombre + " " + paterno + " " + materno;
                         FechaAlta[i] = consulta.getString(1);
-
                     }
 
                 }
@@ -219,18 +218,18 @@ public class FragmentTodas extends Fragment {
 
                     currentRow.setOnClickListener(
                             new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
+                                @Override
+                                public void onClick(View v) {
 
-                            TableRow tableRow = (TableRow) v;
-                            TextView textIdSolicitud = (TextView) tableRow.getChildAt(0);
-                            String IdSolicitud = textIdSolicitud.getText().toString();
+                                    TableRow tableRow = (TableRow) v;
+                                    TextView textIdSolicitud = (TextView) tableRow.getChildAt(0);
+                                    String IdSolicitud = textIdSolicitud.getText().toString();
 
-                            Intent intent = new Intent(getContext(), CargarSolicitud.class);
-                            intent.putExtra("IdSolicitud", IdSolicitud);
-                            startActivity(intent);
-                        }
-                    });
+                                    Intent intent = new Intent(getContext(), CargarSolicitud.class);
+                                    intent.putExtra("IdSolicitud", IdSolicitud);
+                                    startActivity(intent);
+                                }
+                            });
 
                 }
 

@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\aafabre\Downloads\ocr-reader\app\src\main\AndroidManifest.xml:2:1-50:12
+ADDED from C:\Users\aafabre\Downloads\ocr-reader\app\src\main\AndroidManifest.xml:2:1-53:12
 	package
 		ADDED from C:\Users\aafabre\Downloads\ocr-reader\app\src\main\AndroidManifest.xml:3:5-62
 		INJECTED from C:\Users\aafabre\Downloads\ocr-reader\app\src\main\AndroidManifest.xml
@@ -36,7 +36,7 @@ ADDED from C:\Users\aafabre\Downloads\ocr-reader\app\src\main\AndroidManifest.xm
 	android:name
 		ADDED from C:\Users\aafabre\Downloads\ocr-reader\app\src\main\AndroidManifest.xml:11:22-64
 application
-ADDED from C:\Users\aafabre\Downloads\ocr-reader\app\src\main\AndroidManifest.xml:13:5-48:19
+ADDED from C:\Users\aafabre\Downloads\ocr-reader\app\src\main\AndroidManifest.xml:13:5-51:19
 MERGED from [com.google.android.gms:play-services-vision:9.8.0] C:\Users\aafabre\.android\build-cache\fa4559d64e0e88838afd419691946631b11de070\output\AndroidManifest.xml:4:5-19
 MERGED from [com.google.android.gms:play-services-base:9.8.0] C:\Users\aafabre\.android\build-cache\656dd039662b5ab62801ff79c78c66c39982f404\output\AndroidManifest.xml:18:5-20:19
 MERGED from [com.google.android.gms:play-services-tasks:9.8.0] C:\Users\aafabre\.android\build-cache\ea955727bc3021045b153a936278f0070180d84b\output\AndroidManifest.xml:4:5-19
@@ -116,11 +116,15 @@ ADDED from C:\Users\aafabre\Downloads\ocr-reader\app\src\main\AndroidManifest.xm
 	android:name
 		ADDED from C:\Users\aafabre\Downloads\ocr-reader\app\src\main\AndroidManifest.xml:44:13-42
 activity#com.google.android.gms.samples.vision.ocrreader.CargarSolicitud
-ADDED from C:\Users\aafabre\Downloads\ocr-reader\app\src\main\AndroidManifest.xml:47:9-106
+ADDED from C:\Users\aafabre\Downloads\ocr-reader\app\src\main\AndroidManifest.xml:47:9-49:59
 	android:theme
-		ADDED from C:\Users\aafabre\Downloads\ocr-reader\app\src\main\AndroidManifest.xml:47:51-94
+		ADDED from C:\Users\aafabre\Downloads\ocr-reader\app\src\main\AndroidManifest.xml:49:13-56
 	android:name
-		ADDED from C:\Users\aafabre\Downloads\ocr-reader\app\src\main\AndroidManifest.xml:47:19-50
+		ADDED from C:\Users\aafabre\Downloads\ocr-reader\app\src\main\AndroidManifest.xml:48:13-44
+activity#com.google.android.gms.samples.vision.ocrreader.Imagen
+ADDED from C:\Users\aafabre\Downloads\ocr-reader\app\src\main\AndroidManifest.xml:50:9-53
+	android:name
+		ADDED from C:\Users\aafabre\Downloads\ocr-reader\app\src\main\AndroidManifest.xml:50:19-41
 uses-sdk
 INJECTED from C:\Users\aafabre\Downloads\ocr-reader\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [com.google.android.gms:play-services-vision:9.8.0] C:\Users\aafabre\.android\build-cache\fa4559d64e0e88838afd419691946631b11de070\output\AndroidManifest.xml:3:5-42

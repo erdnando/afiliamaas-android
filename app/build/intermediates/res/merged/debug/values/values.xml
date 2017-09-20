@@ -118,7 +118,7 @@
     <color name="button_material_light">#ffd6d7d7</color>
     <color name="colorAccent">#FF4081</color>
     <color name="colorPrimary">#64B5F6</color>
-    <color name="colorPrimaryDark">#64B5F6</color>
+    <color name="colorPrimaryDark">#000000</color>
     <color name="common_google_signin_btn_text_dark_default">@android:color/white</color>
     <color name="common_google_signin_btn_text_dark_disabled">#1F000000</color>
     <color name="common_google_signin_btn_text_dark_focused">@android:color/black</color>
