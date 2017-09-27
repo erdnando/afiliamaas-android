@@ -153,6 +153,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
+        android:fillViewport="true"
         android:layout_below="@+id/RelativePrincipal">
 
         <RelativeLayout
@@ -192,7 +193,9 @@
                 android:ems="10"
                 android:hint="Nombre del Solicitante"
                 android:inputType="textPersonName"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:maxLength="50"
+                android:digits="abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ"/>
 
             <EditText
                 android:id="@+id/txtSegundoNombreGeneral"
@@ -210,7 +213,9 @@
                 android:ems="10"
                 android:hint="Segundo Nombre"
                 android:inputType="textPersonName"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:maxLength="50"
+                android:digits="abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ"/>
 
             <EditText
                 android:id="@+id/txtPaternoGeneral"
@@ -227,7 +232,8 @@
                 android:ems="10"
                 android:hint="Apellido Paterno"
                 android:inputType="textPersonName"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:digits="abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ"/>
 
             <EditText
                 android:id="@+id/txtMaternoGeneral"
@@ -243,7 +249,9 @@
                 android:ems="10"
                 android:hint="Apellido Materno"
                 android:inputType="textPersonName"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:maxLength="50"
+                android:digits="abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ"/>
 
             <Spinner
                 android:id="@+id/SpinnerTipoIdentificacion"
@@ -274,8 +282,9 @@
                 android:background="@drawable/edittext_redondo"
                 android:ems="10"
                 android:hint="Numero de Identificación"
-                android:inputType="textPersonName"
-                android:textAlignment="center" />
+                android:inputType="number"
+                android:textAlignment="center"
+                android:maxLength="20"/>
 
             <Spinner
                 android:id="@+id/SpinnerNacionalidadGeneral"
@@ -292,23 +301,34 @@
                 android:background="@drawable/edittext_redondo"
                 android:ems="10" />
 
-            <EditText
-                android:id="@+id/txtNacimiento"
-                android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/TextNacimiento"
+                android:background="@drawable/textview_redondo"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentStart="true"
+                android:text="Fecha de Nacimiento"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textAlignment="center"
                 android:layout_below="@+id/SpinnerNacionalidadGeneral"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
+                android:layout_marginTop="27dp"
+                android:layout_alignLeft="@+id/SpinnerNacionalidadGeneral"
+                android:layout_alignStart="@+id/SpinnerNacionalidadGeneral"
+                android:layout_alignRight="@+id/SpinnerNacionalidadGeneral"
+                android:layout_alignEnd="@+id/SpinnerNacionalidadGeneral" />
+
+            <DatePicker
+                android:id="@+id/PickerNac"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/SpinnerNacionalidadGeneral"
+                android:layout_alignRight="@+id/SpinnerNacionalidadGeneral"
+                android:layout_below="@+id/TextNacimiento"
                 android:layout_marginTop="11dp"
-                android:background="@drawable/edittext_redondo"
-                android:ems="10"
-                android:hint="Fecha de Nacimiento"
-                android:inputType="textPersonName"
-                android:textAlignment="center" />
+                android:datePickerMode="spinner"
+                android:background="@drawable/calendar_redondo"
+                android:layout_alignLeft="@+id/TextNacimiento"
+                android:layout_alignStart="@+id/TextNacimiento" />
 
             <EditText
                 android:id="@+id/txtRFC"
@@ -316,13 +336,15 @@
                 android:layout_height="match_parent"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:layout_below="@+id/txtNacimiento"
+                android:layout_below="@+id/PickerNac"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="14dp"
                 android:background="@drawable/edittext_redondo"
                 android:hint="RFC"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:inputType="textPersonName"
+                android:maxLength="50"/>
 
             <Spinner
                 android:id="@+id/SpinnerEdoCivilGeneral"
@@ -348,23 +370,29 @@
                 android:layout_marginTop="11dp"
                 android:background="@drawable/edittext_redondo"
                 android:hint="Número de Dependientes"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:maxLength="50"
+                android:inputType="number"/>
 
             <RadioGroup
                 android:id="@+id/GrupoSexo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
                 android:layout_below="@+id/txtNumeroIdentificacion"
                 android:layout_marginTop="21dp"
                 android:gravity="center"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:background="@drawable/edittext_redondo"
+                android:layout_alignLeft="@+id/SpinnerNacionalidadGeneral"
+                android:layout_alignStart="@+id/SpinnerNacionalidadGeneral"
+                android:layout_alignRight="@+id/SpinnerNacionalidadGeneral"
+                android:layout_alignEnd="@+id/SpinnerNacionalidadGeneral">
 
                 <RadioButton
                     android:id="@+id/RadioMujer"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:checked="true"
                     android:text="Mujer"
                     tools:ignore="RtlCompat" />
 
@@ -411,7 +439,9 @@
                 android:ems="10"
                 android:hint="Calle"
                 android:inputType="textPersonName"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:maxLength="50"
+                android:digits="abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ"/>
 
             <EditText
                 android:id="@+id/txtNoExterior"
@@ -428,8 +458,9 @@
                 android:background="@drawable/edittext_redondo"
                 android:ems="10"
                 android:hint="No. Exterior"
-                android:inputType="textPersonName"
-                android:textAlignment="center" />
+                android:inputType="number"
+                android:textAlignment="center"
+                android:maxLength="10"/>
 
             <EditText
                 android:id="@+id/txtNoInterior"
@@ -446,8 +477,9 @@
                 android:background="@drawable/edittext_redondo"
                 android:ems="10"
                 android:hint="No. Interior"
-                android:inputType="textPersonName"
-                android:textAlignment="center" />
+                android:inputType="number"
+                android:textAlignment="center"
+                android:maxLength="10"/>
 
             <EditText
                 android:id="@+id/txtColonia"
@@ -465,7 +497,9 @@
                 android:ems="10"
                 android:hint="Colonia"
                 android:inputType="textPersonName"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:maxLength="50"
+                android:digits="abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ"/>
 
             <Spinner
                 android:id="@+id/SpinnerEstadoDomicilio"
@@ -515,8 +549,9 @@
                 android:background="@drawable/edittext_redondo"
                 android:ems="10"
                 android:hint="CP"
-                android:inputType="textPersonName"
-                android:textAlignment="center" />
+                android:inputType="number"
+                android:textAlignment="center"
+                android:maxLength="5"/>
 
             <EditText
                 android:id="@+id/txtTiempoResidencia"
@@ -533,8 +568,9 @@
                 android:background="@drawable/edittext_redondo"
                 android:ems="10"
                 android:hint="Tiempo de Residencia"
-                android:inputType="textPersonName"
-                android:textAlignment="center" />
+                android:inputType="number"
+                android:textAlignment="center"
+                android:maxLength="10"/>
 
             <Spinner
                 android:id="@+id/SpinnerEstatusDomicilio"
@@ -566,8 +602,9 @@
                 android:background="@drawable/edittext_redondo"
                 android:ems="10"
                 android:hint="Monto de Vivienda"
-                android:inputType="textPersonName"
-                android:textAlignment="center" />
+                android:inputType="number"
+                android:textAlignment="center"
+                android:maxLength="10"/>
 
             <EditText
                 android:id="@+id/txtCorreo"
@@ -584,7 +621,7 @@
                 android:background="@drawable/edittext_redondo"
                 android:ems="10"
                 android:hint="Correo Electronico"
-                android:inputType="textPersonName"
+                android:inputType="textEmailAddress"
                 android:textAlignment="center" />
 
             <EditText
@@ -602,8 +639,9 @@
                 android:background="@drawable/edittext_redondo"
                 android:ems="10"
                 android:hint="Telefono de Casa"
-                android:inputType="textPersonName"
-                android:textAlignment="center" />
+                android:inputType="number"
+                android:textAlignment="center"
+                android:maxLength="10"/>
 
             <EditText
                 android:id="@+id/txtTelefonoCelular"
@@ -620,8 +658,9 @@
                 android:background="@drawable/edittext_redondo"
                 android:ems="10"
                 android:hint="Telefono Celular"
-                android:inputType="textPersonName"
-                android:textAlignment="center" />
+                android:inputType="number"
+                android:textAlignment="center"
+                android:maxLength="10"/>
 
             <Spinner
                 android:id="@+id/SpinnerCompaniaMovil"
@@ -670,7 +709,9 @@
                 android:ems="10"
                 android:hint="Nombre de la Empresa"
                 android:inputType="textPersonName"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:maxLength="50"
+                android:digits="abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ"/>
 
             <EditText
                 android:id="@+id/txtGiro"
@@ -688,7 +729,9 @@
                 android:ems="10"
                 android:hint="Giro"
                 android:inputType="textPersonName"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:maxLength="50"
+                android:digits="abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ"/>
 
             <EditText
                 android:id="@+id/txtAnguedadEmpleo"
@@ -705,8 +748,9 @@
                 android:background="@drawable/edittext_redondo"
                 android:ems="10"
                 android:hint="Antigüedad Empleo"
-                android:inputType="textPersonName"
-                android:textAlignment="center" />
+                android:inputType="number"
+                android:textAlignment="center"
+                android:maxLength="3"/>
 
             <Spinner
                 android:id="@+id/SpinnerTipoContrato"
@@ -739,7 +783,9 @@
                 android:ems="10"
                 android:hint="Puesto"
                 android:inputType="textPersonName"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:maxLength="50"
+                android:digits="abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ"/>
 
             <EditText
                 android:id="@+id/txtIngreso"
@@ -756,8 +802,9 @@
                 android:background="@drawable/edittext_redondo"
                 android:ems="10"
                 android:hint="Ingreso"
-                android:inputType="textPersonName"
-                android:textAlignment="center" />
+                android:inputType="number"
+                android:textAlignment="center"
+                android:maxLength="10"/>
 
             <EditText
                 android:id="@+id/txtTiempoCasado"
@@ -774,8 +821,9 @@
                 android:background="@drawable/edittext_redondo"
                 android:ems="10"
                 android:hint="Años de Casado"
-                android:inputType="textPersonName"
-                android:textAlignment="center" />
+                android:inputType="number"
+                android:textAlignment="center"
+                android:maxLength="3"/>
 
             <EditText
                 android:id="@+id/txtFuenteIngresos"
@@ -792,8 +840,9 @@
                 android:background="@drawable/edittext_redondo"
                 android:ems="10"
                 android:hint="Fuente Otros Ingresos"
-                android:inputType="textPersonName"
-                android:textAlignment="center" />
+                android:inputType="number"
+                android:textAlignment="center"
+                android:maxLength="10"/>
 
             <EditText
                 android:id="@+id/txtOtrosIngresos"
@@ -810,8 +859,9 @@
                 android:background="@drawable/edittext_redondo"
                 android:ems="10"
                 android:hint="Otros Ingresos"
-                android:inputType="textPersonName"
-                android:textAlignment="center" />
+                android:inputType="number"
+                android:textAlignment="center"
+                android:maxLength="10"/>
 
             <EditText
                 android:id="@+id/txtCalleIngresos"
@@ -829,7 +879,9 @@
                 android:ems="10"
                 android:hint="Calle"
                 android:inputType="textPersonName"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:maxLength="50"
+                android:digits="abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ"/>
 
             <EditText
                 android:id="@+id/txtNoExteriorIngresos"
@@ -846,8 +898,9 @@
                 android:background="@drawable/edittext_redondo"
                 android:ems="10"
                 android:hint="No. Exterior"
-                android:inputType="textPersonName"
-                android:textAlignment="center" />
+                android:inputType="number"
+                android:textAlignment="center"
+                android:maxLength="10"/>
 
             <EditText
                 android:id="@+id/txtNoInteriorIngresos"
@@ -864,8 +917,9 @@
                 android:background="@drawable/edittext_redondo"
                 android:ems="10"
                 android:hint="No. Interior"
-                android:inputType="textPersonName"
-                android:textAlignment="center" />
+                android:inputType="number"
+                android:textAlignment="center"
+                android:maxLength="10"/>
 
             <EditText
                 android:id="@+id/txtColoniaIngresos"
@@ -883,7 +937,9 @@
                 android:ems="10"
                 android:hint="Colonia"
                 android:inputType="textPersonName"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:maxLength="50"
+                android:digits="abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ"/>
 
             <Spinner
                 android:id="@+id/SpinnerEstadoIngresos"
@@ -930,8 +986,9 @@
                 android:background="@drawable/edittext_redondo"
                 android:ems="10"
                 android:hint="CP"
-                android:inputType="textPersonName"
-                android:textAlignment="center" />
+                android:inputType="number"
+                android:textAlignment="center"
+                android:maxLength="5"/>
 
             <EditText
                 android:id="@+id/txtTelefonoOficina"
@@ -946,9 +1003,10 @@
                 android:background="@drawable/edittext_redondo"
                 android:ems="10"
                 android:hint="Telefono Oficina"
-                android:inputType="textPersonName"
+                android:inputType="number"
                 android:textAlignment="center"
-                tools:ignore="RtlCompat" />
+                tools:ignore="RtlCompat"
+                android:maxLength="10"/>
 
             <EditText
                 android:id="@+id/txtExtension"
@@ -962,8 +1020,9 @@
                 android:background="@drawable/edittext_redondo"
                 android:ems="10"
                 android:hint="EXT."
-                android:inputType="textPersonName"
-                android:textAlignment="center" />
+                android:inputType="number"
+                android:textAlignment="center"
+                android:maxLength="5"/>
 
             <TextView
                 android:id="@+id/TextPersonaPolitica"
@@ -997,17 +1056,21 @@
                 android:id="@+id/Grupo1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
                 android:layout_below="@+id/textView3"
                 android:layout_marginTop="20dp"
                 android:gravity="center"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:background="@drawable/edittext_redondo"
+                android:layout_alignLeft="@+id/TextPersonaPolitica"
+                android:layout_alignStart="@+id/TextPersonaPolitica"
+                android:layout_alignRight="@+id/TextPersonaPolitica"
+                android:layout_alignEnd="@+id/TextPersonaPolitica">
 
                 <RadioButton
                     android:id="@+id/radioButton"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
+                    android:checked="true"
                     android:text="SI" />
 
                 <RadioButton
@@ -1034,17 +1097,21 @@
                 android:id="@+id/Grupo2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
                 android:layout_below="@+id/textView4"
                 android:layout_marginTop="32dp"
                 android:gravity="center"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:background="@drawable/edittext_redondo"
+                android:layout_alignLeft="@+id/TextReferenciasFamiliares"
+                android:layout_alignStart="@+id/TextReferenciasFamiliares"
+                android:layout_alignRight="@+id/TextReferenciasFamiliares"
+                android:layout_alignEnd="@+id/TextReferenciasFamiliares">
 
                 <RadioButton
                     android:id="@+id/radioButton5"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
+                    android:checked="true"
                     android:text="SI" />
 
                 <RadioButton
@@ -1087,7 +1154,9 @@
                 android:ems="10"
                 android:hint="Nombre 1ra Referencia"
                 android:inputType="textPersonName"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:maxLength="50"
+                android:digits="abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ"/>
 
             <EditText
                 android:id="@+id/txtPaternoPrimera"
@@ -1105,7 +1174,9 @@
                 android:ems="10"
                 android:hint="Apellido Paterno"
                 android:inputType="textPersonName"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:maxLength="50"
+                android:digits="abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ"/>
 
             <EditText
                 android:id="@+id/txtMaternoPrimera"
@@ -1121,7 +1192,9 @@
                 android:ems="10"
                 android:hint="Apellido Materno"
                 android:inputType="textPersonName"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:maxLength="50"
+                android:digits="abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ"/>
 
             <Spinner
                 android:id="@+id/SpinnerNacionalidadPrimera"
@@ -1153,8 +1226,9 @@
                 android:background="@drawable/edittext_redondo"
                 android:ems="10"
                 android:hint="Telefono de Casa"
-                android:inputType="textPersonName"
-                android:textAlignment="center" />
+                android:inputType="number"
+                android:textAlignment="center"
+                android:maxLength="10"/>
 
             <EditText
                 android:id="@+id/txtNombreSegundaR"
@@ -1172,7 +1246,9 @@
                 android:ems="10"
                 android:hint="Nombre 2da Referencia"
                 android:inputType="textPersonName"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:maxLength="50"
+                android:digits="abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ"/>
 
             <EditText
                 android:id="@+id/txtPaternoSegunda"
@@ -1190,7 +1266,9 @@
                 android:ems="10"
                 android:hint="Apellido Paterno"
                 android:inputType="textPersonName"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:maxLength="50"
+                android:digits="abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ"/>
 
             <EditText
                 android:id="@+id/txtMaternoSegunda"
@@ -1208,7 +1286,9 @@
                 android:ems="10"
                 android:hint="Apellido Materno"
                 android:inputType="textPersonName"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:maxLength="50"
+                android:digits="abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ"/>
 
             <Spinner
                 android:id="@+id/SpinnerNacionalidadSegunda"
@@ -1240,8 +1320,9 @@
                 android:background="@drawable/edittext_redondo"
                 android:ems="10"
                 android:hint="Telefono de Casa"
-                android:inputType="textPersonName"
-                android:textAlignment="center" />
+                android:inputType="number"
+                android:textAlignment="center"
+                android:maxLength="10"/>
 
             <EditText
                 android:id="@+id/txtNombreTercera"
@@ -1259,7 +1340,9 @@
                 android:ems="10"
                 android:hint="Nombre 3ra Referencia"
                 android:inputType="textPersonName"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:maxLength="50"
+                android:digits="abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ"/>
 
             <EditText
                 android:id="@+id/txtPaternoTercera"
@@ -1277,7 +1360,9 @@
                 android:ems="10"
                 android:hint="Apellido Paterno"
                 android:inputType="textPersonName"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:maxLength="50"
+                android:digits="abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ" />
 
             <EditText
                 android:id="@+id/txtMaternoTercera"
@@ -1295,7 +1380,9 @@
                 android:ems="10"
                 android:hint="Apellido Materno"
                 android:inputType="textPersonName"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:maxLength="50"
+                android:digits="abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ"/>
 
             <Spinner
                 android:id="@+id/SpinnerNacionalidadTercera"
@@ -1325,7 +1412,9 @@
                 android:layout_marginTop="18dp"
                 android:background="@drawable/edittext_redondo"
                 android:hint="Telefono de Casa"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:maxLength="10"
+                android:inputType="number"/>
 
             <TextView
                 android:id="@+id/TextDocumentos"
@@ -1344,58 +1433,76 @@
                 android:textSize="18sp" />
 
             <ImageButton
-                android:id="@+id/ImgIdentificacionFrente"
+                android:id="@+id/ImgIdentificacionFrenteNew"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
-                android:layout_alignLeft="@+id/textView3"
-                android:layout_alignStart="@+id/textView3"
+                android:layout_marginTop="30dp"
+                android:onClick="foto"
                 android:layout_below="@+id/TextDocumentos"
-                android:layout_marginTop="28dp"
-                android:onClick="click" />
+                android:layout_alignLeft="@+id/TextDocumentos"
+                android:layout_alignStart="@+id/TextDocumentos" />
 
             <ImageButton
-                android:id="@+id/ImgIdentificacionAtras"
+                android:id="@+id/ImgIdentificacionAtrasNew"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
-                android:layout_alignEnd="@+id/textView3"
-                android:layout_alignRight="@+id/textView3"
-                android:layout_alignTop="@+id/ImgIdentificacionFrente"
-                android:onClick="click" />
+                android:onClick="foto"
+                android:layout_alignTop="@+id/ImgIdentificacionFrenteNew"
+                android:layout_alignRight="@+id/TextDocumentos"
+                android:layout_alignEnd="@+id/TextDocumentos" />
 
             <ImageButton
-                android:id="@+id/ImgContrato1"
+                android:id="@+id/ImgContrato1New"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
-                android:layout_alignEnd="@+id/ImgIdentificacionFrente"
-                android:layout_alignLeft="@+id/ImgIdentificacionFrente"
-                android:layout_alignRight="@+id/ImgIdentificacionFrente"
-                android:layout_alignStart="@+id/ImgIdentificacionFrente"
-                android:layout_below="@+id/ImgIdentificacionAtras"
+                android:layout_alignEnd="@+id/ImgIdentificacionFrenteNew"
+                android:layout_alignLeft="@+id/ImgIdentificacionFrenteNew"
+                android:layout_alignRight="@+id/ImgIdentificacionFrenteNew"
+                android:layout_alignStart="@+id/ImgIdentificacionFrenteNew"
+                android:layout_below="@+id/ImgIdentificacionAtrasNew"
                 android:layout_marginTop="27dp"
-                android:onClick="click" />
+                android:onClick="foto" />
 
             <ImageButton
-                android:id="@+id/ImgContrato2"
+                android:id="@+id/ImgContrato2New"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
-                android:layout_alignLeft="@+id/ImgIdentificacionAtras"
-                android:layout_alignStart="@+id/ImgIdentificacionAtras"
-                android:layout_alignTop="@+id/ImgContrato1"
-                android:onClick="click" />
+                android:layout_alignLeft="@+id/ImgIdentificacionAtrasNew"
+                android:layout_alignStart="@+id/ImgIdentificacionAtrasNew"
+                android:layout_alignTop="@+id/ImgContrato1New"
+                android:onClick="foto" />
 
             <ImageButton
-                android:id="@+id/ImgFirma"
+                android:id="@+id/ImgFirmaNew"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
-                android:layout_alignEnd="@+id/ImgContrato1"
-                android:layout_alignLeft="@+id/ImgContrato1"
-                android:layout_alignRight="@+id/ImgContrato1"
-                android:layout_alignStart="@+id/ImgContrato1"
-                android:layout_below="@+id/ImgContrato2"
+                android:layout_alignEnd="@+id/ImgContrato1New"
+                android:layout_alignLeft="@+id/ImgContrato1New"
+                android:layout_alignRight="@+id/ImgContrato1New"
+                android:layout_alignStart="@+id/ImgContrato1New"
+                android:layout_below="@+id/ImgContrato2New"
                 android:layout_marginBottom="27dp"
                 android:layout_marginTop="27dp"
-                android:onClick="click"
+                android:onClick="foto"
                 tools:ignore="RtlCompat" />
+
+            <Button
+                android:id="@+id/btnEnviarSolicitud"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ImgFirmaNew"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="27dp"
+                android:background="@drawable/botonredondo"
+                android:text="Enviar Solicitud"
+                android:textColor="#FFFFFF" />
+
+            <TextView
+                android:id="@+id/TextXML"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/btnEnviarSolicitud"
+                android:layout_marginTop="30dp"/>
 
         </RelativeLayout>
 
