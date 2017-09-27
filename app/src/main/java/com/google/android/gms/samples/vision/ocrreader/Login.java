@@ -511,6 +511,10 @@ public class Login extends AppCompatActivity {
                 //Una vez hecho todo el proceso de inserciones de buzon y catalogos, iniciamos la actividad de menu principal
                 //donde se cargan todos los valores desde la Bd local
                 Intent intent = new Intent(getApplicationContext(), MenuPrincipal.class);
+                intent.putExtra("usuario", usuario);
+                intent.putExtra("password", password);
+                intent.putExtra("empresa", empresa);
+
                 startActivity(intent);
 
 
@@ -605,6 +609,9 @@ public class Login extends AppCompatActivity {
         if (fila.moveToNext()) {
 
             Intent intent = new Intent(getApplicationContext(), MenuPrincipal.class);
+            intent.putExtra("usuario", fila.getString(1));
+            intent.putExtra("password", fila.getString(2));
+            intent.putExtra("empresa", fila.getString(4));
             startActivity(intent);
 
             toast("Bienvenido a la aplicación de AfiliaMas");

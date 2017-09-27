@@ -1,6 +1,7 @@
 package com.google.android.gms.samples.vision.ocrreader;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -20,18 +21,18 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Calendar;
 import java.util.regex.Pattern;
 
 public class NuevaSolicitud extends AppCompatActivity {
 
     TextView textGeneralesHead, textDomicilioHead, textDatosEconomicosHead, textPersonaPoliticaHead, textReferenciasFamiliaresHead, textDocumentosHead,
             conector1, conector2, conector3, conector4, conector5;
-
-    EditText txtCorreo;
 
     NestedScrollView scrollNuevaSolicitud;
 
@@ -125,12 +126,41 @@ public class NuevaSolicitud extends AppCompatActivity {
     //Declaración de los Edittext y radiobutton de generales
     EditText txtSolicitanteGeneral, txtSegundoNombreGeneral, txtPaternoGeneral, txtMaternoGeneral, txtNumeroIdentificacion, txtRFC, txtNumeroDependientes;
     RadioButton radioMujer, radioHombre;
-    String Sexo;
+    RadioGroup radioSexo;
+    String Sexo = "FEMENINO";
+
+    //Declaracion de los edittext de domicilio
+    EditText txtCalle, txtNoExterior, txtNoInterior, txtColonia, txtCP, txtTiempoResidencia, txtMontoVivienda, txtCorreo, txtTelefonoCasa, txtTelefonoCelular;
+
+    //Declaracion de los edittes de datos económicos
+    EditText txtNombreEmpresa, txtGiro, txtAntiguedadEmpleo, txtPuesto, txtIngreso, txtTiempoCasado, txtFuenteIngresos, txtOtrosIngresos, txtCalleIngresos,
+            txtNoExteriorIngresos, txtNoInteriorIngresos, txtColoniaIngresos, txtCPIngresos, txtTelefonoOficina, txtExtension;
+
+    //Declaracion de los radioButton y edittext para persona politica
+    RadioButton radioButton, radioButton2, radioButton5, radioButton6;
+    RadioGroup radioGrupo1, radioGrupo2;
+    String Grupo1 = "NO";
+    String Grupo2 = "NO";
+    EditText txtFuncionPolitica, txtFuncionParentesco, txtParentescoPolitico;
+
+    //Declaracion de los edittext de referencias familiares
+    EditText txtNombrePrimera, txtPaternoPrimera, txtMaternoPrimera, txtTelefonoPrimera,
+            txtNombreSegunda, txtPaternoSegunda, txtMaternoSegunda, txtTelefonoSegunda,
+            txtNombreTercera, txtPaternoTercera, txtMaternoTercera, txtTelefonoTercera;
+
+    //Variables de los datos del usuario logueado
+    String usuario, password, empresa;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nueva_solicitud2);
+
+        //Se reciben los datos desde el login
+        Intent intent = getIntent();
+        usuario = intent.getStringExtra("usuario");
+        password = intent.getStringExtra("password");
+        empresa = intent.getStringExtra("empresa");
 
         //Creacion de los edittext y radiobutton de generales a través de su Id
         txtSolicitanteGeneral = (EditText) findViewById(R.id.txtSolicitanteGeneral);
@@ -142,6 +172,61 @@ public class NuevaSolicitud extends AppCompatActivity {
         txtNumeroDependientes = (EditText) findViewById(R.id.txtNumeroDependientes);
         radioMujer = (RadioButton) findViewById(R.id.RadioMujer);
         radioHombre = (RadioButton) findViewById(R.id.RadioHombre);
+        radioSexo = (RadioGroup) findViewById(R.id.GrupoSexo);
+
+        //Creacion de los edittext de domicilio a través de su ID
+        txtCalle = (EditText) findViewById(R.id.txtCalle);
+        txtNoExterior = (EditText) findViewById(R.id.txtNoExterior);
+        txtNoInterior = (EditText) findViewById(R.id.txtNoInterior);
+        txtColonia = (EditText) findViewById(R.id.txtColonia);
+        txtCP = (EditText) findViewById(R.id.txtCP);
+        txtTiempoResidencia = (EditText) findViewById(R.id.txtTiempoResidencia);
+        txtMontoVivienda = (EditText) findViewById(R.id.txtMontoVivienda);
+        txtCorreo = (EditText) findViewById(R.id.txtCorreo);
+        txtTelefonoCasa = (EditText) findViewById(R.id.txtTelefonoCasa);
+        txtTelefonoCelular = (EditText) findViewById(R.id.txtTelefonoCelular);
+
+        //Creacion de los edittext de datos económicos a través de su Id
+        txtNombreEmpresa = (EditText) findViewById(R.id.txtNombreEmpresa);
+        txtGiro = (EditText) findViewById(R.id.txtGiro);
+        txtAntiguedadEmpleo = (EditText) findViewById(R.id.txtAntiguedadEmpleo);
+        txtPuesto = (EditText) findViewById(R.id.txtPuesto);
+        txtIngreso = (EditText) findViewById(R.id.txtIngreso);
+        txtTiempoCasado = (EditText) findViewById(R.id.txtTiempoCasado);
+        txtFuenteIngresos = (EditText) findViewById(R.id.txtFuenteIngresos);
+        txtOtrosIngresos = (EditText) findViewById(R.id.txtOtrosIngresos);
+        txtCalleIngresos = (EditText) findViewById(R.id.txtCalleIngresos);
+        txtNoExteriorIngresos = (EditText) findViewById(R.id.txtNoExteriorIngresos);
+        txtNoInteriorIngresos = (EditText) findViewById(R.id.txtNoInteriorIngresos);
+        txtColoniaIngresos = (EditText) findViewById(R.id.txtColoniaIngresos);
+        txtCPIngresos = (EditText) findViewById(R.id.txtCPIngresos);
+        txtTelefonoOficina = (EditText) findViewById(R.id.txtTelefonoOficina);
+        txtExtension = (EditText) findViewById(R.id.txtExtension);
+
+        //Creacion de los radioButton y edittext de persona politica a través de su Id
+        radioGrupo1 = (RadioGroup) findViewById(R.id.Grupo1);
+        radioGrupo2 = (RadioGroup) findViewById(R.id.Grupo2);
+        radioButton = (RadioButton) findViewById(R.id.radioButton);
+        radioButton2 = (RadioButton) findViewById(R.id.radioButton2);
+        radioButton5 = (RadioButton) findViewById(R.id.radioButton5);
+        radioButton6 = (RadioButton) findViewById(R.id.radioButton6);
+        txtFuncionPolitica = (EditText) findViewById(R.id.txtFuncionPolitica);
+        txtFuncionParentesco = (EditText) findViewById(R.id.txtFuncionParentesco);
+        txtParentescoPolitico = (EditText) findViewById(R.id.txtParentescoPolitico);
+
+        //Creación de los edittext de referencias familiares a través de su ID
+        txtNombrePrimera = (EditText) findViewById(R.id.txtNombrePrimera);
+        txtPaternoPrimera = (EditText) findViewById(R.id.txtPaternoPrimera);
+        txtMaternoPrimera = (EditText) findViewById(R.id.txtMaternoPrimera);
+        txtTelefonoPrimera = (EditText) findViewById(R.id.txtNombrePrimera);
+        txtNombreSegunda = (EditText) findViewById(R.id.txtNombreSegundaR);
+        txtPaternoSegunda = (EditText) findViewById(R.id.txtPaternoSegunda);
+        txtMaternoSegunda = (EditText) findViewById(R.id.txtMaternoSegunda);
+        txtTelefonoSegunda = (EditText) findViewById(R.id.txtTelefonoSegunda);
+        txtNombreTercera = (EditText) findViewById(R.id.txtNombreTercera);
+        txtPaternoTercera = (EditText) findViewById(R.id.txtPaternoTercera);
+        txtMaternoTercera = (EditText) findViewById(R.id.txtMaternoTercera);
+        txtTelefonoTercera = (EditText) findViewById(R.id.txtNombreTercera);
 
         conector1 = (TextView) findViewById(R.id.conector1);
         conector2 = (TextView) findViewById(R.id.conector2);
@@ -155,8 +240,6 @@ public class NuevaSolicitud extends AppCompatActivity {
         textPersonaPoliticaHead = (TextView) findViewById(R.id.textPersonaPoliticaHead);
         textReferenciasFamiliaresHead = (TextView) findViewById(R.id.textReferenciasFamiliaresHead);
         textDocumentosHead = (TextView) findViewById(R.id.textDocumentosHead);
-
-        txtCorreo = (EditText) findViewById(R.id.txtCorreo);
 
         scrollNuevaSolicitud = (NestedScrollView) findViewById(R.id.scrollNuevaSolicitud);
 
@@ -242,6 +325,10 @@ public class NuevaSolicitud extends AppCompatActivity {
         SpinnerNacionalidadTercera.setAdapter(listaNacionalidadTercera);
 
         textGeneralesHead.setBackgroundColor(Color.parseColor("#00E676"));
+
+        txtFuncionPolitica.setEnabled(false);
+        txtFuncionParentesco.setEnabled(false);
+        txtParentescoPolitico.setEnabled(false);
 
         if (ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
 
@@ -452,42 +539,40 @@ public class NuevaSolicitud extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                //Verifica que radio button de sexo esta marcado
-                if (radioHombre.isChecked()){
+                String diaActual, mesActual, anioActual;
 
-                    Sexo = "MASCULINO";
-                }else if (radioMujer.isChecked()){
+                Calendar calendar = Calendar.getInstance();
+                diaActual = String.valueOf(calendar.get(Calendar.DAY_OF_MONTH));
+                mesActual = String.valueOf(calendar.get(Calendar.MONTH)+1);
+                anioActual = String.valueOf(calendar.get(Calendar.YEAR));
 
-                    Sexo = "FEMENINO";
-                }
-
-                String dia, mes, anio;
+                String diaNac, mesNac, anioNac;
                 txtCorreo.setText("0894.andres@gmail.com");
 
-                dia = String.valueOf(PickerNac.getDayOfMonth());
-                mes = String.valueOf(PickerNac.getMonth() + 1);
-                anio = String.valueOf(PickerNac.getYear());
+                diaNac = String.valueOf(PickerNac.getDayOfMonth());
+                mesNac = String.valueOf(PickerNac.getMonth() + 1);
+                anioNac = String.valueOf(PickerNac.getYear());
 
                 String solicitud_xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
                         "<SolicitudType xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">\n" +
                         "  <Lattitude>19.4140762787095</Lattitude>\n" +
                         "  <Longuitud>-99.0129281651914</Longuitud>\n" +
                         "  <generales>\n" +
-                        "    <Tpoidentif>"+PosicionTipoIdentificacion+"</Tpoidentif>\n" +
-                        "    <Noidenficacion>"+txtNumeroIdentificacion.getText().toString()+"</Noidenficacion>\n" +
-                        "    <Pmrnombre>"+txtSolicitanteGeneral.getText().toString()+"</Pmrnombre>\n" +
-                        "    <Sdonombre>"+txtSegundoNombreGeneral.getText().toString()+"</Sdonombre>\n" +
-                        "    <Apaterno>"+txtPaternoGeneral.getText().toString()+"</Apaterno>\n" +
-                        "    <Amaterno>"+txtMaternoGeneral.getText().toString()+"</Amaterno>\n" +
-                        "    <Sexo>"+Sexo+"</Sexo>\n" +
-                        "    <Nacionalidad>"+PosicionNacionalidadGeneral+"</Nacionalidad>\n" +
-                        "    <Fechanacdia>"+dia+"</Fechanacdia>\n" +
-                        "    <Rfc>"+txtRFC.getText().toString()+"</Rfc>\n" +
-                        "    <Edocivil>"+PosicionEdoCivilGeneral+"</Edocivil>\n" +
-                        "    <Nodependiente>"+txtNumeroDependientes.getText().toString()+"</Nodependiente>\n" +
+                        "    <Tpoidentif>" + PosicionTipoIdentificacion + "</Tpoidentif>\n" +
+                        "    <Noidenficacion>" + txtNumeroIdentificacion.getText().toString() + "</Noidenficacion>\n" +
+                        "    <Pmrnombre>" + txtSolicitanteGeneral.getText().toString() + "</Pmrnombre>\n" +
+                        "    <Sdonombre>" + txtSegundoNombreGeneral.getText().toString() + "</Sdonombre>\n" +
+                        "    <Apaterno>" + txtPaternoGeneral.getText().toString() + "</Apaterno>\n" +
+                        "    <Amaterno>" + txtMaternoGeneral.getText().toString() + "</Amaterno>\n" +
+                        "    <Sexo>" + Sexo + "</Sexo>\n" +
+                        "    <Nacionalidad>" + PosicionNacionalidadGeneral + "</Nacionalidad>\n" +
+                        "    <Fechanacdia>" + diaNac + "</Fechanacdia>\n" +
+                        "    <Rfc>" + txtRFC.getText().toString() + "</Rfc>\n" +
+                        "    <Edocivil>" + PosicionEdoCivilGeneral + "</Edocivil>\n" +
+                        "    <Nodependiente>" + txtNumeroDependientes.getText().toString() + "</Nodependiente>\n" +
                         "    <Cveperspol>2</Cveperspol>\n" +
-                        "    <FechasnacMes>"+mes+"</FechasnacMes>\n" +
-                        "    <FechanacAnio>"+anio+"</FechanacAnio>\n" +
+                        "    <FechasnacMes>" + mesNac + "</FechasnacMes>\n" +
+                        "    <FechanacAnio>" + anioNac + "</FechanacAnio>\n" +
                         "  </generales>\n" +
                         "  <doc>\n" +
                         "    <IdentificacionFrentePath>TEC_636395911640643196.jpg</IdentificacionFrentePath>\n" +
@@ -502,85 +587,85 @@ public class NuevaSolicitud extends AppCompatActivity {
                         "    <FirmaPath>TEC_636395912150998843.jpg</FirmaPath>\n" +
                         "  </doc>\n" +
                         "  <domicilio>\n" +
-                        "    <Calle>NMMNMN</Calle>\n" +
-                        "    <NoInt/>\n" +
-                        "    <NoExt>8</NoExt>\n" +
-                        "    <Cpdom>78787</Cpdom>\n" +
-                        "    <Estado>"+PosicionEstadoDomicilio+"</Estado>\n" +
-                        "    <Delegacion>"+PosicionDelegacionDomicilio+"</Delegacion>\n" +
-                        "    <Colonia>JHJHJHJ</Colonia>\n" +
-                        "    <TiempoResidencia>8</TiempoResidencia>\n" +
-                        "    <EstatusResidencia>"+PosicionEstatusDomicilio+"</EstatusResidencia>\n" +
-                        "    <MontoVivienda>8787878</MontoVivienda>\n" +
-                        "    <Email>hghhgh@wweew.com</Email>\n" +
-                        "    <Telcasa>8878787878</Telcasa>\n" +
-                        "    <Telmovil>8778777777</Telmovil>\n" +
-                        "    <CompaniaMovil>"+PosicionCompaniaMovil+"</CompaniaMovil>\n" +
+                        "    <Calle>" + txtCalle.getText().toString() + "</Calle>\n" +
+                        "    <NoInt>" + txtNoInterior.getText().toString() + "</NoInt>\n" +
+                        "    <NoExt>" + txtNoExterior.getText().toString() + "</NoExt>\n" +
+                        "    <Cpdom>" + txtCP.getText().toString() + "</Cpdom>\n" +
+                        "    <Estado>" + PosicionEstadoDomicilio + "</Estado>\n" +
+                        "    <Delegacion>" + PosicionDelegacionDomicilio + "</Delegacion>\n" +
+                        "    <Colonia>" + txtColonia.getText().toString() + "</Colonia>\n" +
+                        "    <TiempoResidencia>" + txtTiempoResidencia.getText().toString() + "</TiempoResidencia>\n" +
+                        "    <EstatusResidencia>" + PosicionEstatusDomicilio + "</EstatusResidencia>\n" +
+                        "    <MontoVivienda>" + txtMontoVivienda.getText().toString() + "</MontoVivienda>\n" +
+                        "    <Email>" + txtCorreo.getText().toString() + "</Email>\n" +
+                        "    <Telcasa>" + txtTelefonoCasa.getText().toString() + "</Telcasa>\n" +
+                        "    <Telmovil>" + txtTelefonoCelular.getText().toString() + "</Telmovil>\n" +
+                        "    <CompaniaMovil>" + PosicionCompaniaMovil + "</CompaniaMovil>\n" +
                         "  </domicilio>\n" +
                         "  <Personapolitica>\n" +
-                        "    <EsPersonaPolitica>SI</EsPersonaPolitica>\n" +
-                        "    <TipoParentesco>87878YYYY</TipoParentesco>\n" +
-                        "    <Descfuncion>JHJHJHJHJHJHJ</Descfuncion>\n" +
-                        "    <Descparentesco>HHJJJJ</Descparentesco>\n" +
-                        "    <TieneParentesco>SI</TieneParentesco>\n" +
+                        "    <EsPersonaPolitica>" + Grupo1 + "</EsPersonaPolitica>\n" +
+                        "    <TipoParentesco>"+txtParentescoPolitico.getText().toString()+"</TipoParentesco>\n" +
+                        "    <Descfuncion>"+txtFuncionPolitica.getText().toString()+"</Descfuncion>\n" +
+                        "    <Descparentesco>"+txtFuncionParentesco.getText().toString()+"</Descparentesco>\n" +
+                        "    <TieneParentesco>" + Grupo2 + "</TieneParentesco>\n" +
                         "  </Personapolitica>\n" +
                         "  <Refer>\n" +
-                        "    <Pmrnombre>AAAAAAAAA</Pmrnombre>\n" +
+                        "    <Pmrnombre>"+txtNombrePrimera.getText().toString()+"</Pmrnombre>\n" +
                         "    <Sdonombre/>\n" +
-                        "    <Apaterno>OPPOPOP</Apaterno>\n" +
-                        "    <Amaterno>MMNMMM</Amaterno>\n" +
-                        "    <Nacionalidad>"+PosicionNacionalidadPrimera+"</Nacionalidad>\n" +
-                        "    <TelefonoCasa>8878788788</TelefonoCasa>\n" +
+                        "    <Apaterno>"+txtPaternoPrimera.getText().toString()+"</Apaterno>\n" +
+                        "    <Amaterno>"+txtMaternoPrimera.getText().toString()+"</Amaterno>\n" +
+                        "    <Nacionalidad>" + PosicionNacionalidadPrimera + "</Nacionalidad>\n" +
+                        "    <TelefonoCasa>"+txtTelefonoPrimera.getText().toString()+"</TelefonoCasa>\n" +
                         "  </Refer>\n" +
                         "  <Refer2>\n" +
-                        "    <Pmrnombre>BBBBBBBBB</Pmrnombre>\n" +
+                        "    <Pmrnombre>"+txtNombreSegunda.getText().toString()+"</Pmrnombre>\n" +
                         "    <Sdonombre/>\n" +
-                        "    <Apaterno>OOOIOIOI</Apaterno>\n" +
-                        "    <Amaterno>JHJHJHJH</Amaterno>\n" +
-                        "    <Nacionalidad>"+PosicionNacionalidadSegunda+"</Nacionalidad>\n" +
-                        "    <TelefonoCasa>5544554445</TelefonoCasa>\n" +
+                        "    <Apaterno>"+txtPaternoSegunda.getText().toString()+"</Apaterno>\n" +
+                        "    <Amaterno>"+txtMaternoSegunda.getText().toString()+"</Amaterno>\n" +
+                        "    <Nacionalidad>" + PosicionNacionalidadSegunda + "</Nacionalidad>\n" +
+                        "    <TelefonoCasa>"+txtTelefonoSegunda.getText().toString()+"</TelefonoCasa>\n" +
                         "  </Refer2>\n" +
                         "  <Refer3>\n" +
-                        "    <Pmrnombre>CCCCCCCCCCCCCCCC</Pmrnombre>\n" +
+                        "    <Pmrnombre>"+txtNombreTercera.getText().toString()+"</Pmrnombre>\n" +
                         "    <Sdonombre/>\n" +
-                        "    <Apaterno>NBNBNBNBN</Apaterno>\n" +
-                        "    <Amaterno>MMNMNMN</Amaterno>\n" +
-                        "    <Nacionalidad>"+PosicionNacionalidadTercera+"</Nacionalidad>\n" +
-                        "    <TelefonoCasa>7878787878</TelefonoCasa>\n" +
+                        "    <Apaterno>"+txtPaternoTercera.getText().toString()+"</Apaterno>\n" +
+                        "    <Amaterno>"+txtMaternoTercera.getText().toString()+"</Amaterno>\n" +
+                        "    <Nacionalidad>" + PosicionNacionalidadTercera + "</Nacionalidad>\n" +
+                        "    <TelefonoCasa>"+txtTelefonoTercera.getText().toString()+"</TelefonoCasa>\n" +
                         "  </Refer3>\n" +
                         "  <Promotor>\n" +
-                        "    <Compania>STF</Compania>\n" +
-                        "    <Usuario>jaimea</Usuario>\n" +
-                        "    <Contrasenia>12345678</Contrasenia>\n" +
+                        "    <Compania>"+empresa+"</Compania>\n" +
+                        "    <Usuario>"+usuario+"</Usuario>\n" +
+                        "    <Contrasenia>"+password+"</Contrasenia>\n" +
                         "  </Promotor>\n" +
                         "  <FolioLocal>0</FolioLocal>\n" +
-                        "  <DiaCreacion>29</DiaCreacion>\n" +
-                        "  <MesCreacion>8</MesCreacion>\n" +
-                        "  <AnioCreacion>2017</AnioCreacion>\n" +
+                        "  <DiaCreacion>"+diaActual+"</DiaCreacion>\n" +
+                        "  <MesCreacion>"+mesActual+"</MesCreacion>\n" +
+                        "  <AnioCreacion>"+anioActual+"</AnioCreacion>\n" +
                         "  <Deconominos>\n" +
-                        "    <TipoContrato>"+PosicionTipoContrato+"</TipoContrato>\n" +
-                        "    <AntiguedadEmpleo>8</AntiguedadEmpleo>\n" +
-                        "    <AniosCasada>0</AniosCasada>\n" +
-                        "    <Ingresos>898777</Ingresos>\n" +
-                        "    <NombreEmpresa>STF</NombreEmpresa>\n" +
-                        "    <GiroEmpresa>IUIIUI</GiroEmpresa>\n" +
-                        "    <Puesto>IUIUIUII</Puesto>\n" +
+                        "    <TipoContrato>" + PosicionTipoContrato + "</TipoContrato>\n" +
+                        "    <AntiguedadEmpleo>" + txtAntiguedadEmpleo.getText().toString() + "</AntiguedadEmpleo>\n" +
+                        "    <AniosCasada>" + txtTiempoCasado.getText().toString() + "</AniosCasada>\n" +
+                        "    <Ingresos>" + txtIngreso.getText().toString() + "</Ingresos>\n" +
+                        "    <NombreEmpresa>" + txtNombreEmpresa.getText().toString() + "</NombreEmpresa>\n" +
+                        "    <GiroEmpresa>" + txtGiro.getText().toString() + "</GiroEmpresa>\n" +
+                        "    <Puesto>" + txtPuesto.getText().toString() + "</Puesto>\n" +
                         "    <Domicilio>\n" +
-                        "      <Calle>UIUIUI</Calle>\n" +
-                        "      <NoInt/>\n" +
-                        "      <NoExt>III</NoExt>\n" +
-                        "      <Cpdom>87878</Cpdom>\n" +
-                        "      <Estado>"+PosicionEstadoIngresos+"</Estado>\n" +
-                        "      <Delegacion>"+PosicionDelegacionIngresos+"</Delegacion>\n" +
-                        "      <Colonia>UUIUIU</Colonia>\n" +
+                        "      <Calle>" + txtCalleIngresos.getText().toString() + "</Calle>\n" +
+                        "      <NoInt>" + txtNoInteriorIngresos.getText().toString() + "</NoInt>\n" +
+                        "      <NoExt>" + txtNoExteriorIngresos.getText().toString() + "</NoExt>\n" +
+                        "      <Cpdom>" + txtCPIngresos.getText().toString() + "</Cpdom>\n" +
+                        "      <Estado>" + PosicionEstadoIngresos + "</Estado>\n" +
+                        "      <Delegacion>" + PosicionDelegacionIngresos + "</Delegacion>\n" +
+                        "      <Colonia>" + txtColoniaIngresos.getText().toString() + "</Colonia>\n" +
                         "      <TiempoResidencia>0</TiempoResidencia>\n" +
                         "      <EstatusResidencia>0</EstatusResidencia>\n" +
                         "      <MontoVivienda>0</MontoVivienda>\n" +
-                        "      <Telcasa>7878787878</Telcasa>\n" +
+                        "      <Telcasa>" + txtTelefonoOficina.getText().toString() + "</Telcasa>\n" +
                         "      <Telmovil/>\n" +
                         "    </Domicilio>\n" +
-                        "    <OtrosIngresos>0</OtrosIngresos>\n" +
-                        "    <FuenteOtrosIngresos>0</FuenteOtrosIngresos>\n" +
+                        "    <OtrosIngresos>" + txtOtrosIngresos.getText().toString() + "</OtrosIngresos>\n" +
+                        "    <FuenteOtrosIngresos>" + txtFuenteIngresos.getText().toString() + "</FuenteOtrosIngresos>\n" +
                         "  </Deconominos>\n" +
                         "</SolicitudType>";
 
@@ -645,7 +730,7 @@ public class NuevaSolicitud extends AppCompatActivity {
                     conector4.setBackgroundColor(Color.parseColor("#64B5F6"));
                     conector5.setBackgroundColor(Color.parseColor("#64B5F6"));
 
-                } else if (scrollY > 5850 && scrollY < 6800) {
+                } else if (scrollY > 5850 && scrollY < 7250) {
 
                     textGeneralesHead.setBackgroundColor(Color.parseColor("#00E676"));
                     textDomicilioHead.setBackgroundColor(Color.parseColor("#00E676"));
@@ -660,7 +745,7 @@ public class NuevaSolicitud extends AppCompatActivity {
                     conector4.setBackgroundColor(Color.parseColor("#64B5F6"));
                     conector5.setBackgroundColor(Color.parseColor("#64B5F6"));
 
-                } else if (scrollY > 6800 && scrollY < 8900) {
+                } else if (scrollY > 7250 && scrollY < 9400) {
 
                     textGeneralesHead.setBackgroundColor(Color.parseColor("#00E676"));
                     textDomicilioHead.setBackgroundColor(Color.parseColor("#00E676"));
@@ -675,7 +760,7 @@ public class NuevaSolicitud extends AppCompatActivity {
                     conector4.setBackgroundColor(Color.parseColor("#00E676"));
                     conector5.setBackgroundColor(Color.parseColor("#64B5F6"));
 
-                } else if (scrollY > 8900) {
+                } else if (scrollY > 9400) {
 
                     textGeneralesHead.setBackgroundColor(Color.parseColor("#00E676"));
                     textDomicilioHead.setBackgroundColor(Color.parseColor("#00E676"));
@@ -717,6 +802,50 @@ public class NuevaSolicitud extends AppCompatActivity {
             case R.id.ImgFirmaNew:
 
                 break;
+        }
+    }
+
+    public void sexo (View view){
+
+        //Verifica que radio button de sexo esta marcado
+        if (radioHombre.isChecked()){
+
+            Sexo = "MASCULINO";
+        }else if (radioMujer.isChecked()){
+
+            Sexo = "FEMENINO";
+        }
+    }
+
+    public void Grupo1 (View view){
+
+        //Obtención del valor de los radio button de los 2 grupos de persona politica
+        //Grupo1
+        if (radioButton.isChecked()) {
+
+            Grupo1 = "SI";
+            txtFuncionPolitica.setEnabled(true);
+        } else if (radioButton2.isChecked() ) {
+
+            Grupo1 = "NO";
+            txtFuncionPolitica.setEnabled(false);
+        }
+    }
+
+    public void Grupo2 (View view){
+
+        //Obtención del valor de los radio button de los 2 grupos de persona politica
+        //Grupo2
+        if (radioButton5.isChecked()) {
+
+            Grupo2 = "SI";
+            txtFuncionParentesco.setEnabled(true);
+            txtParentescoPolitico.setEnabled(true);
+        } else if (radioButton6.isChecked()) {
+
+            Grupo2 = "NO";
+            txtFuncionParentesco.setEnabled(false);
+            txtParentescoPolitico.setEnabled(false);
         }
     }
 

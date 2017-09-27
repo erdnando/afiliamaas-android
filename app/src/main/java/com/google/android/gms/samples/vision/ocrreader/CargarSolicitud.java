@@ -271,7 +271,7 @@ public class CargarSolicitud extends AppCompatActivity {
                     conector4.setBackgroundColor(Color.parseColor("#64B5F6"));
                     conector5.setBackgroundColor(Color.parseColor("#64B5F6"));
 
-                } else if (scrollY > 5170 && scrollY < 6240) {
+                } else if (scrollY > 5170 && scrollY < 7250) {
 
                     textGeneralesHead.setBackgroundColor(Color.parseColor("#00E676"));
                     textDomicilioHead.setBackgroundColor(Color.parseColor("#00E676"));
@@ -286,7 +286,7 @@ public class CargarSolicitud extends AppCompatActivity {
                     conector4.setBackgroundColor(Color.parseColor("#64B5F6"));
                     conector5.setBackgroundColor(Color.parseColor("#64B5F6"));
 
-                } else if (scrollY > 6240 && scrollY < 8350) {
+                } else if (scrollY > 7250 && scrollY < 9400) {
 
                     textGeneralesHead.setBackgroundColor(Color.parseColor("#00E676"));
                     textDomicilioHead.setBackgroundColor(Color.parseColor("#00E676"));
@@ -301,7 +301,7 @@ public class CargarSolicitud extends AppCompatActivity {
                     conector4.setBackgroundColor(Color.parseColor("#00E676"));
                     conector5.setBackgroundColor(Color.parseColor("#64B5F6"));
 
-                } else if (scrollY > 8350) {
+                } else if (scrollY > 9400) {
 
                     textGeneralesHead.setBackgroundColor(Color.parseColor("#00E676"));
                     textDomicilioHead.setBackgroundColor(Color.parseColor("#00E676"));
