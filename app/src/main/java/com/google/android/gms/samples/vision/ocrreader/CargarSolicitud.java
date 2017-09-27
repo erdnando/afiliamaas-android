@@ -555,7 +555,7 @@ public class CargarSolicitud extends AppCompatActivity {
         txtCalle.setText(Calle);
         txtNoExterior.setText(NoExt);
         txtNoInterior.setText(NoInt);
-        txtCP.setText(Email);
+        txtCP.setText(Cpdom);
         txtEstado.setText(consultaEstadoDomicilio);
         txtMunicipio.setText(consultaDelegacionDomicilio);
         txtColonia.setText(Colonia);
@@ -632,50 +632,50 @@ public class CargarSolicitud extends AppCompatActivity {
 
         Intent intent = new Intent(getApplicationContext(), Imagen.class);
 
-    switch(v.getId()){
+        switch (v.getId()) {
 
-        case R.id.ImgIdentificacionFrente:
+            case R.id.ImgIdentificacionFrente:
 
-            intent.putExtra("Datos", "Identificacion Frente");
-            intent.putExtra("Foto", Doc_IF64);
-            startActivity(intent);
+                intent.putExtra("Datos", "Identificacion Frente");
+                intent.putExtra("Foto", Doc_IF64);
+                startActivity(intent);
 
-            break;
+                break;
 
-        case R.id.ImgIdentificacionAtras:
+            case R.id.ImgIdentificacionAtras:
 
-            intent.putExtra("Datos", "Identificion Atrás");
-            intent.putExtra("Foto", Doc_IA64);
-            startActivity(intent);
+                intent.putExtra("Datos", "Identificion Atrás");
+                intent.putExtra("Foto", Doc_IA64);
+                startActivity(intent);
 
-            break;
+                break;
 
-        case R.id.ImgContrato1:
+            case R.id.ImgContrato1:
 
-            intent.putExtra("Datos", "Contrato 1");
-            intent.putExtra("Foto", Doc_C164);
-            startActivity(intent);
+                intent.putExtra("Datos", "Contrato 1");
+                intent.putExtra("Foto", Doc_C164);
+                startActivity(intent);
 
-            break;
+                break;
 
-        case R.id.ImgContrato2:
+            case R.id.ImgContrato2:
 
-            intent.putExtra("Datos", "Contrato 2");
-            intent.putExtra("Foto", Doc_C264);
-            startActivity(intent);
+                intent.putExtra("Datos", "Contrato 2");
+                intent.putExtra("Foto", Doc_C264);
+                startActivity(intent);
 
-            break;
+                break;
 
-        case R.id.ImgFirma:
+            case R.id.ImgFirma:
 
-            intent.putExtra("Datos", "Firma");
-            intent.putExtra("Foto", F164);
-            startActivity(intent);
+                intent.putExtra("Datos", "Firma");
+                intent.putExtra("Foto", F164);
+                startActivity(intent);
 
-            break;
+                break;
+        }
+
     }
-
-}
 
     public void toast(final String mensaje) {
 
