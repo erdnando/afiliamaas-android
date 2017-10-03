@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.google.android.gms.samples.vision.ocrreader.Firmar"
+    android:id="@+id/relative">
+
+    <com.google.android.gms.samples.vision.ocrreader.CanvasView
+        android:id="@+id/canvas"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="120dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/textview_redondo"
+        />
+
+    <Button
+        android:id="@+id/btnBorrarFirma"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="Borrar Firma"
+        android:background="@drawable/botonredondo"
+        android:layout_marginBottom="21dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignLeft="@+id/canvas"
+        android:layout_alignStart="@+id/canvas"
+        android:onClick="borrarCanvas"/>
+
+    <Button
+        android:id="@+id/btnGuardarFirma"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="Guardar Firma"
+        android:background="@drawable/botonredondo"
+        android:layout_alignBaseline="@+id/btnBorrarFirma"
+        android:layout_alignBottom="@+id/btnBorrarFirma"
+        android:layout_alignRight="@+id/canvas"
+        android:layout_alignEnd="@+id/canvas"
+        android:onClick="guardarCanvas"/>
+
+</RelativeLayout>

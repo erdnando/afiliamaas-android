@@ -5,8 +5,12 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -26,6 +30,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.Calendar;
 import java.util.regex.Pattern;
 
@@ -39,6 +45,12 @@ public class NuevaSolicitud extends AppCompatActivity {
     DatePicker PickerNac;
 
     Button btnEnviarSolicitud;
+
+    //Valores para abrir la camara y tomar la foto
+    private static final int CAMERA_REQUEST1 = 1881;
+    private static final int CAMERA_REQUEST2 = 1882;
+    private static final int CAMERA_REQUEST3 = 1883;
+    private static final int CAMERA_REQUEST4 = 1884;
 
     ImageButton ImgIdentificacionFrente, ImgIdentificacionAtras, ImgContrato1, ImgContrato2, ImgFirma;
 
@@ -150,6 +162,10 @@ public class NuevaSolicitud extends AppCompatActivity {
 
     //Variables de los datos del usuario logueado
     String usuario, password, empresa;
+
+    static Uri capturedImageUri = null;
+
+    String fichero;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -543,7 +559,7 @@ public class NuevaSolicitud extends AppCompatActivity {
 
                 Calendar calendar = Calendar.getInstance();
                 diaActual = String.valueOf(calendar.get(Calendar.DAY_OF_MONTH));
-                mesActual = String.valueOf(calendar.get(Calendar.MONTH)+1);
+                mesActual = String.valueOf(calendar.get(Calendar.MONTH) + 1);
                 anioActual = String.valueOf(calendar.get(Calendar.YEAR));
 
                 String diaNac, mesNac, anioNac;
@@ -604,44 +620,44 @@ public class NuevaSolicitud extends AppCompatActivity {
                         "  </domicilio>\n" +
                         "  <Personapolitica>\n" +
                         "    <EsPersonaPolitica>" + Grupo1 + "</EsPersonaPolitica>\n" +
-                        "    <TipoParentesco>"+txtParentescoPolitico.getText().toString()+"</TipoParentesco>\n" +
-                        "    <Descfuncion>"+txtFuncionPolitica.getText().toString()+"</Descfuncion>\n" +
-                        "    <Descparentesco>"+txtFuncionParentesco.getText().toString()+"</Descparentesco>\n" +
+                        "    <TipoParentesco>" + txtParentescoPolitico.getText().toString() + "</TipoParentesco>\n" +
+                        "    <Descfuncion>" + txtFuncionPolitica.getText().toString() + "</Descfuncion>\n" +
+                        "    <Descparentesco>" + txtFuncionParentesco.getText().toString() + "</Descparentesco>\n" +
                         "    <TieneParentesco>" + Grupo2 + "</TieneParentesco>\n" +
                         "  </Personapolitica>\n" +
                         "  <Refer>\n" +
-                        "    <Pmrnombre>"+txtNombrePrimera.getText().toString()+"</Pmrnombre>\n" +
+                        "    <Pmrnombre>" + txtNombrePrimera.getText().toString() + "</Pmrnombre>\n" +
                         "    <Sdonombre/>\n" +
-                        "    <Apaterno>"+txtPaternoPrimera.getText().toString()+"</Apaterno>\n" +
-                        "    <Amaterno>"+txtMaternoPrimera.getText().toString()+"</Amaterno>\n" +
+                        "    <Apaterno>" + txtPaternoPrimera.getText().toString() + "</Apaterno>\n" +
+                        "    <Amaterno>" + txtMaternoPrimera.getText().toString() + "</Amaterno>\n" +
                         "    <Nacionalidad>" + PosicionNacionalidadPrimera + "</Nacionalidad>\n" +
-                        "    <TelefonoCasa>"+txtTelefonoPrimera.getText().toString()+"</TelefonoCasa>\n" +
+                        "    <TelefonoCasa>" + txtTelefonoPrimera.getText().toString() + "</TelefonoCasa>\n" +
                         "  </Refer>\n" +
                         "  <Refer2>\n" +
-                        "    <Pmrnombre>"+txtNombreSegunda.getText().toString()+"</Pmrnombre>\n" +
+                        "    <Pmrnombre>" + txtNombreSegunda.getText().toString() + "</Pmrnombre>\n" +
                         "    <Sdonombre/>\n" +
-                        "    <Apaterno>"+txtPaternoSegunda.getText().toString()+"</Apaterno>\n" +
-                        "    <Amaterno>"+txtMaternoSegunda.getText().toString()+"</Amaterno>\n" +
+                        "    <Apaterno>" + txtPaternoSegunda.getText().toString() + "</Apaterno>\n" +
+                        "    <Amaterno>" + txtMaternoSegunda.getText().toString() + "</Amaterno>\n" +
                         "    <Nacionalidad>" + PosicionNacionalidadSegunda + "</Nacionalidad>\n" +
-                        "    <TelefonoCasa>"+txtTelefonoSegunda.getText().toString()+"</TelefonoCasa>\n" +
+                        "    <TelefonoCasa>" + txtTelefonoSegunda.getText().toString() + "</TelefonoCasa>\n" +
                         "  </Refer2>\n" +
                         "  <Refer3>\n" +
-                        "    <Pmrnombre>"+txtNombreTercera.getText().toString()+"</Pmrnombre>\n" +
+                        "    <Pmrnombre>" + txtNombreTercera.getText().toString() + "</Pmrnombre>\n" +
                         "    <Sdonombre/>\n" +
-                        "    <Apaterno>"+txtPaternoTercera.getText().toString()+"</Apaterno>\n" +
-                        "    <Amaterno>"+txtMaternoTercera.getText().toString()+"</Amaterno>\n" +
+                        "    <Apaterno>" + txtPaternoTercera.getText().toString() + "</Apaterno>\n" +
+                        "    <Amaterno>" + txtMaternoTercera.getText().toString() + "</Amaterno>\n" +
                         "    <Nacionalidad>" + PosicionNacionalidadTercera + "</Nacionalidad>\n" +
-                        "    <TelefonoCasa>"+txtTelefonoTercera.getText().toString()+"</TelefonoCasa>\n" +
+                        "    <TelefonoCasa>" + txtTelefonoTercera.getText().toString() + "</TelefonoCasa>\n" +
                         "  </Refer3>\n" +
                         "  <Promotor>\n" +
-                        "    <Compania>"+empresa+"</Compania>\n" +
-                        "    <Usuario>"+usuario+"</Usuario>\n" +
-                        "    <Contrasenia>"+password+"</Contrasenia>\n" +
+                        "    <Compania>" + empresa + "</Compania>\n" +
+                        "    <Usuario>" + usuario + "</Usuario>\n" +
+                        "    <Contrasenia>" + password + "</Contrasenia>\n" +
                         "  </Promotor>\n" +
                         "  <FolioLocal>0</FolioLocal>\n" +
-                        "  <DiaCreacion>"+diaActual+"</DiaCreacion>\n" +
-                        "  <MesCreacion>"+mesActual+"</MesCreacion>\n" +
-                        "  <AnioCreacion>"+anioActual+"</AnioCreacion>\n" +
+                        "  <DiaCreacion>" + diaActual + "</DiaCreacion>\n" +
+                        "  <MesCreacion>" + mesActual + "</MesCreacion>\n" +
+                        "  <AnioCreacion>" + anioActual + "</AnioCreacion>\n" +
                         "  <Deconominos>\n" +
                         "    <TipoContrato>" + PosicionTipoContrato + "</TipoContrato>\n" +
                         "    <AntiguedadEmpleo>" + txtAntiguedadEmpleo.getText().toString() + "</AntiguedadEmpleo>\n" +
@@ -781,43 +797,102 @@ public class NuevaSolicitud extends AppCompatActivity {
 
     public void foto(View view) {
 
+        Calendar cal = Calendar.getInstance();
+
+        capturedImageUri = Uri.fromFile(new File(Environment.getExternalStorageDirectory(), cal.getTimeInMillis() + ".jpg"));
+
+        fichero = cal.getTimeInMillis() + ".jpg";
+
+        Intent abrirCamara = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+
         switch (view.getId()) {
 
             case R.id.ImgIdentificacionFrenteNew:
+
+                abrirCamara.putExtra(MediaStore.EXTRA_OUTPUT, capturedImageUri);
+
+                startActivityForResult(abrirCamara, CAMERA_REQUEST1);
 
                 break;
 
             case R.id.ImgIdentificacionAtrasNew:
 
+                startActivityForResult(abrirCamara, CAMERA_REQUEST2);
+
                 break;
 
             case R.id.ImgContrato1New:
+
+                abrirCamara.putExtra("output", capturedImageUri);
+
+                startActivityForResult(abrirCamara, CAMERA_REQUEST3);
 
                 break;
 
             case R.id.ImgContrato2New:
 
+                startActivityForResult(abrirCamara, CAMERA_REQUEST4);
+
                 break;
 
             case R.id.ImgFirmaNew:
+
+                Intent intent = new Intent(getApplicationContext(), Firmar.class);
+                startActivity(intent);
 
                 break;
         }
     }
 
-    public void sexo (View view){
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == CAMERA_REQUEST1 && resultCode == RESULT_OK) {
+
+            Bitmap photo = null;
+            try {
+                photo = MediaStore.Images.Media.getBitmap( getApplicationContext().getContentResolver(), capturedImageUri);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            ImgIdentificacionFrente.setImageBitmap(photo);
+        }
+
+        if (requestCode == CAMERA_REQUEST2 && resultCode == RESULT_OK) {
+            Bitmap foto2 = (Bitmap) data.getExtras().get("data");
+
+            ImgIdentificacionAtras.setImageBitmap(foto2);
+        }
+
+        if (requestCode == CAMERA_REQUEST3 && resultCode == RESULT_OK) {
+
+            Bundle bundle = data.getExtras();
+
+            Bitmap bMap = (Bitmap) bundle.get("output");
+            ImgContrato1.setImageBitmap(bMap);
+
+        }
+
+        if (requestCode == CAMERA_REQUEST4 && resultCode == RESULT_OK) {
+            Bitmap foto4 = (Bitmap) data.getExtras().get("data");
+
+            ImgContrato2.setImageBitmap(foto4);
+        }
+
+    }
+
+    public void sexo(View view) {
 
         //Verifica que radio button de sexo esta marcado
-        if (radioHombre.isChecked()){
+        if (radioHombre.isChecked()) {
 
             Sexo = "MASCULINO";
-        }else if (radioMujer.isChecked()){
+        } else if (radioMujer.isChecked()) {
 
             Sexo = "FEMENINO";
         }
     }
 
-    public void Grupo1 (View view){
+    public void Grupo1(View view) {
 
         //Obtención del valor de los radio button de los 2 grupos de persona politica
         //Grupo1
@@ -825,14 +900,14 @@ public class NuevaSolicitud extends AppCompatActivity {
 
             Grupo1 = "SI";
             txtFuncionPolitica.setEnabled(true);
-        } else if (radioButton2.isChecked() ) {
+        } else if (radioButton2.isChecked()) {
 
             Grupo1 = "NO";
             txtFuncionPolitica.setEnabled(false);
         }
     }
 
-    public void Grupo2 (View view){
+    public void Grupo2(View view) {
 
         //Obtención del valor de los radio button de los 2 grupos de persona politica
         //Grupo2

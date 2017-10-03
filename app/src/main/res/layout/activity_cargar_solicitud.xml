@@ -1061,11 +1061,27 @@
 
             </RadioGroup>
 
+            <EditText
+                android:id="@+id/txtFuncionPolitica"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/edittext_redondo"
+                android:maxLength="50"
+                android:digits="abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ"
+                android:layout_below="@+id/Grupo1"
+                android:layout_alignLeft="@+id/Grupo1"
+                android:layout_alignStart="@+id/Grupo1"
+                android:layout_alignRight="@+id/Grupo1"
+                android:layout_alignEnd="@+id/Grupo1"
+                android:hint="¿Qué funcion desempeña o ha desempeñado?"
+                android:textAlignment="center"
+                android:layout_marginTop="30dp" />
+
             <TextView
                 android:id="@+id/textView4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/Grupo1"
+                android:layout_below="@+id/txtFuncionPolitica"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="42dp"
                 android:text="¿Tiene parentesco con alguien que haya sido una persona politicamente expuesta?"
@@ -1077,17 +1093,21 @@
                 android:id="@+id/Grupo2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
                 android:layout_below="@+id/textView4"
                 android:layout_marginTop="32dp"
                 android:gravity="center"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:background="@drawable/edittext_redondo"
+                android:layout_alignLeft="@+id/TextReferenciasFamiliares"
+                android:layout_alignStart="@+id/TextReferenciasFamiliares"
+                android:layout_alignRight="@+id/TextReferenciasFamiliares"
+                android:layout_alignEnd="@+id/TextReferenciasFamiliares">
 
                 <RadioButton
                     android:id="@+id/radioButton5"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
+                    android:checked="true"
                     android:text="SI" />
 
                 <RadioButton
@@ -1098,6 +1118,38 @@
 
             </RadioGroup>
 
+            <EditText
+                android:id="@+id/txtFuncionParentesco"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/edittext_redondo"
+                android:maxLength="50"
+                android:digits="abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ"
+                android:layout_below="@+id/Grupo2"
+                android:layout_alignLeft="@+id/Grupo2"
+                android:layout_alignStart="@+id/Grupo2"
+                android:layout_alignRight="@+id/Grupo2"
+                android:layout_alignEnd="@+id/Grupo2"
+                android:hint="¿Qué funcion desempeña o ha desempeñado?"
+                android:textAlignment="center"
+                android:layout_marginTop="30dp" />
+
+            <EditText
+                android:id="@+id/txtParentescoPolitico"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/edittext_redondo"
+                android:maxLength="50"
+                android:digits="abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ"
+                android:layout_below="@+id/txtFuncionParentesco"
+                android:layout_alignLeft="@+id/txtFuncionParentesco"
+                android:layout_alignStart="@+id/txtFuncionParentesco"
+                android:layout_alignRight="@+id/txtFuncionParentesco"
+                android:layout_alignEnd="@+id/txtFuncionParentesco"
+                android:hint="Parentesco"
+                android:textAlignment="center"
+                android:layout_marginTop="30dp" />
+
             <TextView
                 android:id="@+id/TextReferenciasFamiliares"
                 android:layout_width="match_parent"
@@ -1106,7 +1158,7 @@
                 android:layout_alignLeft="@+id/txtNombrePrimera"
                 android:layout_alignRight="@+id/txtNombrePrimera"
                 android:layout_alignStart="@+id/txtNombrePrimera"
-                android:layout_below="@+id/Grupo2"
+                android:layout_below="@+id/txtParentescoPolitico"
                 android:layout_marginTop="102dp"
                 android:background="@drawable/textview_redondo"
                 android:text="Referencias Familiares"
@@ -1395,15 +1447,46 @@
                 android:textColor="#000000"
                 android:textSize="18sp" />
 
+            <TextView
+                android:id="@+id/textIdentificacionFrente"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Identificacion Frente"
+                android:background="@drawable/textview_redondo"
+                android:textColor="#000000"
+                android:textSize="14sp"
+                android:textAlignment="center"
+                android:layout_above="@+id/ImgIdentificacionAtras"
+                android:layout_alignLeft="@+id/ImgIdentificacionFrente"
+                android:layout_alignStart="@+id/ImgIdentificacionFrente"
+                android:layout_alignRight="@+id/ImgIdentificacionFrente"
+                android:layout_alignEnd="@+id/ImgIdentificacionFrente" />
+
             <ImageButton
                 android:id="@+id/ImgIdentificacionFrente"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
+                android:layout_marginTop="69dp"
+                android:layout_marginBottom="10dp"
                 android:onClick="click"
-                android:layout_marginTop="27dp"
                 android:layout_below="@+id/TextDocumentos"
                 android:layout_alignLeft="@+id/TextDocumentos"
                 android:layout_alignStart="@+id/TextDocumentos" />
+
+            <TextView
+                android:id="@+id/textIdentificacionAtras"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Identificacion Anverso"
+                android:background="@drawable/textview_redondo"
+                android:textColor="#000000"
+                android:textSize="14sp"
+                android:textAlignment="center"
+                android:layout_above="@+id/ImgIdentificacionAtras"
+                android:layout_alignRight="@+id/ImgIdentificacionAtras"
+                android:layout_alignEnd="@+id/ImgIdentificacionAtras"
+                android:layout_alignLeft="@+id/ImgIdentificacionAtras"
+                android:layout_alignStart="@+id/ImgIdentificacionAtras" />
 
             <ImageButton
                 android:id="@+id/ImgIdentificacionAtras"
@@ -1414,40 +1497,82 @@
                 android:layout_alignRight="@+id/TextDocumentos"
                 android:layout_alignEnd="@+id/TextDocumentos" />
 
+            <TextView
+                android:id="@+id/textContrato1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Contrato 1"
+                android:background="@drawable/textview_redondo"
+                android:textColor="#000000"
+                android:textSize="14sp"
+                android:textAlignment="center"
+                android:layout_above="@+id/ImgContrato2"
+                android:layout_alignLeft="@+id/ImgContrato1"
+                android:layout_alignStart="@+id/ImgContrato1"
+                android:layout_alignRight="@+id/ImgContrato1"
+                android:layout_alignEnd="@+id/ImgContrato1" />
+
             <ImageButton
                 android:id="@+id/ImgContrato1"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
-                android:layout_below="@+id/ImgIdentificacionAtras"
+                android:layout_marginTop="61dp"
                 android:onClick="click"
-                android:layout_marginTop="27dp"
-                android:layout_alignRight="@+id/ImgIdentificacionFrente"
-                android:layout_alignEnd="@+id/ImgIdentificacionFrente"
+                android:layout_below="@+id/ImgIdentificacionFrente"
                 android:layout_alignLeft="@+id/ImgIdentificacionFrente"
                 android:layout_alignStart="@+id/ImgIdentificacionFrente" />
+
+            <TextView
+                android:id="@+id/textContrato2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Contrato 2"
+                android:background="@drawable/textview_redondo"
+                android:textColor="#000000"
+                android:textSize="14sp"
+                android:textAlignment="center"
+                android:layout_above="@+id/ImgContrato2"
+                android:layout_alignLeft="@+id/ImgContrato2"
+                android:layout_alignStart="@+id/ImgContrato2"
+                android:layout_alignRight="@+id/ImgContrato2"
+                android:layout_alignEnd="@+id/ImgContrato2" />
 
             <ImageButton
                 android:id="@+id/ImgContrato2"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
-                android:onClick="click"
-                android:layout_alignTop="@+id/ImgContrato1"
                 android:layout_alignLeft="@+id/ImgIdentificacionAtras"
-                android:layout_alignStart="@+id/ImgIdentificacionAtras" />
+                android:layout_alignStart="@+id/ImgIdentificacionAtras"
+                android:layout_alignTop="@+id/ImgContrato1"
+                android:onClick="click" />
+
+            <TextView
+                android:id="@+id/textFirma"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Firma"
+                android:background="@drawable/textview_redondo"
+                android:textColor="#000000"
+                android:textSize="14sp"
+                android:textAlignment="center"
+                android:layout_below="@+id/ImgContrato1"
+                android:layout_alignLeft="@+id/ImgFirma"
+                android:layout_alignStart="@+id/ImgFirma"
+                android:layout_marginTop="36dp"
+                android:layout_alignRight="@+id/ImgFirma"
+                android:layout_alignEnd="@+id/ImgFirma" />
 
             <ImageButton
                 android:id="@+id/ImgFirma"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
-                android:layout_below="@+id/ImgContrato2"
-                android:layout_marginBottom="27dp"
-                android:layout_marginTop="27dp"
+                android:layout_marginTop="56dp"
                 android:onClick="click"
                 tools:ignore="RtlCompat"
-                android:layout_alignRight="@+id/ImgContrato1"
-                android:layout_alignEnd="@+id/ImgContrato1"
+                android:layout_below="@+id/ImgContrato1"
                 android:layout_alignLeft="@+id/ImgContrato1"
-                android:layout_alignStart="@+id/ImgContrato1" />
+                android:layout_alignStart="@+id/ImgContrato1"
+                android:layout_marginBottom="30dp"/>
 
         </RelativeLayout>
 

@@ -68,9 +68,10 @@ public class CargarSolicitud extends AppCompatActivity {
     //RadioButton y Radio Group de persona politica
     RadioGroup Grupo1, Grupo2;
     RadioButton radioButton, radioButton2, radioButton5, radioButton6;
+    EditText txtFuncionPolitica, txtFuncionParentesco, txtParentescoPolitico;
 
     //Variables de persona politica
-    String TieneParentesco, EsPersonaPolitica;
+    String TieneParentesco, EsPersonaPolitica, FuncionPolitica, FuncionParentesco, ParentescoPolitico;
 
     //Cajas de texto para referencias familiares
     EditText txtNombrePrimera, txtPaternoPrimera, txtMaternoPrimera, txtNacionalidadPrimera, txtTelefonoPrimera,
@@ -180,7 +181,7 @@ public class CargarSolicitud extends AppCompatActivity {
         txtCPIngresos = (EditText) findViewById(R.id.txtCPIngresos);
         txtTelOficina = (EditText) findViewById(R.id.txtTelefonoOficina);
 
-        //Creación del radioGroup y radioButton de persona politica
+        //Creación del radioGroup, radioButton y edittext de persona politica
         Grupo1 = (RadioGroup) findViewById(R.id.Grupo1);
         Grupo2 = (RadioGroup) findViewById(R.id.Grupo2);
 
@@ -188,6 +189,10 @@ public class CargarSolicitud extends AppCompatActivity {
         radioButton2 = (RadioButton) findViewById(R.id.radioButton2);
         radioButton5 = (RadioButton) findViewById(R.id.radioButton5);
         radioButton6 = (RadioButton) findViewById(R.id.radioButton6);
+
+        txtFuncionPolitica = (EditText) findViewById(R.id.txtFuncionPolitica);
+        txtFuncionParentesco = (EditText) findViewById(R.id.txtFuncionParentesco);
+        txtParentescoPolitico = (EditText) findViewById(R.id.txtParentescoPolitico);
 
         //Creación de cajas de texto de referencias familiares
         txtNombrePrimera = (EditText) findViewById(R.id.txtNombrePrimera);
@@ -436,6 +441,9 @@ public class CargarSolicitud extends AppCompatActivity {
                     //Asignacion de valores para las variables de persona politica
                     TieneParentesco = element.getElementsByTagName("TieneParentesco").item(0).getTextContent();
                     EsPersonaPolitica = element.getElementsByTagName("EsPersonaPolitica").item(0).getTextContent();
+                    FuncionPolitica = element.getElementsByTagName("Descfuncion").item(0).getTextContent();
+                    FuncionParentesco = element.getElementsByTagName("Descparentesco").item(0).getTextContent();
+                    ParentescoPolitico = element.getElementsByTagName("TipoParentesco").item(0).getTextContent();
                 }
             }
 
@@ -591,20 +599,30 @@ public class CargarSolicitud extends AppCompatActivity {
 
             radioButton.setChecked(true);
             radioButton2.setEnabled(false);
+
+            txtFuncionPolitica.setText(FuncionPolitica);
         } else if (EsPersonaPolitica.equals("NO")) {
 
             radioButton2.setChecked(true);
             radioButton.setEnabled(false);
+
+            txtFuncionPolitica.setText("");
         }
 
         if (TieneParentesco.equals("SI")) {
 
             radioButton5.setChecked(true);
             radioButton6.setEnabled(false);
+
+            txtFuncionParentesco.setText(FuncionParentesco);
+            txtParentescoPolitico.setText(ParentescoPolitico);
         } else if (TieneParentesco.equals("NO")) {
 
             radioButton6.setChecked(true);
             radioButton5.setEnabled(false);
+
+            txtFuncionParentesco.setText("");
+            txtParentescoPolitico.setText("");
         }
 
         //Asignar valores a los edittext de referencias familiares
