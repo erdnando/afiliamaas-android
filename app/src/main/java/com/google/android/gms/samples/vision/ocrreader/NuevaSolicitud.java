@@ -7,10 +7,12 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.Color;
-import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.AppCompatActivity;
@@ -28,6 +30,8 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.gms.samples.vision.ocrreader.ui.camera.Lienzo;
 
 import java.io.ByteArrayOutputStream;
 import java.util.Calendar;
@@ -50,6 +54,12 @@ public class NuevaSolicitud extends AppCompatActivity {
     private static final int CAMERA_REQUEST2 = 1882;
     private static final int CAMERA_REQUEST3 = 1883;
     private static final int CAMERA_REQUEST4 = 1884;
+
+    private static final int CAMERA_EXTRA1 = 1885;
+    private static final int CAMERA_EXTRA2 = 1886;
+    private static final int CAMERA_EXTRA3 = 1887;
+    private static final int CAMERA_EXTRA4 = 1888;
+    private static final int CAMERA_EXTRA5 = 1889;
 
     ImageButton ImgIdentificacionFrente, ImgIdentificacionAtras, ImgContrato1, ImgContrato2, ImgFirma;
 
@@ -167,11 +177,18 @@ public class NuevaSolicitud extends AppCompatActivity {
     //Variables de los datos del usuario logueado
     String usuario, password, empresa;
 
-    static Uri capturedImageUri = null;
-
     //Variables para guardar la imagen en Base 64 y su nombre (Tec_)
-    String Base64IdentificacionFrente, Base64IdentificacionAnverso, Base64Contrato1, Base64Contrato2, Base64Firma, Base64Extra1, Base64Extra2, Base64Extra3, Base64Extra4, Base64Extra5 = " ";
-    String NombreIdentificacionFrente, NombreIdentificacionAnverso, NombreContrato1, NombreContrato2, NombreFirma, NombreExtra1, NombreExtra2, NombreExtra3, NombreExtra4, NombreExtra5 = "";
+    String Base64IdentificacionFrente = "", Base64IdentificacionAnverso = "", Base64Contrato1 = "", Base64Contrato2 = "", Base64Firma = "", Base64Extra1 = "", Base64Extra2 = "", Base64Extra3 = "", Base64Extra4 = "", Base64Extra5 = "";
+    String NombreIdentificacionFrente = "", NombreIdentificacionAnverso = "", NombreContrato1 = "", NombreContrato2 = "", NombreFirma = "", NombreExtra1 = "", NombreExtra2 = "", NombreExtra3 = "", NombreExtra4 = "", NombreExtra5 = "";
+
+    //Declaracion de los imageButton y textview para la parte de documentos
+    ImageButton ImgExtra1, ImgExtra2, ImgExtra3, ImgExtra4, ImgExtra5;
+
+    //Identificador
+    TextView textExtra1, textExtra2, textExtra3, textExtra4, textExtra5;
+
+    //Nombre de la foto en textview de extras
+    TextView textNombreExtra1, textNombreExtra2, textNombreExtra3, textNombreExtra4, textNombreExtra5;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -292,6 +309,50 @@ public class NuevaSolicitud extends AppCompatActivity {
         SpinnerNacionalidadSegunda = (Spinner) findViewById(R.id.SpinnerNacionalidadSegunda);
         SpinnerNacionalidadTercera = (Spinner) findViewById(R.id.SpinnerNacionalidadTercera);
 
+        //Creación de los view de los imageButton y textview para la parte de documentos
+        ImgExtra1 = (ImageButton) findViewById(R.id.ImgExtra1);
+        ImgExtra2 = (ImageButton) findViewById(R.id.ImgExtra2);
+        ImgExtra3 = (ImageButton) findViewById(R.id.ImgExtra3);
+        ImgExtra4 = (ImageButton) findViewById(R.id.ImgExtra4);
+        ImgExtra5 = (ImageButton) findViewById(R.id.ImgExtra5);
+
+        //Identficador
+        textExtra1 = (TextView) findViewById(R.id.textExtra1);
+        textExtra2 = (TextView) findViewById(R.id.textExtra2);
+        textExtra3 = (TextView) findViewById(R.id.textExtra3);
+        textExtra4 = (TextView) findViewById(R.id.textExtra4);
+        textExtra5 = (TextView) findViewById(R.id.textExtra5);
+
+        //Nombre de las fotos de extras
+        textNombreExtra1 = (TextView) findViewById(R.id.textNombreExtra1);
+        textNombreExtra2 = (TextView) findViewById(R.id.textNombreExtra2);
+        textNombreExtra3 = (TextView) findViewById(R.id.textNombreExtra3);
+        textNombreExtra4 = (TextView) findViewById(R.id.textNombreExtra4);
+        textNombreExtra5 = (TextView) findViewById(R.id.textNombreExtra5);
+
+        //Se ocultan los edittext de persona politica ya que estan marcados como no
+        txtFuncionPolitica.setVisibility(View.GONE);
+        txtFuncionParentesco.setVisibility(View.GONE);
+        txtParentescoPolitico.setVisibility(View.GONE);
+
+        //Se ocultan los imagebutton y textview para que se hagan visibles al pulsar uno secuncialmente
+        ImgExtra2.setVisibility(View.GONE);
+        ImgExtra3.setVisibility(View.GONE);
+        ImgExtra4.setVisibility(View.GONE);
+        ImgExtra5.setVisibility(View.GONE);
+
+        //Identificador
+        textExtra2.setVisibility(View.GONE);
+        textExtra3.setVisibility(View.GONE);
+        textExtra4.setVisibility(View.GONE);
+        textExtra5.setVisibility(View.GONE);
+
+        //Etiquetas para los nombres de las fotos de extras
+        textNombreExtra2.setVisibility(View.GONE);
+        textNombreExtra3.setVisibility(View.GONE);
+        textNombreExtra4.setVisibility(View.GONE);
+        textNombreExtra5.setVisibility(View.GONE);
+
         //Verifica cual es el catalago activo y hace una cosulta para tomar los valores y llenar el spinner
         consultaCatalogoActivo();
 
@@ -360,11 +421,7 @@ public class NuevaSolicitud extends AppCompatActivity {
 
         textGeneralesHead.setBackgroundColor(Color.parseColor("#00E676"));
 
-        txtFuncionPolitica.setEnabled(false);
-        txtFuncionParentesco.setEnabled(false);
-        txtParentescoPolitico.setEnabled(false);
-
-        if (ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+        if (ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED && ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED && ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
 
             ImgIdentificacionFrente.setEnabled(false);
             ImgIdentificacionAtras.setEnabled(false);
@@ -628,22 +685,22 @@ public class NuevaSolicitud extends AppCompatActivity {
                                 "    <Fechanacdia>" + diaNac + "</Fechanacdia>\n" +
                                 "    <Rfc>" + txtRFC.getText().toString() + "</Rfc>\n" +
                                 "    <Edocivil>" + PosicionEdoCivilGeneral + "</Edocivil>\n" +
-                                "    <Nodependiente>" +ValorNumeroDependientes+ "</Nodependiente>\n" +
+                                "    <Nodependiente>" + ValorNumeroDependientes + "</Nodependiente>\n" +
                                 "    <Cveperspol>2</Cveperspol>\n" +
                                 "    <FechasnacMes>" + mesNac + "</FechasnacMes>\n" +
                                 "    <FechanacAnio>" + anioNac + "</FechanacAnio>\n" +
                                 "  </generales>\n" +
                                 "  <doc>\n" +
-                                "    <IdentificacionFrentePath>"+NombreIdentificacionFrente+"</IdentificacionFrentePath>\n" +
-                                "    <IdentificacionAtrasPath>"+NombreIdentificacionAnverso+"</IdentificacionAtrasPath>\n" +
-                                "    <Contrato1Path>"+NombreContrato1+"</Contrato1Path>\n" +
-                                "    <Contrato2Path>"+NombreContrato2+"</Contrato2Path>\n" +
-                                "    <Extra1>TEC_636395913267419058.jpg</Extra1>\n" +
-                                "    <Extra2>................................................................</Extra2>\n" +
-                                "    <Extra3>................................................................</Extra3>\n" +
-                                "    <Extra4>................................................................</Extra4>\n" +
-                                "    <Extra5>................................................................</Extra5>\n" +
-                                "    <FirmaPath>TEC_636395912150998843.jpg</FirmaPath>\n" +
+                                "    <IdentificacionFrentePath>" + NombreIdentificacionFrente + "</IdentificacionFrentePath>\n" +
+                                "    <IdentificacionAtrasPath>" + NombreIdentificacionAnverso + "</IdentificacionAtrasPath>\n" +
+                                "    <Contrato1Path>" + NombreContrato1 + "</Contrato1Path>\n" +
+                                "    <Contrato2Path>" + NombreContrato2 + "</Contrato2Path>\n" +
+                                "    <Extra1>" + NombreExtra1 + "</Extra1>\n" +
+                                "    <Extra2>" + NombreExtra2 + "</Extra2>\n" +
+                                "    <Extra3>" + NombreExtra3 + "</Extra3>\n" +
+                                "    <Extra4>" + NombreExtra4 + "</Extra4>\n" +
+                                "    <Extra5>" + NombreExtra5 + "</Extra5>\n" +
+                                "    <FirmaPath>"+NombreFirma+"</FirmaPath>\n" +
                                 "  </doc>\n" +
                                 "  <domicilio>\n" +
                                 "    <Calle>" + txtCalle.getText().toString() + "</Calle>\n" +
@@ -843,7 +900,15 @@ public class NuevaSolicitud extends AppCompatActivity {
 
     public void foto(View view) {
 
-        Intent abrirCamara = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+        Fragment fragment = null;
+
+        long seconds = TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis());
+
+        String nombre = "TEC_" + seconds + ".jpg";
+
+        Lienzo lienzo = (Lienzo) findViewById(R.id.Lienzo);
+
+        Intent abrirCamara = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 
         switch (view.getId()) {
 
@@ -875,18 +940,97 @@ public class NuevaSolicitud extends AppCompatActivity {
 
             case R.id.ImgFirmaNew:
 
-                Intent intent = new Intent(getApplicationContext(), Firmar.class);
-                startActivity(intent);
+                fragment = new FragmentFirma();
+
+                break;
+
+            case R.id.ImgExtra1:
+
+                startActivityForResult(abrirCamara, CAMERA_EXTRA1);
+
+                break;
+
+            case R.id.ImgExtra2:
+
+                startActivityForResult(abrirCamara, CAMERA_EXTRA2);
+
+                break;
+
+            case R.id.ImgExtra3:
+
+                startActivityForResult(abrirCamara, CAMERA_EXTRA3);
+
+                break;
+
+            case R.id.ImgExtra4:
+
+                startActivityForResult(abrirCamara, CAMERA_EXTRA4);
+
+                break;
+
+            case R.id.ImgExtra5:
+
+                startActivityForResult(abrirCamara, CAMERA_EXTRA5);
+
+                break;
+
+            case R.id.btnBorrarFirma:
+
+                lienzo.clearCanvas();
+
+                break;
+
+            case R.id.btnGuardarFirma:
+
+                Bitmap viewCapture = null;
+
+                lienzo.setDrawingCacheEnabled(true);
+
+                viewCapture = Bitmap.createBitmap(lienzo.getDrawingCache());
+
+                lienzo.setDrawingCacheEnabled(false);
+
+                ImgFirma.setImageBitmap(viewCapture);
+
+                lienzo.clearCanvas();
+
+                NombreFirma = nombre;
+
+                TextView textNombreFirma = (TextView) findViewById(R.id.textNombreFirma);
+                textNombreFirma.setText(NombreFirma);
+
+                ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+                viewCapture.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
+                byte[] byteArray = byteArrayOutputStream.toByteArray();
+
+                Base64Firma = Base64.encodeToString(byteArray, Base64.DEFAULT);
+
+                fragment = new FragmentFirma();
+
+                if (fragment != null) {
+
+                    FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                    ft.hide(fragment);
+                    ft.commit();
+                }
 
                 break;
         }
+
+        if (fragment != null) {
+
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.fragment, fragment);
+            ft.commit();
+        }
+
     }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
         long seconds = TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis());
 
-        String nombre = "TEC_" +seconds+ ".jpg";
+        String nombre = "TEC_" + seconds + ".jpg";
 
         if (requestCode == CAMERA_REQUEST1 && resultCode == RESULT_OK) {
 
@@ -954,6 +1098,97 @@ public class NuevaSolicitud extends AppCompatActivity {
 
             NombreContrato2 = nombre;
         }
+
+        if (requestCode == CAMERA_EXTRA1 && resultCode == RESULT_OK) {
+
+            Bitmap fotoExtra1 = (Bitmap) data.getExtras().get("data");
+            ImgExtra1.setImageBitmap(fotoExtra1);
+
+            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+            fotoExtra1.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
+            byte[] byteArray = byteArrayOutputStream.toByteArray();
+
+            Base64Extra1 = Base64.encodeToString(byteArray, Base64.DEFAULT);
+
+            textNombreExtra1.setText(nombre);
+
+            ImgExtra2.setVisibility(View.VISIBLE);
+            textExtra2.setVisibility(View.VISIBLE);
+            textNombreExtra2.setVisibility(View.VISIBLE);
+
+        }
+
+        if (requestCode == CAMERA_EXTRA2 && resultCode == RESULT_OK) {
+
+            Bitmap fotoExtra2 = (Bitmap) data.getExtras().get("data");
+            ImgExtra2.setImageBitmap(fotoExtra2);
+
+            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+            fotoExtra2.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
+            byte[] byteArray = byteArrayOutputStream.toByteArray();
+
+            Base64Extra2 = Base64.encodeToString(byteArray, Base64.DEFAULT);
+
+            textNombreExtra2.setText(nombre);
+
+            ImgExtra3.setVisibility(View.VISIBLE);
+            textExtra3.setVisibility(View.VISIBLE);
+            textNombreExtra3.setVisibility(View.VISIBLE);
+
+        }
+
+        if (requestCode == CAMERA_EXTRA3 && resultCode == RESULT_OK) {
+
+            Bitmap fotoExtra3 = (Bitmap) data.getExtras().get("data");
+            ImgExtra3.setImageBitmap(fotoExtra3);
+
+            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+            fotoExtra3.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
+            byte[] byteArray = byteArrayOutputStream.toByteArray();
+
+            Base64Extra3 = Base64.encodeToString(byteArray, Base64.DEFAULT);
+
+            textNombreExtra3.setText(nombre);
+
+            ImgExtra4.setVisibility(View.VISIBLE);
+            textExtra4.setVisibility(View.VISIBLE);
+            textNombreExtra4.setVisibility(View.VISIBLE);
+
+        }
+
+        if (requestCode == CAMERA_EXTRA4 && resultCode == RESULT_OK) {
+
+            Bitmap fotoExtra4 = (Bitmap) data.getExtras().get("data");
+            ImgExtra4.setImageBitmap(fotoExtra4);
+
+            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+            fotoExtra4.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
+            byte[] byteArray = byteArrayOutputStream.toByteArray();
+
+            Base64Extra4 = Base64.encodeToString(byteArray, Base64.DEFAULT);
+
+            textNombreExtra4.setText(nombre);
+
+            ImgExtra5.setVisibility(View.VISIBLE);
+            textExtra5.setVisibility(View.VISIBLE);
+            textNombreExtra5.setVisibility(View.VISIBLE);
+
+        }
+
+        if (requestCode == CAMERA_EXTRA5 && resultCode == RESULT_OK) {
+
+            Bitmap fotoExtra5 = (Bitmap) data.getExtras().get("data");
+            ImgExtra5.setImageBitmap(fotoExtra5);
+
+            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+            fotoExtra5.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
+            byte[] byteArray = byteArrayOutputStream.toByteArray();
+
+            Base64Extra5 = Base64.encodeToString(byteArray, Base64.DEFAULT);
+
+            textNombreExtra5.setText(nombre);
+
+        }
     }
 
     public void sexo(View view) {
@@ -975,11 +1210,11 @@ public class NuevaSolicitud extends AppCompatActivity {
         if (radioButton.isChecked()) {
 
             Grupo1 = "SI";
-            txtFuncionPolitica.setEnabled(true);
+            txtFuncionPolitica.setVisibility(View.VISIBLE);
         } else if (radioButton2.isChecked()) {
 
             Grupo1 = "NO";
-            txtFuncionPolitica.setEnabled(false);
+            txtFuncionPolitica.setVisibility(View.GONE);
         }
     }
 
@@ -990,13 +1225,13 @@ public class NuevaSolicitud extends AppCompatActivity {
         if (radioButton5.isChecked()) {
 
             Grupo2 = "SI";
-            txtFuncionParentesco.setEnabled(true);
-            txtParentescoPolitico.setEnabled(true);
+            txtFuncionParentesco.setVisibility(View.VISIBLE);
+            txtParentescoPolitico.setVisibility(View.VISIBLE);
         } else if (radioButton6.isChecked()) {
 
             Grupo2 = "NO";
-            txtFuncionParentesco.setEnabled(false);
-            txtParentescoPolitico.setEnabled(false);
+            txtFuncionParentesco.setVisibility(View.GONE);
+            txtParentescoPolitico.setVisibility(View.GONE);
         }
     }
 
@@ -1012,6 +1247,8 @@ public class NuevaSolicitud extends AppCompatActivity {
                 ImgContrato1.setEnabled(true);
                 ImgContrato2.setEnabled(true);
                 ImgFirma.setEnabled(true);
+
+                toast("Permisos concedidos");
             }
         }
     }

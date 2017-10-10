@@ -1,8 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/Relative"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="@color/colorPrimary">
+
+        <TextView
+            android:id="@+id/TextIdSolicitud"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="25dp"
+            android:text="Nueva Solicitud"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/btnEnviarSolicitud"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/RelativePrincipal"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="5dp"
+            android:layout_marginEnd="29dp"
+            android:layout_marginRight="29dp"
+            android:background="@drawable/botonredondo"
+            android:text="Enviar Solicitud"
+            android:textColor="#FFFFFF"
+            android:textSize="18dp" />
+
+    </android.support.v7.widget.Toolbar>
 
     <RelativeLayout
         android:id="@+id/RelativePrincipal"
@@ -153,13 +191,13 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:fillViewport="true"
-        android:layout_below="@+id/RelativePrincipal">
+        android:layout_below="@+id/RelativePrincipal"
+        android:fillViewport="true">
 
         <RelativeLayout
             android:id="@+id/RelativeGenerales"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <TextView
                 android:id="@+id/TextGenerales"
@@ -190,12 +228,12 @@
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="15dp"
                 android:background="@drawable/edittext_redondo"
+                android:digits="abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ"
                 android:ems="10"
-                android:hint="Nombre del Solicitante"
+                android:hint="Nombre del Solicitante *"
                 android:inputType="textPersonName"
-                android:textAlignment="center"
                 android:maxLength="50"
-                android:digits="abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ"/>
+                android:textAlignment="center" />
 
             <EditText
                 android:id="@+id/txtSegundoNombreGeneral"
@@ -210,12 +248,12 @@
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="17dp"
                 android:background="@drawable/edittext_redondo"
+                android:digits="abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ"
                 android:ems="10"
                 android:hint="Segundo Nombre"
                 android:inputType="textPersonName"
-                android:textAlignment="center"
                 android:maxLength="50"
-                android:digits="abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ"/>
+                android:textAlignment="center" />
 
             <EditText
                 android:id="@+id/txtPaternoGeneral"
@@ -229,11 +267,11 @@
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/edittext_redondo"
+                android:digits="abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ"
                 android:ems="10"
-                android:hint="Apellido Paterno"
+                android:hint="Apellido Paterno *"
                 android:inputType="textPersonName"
-                android:textAlignment="center"
-                android:digits="abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ"/>
+                android:textAlignment="center" />
 
             <EditText
                 android:id="@+id/txtMaternoGeneral"
@@ -246,12 +284,12 @@
                 android:layout_below="@+id/txtPaternoGeneral"
                 android:layout_marginTop="18dp"
                 android:background="@drawable/edittext_redondo"
+                android:digits="abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ"
                 android:ems="10"
-                android:hint="Apellido Materno"
+                android:hint="Apellido Materno *"
                 android:inputType="textPersonName"
-                android:textAlignment="center"
                 android:maxLength="50"
-                android:digits="abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ"/>
+                android:textAlignment="center" />
 
             <Spinner
                 android:id="@+id/SpinnerTipoIdentificacion"
@@ -281,10 +319,10 @@
                 android:layout_marginTop="14dp"
                 android:background="@drawable/edittext_redondo"
                 android:ems="10"
-                android:hint="Numero de Identificación"
+                android:hint="Numero de Identificación *"
                 android:inputType="number"
-                android:textAlignment="center"
-                android:maxLength="20"/>
+                android:maxLength="20"
+                android:textAlignment="center" />
 
             <Spinner
                 android:id="@+id/SpinnerNacionalidadGeneral"
@@ -303,32 +341,32 @@
 
             <TextView
                 android:id="@+id/TextNacimiento"
-                android:background="@drawable/textview_redondo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Fecha de Nacimiento"
-                android:textColor="#000000"
-                android:textSize="18sp"
-                android:textAlignment="center"
+                android:layout_alignEnd="@+id/SpinnerNacionalidadGeneral"
+                android:layout_alignLeft="@+id/SpinnerNacionalidadGeneral"
+                android:layout_alignRight="@+id/SpinnerNacionalidadGeneral"
+                android:layout_alignStart="@+id/SpinnerNacionalidadGeneral"
                 android:layout_below="@+id/SpinnerNacionalidadGeneral"
                 android:layout_marginTop="27dp"
-                android:layout_alignLeft="@+id/SpinnerNacionalidadGeneral"
-                android:layout_alignStart="@+id/SpinnerNacionalidadGeneral"
-                android:layout_alignRight="@+id/SpinnerNacionalidadGeneral"
-                android:layout_alignEnd="@+id/SpinnerNacionalidadGeneral" />
+                android:background="@drawable/textview_redondo"
+                android:text="Fecha de Nacimiento"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="18sp" />
 
             <DatePicker
                 android:id="@+id/PickerNac"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignEnd="@+id/SpinnerNacionalidadGeneral"
+                android:layout_alignLeft="@+id/TextNacimiento"
                 android:layout_alignRight="@+id/SpinnerNacionalidadGeneral"
+                android:layout_alignStart="@+id/TextNacimiento"
                 android:layout_below="@+id/TextNacimiento"
                 android:layout_marginTop="11dp"
-                android:datePickerMode="spinner"
                 android:background="@drawable/calendar_redondo"
-                android:layout_alignLeft="@+id/TextNacimiento"
-                android:layout_alignStart="@+id/TextNacimiento" />
+                android:datePickerMode="spinner" />
 
             <EditText
                 android:id="@+id/txtRFC"
@@ -341,10 +379,10 @@
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="14dp"
                 android:background="@drawable/edittext_redondo"
-                android:hint="RFC"
-                android:textAlignment="center"
+                android:hint="RFC *"
                 android:inputType="textPersonName"
-                android:maxLength="50"/>
+                android:maxLength="50"
+                android:textAlignment="center" />
 
             <Spinner
                 android:id="@+id/SpinnerEdoCivilGeneral"
@@ -358,54 +396,50 @@
                 android:layout_marginTop="14dp"
                 android:background="@drawable/edittext_redondo" />
 
-            <EditText
-                android:id="@+id/txtNumeroDependientes"
+            <Spinner
+                android:id="@+id/SpinnerNumeroDependientes"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="40dp"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:layout_below="@+id/SpinnerEdoCivilGeneral"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="11dp"
-                android:background="@drawable/edittext_redondo"
-                android:hint="Número de Dependientes"
-                android:textAlignment="center"
-                android:maxLength="50"
-                android:inputType="number"/>
+                android:background="@drawable/edittext_redondo" />
 
             <RadioGroup
                 android:id="@+id/GrupoSexo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/SpinnerNacionalidadGeneral"
+                android:layout_alignLeft="@+id/SpinnerNacionalidadGeneral"
+                android:layout_alignRight="@+id/SpinnerNacionalidadGeneral"
+                android:layout_alignStart="@+id/SpinnerNacionalidadGeneral"
                 android:layout_below="@+id/txtNumeroIdentificacion"
                 android:layout_marginTop="21dp"
-                android:gravity="center"
-                android:orientation="horizontal"
                 android:background="@drawable/edittext_redondo"
-                android:layout_alignLeft="@+id/SpinnerNacionalidadGeneral"
-                android:layout_alignStart="@+id/SpinnerNacionalidadGeneral"
-                android:layout_alignRight="@+id/SpinnerNacionalidadGeneral"
-                android:layout_alignEnd="@+id/SpinnerNacionalidadGeneral">
+                android:gravity="center"
+                android:orientation="horizontal">
 
                 <RadioButton
                     android:id="@+id/RadioMujer"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checked="true"
+                    android:onClick="sexo"
                     android:text="Mujer"
-                    tools:ignore="RtlCompat"
-                    android:onClick="sexo"/>
+                    tools:ignore="RtlCompat" />
 
                 <RadioButton
                     android:id="@+id/RadioHombre"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="30dp"
-                    android:text="Hombre"
                     android:checked="false"
-                    tools:ignore="RtlCompat"
-                    android:onClick="sexo"/>
+                    android:onClick="sexo"
+                    android:text="Hombre"
+                    tools:ignore="RtlCompat" />
 
             </RadioGroup>
 
@@ -418,7 +452,7 @@
                 android:layout_alignLeft="@+id/txtCalle"
                 android:layout_alignRight="@+id/TextGenerales"
                 android:layout_alignStart="@+id/txtCalle"
-                android:layout_below="@+id/txtNumeroDependientes"
+                android:layout_below="@+id/SpinnerNumeroDependientes"
                 android:layout_marginTop="57dp"
                 android:background="@drawable/textview_redondo"
                 android:text="Domicilio"
@@ -439,12 +473,12 @@
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="18dp"
                 android:background="@drawable/edittext_redondo"
+                android:digits="abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ"
                 android:ems="10"
-                android:hint="Calle"
+                android:hint="Calle *"
                 android:inputType="textPersonName"
-                android:textAlignment="center"
                 android:maxLength="50"
-                android:digits="abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ"/>
+                android:textAlignment="center" />
 
             <EditText
                 android:id="@+id/txtNoExterior"
@@ -460,10 +494,10 @@
                 android:layout_marginTop="27dp"
                 android:background="@drawable/edittext_redondo"
                 android:ems="10"
-                android:hint="No. Exterior"
+                android:hint="No. Exterior *"
                 android:inputType="number"
-                android:textAlignment="center"
-                android:maxLength="10"/>
+                android:maxLength="10"
+                android:textAlignment="center" />
 
             <EditText
                 android:id="@+id/txtNoInterior"
@@ -481,8 +515,8 @@
                 android:ems="10"
                 android:hint="No. Interior"
                 android:inputType="number"
-                android:textAlignment="center"
-                android:maxLength="10"/>
+                android:maxLength="10"
+                android:textAlignment="center" />
 
             <EditText
                 android:id="@+id/txtColonia"
@@ -497,12 +531,12 @@
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="26dp"
                 android:background="@drawable/edittext_redondo"
+                android:digits="abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ"
                 android:ems="10"
-                android:hint="Colonia"
+                android:hint="Colonia *"
                 android:inputType="textPersonName"
-                android:textAlignment="center"
                 android:maxLength="50"
-                android:digits="abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ"/>
+                android:textAlignment="center" />
 
             <Spinner
                 android:id="@+id/SpinnerEstadoDomicilio"
@@ -551,10 +585,10 @@
                 android:layout_marginTop="19dp"
                 android:background="@drawable/edittext_redondo"
                 android:ems="10"
-                android:hint="CP"
+                android:hint="CP *"
                 android:inputType="number"
-                android:textAlignment="center"
-                android:maxLength="5"/>
+                android:maxLength="5"
+                android:textAlignment="center" />
 
             <EditText
                 android:id="@+id/txtTiempoResidencia"
@@ -570,10 +604,10 @@
                 android:layout_marginTop="18dp"
                 android:background="@drawable/edittext_redondo"
                 android:ems="10"
-                android:hint="Tiempo de Residencia"
+                android:hint="Tiempo de Residencia *"
                 android:inputType="number"
-                android:textAlignment="center"
-                android:maxLength="10"/>
+                android:maxLength="10"
+                android:textAlignment="center" />
 
             <Spinner
                 android:id="@+id/SpinnerEstatusDomicilio"
@@ -604,10 +638,10 @@
                 android:layout_marginTop="18dp"
                 android:background="@drawable/edittext_redondo"
                 android:ems="10"
-                android:hint="Monto de Vivienda"
+                android:hint="Monto de Vivienda *"
                 android:inputType="number"
-                android:textAlignment="center"
-                android:maxLength="10"/>
+                android:maxLength="9"
+                android:textAlignment="center" />
 
             <EditText
                 android:id="@+id/txtCorreo"
@@ -641,10 +675,10 @@
                 android:layout_marginTop="20dp"
                 android:background="@drawable/edittext_redondo"
                 android:ems="10"
-                android:hint="Telefono de Casa"
+                android:hint="Telefono de Casa *"
                 android:inputType="number"
-                android:textAlignment="center"
-                android:maxLength="10"/>
+                android:maxLength="10"
+                android:textAlignment="center" />
 
             <EditText
                 android:id="@+id/txtTelefonoCelular"
@@ -660,10 +694,10 @@
                 android:layout_marginTop="16dp"
                 android:background="@drawable/edittext_redondo"
                 android:ems="10"
-                android:hint="Telefono Celular"
+                android:hint="Telefono Celular *"
                 android:inputType="number"
-                android:textAlignment="center"
-                android:maxLength="10"/>
+                android:maxLength="10"
+                android:textAlignment="center" />
 
             <Spinner
                 android:id="@+id/SpinnerCompaniaMovil"
@@ -709,12 +743,12 @@
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="19dp"
                 android:background="@drawable/edittext_redondo"
+                android:digits="abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ"
                 android:ems="10"
-                android:hint="Nombre de la Empresa"
+                android:hint="Nombre de la Empresa *"
                 android:inputType="textPersonName"
-                android:textAlignment="center"
                 android:maxLength="50"
-                android:digits="abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ"/>
+                android:textAlignment="center" />
 
             <EditText
                 android:id="@+id/txtGiro"
@@ -729,12 +763,12 @@
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="16dp"
                 android:background="@drawable/edittext_redondo"
+                android:digits="abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ"
                 android:ems="10"
-                android:hint="Giro"
+                android:hint="Giro *"
                 android:inputType="textPersonName"
-                android:textAlignment="center"
                 android:maxLength="50"
-                android:digits="abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ"/>
+                android:textAlignment="center" />
 
             <EditText
                 android:id="@+id/txtAntiguedadEmpleo"
@@ -750,10 +784,10 @@
                 android:layout_marginTop="15dp"
                 android:background="@drawable/edittext_redondo"
                 android:ems="10"
-                android:hint="Antigüedad Empleo"
+                android:hint="Antigüedad Empleo *"
                 android:inputType="number"
-                android:textAlignment="center"
-                android:maxLength="3"/>
+                android:maxLength="3"
+                android:textAlignment="center" />
 
             <Spinner
                 android:id="@+id/SpinnerTipoContrato"
@@ -783,12 +817,12 @@
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="18dp"
                 android:background="@drawable/edittext_redondo"
+                android:digits="abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ"
                 android:ems="10"
-                android:hint="Puesto"
+                android:hint="Puesto *"
                 android:inputType="textPersonName"
-                android:textAlignment="center"
                 android:maxLength="50"
-                android:digits="abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ"/>
+                android:textAlignment="center" />
 
             <EditText
                 android:id="@+id/txtIngreso"
@@ -804,10 +838,10 @@
                 android:layout_marginTop="17dp"
                 android:background="@drawable/edittext_redondo"
                 android:ems="10"
-                android:hint="Ingreso"
+                android:hint="Ingreso *"
                 android:inputType="number"
-                android:textAlignment="center"
-                android:maxLength="10"/>
+                android:maxLength="10"
+                android:textAlignment="center" />
 
             <EditText
                 android:id="@+id/txtTiempoCasado"
@@ -825,8 +859,8 @@
                 android:ems="10"
                 android:hint="Años de Casado"
                 android:inputType="number"
-                android:textAlignment="center"
-                android:maxLength="3"/>
+                android:maxLength="3"
+                android:textAlignment="center" />
 
             <EditText
                 android:id="@+id/txtFuenteIngresos"
@@ -844,8 +878,8 @@
                 android:ems="10"
                 android:hint="Fuente Otros Ingresos"
                 android:inputType="number"
-                android:textAlignment="center"
-                android:maxLength="10"/>
+                android:maxLength="10"
+                android:textAlignment="center" />
 
             <EditText
                 android:id="@+id/txtOtrosIngresos"
@@ -863,8 +897,8 @@
                 android:ems="10"
                 android:hint="Otros Ingresos"
                 android:inputType="number"
-                android:textAlignment="center"
-                android:maxLength="10"/>
+                android:maxLength="10"
+                android:textAlignment="center" />
 
             <EditText
                 android:id="@+id/txtCalleIngresos"
@@ -879,12 +913,12 @@
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="21dp"
                 android:background="@drawable/edittext_redondo"
+                android:digits="abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ"
                 android:ems="10"
-                android:hint="Calle"
+                android:hint="Calle *"
                 android:inputType="textPersonName"
-                android:textAlignment="center"
                 android:maxLength="50"
-                android:digits="abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ"/>
+                android:textAlignment="center" />
 
             <EditText
                 android:id="@+id/txtNoExteriorIngresos"
@@ -900,10 +934,10 @@
                 android:layout_marginTop="31dp"
                 android:background="@drawable/edittext_redondo"
                 android:ems="10"
-                android:hint="No. Exterior"
+                android:hint="No. Exterior *"
                 android:inputType="number"
-                android:textAlignment="center"
-                android:maxLength="10"/>
+                android:maxLength="10"
+                android:textAlignment="center" />
 
             <EditText
                 android:id="@+id/txtNoInteriorIngresos"
@@ -921,8 +955,8 @@
                 android:ems="10"
                 android:hint="No. Interior"
                 android:inputType="number"
-                android:textAlignment="center"
-                android:maxLength="10"/>
+                android:maxLength="10"
+                android:textAlignment="center" />
 
             <EditText
                 android:id="@+id/txtColoniaIngresos"
@@ -937,12 +971,12 @@
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="22dp"
                 android:background="@drawable/edittext_redondo"
+                android:digits="abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ"
                 android:ems="10"
-                android:hint="Colonia"
+                android:hint="Colonia *"
                 android:inputType="textPersonName"
-                android:textAlignment="center"
                 android:maxLength="50"
-                android:digits="abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ"/>
+                android:textAlignment="center" />
 
             <Spinner
                 android:id="@+id/SpinnerEstadoIngresos"
@@ -988,10 +1022,10 @@
                 android:layout_marginTop="17dp"
                 android:background="@drawable/edittext_redondo"
                 android:ems="10"
-                android:hint="CP"
+                android:hint="CP *"
                 android:inputType="number"
-                android:textAlignment="center"
-                android:maxLength="5"/>
+                android:maxLength="5"
+                android:textAlignment="center" />
 
             <EditText
                 android:id="@+id/txtTelefonoOficina"
@@ -1005,11 +1039,11 @@
                 android:layout_toStartOf="@+id/txtExtension"
                 android:background="@drawable/edittext_redondo"
                 android:ems="10"
-                android:hint="Telefono Oficina"
+                android:hint="Telefono Oficina *"
                 android:inputType="number"
+                android:maxLength="10"
                 android:textAlignment="center"
-                tools:ignore="RtlCompat"
-                android:maxLength="10"/>
+                tools:ignore="RtlCompat" />
 
             <EditText
                 android:id="@+id/txtExtension"
@@ -1024,8 +1058,8 @@
                 android:ems="10"
                 android:hint="EXT."
                 android:inputType="number"
-                android:textAlignment="center"
-                android:maxLength="5"/>
+                android:maxLength="5"
+                android:textAlignment="center" />
 
             <TextView
                 android:id="@+id/TextPersonaPolitica"
@@ -1059,31 +1093,31 @@
                 android:id="@+id/Grupo1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/TextPersonaPolitica"
+                android:layout_alignLeft="@+id/TextPersonaPolitica"
+                android:layout_alignRight="@+id/TextPersonaPolitica"
+                android:layout_alignStart="@+id/TextPersonaPolitica"
                 android:layout_below="@+id/textView3"
                 android:layout_marginTop="20dp"
-                android:gravity="center"
-                android:orientation="horizontal"
                 android:background="@drawable/edittext_redondo"
-                android:layout_alignLeft="@+id/TextPersonaPolitica"
-                android:layout_alignStart="@+id/TextPersonaPolitica"
-                android:layout_alignRight="@+id/TextPersonaPolitica"
-                android:layout_alignEnd="@+id/TextPersonaPolitica">
+                android:gravity="center"
+                android:orientation="horizontal">
 
                 <RadioButton
                     android:id="@+id/radioButton"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:text="SI"
                     android:checked="false"
-                    android:onClick="Grupo1"/>
+                    android:onClick="Grupo1"
+                    android:text="SI" />
 
                 <RadioButton
                     android:id="@+id/radioButton2"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:text="NO"
                     android:checked="true"
-                    android:onClick="Grupo1"/>
+                    android:onClick="Grupo1"
+                    android:text="NO" />
 
             </RadioGroup>
 
@@ -1091,17 +1125,17 @@
                 android:id="@+id/txtFuncionPolitica"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/edittext_redondo"
-                android:maxLength="50"
-                android:digits="abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ"
-                android:layout_below="@+id/Grupo1"
-                android:layout_alignLeft="@+id/Grupo1"
-                android:layout_alignStart="@+id/Grupo1"
-                android:layout_alignRight="@+id/Grupo1"
                 android:layout_alignEnd="@+id/Grupo1"
-                android:hint="¿Qué funcion desempeña o ha desempeñado?"
-                android:textAlignment="center"
-                android:layout_marginTop="30dp" />
+                android:layout_alignLeft="@+id/Grupo1"
+                android:layout_alignRight="@+id/Grupo1"
+                android:layout_alignStart="@+id/Grupo1"
+                android:layout_below="@+id/Grupo1"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/edittext_redondo"
+                android:digits="abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ"
+                android:hint="¿Qué funcion desempeña o ha desempeñado? *"
+                android:maxLength="50"
+                android:textAlignment="center" />
 
             <TextView
                 android:id="@+id/textView4"
@@ -1110,7 +1144,7 @@
                 android:layout_below="@+id/txtFuncionPolitica"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="42dp"
-                android:text="¿Tiene parentesco con alguien que haya sido una persona politicamente expuesta?"
+                android:text="¿Tiene parentesco con alguien que haya sido una persona politicamente expuesta? "
                 android:textAlignment="center"
                 android:textColor="#000000"
                 android:textSize="20sp" />
@@ -1119,32 +1153,31 @@
                 android:id="@+id/Grupo2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/TextReferenciasFamiliares"
+                android:layout_alignLeft="@+id/TextReferenciasFamiliares"
+                android:layout_alignRight="@+id/TextReferenciasFamiliares"
+                android:layout_alignStart="@+id/TextReferenciasFamiliares"
                 android:layout_below="@+id/textView4"
                 android:layout_marginTop="32dp"
-                android:gravity="center"
-                android:orientation="horizontal"
                 android:background="@drawable/edittext_redondo"
-                android:layout_alignLeft="@+id/TextReferenciasFamiliares"
-                android:layout_alignStart="@+id/TextReferenciasFamiliares"
-                android:layout_alignRight="@+id/TextReferenciasFamiliares"
-                android:layout_alignEnd="@+id/TextReferenciasFamiliares">
+                android:gravity="center"
+                android:orientation="horizontal">
 
                 <RadioButton
                     android:id="@+id/radioButton5"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:text="SI"
                     android:checked="false"
-                    android:onClick="Grupo2"/>
+                    android:onClick="Grupo2"
+                    android:text="SI" />
 
                 <RadioButton
                     android:id="@+id/radioButton6"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:checked="true"
-                    android:text="NO"
                     android:onClick="Grupo2"
-                    />
+                    android:text="NO" />
 
             </RadioGroup>
 
@@ -1152,33 +1185,33 @@
                 android:id="@+id/txtFuncionParentesco"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/edittext_redondo"
-                android:maxLength="50"
-                android:digits="abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ"
-                android:layout_below="@+id/Grupo2"
-                android:layout_alignLeft="@+id/Grupo2"
-                android:layout_alignStart="@+id/Grupo2"
-                android:layout_alignRight="@+id/Grupo2"
                 android:layout_alignEnd="@+id/Grupo2"
-                android:hint="¿Qué funcion desempeña o ha desempeñado?"
-                android:textAlignment="center"
-                android:layout_marginTop="30dp" />
+                android:layout_alignLeft="@+id/Grupo2"
+                android:layout_alignRight="@+id/Grupo2"
+                android:layout_alignStart="@+id/Grupo2"
+                android:layout_below="@+id/Grupo2"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/edittext_redondo"
+                android:digits="abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ"
+                android:hint="¿Qué funcion desempeña o ha desempeñado? *"
+                android:maxLength="50"
+                android:textAlignment="center" />
 
             <EditText
                 android:id="@+id/txtParentescoPolitico"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/edittext_redondo"
-                android:maxLength="50"
-                android:digits="abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ"
-                android:layout_below="@+id/txtFuncionParentesco"
-                android:layout_alignLeft="@+id/txtFuncionParentesco"
-                android:layout_alignStart="@+id/txtFuncionParentesco"
-                android:layout_alignRight="@+id/txtFuncionParentesco"
                 android:layout_alignEnd="@+id/txtFuncionParentesco"
-                android:hint="Parentesco"
-                android:textAlignment="center"
-                android:layout_marginTop="30dp" />
+                android:layout_alignLeft="@+id/txtFuncionParentesco"
+                android:layout_alignRight="@+id/txtFuncionParentesco"
+                android:layout_alignStart="@+id/txtFuncionParentesco"
+                android:layout_below="@+id/txtFuncionParentesco"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/edittext_redondo"
+                android:digits="abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ"
+                android:hint="Parentesco *"
+                android:maxLength="50"
+                android:textAlignment="center" />
 
             <TextView
                 android:id="@+id/TextReferenciasFamiliares"
@@ -1209,12 +1242,12 @@
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="28dp"
                 android:background="@drawable/edittext_redondo"
+                android:digits="abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ"
                 android:ems="10"
-                android:hint="Nombre 1ra Referencia"
+                android:hint="Nombre 1ra Referencia *"
                 android:inputType="textPersonName"
-                android:textAlignment="center"
                 android:maxLength="50"
-                android:digits="abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ"/>
+                android:textAlignment="center" />
 
             <EditText
                 android:id="@+id/txtPaternoPrimera"
@@ -1229,12 +1262,12 @@
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="21dp"
                 android:background="@drawable/edittext_redondo"
+                android:digits="abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ"
                 android:ems="10"
-                android:hint="Apellido Paterno"
+                android:hint="Apellido Paterno *"
                 android:inputType="textPersonName"
-                android:textAlignment="center"
                 android:maxLength="50"
-                android:digits="abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ"/>
+                android:textAlignment="center" />
 
             <EditText
                 android:id="@+id/txtMaternoPrimera"
@@ -1247,12 +1280,12 @@
                 android:layout_below="@+id/txtPaternoPrimera"
                 android:layout_marginTop="18dp"
                 android:background="@drawable/edittext_redondo"
+                android:digits="abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ"
                 android:ems="10"
-                android:hint="Apellido Materno"
+                android:hint="Apellido Materno *"
                 android:inputType="textPersonName"
-                android:textAlignment="center"
                 android:maxLength="50"
-                android:digits="abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ"/>
+                android:textAlignment="center" />
 
             <Spinner
                 android:id="@+id/SpinnerNacionalidadPrimera"
@@ -1283,10 +1316,10 @@
                 android:layout_marginTop="21dp"
                 android:background="@drawable/edittext_redondo"
                 android:ems="10"
-                android:hint="Telefono de Casa"
+                android:hint="Telefono de Casa *"
                 android:inputType="number"
-                android:textAlignment="center"
-                android:maxLength="10"/>
+                android:maxLength="10"
+                android:textAlignment="center" />
 
             <EditText
                 android:id="@+id/txtNombreSegundaR"
@@ -1301,12 +1334,12 @@
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="51dp"
                 android:background="@drawable/edittext_redondo"
+                android:digits="abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ"
                 android:ems="10"
-                android:hint="Nombre 2da Referencia"
+                android:hint="Nombre 2da Referencia *"
                 android:inputType="textPersonName"
-                android:textAlignment="center"
                 android:maxLength="50"
-                android:digits="abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ"/>
+                android:textAlignment="center" />
 
             <EditText
                 android:id="@+id/txtPaternoSegunda"
@@ -1321,12 +1354,12 @@
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="17dp"
                 android:background="@drawable/edittext_redondo"
+                android:digits="abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ"
                 android:ems="10"
-                android:hint="Apellido Paterno"
+                android:hint="Apellido Paterno *"
                 android:inputType="textPersonName"
-                android:textAlignment="center"
                 android:maxLength="50"
-                android:digits="abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ"/>
+                android:textAlignment="center" />
 
             <EditText
                 android:id="@+id/txtMaternoSegunda"
@@ -1341,12 +1374,12 @@
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="21dp"
                 android:background="@drawable/edittext_redondo"
+                android:digits="abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ"
                 android:ems="10"
-                android:hint="Apellido Materno"
+                android:hint="Apellido Materno *"
                 android:inputType="textPersonName"
-                android:textAlignment="center"
                 android:maxLength="50"
-                android:digits="abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ"/>
+                android:textAlignment="center" />
 
             <Spinner
                 android:id="@+id/SpinnerNacionalidadSegunda"
@@ -1377,10 +1410,10 @@
                 android:layout_marginTop="21dp"
                 android:background="@drawable/edittext_redondo"
                 android:ems="10"
-                android:hint="Telefono de Casa"
+                android:hint="Telefono de Casa *"
                 android:inputType="number"
-                android:textAlignment="center"
-                android:maxLength="10"/>
+                android:maxLength="10"
+                android:textAlignment="center" />
 
             <EditText
                 android:id="@+id/txtNombreTercera"
@@ -1395,12 +1428,12 @@
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="63dp"
                 android:background="@drawable/edittext_redondo"
+                android:digits="abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ"
                 android:ems="10"
                 android:hint="Nombre 3ra Referencia"
                 android:inputType="textPersonName"
-                android:textAlignment="center"
                 android:maxLength="50"
-                android:digits="abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ"/>
+                android:textAlignment="center" />
 
             <EditText
                 android:id="@+id/txtPaternoTercera"
@@ -1415,12 +1448,12 @@
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="18dp"
                 android:background="@drawable/edittext_redondo"
+                android:digits="abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ"
                 android:ems="10"
                 android:hint="Apellido Paterno"
                 android:inputType="textPersonName"
-                android:textAlignment="center"
                 android:maxLength="50"
-                android:digits="abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ" />
+                android:textAlignment="center" />
 
             <EditText
                 android:id="@+id/txtMaternoTercera"
@@ -1435,12 +1468,12 @@
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="22dp"
                 android:background="@drawable/edittext_redondo"
+                android:digits="abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ"
                 android:ems="10"
                 android:hint="Apellido Materno"
                 android:inputType="textPersonName"
-                android:textAlignment="center"
                 android:maxLength="50"
-                android:digits="abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ"/>
+                android:textAlignment="center" />
 
             <Spinner
                 android:id="@+id/SpinnerNacionalidadTercera"
@@ -1470,9 +1503,9 @@
                 android:layout_marginTop="18dp"
                 android:background="@drawable/edittext_redondo"
                 android:hint="Telefono de Casa"
-                android:textAlignment="center"
+                android:inputType="number"
                 android:maxLength="10"
-                android:inputType="number"/>
+                android:textAlignment="center" />
 
             <TextView
                 android:id="@+id/TextDocumentos"
@@ -1494,91 +1527,122 @@
                 android:id="@+id/textIdentificacionFrente"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Identificacion Frente"
-                android:background="@drawable/textview_redondo"
-                android:textColor="#000000"
-                android:textSize="14sp"
-                android:textAlignment="center"
                 android:layout_above="@+id/ImgIdentificacionAtrasNew"
+                android:layout_alignEnd="@+id/ImgIdentificacionFrenteNew"
                 android:layout_alignLeft="@+id/ImgIdentificacionFrenteNew"
-                android:layout_alignStart="@+id/ImgIdentificacionFrenteNew"
                 android:layout_alignRight="@+id/ImgIdentificacionFrenteNew"
-                android:layout_alignEnd="@+id/ImgIdentificacionFrenteNew" />
+                android:layout_alignStart="@+id/ImgIdentificacionFrenteNew"
+                android:background="@drawable/textview_redondo"
+                android:text="Identificacion Frente"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="14sp" />
 
             <ImageButton
                 android:id="@+id/ImgIdentificacionFrenteNew"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
-                android:layout_marginTop="69dp"
-                android:layout_marginBottom="10dp"
-                android:onClick="foto"
-                android:layout_below="@+id/TextDocumentos"
                 android:layout_alignLeft="@+id/TextDocumentos"
-                android:layout_alignStart="@+id/TextDocumentos" />
+                android:layout_alignStart="@+id/TextDocumentos"
+                android:layout_below="@+id/TextDocumentos"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="69dp"
+                android:onClick="foto" />
+
+            <TextView
+                android:id="@+id/textNombreIdentificacionFrente"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/textContrato1"
+                android:layout_alignLeft="@+id/ImgIdentificacionFrenteNew"
+                android:layout_alignRight="@+id/textContrato1"
+                android:layout_alignStart="@+id/ImgIdentificacionFrenteNew"
+                android:layout_below="@+id/ImgIdentificacionFrenteNew" />
 
             <TextView
                 android:id="@+id/textIdentificacionAtras"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Identificacion Anverso"
-                android:background="@drawable/textview_redondo"
-                android:textColor="#000000"
-                android:textSize="14sp"
-                android:textAlignment="center"
                 android:layout_above="@+id/ImgIdentificacionAtrasNew"
-                android:layout_alignRight="@+id/ImgIdentificacionAtrasNew"
                 android:layout_alignEnd="@+id/ImgIdentificacionAtrasNew"
                 android:layout_alignLeft="@+id/ImgIdentificacionAtrasNew"
-                android:layout_alignStart="@+id/ImgIdentificacionAtrasNew" />
+                android:layout_alignRight="@+id/ImgIdentificacionAtrasNew"
+                android:layout_alignStart="@+id/ImgIdentificacionAtrasNew"
+                android:background="@drawable/textview_redondo"
+                android:text="Identificacion Anverso"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="14sp" />
 
             <ImageButton
                 android:id="@+id/ImgIdentificacionAtrasNew"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
-                android:onClick="foto"
-                android:layout_alignTop="@+id/ImgIdentificacionFrenteNew"
+                android:layout_alignEnd="@+id/TextDocumentos"
                 android:layout_alignRight="@+id/TextDocumentos"
-                android:layout_alignEnd="@+id/TextDocumentos" />
+                android:layout_alignTop="@+id/ImgIdentificacionFrenteNew"
+                android:onClick="foto" />
+
+            <TextView
+                android:id="@+id/textNombreIdentificacionAnverso"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/textNombreIdentificacionFrente"
+                android:layout_alignBottom="@+id/textNombreIdentificacionFrente"
+                android:layout_alignEnd="@+id/ImgIdentificacionAtrasNew"
+                android:layout_alignLeft="@+id/ImgIdentificacionAtrasNew"
+                android:layout_alignRight="@+id/ImgIdentificacionAtrasNew"
+                android:layout_alignStart="@+id/ImgIdentificacionAtrasNew" />
 
             <TextView
                 android:id="@+id/textContrato1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Contrato 1"
-                android:background="@drawable/textview_redondo"
-                android:textColor="#000000"
-                android:textSize="14sp"
-                android:textAlignment="center"
                 android:layout_above="@+id/ImgContrato2New"
+                android:layout_alignEnd="@+id/ImgContrato1New"
                 android:layout_alignLeft="@+id/ImgContrato1New"
-                android:layout_alignStart="@+id/ImgContrato1New"
                 android:layout_alignRight="@+id/ImgContrato1New"
-                android:layout_alignEnd="@+id/ImgContrato1New" />
+                android:layout_alignStart="@+id/ImgContrato1New"
+                android:background="@drawable/textview_redondo"
+                android:text="Contrato 1"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="14sp" />
 
             <ImageButton
                 android:id="@+id/ImgContrato1New"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
-                android:layout_marginTop="61dp"
-                android:onClick="foto"
-                android:layout_below="@+id/ImgIdentificacionFrenteNew"
                 android:layout_alignLeft="@+id/ImgIdentificacionFrenteNew"
-                android:layout_alignStart="@+id/ImgIdentificacionFrenteNew" />
+                android:layout_alignStart="@+id/ImgIdentificacionFrenteNew"
+                android:layout_below="@+id/ImgIdentificacionFrenteNew"
+                android:layout_marginTop="61dp"
+                android:onClick="foto" />
+
+            <TextView
+                android:id="@+id/textNombreContrato1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/ImgContrato1New"
+                android:layout_alignLeft="@+id/ImgContrato1New"
+                android:layout_alignRight="@+id/ImgContrato1New"
+                android:layout_alignStart="@+id/ImgContrato1New"
+                android:layout_below="@+id/ImgContrato1New" />
 
             <TextView
                 android:id="@+id/textContrato2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Contrato 2"
-                android:background="@drawable/textview_redondo"
-                android:textColor="#000000"
-                android:textSize="14sp"
-                android:textAlignment="center"
                 android:layout_above="@+id/ImgContrato2New"
+                android:layout_alignEnd="@+id/ImgContrato2New"
                 android:layout_alignLeft="@+id/ImgContrato2New"
-                android:layout_alignStart="@+id/ImgContrato2New"
                 android:layout_alignRight="@+id/ImgContrato2New"
-                android:layout_alignEnd="@+id/ImgContrato2New" />
+                android:layout_alignStart="@+id/ImgContrato2New"
+                android:background="@drawable/textview_redondo"
+                android:text="Contrato 2"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="14sp" />
 
             <ImageButton
                 android:id="@+id/ImgContrato2New"
@@ -1590,53 +1654,257 @@
                 android:onClick="foto" />
 
             <TextView
+                android:id="@+id/textNombreContrato2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/ImgContrato2New"
+                android:layout_alignLeft="@+id/ImgContrato2New"
+                android:layout_alignRight="@+id/ImgContrato2New"
+                android:layout_alignStart="@+id/ImgContrato2New"
+                android:layout_below="@+id/ImgContrato2New" />
+
+            <TextView
                 android:id="@+id/textFirma"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Firma"
-                android:background="@drawable/textview_redondo"
-                android:textColor="#000000"
-                android:textSize="14sp"
-                android:textAlignment="center"
-                android:layout_below="@+id/ImgContrato1New"
+                android:layout_alignEnd="@+id/ImgFirmaNew"
                 android:layout_alignLeft="@+id/ImgFirmaNew"
-                android:layout_alignStart="@+id/ImgFirmaNew"
-                android:layout_marginTop="36dp"
                 android:layout_alignRight="@+id/ImgFirmaNew"
-                android:layout_alignEnd="@+id/ImgFirmaNew" />
+                android:layout_alignStart="@+id/ImgFirmaNew"
+                android:layout_below="@+id/ImgContrato1New"
+                android:layout_marginTop="36dp"
+                android:background="@drawable/textview_redondo"
+                android:text="Firma"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="14sp" />
 
             <ImageButton
                 android:id="@+id/ImgFirmaNew"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
-                android:layout_marginTop="56dp"
+                android:layout_marginTop="15dp"
                 android:onClick="foto"
                 tools:ignore="RtlCompat"
-                android:layout_below="@+id/ImgContrato1New"
-                android:layout_alignLeft="@+id/ImgContrato1New"
-                android:layout_alignStart="@+id/ImgContrato1New" />
+                android:layout_below="@+id/textFirma"
+                android:layout_alignLeft="@+id/textNombreContrato1"
+                android:layout_alignStart="@+id/textNombreContrato1" />
 
-            <Button
-                android:id="@+id/btnEnviarSolicitud"
-                android:layout_width="150dp"
+            <TextView
+                android:id="@+id/textNombreFirma"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/ImgFirmaNew"
-                android:layout_centerHorizontal="true"
-                android:layout_marginBottom="30dp"
-                android:layout_marginTop="30dp"
-                android:background="@drawable/botonredondo"
-                android:text="Enviar Solicitud"
-                android:textColor="#FFFFFF" />
+                android:layout_alignEnd="@+id/ImgFirmaNew"
+                android:layout_alignLeft="@+id/ImgFirmaNew"
+                android:layout_alignRight="@+id/ImgFirmaNew"
+                android:layout_alignStart="@+id/ImgFirmaNew"
+                android:layout_below="@+id/ImgFirmaNew" />
+
+            <TextView
+                android:id="@+id/textExtra1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/textFirma"
+                android:layout_alignBottom="@+id/textFirma"
+                android:layout_alignEnd="@+id/ImgExtra1"
+                android:layout_alignLeft="@+id/ImgExtra1"
+                android:layout_alignRight="@+id/ImgExtra1"
+                android:layout_alignStart="@+id/ImgExtra1"
+                android:background="@drawable/textview_redondo"
+                android:text="Extra 1"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="14sp" />
+
+            <ImageButton
+                android:id="@+id/ImgExtra1"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:onClick="foto"
+                tools:ignore="RtlCompat"
+                android:layout_above="@+id/textNombreExtra1"
+                android:layout_alignLeft="@+id/textNombreContrato2"
+                android:layout_alignStart="@+id/textNombreContrato2" />
+
+            <TextView
+                android:id="@+id/textNombreExtra1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/textNombreFirma"
+                android:layout_alignBottom="@+id/textNombreFirma"
+                android:layout_alignEnd="@+id/ImgExtra1"
+                android:layout_alignLeft="@+id/ImgExtra1"
+                android:layout_alignRight="@+id/ImgExtra1"
+                android:layout_alignStart="@+id/ImgExtra1" />
+
+            <TextView
+                android:id="@+id/textExtra2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/textNombreFirma"
+                android:layout_alignLeft="@+id/textNombreFirma"
+                android:layout_alignRight="@+id/textNombreFirma"
+                android:layout_alignStart="@+id/textNombreFirma"
+                android:layout_below="@+id/textNombreFirma"
+                android:layout_marginTop="38dp"
+                android:background="@drawable/textview_redondo"
+                android:text="Extra 2"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="14sp" />
+
+            <ImageButton
+                android:id="@+id/ImgExtra2"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_alignLeft="@+id/textExtra2"
+                android:layout_alignStart="@+id/textExtra2"
+                android:layout_below="@+id/textExtra2"
+                android:onClick="foto"
+                tools:ignore="RtlCompat" />
+
+            <TextView
+                android:id="@+id/textNombreExtra2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/ImgExtra2"
+                android:layout_alignLeft="@+id/ImgExtra2"
+                android:layout_alignRight="@+id/ImgExtra2"
+                android:layout_alignStart="@+id/ImgExtra2"
+                android:layout_below="@+id/ImgExtra2" />
+
+            <TextView
+                android:id="@+id/textExtra3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/textExtra2"
+                android:layout_alignBottom="@+id/textExtra2"
+                android:layout_alignEnd="@+id/textNombreExtra1"
+                android:layout_alignLeft="@+id/textNombreExtra1"
+                android:layout_alignRight="@+id/textNombreExtra1"
+                android:layout_alignStart="@+id/textNombreExtra1"
+                android:background="@drawable/textview_redondo"
+                android:text="Extra 3"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="14sp" />
+
+            <ImageButton
+                android:id="@+id/ImgExtra3"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_alignLeft="@+id/textExtra3"
+                android:layout_alignStart="@+id/textExtra3"
+                android:layout_below="@+id/textExtra3"
+                android:onClick="foto"
+                tools:ignore="RtlCompat" />
+
+            <TextView
+                android:id="@+id/textNombreExtra3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/ImgExtra3"
+                android:layout_alignLeft="@+id/ImgExtra3"
+                android:layout_alignRight="@+id/ImgExtra3"
+                android:layout_alignStart="@+id/ImgExtra3"
+                android:layout_below="@+id/ImgExtra2" />
+
+            <TextView
+                android:id="@+id/textExtra4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/textExtra5"
+                android:layout_alignBottom="@+id/textExtra5"
+                android:layout_alignEnd="@+id/textNombreExtra2"
+                android:layout_alignLeft="@+id/textNombreExtra2"
+                android:layout_alignRight="@+id/textNombreExtra2"
+                android:layout_alignStart="@+id/textNombreExtra2"
+                android:layout_below="@+id/textNombreExtra2"
+                android:background="@drawable/textview_redondo"
+                android:text="Extra 4"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="14sp" />
+
+            <ImageButton
+                android:id="@+id/ImgExtra4"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_alignLeft="@+id/textExtra4"
+                android:layout_alignStart="@+id/textExtra4"
+                android:layout_below="@+id/textExtra4"
+                android:onClick="foto"
+                tools:ignore="RtlCompat" />
+
+            <TextView
+                android:id="@+id/textNombreExtra4"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/ImgExtra4"
+                android:layout_alignLeft="@+id/ImgExtra4"
+                android:layout_alignRight="@+id/ImgExtra4"
+                android:layout_alignStart="@+id/ImgExtra4"
+                android:layout_below="@+id/ImgExtra4" />
+
+            <TextView
+                android:id="@+id/textExtra5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/textNombreExtra3"
+                android:layout_alignLeft="@+id/textNombreExtra3"
+                android:layout_alignRight="@+id/textNombreExtra3"
+                android:layout_alignStart="@+id/textNombreExtra3"
+                android:layout_below="@+id/textNombreExtra3"
+                android:layout_marginTop="51dp"
+                android:background="@drawable/textview_redondo"
+                android:text="Extra 5"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="14sp" />
+
+            <ImageButton
+                android:id="@+id/ImgExtra5"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_alignLeft="@+id/textExtra5"
+                android:layout_alignStart="@+id/textExtra5"
+                android:layout_below="@+id/textExtra5"
+                android:onClick="foto"
+                tools:ignore="RtlCompat" />
+
+            <TextView
+                android:id="@+id/textNombreExtra5"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/ImgExtra5"
+                android:layout_alignLeft="@+id/ImgExtra5"
+                android:layout_alignRight="@+id/ImgExtra5"
+                android:layout_alignStart="@+id/ImgExtra5"
+                android:layout_below="@+id/ImgExtra5" />
 
             <TextView
                 android:id="@+id/TextXML"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/btnEnviarSolicitud"
-                android:layout_marginTop="30dp"/>
+                android:layout_alignEnd="@+id/textNombreExtra5"
+                android:layout_alignLeft="@+id/textNombreExtra4"
+                android:layout_alignRight="@+id/textNombreExtra5"
+                android:layout_alignStart="@+id/textNombreExtra4"
+                android:layout_below="@+id/textNombreExtra5"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="82dp"
+                android:textIsSelectable="true" />
 
         </RelativeLayout>
 
     </android.support.v4.widget.NestedScrollView>
+
+    <FrameLayout
+        android:id="@+id/fragment"
+        android:layout_marginTop="55dp"
+        android:layout_width="match_parent"
+        android:layout_height="310dp"
+        android:layout_below="@+id/RelativePrincipal"/>
+
 
 </RelativeLayout>

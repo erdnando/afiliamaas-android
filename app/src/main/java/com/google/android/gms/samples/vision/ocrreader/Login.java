@@ -214,7 +214,7 @@ public class Login extends AppCompatActivity {
             StringEntity e = null;
 
             //Objeto de tipo promotor que se le envía al WS para que retorne un response
-            String json = "{'idUsuario':'" + IdUsuario + "', 'UUID':'" + UUID + "', 'llave': {'Usuario':'" + User + "', 'Compania':'" + Compania + "', 'Token':'" + Token + "'}}";
+            String json = "{'idUsuario':'" + IdUsuario + "', 'UUID':'" + UUID + "', 'llave': {'idUsuario':'" + IdUsuario + "', 'Token':'" + Token + "'}}";
             String mystring = json.replace("\'", "\"");
 
             try {
@@ -327,7 +327,7 @@ public class Login extends AppCompatActivity {
             StringEntity e = null;
 
             //Objeto de tipo promotor que se envia al Ws getBuzon para que retorne un response
-            String json = "{'objPromotor': {'Promotoria':'','RegPromotor':'','Compania':'" + empresa + "','Formato':'','Usuario':'" + usuario + "','Contrasenia':'" + password + "','Coordinador':{'ClaveC':'','NombreC':''},'Gerente':{'ClaveG':'','NombreG':''},'TipoUsuario':'4'}, 'llave': {'Usuario':'" + usuario + "', 'Compania':'" + empresa + "', 'Token':'" + Token + "'}}";
+            String json = "{'objPromotor': {'Promotoria':'','RegPromotor':'','Compania':'" + empresa + "','Formato':'','Usuario':'" + usuario + "','Contrasenia':'" + password + "','Coordinador':{'ClaveC':'','NombreC':''},'Gerente':{'ClaveG':'','NombreG':''},'TipoUsuario':'4'}, 'llave': {'idUsuario':'" + IdUsuario + "', 'Token':'" + Token + "'}}";
             String mystring = json.replace("\'", "\"");
 
             try {
@@ -448,7 +448,7 @@ public class Login extends AppCompatActivity {
             StringEntity e = null;
 
             //Objeto de tipo promotor que se envia al Ws y este retorna un response de arreglos
-            String json = "{'objPromotor':{'Promotoria':'','RegPromotor':'','Compania':'" + empresa + "','Formato':'','Usuario':'" + usuario + "','Contrasenia':'" + password + "','Coordinador':{'ClaveC':'','NombreC':''},'Gerente':{'ClaveG':'','NombreG':''},'TipoUsuario':'4'}, 'llave': {'Usuario':'" + usuario + "', 'Compania':'" + empresa + "', 'Token':'" + Token + "'}}";
+            String json = "{'objPromotor':{'Promotoria':'','RegPromotor':'','Compania':'" + empresa + "','Formato':'','Usuario':'" + usuario + "','Contrasenia':'" + password + "','Coordinador':{'ClaveC':'','NombreC':''},'Gerente':{'ClaveG':'','NombreG':''},'TipoUsuario':'4'}, 'llave': {'idUsuario':'" + IdUsuario + "', 'Token':'" + Token + "'}}";
             String mystring = json.replace("\'", "\"");
 
             try {

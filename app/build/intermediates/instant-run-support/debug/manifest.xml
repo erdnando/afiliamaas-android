@@ -52,7 +52,7 @@
             android:label="OCR" />
         <activity
             android:name="com.google.android.gms.samples.vision.ocrreader.NuevaSolicitud"
-            android:label="Generales" />
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name="com.google.android.gms.samples.vision.ocrreader.MenuPrincipal"
             android:label="Home"
@@ -61,7 +61,6 @@
             android:name="com.google.android.gms.samples.vision.ocrreader.CargarSolicitud"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name="com.google.android.gms.samples.vision.ocrreader.Imagen" />
-        <activity android:name="com.google.android.gms.samples.vision.ocrreader.Firmar" />
         <activity
             android:name="com.google.android.gms.common.api.GoogleApiActivity"
             android:exported="false"

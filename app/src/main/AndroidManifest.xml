@@ -42,7 +42,7 @@
             android:label="OCR" />
         <activity
             android:name=".NuevaSolicitud"
-            android:label="Generales" />
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".MenuPrincipal"
             android:label="Home"
@@ -51,7 +51,6 @@
             android:name=".CargarSolicitud"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Imagen" />
-        <activity android:name=".Firmar"></activity>
     </application>
 
 </manifest>
