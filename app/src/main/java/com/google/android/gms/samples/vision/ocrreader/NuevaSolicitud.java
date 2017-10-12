@@ -1,6 +1,7 @@
 package com.google.android.gms.samples.vision.ocrreader;
 
 import android.Manifest;
+import android.content.ContentValues;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
@@ -175,7 +176,7 @@ public class NuevaSolicitud extends AppCompatActivity {
             txtNombreTercera, txtPaternoTercera, txtMaternoTercera, txtTelefonoTercera;
 
     //Variables de los datos del usuario logueado
-    String usuario, password, empresa;
+    String usuario, password, empresa, idUsuario;
 
     //Variables para guardar la imagen en Base 64 y su nombre (Tec_)
     String Base64IdentificacionFrente = "", Base64IdentificacionAnverso = "", Base64Contrato1 = "", Base64Contrato2 = "", Base64Firma = "", Base64Extra1 = "", Base64Extra2 = "", Base64Extra3 = "", Base64Extra4 = "", Base64Extra5 = "";
@@ -190,16 +191,27 @@ public class NuevaSolicitud extends AppCompatActivity {
     //Nombre de la foto en textview de extras
     TextView textNombreExtra1, textNombreExtra2, textNombreExtra3, textNombreExtra4, textNombreExtra5;
 
+    //Textview de pruebas
+    TextView textPruebas;
+
+    String buzon = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nueva_solicitud2);
+
+        consultaBuzonActivo();
+
+        //Creacion del view de TexviewPruebas
+        textPruebas = (TextView) findViewById(R.id.textPruebas);
 
         //Se reciben los datos desde el login
         Intent intent = getIntent();
         usuario = intent.getStringExtra("usuario");
         password = intent.getStringExtra("password");
         empresa = intent.getStringExtra("empresa");
+        idUsuario = intent.getStringExtra("idUsuario");
 
         //Creacion de los edittext y radiobutton de generales a través de su Id
         txtSolicitanteGeneral = (EditText) findViewById(R.id.txtSolicitanteGeneral);
@@ -643,6 +655,14 @@ public class NuevaSolicitud extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                long idSolicitud = TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis());
+
+                String Estatus = "6";
+                String comentario = "";
+                String motivo = "0";
+                String producto = "";
+                String promedio = "";
+
                 String diaActual, mesActual, anioActual;
                 int anioActualResta;
 
@@ -651,6 +671,8 @@ public class NuevaSolicitud extends AppCompatActivity {
                 mesActual = String.valueOf(calendar.get(Calendar.MONTH) + 1);
                 anioActual = String.valueOf(calendar.get(Calendar.YEAR));
                 anioActualResta = calendar.get(Calendar.YEAR);
+
+                String fechaActual = diaActual + "/" + mesActual + "/" + anioActual;
 
                 String diaNac, mesNac, anioNac;
                 int anioNacResta;
@@ -700,7 +722,7 @@ public class NuevaSolicitud extends AppCompatActivity {
                                 "    <Extra3>" + NombreExtra3 + "</Extra3>\n" +
                                 "    <Extra4>" + NombreExtra4 + "</Extra4>\n" +
                                 "    <Extra5>" + NombreExtra5 + "</Extra5>\n" +
-                                "    <FirmaPath>"+NombreFirma+"</FirmaPath>\n" +
+                                "    <FirmaPath>" + NombreFirma + "</FirmaPath>\n" +
                                 "  </doc>\n" +
                                 "  <domicilio>\n" +
                                 "    <Calle>" + txtCalle.getText().toString() + "</Calle>\n" +
@@ -785,9 +807,10 @@ public class NuevaSolicitud extends AppCompatActivity {
                                 "  </Deconominos>\n" +
                                 "</SolicitudType>";
 
-                        TextView textXML = (TextView) findViewById(R.id.TextXML);
+                        insertarSolicitud(idSolicitud, fechaActual, Estatus, idUsuario, comentario, motivo, fechaActual, solicitud_xml, promedio, producto, Base64Contrato1, Base64Contrato2, Base64IdentificacionAnverso, Base64IdentificacionFrente, Base64Firma, Base64Extra1, Base64Extra2, Base64Extra3, Base64Extra4, Base64Extra5);
 
-                        textXML.setText(solicitud_xml);
+                        toast("Se ha ingresado la nueva solicitud");
+
                     } else {
 
                         toast("Email no valido");
@@ -942,6 +965,8 @@ public class NuevaSolicitud extends AppCompatActivity {
 
                 fragment = new FragmentFirma();
 
+                scrollNuevaSolicitud.setVisibility(View.GONE);
+
                 break;
 
             case R.id.ImgExtra1:
@@ -1013,6 +1038,8 @@ public class NuevaSolicitud extends AppCompatActivity {
                     ft.hide(fragment);
                     ft.commit();
                 }
+
+                scrollNuevaSolicitud.setVisibility(View.VISIBLE);
 
                 break;
         }
@@ -1256,6 +1283,91 @@ public class NuevaSolicitud extends AppCompatActivity {
     private boolean validarEmail(String email) {
         Pattern pattern = Patterns.EMAIL_ADDRESS;
         return pattern.matcher(email).matches();
+    }
+
+    public void consultaBuzonActivo() {
+
+        AdminSQLite admin = new AdminSQLite(getApplicationContext(), "usuario", null, 1);
+        SQLiteDatabase db = admin.getWritableDatabase();
+
+        Cursor consulta = db.rawQuery("select * from PARAMETRO where id_parametro = 1", null);
+
+        if (consulta.moveToNext()) {
+
+            buzon = consulta.getString(2);
+        }
+    }
+
+    public void insertarSolicitud(long idSolicitud, String fechaAlta, String estatus, String idUsuario, String comentario, String motivo, String fechaModificacion, String solicitudXML, String promedio, String producto, String contrato1, String contrato2, String identificacionAnverso, String identificacionFrente, String firma, String extra1, String extra2, String extra3, String extra4, String extra5) {
+
+        AdminSQLite admin = new AdminSQLite(getApplicationContext(), "usuario", null, 1);
+
+        if (buzon.equals("A")) {
+
+            SQLiteDatabase db = admin.getWritableDatabase();
+
+            ContentValues registro = new ContentValues();
+
+            registro.put("id_solicitud", idSolicitud);
+            registro.put("fecha_alta", String.valueOf(fechaAlta));
+            registro.put("estatus", Integer.parseInt(estatus));
+            registro.put("id_usuario", Integer.parseInt(idUsuario));
+            registro.put("comentario", comentario);
+            registro.put("motivo", Integer.parseInt(motivo));
+            registro.put("fecha_modificacion", String.valueOf(fechaModificacion));
+            registro.put("solicitud_xml", solicitudXML);
+            registro.put("promedio_scoring", promedio);
+            registro.put("producto", producto);
+
+            registro.put("Doc_C164", contrato1);
+            registro.put("Doc_C264", contrato2);
+            registro.put("Doc_IA64", identificacionAnverso);
+            registro.put("Doc_IF64", identificacionFrente);
+            registro.put("F164", firma);
+            registro.put("Ext1", extra1);
+            registro.put("Ext2", extra2);
+            registro.put("Ext3", extra3);
+            registro.put("Ext4", extra4);
+            registro.put("Ext5", extra5);
+
+            db.insert("BUZON_A", null, registro);
+
+            db.close();
+
+        } else if (buzon.equals("B")) {
+
+            SQLiteDatabase db = admin.getWritableDatabase();
+
+            ContentValues registro = new ContentValues();
+
+            registro.put("id_solicitud", idSolicitud);
+            registro.put("fecha_alta", String.valueOf(fechaAlta));
+            registro.put("estatus", Integer.parseInt(estatus));
+            registro.put("id_usuario", Integer.parseInt(idUsuario));
+            registro.put("comentario", comentario);
+            registro.put("motivo", Integer.parseInt(motivo));
+            registro.put("fecha_modificacion", String.valueOf(fechaModificacion));
+            registro.put("solicitud_xml", solicitudXML);
+            registro.put("promedio_scoring", promedio);
+            registro.put("producto", producto);
+
+            registro.put("Doc_C164", contrato1);
+            registro.put("Doc_C264", contrato2);
+            registro.put("Doc_IA64", identificacionAnverso);
+            registro.put("Doc_IF64", identificacionFrente);
+            registro.put("F164", firma);
+            registro.put("Ext1", extra1);
+            registro.put("Ext2", extra2);
+            registro.put("Ext3", extra3);
+            registro.put("Ext4", extra4);
+            registro.put("Ext5", extra5);
+
+            db.insert("BUZON_B", null, registro);
+
+            db.close();
+
+        }
+
     }
 
     public void consultaCatalogoActivo() {
