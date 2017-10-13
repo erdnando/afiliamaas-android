@@ -2,7 +2,6 @@ package com.google.android.gms.samples.vision.ocrreader;
 
 import android.Manifest;
 import android.content.ContentValues;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
@@ -17,7 +16,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.NestedScrollView;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Base64;
 import android.util.Patterns;
@@ -25,6 +23,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -37,7 +36,6 @@ import android.widget.Toast;
 import com.google.android.gms.samples.vision.ocrreader.ui.camera.Lienzo;
 
 import java.io.ByteArrayOutputStream;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.concurrent.TimeUnit;
 import java.util.regex.Pattern;
@@ -273,7 +271,7 @@ public class NuevaSolicitud extends AppCompatActivity {
         txtNombrePrimera = (EditText) findViewById(R.id.txtNombrePrimera);
         txtPaternoPrimera = (EditText) findViewById(R.id.txtPaternoPrimera);
         txtMaternoPrimera = (EditText) findViewById(R.id.txtMaternoPrimera);
-        txtTelefonoPrimera = (EditText) findViewById(R.id.txtNombrePrimera);
+        txtTelefonoPrimera = (EditText) findViewById(R.id.txtTelefonoPrimera);
         txtNombreSegunda = (EditText) findViewById(R.id.txtNombreSegundaR);
         txtPaternoSegunda = (EditText) findViewById(R.id.txtPaternoSegunda);
         txtMaternoSegunda = (EditText) findViewById(R.id.txtMaternoSegunda);
@@ -281,7 +279,7 @@ public class NuevaSolicitud extends AppCompatActivity {
         txtNombreTercera = (EditText) findViewById(R.id.txtNombreTercera);
         txtPaternoTercera = (EditText) findViewById(R.id.txtPaternoTercera);
         txtMaternoTercera = (EditText) findViewById(R.id.txtMaternoTercera);
-        txtTelefonoTercera = (EditText) findViewById(R.id.txtNombreTercera);
+        txtTelefonoTercera = (EditText) findViewById(R.id.txtTelefonoTercera);
 
         conector1 = (TextView) findViewById(R.id.conector1);
         conector2 = (TextView) findViewById(R.id.conector2);
@@ -673,14 +671,326 @@ public class NuevaSolicitud extends AppCompatActivity {
                         || txtCPIngresos.getText().toString().isEmpty() || txtTelefonoOficina.getText().toString().isEmpty() || txtNombrePrimera.getText().toString().isEmpty()
                         || txtPaternoPrimera.getText().toString().isEmpty() || txtMaternoPrimera.getText().toString().isEmpty() || txtTelefonoPrimera.getText().toString().isEmpty()
                         || txtNombreSegunda.getText().toString().isEmpty() || txtPaternoSegunda.getText().toString().isEmpty() || txtMaternoSegunda.getText().toString().isEmpty()
-                        || txtTelefonoSegunda.getText().toString().isEmpty()){
+                        || txtTelefonoSegunda.getText().toString().isEmpty() || Grupo1.equals("SI") || Grupo2.equals("SI") || Base64IdentificacionFrente == null || Base64IdentificacionAnverso == null
+                        || Base64Contrato1 == null || Base64Contrato2 == null || Base64Firma == null) {
 
-                    if (txtSolicitanteGeneral.getText().toString().isEmpty()){
+                    if (txtSolicitanteGeneral.getText().toString().isEmpty()) {
 
                         txtSolicitanteGeneral.setBackgroundResource(R.drawable.edittext_redondo_error);
+                    } else {
+
+                        txtSolicitanteGeneral.setBackgroundResource(R.drawable.edittext_redondo);
                     }
 
-                    AlertDialogCheck();
+                    if (txtPaternoGeneral.getText().toString().isEmpty()) {
+
+                        txtPaternoGeneral.setBackgroundResource(R.drawable.edittext_redondo_error);
+                    } else {
+
+                        txtPaternoGeneral.setBackgroundResource(R.drawable.edittext_redondo);
+                    }
+
+                    if (txtMaternoGeneral.getText().toString().isEmpty()) {
+
+                        txtMaternoGeneral.setBackgroundResource(R.drawable.edittext_redondo_error);
+                    } else {
+
+                        txtMaternoGeneral.setBackgroundResource(R.drawable.edittext_redondo);
+                    }
+
+                    if (txtNumeroIdentificacion.getText().toString().isEmpty()) {
+
+                        txtNumeroIdentificacion.setBackgroundResource(R.drawable.edittext_redondo_error);
+                    } else {
+
+                        txtNumeroIdentificacion.setBackgroundResource(R.drawable.edittext_redondo);
+                    }
+
+                    if (txtRFC.getText().toString().isEmpty()) {
+
+                        txtRFC.setBackgroundResource(R.drawable.edittext_redondo_error);
+                    } else {
+
+                        txtRFC.setBackgroundResource(R.drawable.edittext_redondo);
+                    }
+
+                    if (txtCalle.getText().toString().isEmpty()) {
+
+                        txtCalle.setBackgroundResource(R.drawable.edittext_redondo_error);
+                    } else {
+
+                        txtCalle.setBackgroundResource(R.drawable.edittext_redondo);
+                    }
+
+                    if (txtNoExterior.getText().toString().isEmpty()) {
+
+                        txtNoExterior.setBackgroundResource(R.drawable.edittext_redondo_error);
+                    } else {
+
+                        txtNoExterior.setBackgroundResource(R.drawable.edittext_redondo);
+                    }
+
+                    if (txtColonia.getText().toString().isEmpty()) {
+
+                        txtColonia.setBackgroundResource(R.drawable.edittext_redondo_error);
+                    } else {
+
+                        txtColonia.setBackgroundResource(R.drawable.edittext_redondo);
+                    }
+
+                    if (txtCP.getText().toString().isEmpty()) {
+
+                        txtCP.setBackgroundResource(R.drawable.edittext_redondo_error);
+                    } else {
+
+                        txtCP.setBackgroundResource(R.drawable.edittext_redondo);
+                    }
+
+                    if (txtTiempoResidencia.getText().toString().isEmpty()) {
+
+                        txtTiempoResidencia.setBackgroundResource(R.drawable.edittext_redondo_error);
+                    } else {
+
+                        txtTiempoResidencia.setBackgroundResource(R.drawable.edittext_redondo);
+                    }
+
+                    if (txtMontoVivienda.getText().toString().isEmpty()) {
+
+                        txtMontoVivienda.setBackgroundResource(R.drawable.edittext_redondo_error);
+                    } else {
+
+                        txtMontoVivienda.setBackgroundResource(R.drawable.edittext_redondo);
+                    }
+
+                    if (txtCorreo.getText().toString().isEmpty()) {
+
+                        txtCorreo.setBackgroundResource(R.drawable.edittext_redondo_error);
+                    } else {
+
+                        txtCorreo.setBackgroundResource(R.drawable.edittext_redondo);
+                    }
+
+                    if (txtTelefonoCasa.getText().toString().isEmpty()) {
+
+                        txtTelefonoCasa.setBackgroundResource(R.drawable.edittext_redondo_error);
+                    } else {
+
+                        txtTelefonoCasa.setBackgroundResource(R.drawable.edittext_redondo);
+                    }
+
+                    if (txtTelefonoCelular.getText().toString().isEmpty()) {
+
+                        txtTelefonoCelular.setBackgroundResource(R.drawable.edittext_redondo_error);
+                    } else {
+
+                        txtTelefonoCelular.setBackgroundResource(R.drawable.edittext_redondo);
+                    }
+
+                    if (txtNombreEmpresa.getText().toString().isEmpty()) {
+
+                        txtNombreEmpresa.setBackgroundResource(R.drawable.edittext_redondo_error);
+                    } else {
+
+                        txtNombreEmpresa.setBackgroundResource(R.drawable.edittext_redondo);
+                    }
+
+                    if (txtGiro.getText().toString().isEmpty()) {
+
+                        txtGiro.setBackgroundResource(R.drawable.edittext_redondo_error);
+                    } else {
+
+                        txtGiro.setBackgroundResource(R.drawable.edittext_redondo);
+                    }
+
+                    if (txtAntiguedadEmpleo.getText().toString().isEmpty()) {
+
+                        txtAntiguedadEmpleo.setBackgroundResource(R.drawable.edittext_redondo_error);
+                    } else {
+
+                        txtAntiguedadEmpleo.setBackgroundResource(R.drawable.edittext_redondo);
+                    }
+
+                    if (txtPuesto.getText().toString().isEmpty()) {
+
+                        txtPuesto.setBackgroundResource(R.drawable.edittext_redondo_error);
+                    } else {
+
+                        txtPuesto.setBackgroundResource(R.drawable.edittext_redondo);
+                    }
+
+                    if (txtIngreso.getText().toString().isEmpty()) {
+
+                        txtIngreso.setBackgroundResource(R.drawable.edittext_redondo_error);
+                    } else {
+
+                        txtIngreso.setBackgroundResource(R.drawable.edittext_redondo);
+                    }
+
+                    if (txtCalleIngresos.getText().toString().isEmpty()) {
+
+                        txtCalleIngresos.setBackgroundResource(R.drawable.edittext_redondo_error);
+                    } else {
+
+                        txtCalleIngresos.setBackgroundResource(R.drawable.edittext_redondo);
+                    }
+
+                    if (txtNoExteriorIngresos.getText().toString().isEmpty()) {
+
+                        txtNoExteriorIngresos.setBackgroundResource(R.drawable.edittext_redondo_error);
+                    } else {
+
+                        txtNoExteriorIngresos.setBackgroundResource(R.drawable.edittext_redondo);
+                    }
+
+                    if (txtColoniaIngresos.getText().toString().isEmpty()) {
+
+                        txtColoniaIngresos.setBackgroundResource(R.drawable.edittext_redondo_error);
+                    } else {
+
+                        txtColoniaIngresos.setBackgroundResource(R.drawable.edittext_redondo);
+                    }
+
+                    if (txtCPIngresos.getText().toString().isEmpty()) {
+
+                        txtCPIngresos.setBackgroundResource(R.drawable.edittext_redondo_error);
+                    } else {
+
+                        txtCPIngresos.setBackgroundResource(R.drawable.edittext_redondo);
+                    }
+
+                    if (txtTelefonoOficina.getText().toString().isEmpty()) {
+
+                        txtTelefonoOficina.setBackgroundResource(R.drawable.edittext_redondo_error);
+                    } else {
+
+                        txtTelefonoOficina.setBackgroundResource(R.drawable.edittext_redondo);
+                    }
+
+                    if (Grupo1.equals("SI")) {
+
+                        if (txtFuncionPolitica.getText().toString().isEmpty()) {
+
+                            txtFuncionPolitica.setBackgroundResource(R.drawable.edittext_redondo_error);
+                        } else {
+
+                            txtFuncionPolitica.setBackgroundResource(R.drawable.edittext_redondo);
+                        }
+                    }
+
+                    if (Grupo2.equals("SI")) {
+
+                        if (txtFuncionParentesco.getText().toString().isEmpty()) {
+
+                            txtFuncionParentesco.setBackgroundResource(R.drawable.edittext_redondo_error);
+                            txtParentescoPolitico.setBackgroundResource(R.drawable.edittext_redondo_error);
+                        } else {
+
+                            txtFuncionParentesco.setBackgroundResource(R.drawable.edittext_redondo);
+                            txtParentescoPolitico.setBackgroundResource(R.drawable.edittext_redondo);
+                        }
+
+                        if (txtParentescoPolitico.getText().toString().isEmpty()) {
+
+                            txtParentescoPolitico.setBackgroundResource(R.drawable.edittext_redondo_error);
+                        } else {
+
+                            txtParentescoPolitico.setBackgroundResource(R.drawable.edittext_redondo);
+                        }
+                    }
+
+                    if (txtNombrePrimera.getText().toString().isEmpty()) {
+
+                        txtNombrePrimera.setBackgroundResource(R.drawable.edittext_redondo_error);
+                    } else {
+
+                        txtNombrePrimera.setBackgroundResource(R.drawable.edittext_redondo);
+                    }
+
+                    if (txtPaternoPrimera.getText().toString().isEmpty()) {
+
+                        txtPaternoPrimera.setBackgroundResource(R.drawable.edittext_redondo_error);
+                    } else {
+
+                        txtPaternoPrimera.setBackgroundResource(R.drawable.edittext_redondo);
+                    }
+
+                    if (txtMaternoPrimera.getText().toString().isEmpty()) {
+
+                        txtMaternoPrimera.setBackgroundResource(R.drawable.edittext_redondo_error);
+                    } else {
+
+                        txtMaternoPrimera.setBackgroundResource(R.drawable.edittext_redondo);
+                    }
+
+                    if (txtTelefonoPrimera.getText().toString().isEmpty()) {
+
+                        txtTelefonoPrimera.setBackgroundResource(R.drawable.edittext_redondo_error);
+                    } else {
+
+                        txtTelefonoPrimera.setBackgroundResource(R.drawable.edittext_redondo);
+                    }
+
+                    if (txtNombreSegunda.getText().toString().isEmpty()) {
+
+                        txtNombreSegunda.setBackgroundResource(R.drawable.edittext_redondo_error);
+                    } else {
+
+                        txtNombreSegunda.setBackgroundResource(R.drawable.edittext_redondo);
+                    }
+
+                    if (txtPaternoSegunda.getText().toString().isEmpty()) {
+
+                        txtPaternoSegunda.setBackgroundResource(R.drawable.edittext_redondo_error);
+                    } else {
+
+                        txtPaternoSegunda.setBackgroundResource(R.drawable.edittext_redondo);
+                    }
+
+                    if (txtMaternoSegunda.getText().toString().isEmpty()) {
+
+                        txtMaternoSegunda.setBackgroundResource(R.drawable.edittext_redondo_error);
+                    } else {
+
+                        txtMaternoSegunda.setBackgroundResource(R.drawable.edittext_redondo);
+                    }
+
+                    if (txtTelefonoSegunda.getText().toString().isEmpty()) {
+
+                        txtTelefonoSegunda.setBackgroundResource(R.drawable.edittext_redondo_error);
+                    } else {
+
+                        txtTelefonoSegunda.setBackgroundResource(R.drawable.edittext_redondo);
+                    }
+
+                    if (Base64IdentificacionFrente == null) {
+
+                        toast("Obligatoria la foto del frente de su identificacion");
+                    } else if (Base64IdentificacionAnverso == null) {
+
+                        toast("Obligatoria la foto del anverso de su identificacion");
+                    } else if (Base64Contrato1 == null) {
+
+                        toast("Obligatoria la foto del contrato 1");
+                    } else if (Base64Contrato2 == null) {
+
+                        toast("Obligatoria la foto del contrato 2");
+                    } else if (Base64Firma == null) {
+
+                        toast("Firma obligatori");
+                    }
+
+                    Fragment fragment = null;
+
+                    fragment = new FragmentDialog();
+
+                    if (fragment != null) {
+
+                        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                        ft.replace(R.id.fragment, fragment);
+                        ft.commit();
+
+                        scrollNuevaSolicitud.setVisibility(View.GONE);
+                    }
 
                 }
 
@@ -952,59 +1262,6 @@ public class NuevaSolicitud extends AppCompatActivity {
         });
     }
 
-    public void AlertDialogCheck() {
-
-        runOnUiThread(new Runnable() {
-            public void run() {
-
-                final ArrayList seletedItems=new ArrayList();
-
-                final String[] respuesta = new String[1];
-
-                CharSequence[] item = {"Si"};
-
-                // Instanciamos un nuevo AlertDialog Builder y le asociamos titulo y mensaje
-                final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(NuevaSolicitud.this);
-                alertDialogBuilder.setCancelable(false);
-                alertDialogBuilder.setTitle("Solictud incompleta, ¿Desea guardarla?");
-                alertDialogBuilder.setMultiChoiceItems(item, null, new DialogInterface.OnMultiChoiceClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which, boolean isChecked) {
-
-                        if (isChecked){
-
-                            seletedItems.add(which);
-
-                            respuesta[0] = String.valueOf(seletedItems.get(which));
-
-                        }else {
-
-                            seletedItems.remove(which);
-                            respuesta[0] = String.valueOf(seletedItems.isEmpty());
-                        }
-                    }
-                }).setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
-                        if (respuesta[0] != null){
-
-                            toast("si hay");
-                        }else {
-
-                            toast("no hay");
-                        }
-                    }
-                });
-
-
-                AlertDialog alertDialog = alertDialogBuilder.create();
-                alertDialog.show();
-
-            }
-        });
-    }
-
     public void foto(View view) {
 
         Fragment fragment = null;
@@ -1021,7 +1278,6 @@ public class NuevaSolicitud extends AppCompatActivity {
 
             case R.id.ImgIdentificacionFrenteNew:
 
-                //abrirCamara.putExtra(MediaStore.EXTRA_OUTPUT, capturedImageUri);
                 startActivityForResult(abrirCamara, CAMERA_REQUEST1);
 
                 break;
@@ -1033,8 +1289,7 @@ public class NuevaSolicitud extends AppCompatActivity {
                 break;
 
             case R.id.ImgContrato1New:
-
-                //abrirCamara.putExtra(MediaStore.EXTRA_OUTPUT, capturedImageUri);
+                
                 startActivityForResult(abrirCamara, CAMERA_REQUEST3);
 
                 break;
@@ -1050,6 +1305,7 @@ public class NuevaSolicitud extends AppCompatActivity {
                 fragment = new FragmentFirma();
 
                 scrollNuevaSolicitud.setVisibility(View.GONE);
+                btnEnviarSolicitud.setClickable(false);
 
                 break;
 
@@ -1121,9 +1377,49 @@ public class NuevaSolicitud extends AppCompatActivity {
                     FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
                     ft.hide(fragment);
                     ft.commit();
+
+                    scrollNuevaSolicitud.setVisibility(View.VISIBLE);
+                    btnEnviarSolicitud.setClickable(true);
                 }
 
-                scrollNuevaSolicitud.setVisibility(View.VISIBLE);
+                break;
+
+            case R.id.ImgCerrarFragment:
+
+                fragment = new FragmentFirma();
+
+                if (fragment != null) {
+
+                    FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                    ft.hide(fragment);
+                    ft.commit();
+
+                    scrollNuevaSolicitud.setVisibility(View.VISIBLE);
+                    btnEnviarSolicitud.setClickable(true);
+                }
+
+            case R.id.aceptar:
+
+                CheckBox checkBox = (CheckBox) findViewById(R.id.confirmacion);
+
+                if (checkBox.isChecked()) {
+
+                    toast("Marcado");
+                } else {
+
+                    toast("No marcado");
+                }
+
+                fragment = new FragmentDialog();
+
+                if (fragment != null) {
+
+                    FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                    ft.hide(fragment);
+                    ft.commit();
+
+                    scrollNuevaSolicitud.setVisibility(View.VISIBLE);
+                }
 
                 break;
         }
@@ -1404,7 +1700,7 @@ public class NuevaSolicitud extends AppCompatActivity {
         if (buzon.equals("A")) {
             SQLiteDatabase db = admin.getWritableDatabase();
 
-            Cursor consulta = db.rawQuery("select count (*) from BUZON_A where estatus = 6 or estatus = 0", null);
+            Cursor consulta = db.rawQuery("select max (id_solicitud) from BUZON_A where estatus = 6 or estatus = 0", null);
 
             if (consulta.moveToNext()) {
 
@@ -1421,7 +1717,7 @@ public class NuevaSolicitud extends AppCompatActivity {
         } else if (buzon.equals("B")) {
             SQLiteDatabase db = admin.getWritableDatabase();
 
-            Cursor consulta = db.rawQuery("select count (*) from BUZON_B where estatus = 6 or estatus = 0", null);
+            Cursor consulta = db.rawQuery("select max (id_solicitud) from BUZON_B where estatus = 6 or estatus = 0", null);
 
             if (consulta.moveToNext()) {
 
