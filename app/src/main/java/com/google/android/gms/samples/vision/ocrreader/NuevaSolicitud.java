@@ -2,6 +2,7 @@ package com.google.android.gms.samples.vision.ocrreader;
 
 import android.Manifest;
 import android.content.ContentValues;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
@@ -16,6 +17,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.NestedScrollView;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Base64;
 import android.util.Patterns;
@@ -35,6 +37,7 @@ import android.widget.Toast;
 import com.google.android.gms.samples.vision.ocrreader.ui.camera.Lienzo;
 
 import java.io.ByteArrayOutputStream;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.concurrent.TimeUnit;
 import java.util.regex.Pattern;
@@ -179,7 +182,7 @@ public class NuevaSolicitud extends AppCompatActivity {
     String usuario, password, empresa, idUsuario;
 
     //Variables para guardar la imagen en Base 64 y su nombre (Tec_)
-    String Base64IdentificacionFrente = "", Base64IdentificacionAnverso = "", Base64Contrato1 = "", Base64Contrato2 = "", Base64Firma = "", Base64Extra1 = "", Base64Extra2 = "", Base64Extra3 = "", Base64Extra4 = "", Base64Extra5 = "";
+    String Base64IdentificacionFrente, Base64IdentificacionAnverso, Base64Contrato1, Base64Contrato2, Base64Firma, Base64Extra1 = "", Base64Extra2 = "", Base64Extra3 = "", Base64Extra4 = "", Base64Extra5 = "";
     String NombreIdentificacionFrente = "", NombreIdentificacionAnverso = "", NombreContrato1 = "", NombreContrato2 = "", NombreFirma = "", NombreExtra1 = "", NombreExtra2 = "", NombreExtra3 = "", NombreExtra4 = "", NombreExtra5 = "";
 
     //Declaracion de los imageButton y textview para la parte de documentos
@@ -195,6 +198,8 @@ public class NuevaSolicitud extends AppCompatActivity {
     TextView textPruebas;
 
     String buzon = "";
+
+    int idAutoIncrement;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -346,6 +351,10 @@ public class NuevaSolicitud extends AppCompatActivity {
         txtFuncionPolitica.setVisibility(View.GONE);
         txtFuncionParentesco.setVisibility(View.GONE);
         txtParentescoPolitico.setVisibility(View.GONE);
+
+        txtFuncionPolitica.setText("");
+        txtFuncionParentesco.setText("");
+        txtParentescoPolitico.setText("");
 
         //Se ocultan los imagebutton y textview para que se hagan visibles al pulsar uno secuncialmente
         ImgExtra2.setVisibility(View.GONE);
@@ -655,7 +664,27 @@ public class NuevaSolicitud extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                long idSolicitud = TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis());
+                if (txtSolicitanteGeneral.getText().toString().isEmpty() || txtPaternoGeneral.getText().toString().isEmpty() || txtMaternoGeneral.getText().toString().isEmpty()
+                        || txtNumeroIdentificacion.getText().toString().isEmpty() || txtRFC.getText().toString().isEmpty() || txtCalle.getText().toString().isEmpty() || txtNoExterior.getText().toString().isEmpty()
+                        || txtColonia.getText().toString().isEmpty() || txtCP.getText().toString().isEmpty() || txtTiempoResidencia.getText().toString().isEmpty() || txtMontoVivienda.getText().toString().isEmpty()
+                        || txtCorreo.getText().toString().isEmpty() || txtTelefonoCasa.getText().toString().isEmpty() || txtTelefonoCelular.getText().toString().isEmpty() || txtNombreEmpresa.getText().toString().isEmpty()
+                        || txtGiro.getText().toString().isEmpty() || txtAntiguedadEmpleo.getText().toString().isEmpty() || txtPuesto.getText().toString().isEmpty() || txtIngreso.getText().toString().isEmpty()
+                        || txtCalleIngresos.getText().toString().isEmpty() || txtNoExteriorIngresos.getText().toString().isEmpty() || txtColoniaIngresos.getText().toString().isEmpty()
+                        || txtCPIngresos.getText().toString().isEmpty() || txtTelefonoOficina.getText().toString().isEmpty() || txtNombrePrimera.getText().toString().isEmpty()
+                        || txtPaternoPrimera.getText().toString().isEmpty() || txtMaternoPrimera.getText().toString().isEmpty() || txtTelefonoPrimera.getText().toString().isEmpty()
+                        || txtNombreSegunda.getText().toString().isEmpty() || txtPaternoSegunda.getText().toString().isEmpty() || txtMaternoSegunda.getText().toString().isEmpty()
+                        || txtTelefonoSegunda.getText().toString().isEmpty()){
+
+                    if (txtSolicitanteGeneral.getText().toString().isEmpty()){
+
+                        txtSolicitanteGeneral.setBackgroundResource(R.drawable.edittext_redondo_error);
+                    }
+
+                    AlertDialogCheck();
+
+                }
+
+                /*idAutoIncrement();
 
                 String Estatus = "6";
                 String comentario = "";
@@ -676,8 +705,6 @@ public class NuevaSolicitud extends AppCompatActivity {
 
                 String diaNac, mesNac, anioNac;
                 int anioNacResta;
-
-                txtCorreo.setText("0894.andres@gmail.com");
 
                 diaNac = String.valueOf(PickerNac.getDayOfMonth());
                 mesNac = String.valueOf(PickerNac.getMonth() + 1);
@@ -807,9 +834,13 @@ public class NuevaSolicitud extends AppCompatActivity {
                                 "  </Deconominos>\n" +
                                 "</SolicitudType>";
 
-                        insertarSolicitud(idSolicitud, fechaActual, Estatus, idUsuario, comentario, motivo, fechaActual, solicitud_xml, promedio, producto, Base64Contrato1, Base64Contrato2, Base64IdentificacionAnverso, Base64IdentificacionFrente, Base64Firma, Base64Extra1, Base64Extra2, Base64Extra3, Base64Extra4, Base64Extra5);
+                        insertarSolicitud(idAutoIncrement, fechaActual, Estatus, idUsuario, comentario, motivo, fechaActual, solicitud_xml, promedio, producto, Base64Contrato1, Base64Contrato2, Base64IdentificacionAnverso, Base64IdentificacionFrente, Base64Firma, Base64Extra1, Base64Extra2, Base64Extra3, Base64Extra4, Base64Extra5);
 
-                        toast("Se ha ingresado la nueva solicitud");
+                        Intent intent = new Intent(getApplicationContext(), MenuPrincipal.class);
+                        startActivity(intent);
+                        finish();
+
+                        //borrar();
 
                     } else {
 
@@ -819,7 +850,7 @@ public class NuevaSolicitud extends AppCompatActivity {
                 } else {
 
                     toast("Verifique la fecha de nacimiento");
-                }
+                }*/
             }
         });
 
@@ -917,6 +948,59 @@ public class NuevaSolicitud extends AppCompatActivity {
                     conector4.setBackgroundColor(Color.parseColor("#00E676"));
                     conector5.setBackgroundColor(Color.parseColor("#00E676"));
                 }
+            }
+        });
+    }
+
+    public void AlertDialogCheck() {
+
+        runOnUiThread(new Runnable() {
+            public void run() {
+
+                final ArrayList seletedItems=new ArrayList();
+
+                final String[] respuesta = new String[1];
+
+                CharSequence[] item = {"Si"};
+
+                // Instanciamos un nuevo AlertDialog Builder y le asociamos titulo y mensaje
+                final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(NuevaSolicitud.this);
+                alertDialogBuilder.setCancelable(false);
+                alertDialogBuilder.setTitle("Solictud incompleta, ¿Desea guardarla?");
+                alertDialogBuilder.setMultiChoiceItems(item, null, new DialogInterface.OnMultiChoiceClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which, boolean isChecked) {
+
+                        if (isChecked){
+
+                            seletedItems.add(which);
+
+                            respuesta[0] = String.valueOf(seletedItems.get(which));
+
+                        }else {
+
+                            seletedItems.remove(which);
+                            respuesta[0] = String.valueOf(seletedItems.isEmpty());
+                        }
+                    }
+                }).setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        if (respuesta[0] != null){
+
+                            toast("si hay");
+                        }else {
+
+                            toast("no hay");
+                        }
+                    }
+                });
+
+
+                AlertDialog alertDialog = alertDialogBuilder.create();
+                alertDialog.show();
+
             }
         });
     }
@@ -1295,6 +1379,61 @@ public class NuevaSolicitud extends AppCompatActivity {
         if (consulta.moveToNext()) {
 
             buzon = consulta.getString(2);
+        }
+    }
+
+    public void borrar() {
+
+        AdminSQLite admin = new AdminSQLite(getApplicationContext(), "usuario", null, 1);
+
+        SQLiteDatabase db = admin.getWritableDatabase();
+
+        db.execSQL("delete from Buzon_B where estatus = 6");
+
+        toast("Borrado registro");
+
+        db.close();
+    }
+
+    public void idAutoIncrement() {
+
+        AdminSQLite admin = new AdminSQLite(getApplicationContext(), "usuario", null, 1);
+
+        int id = 0;
+
+        if (buzon.equals("A")) {
+            SQLiteDatabase db = admin.getWritableDatabase();
+
+            Cursor consulta = db.rawQuery("select count (*) from BUZON_A where estatus = 6 or estatus = 0", null);
+
+            if (consulta.moveToNext()) {
+
+                id = Integer.parseInt(consulta.getString(0));
+
+                idAutoIncrement = id + 1;
+
+            } else {
+
+                idAutoIncrement = id + 1;
+
+            }
+
+        } else if (buzon.equals("B")) {
+            SQLiteDatabase db = admin.getWritableDatabase();
+
+            Cursor consulta = db.rawQuery("select count (*) from BUZON_B where estatus = 6 or estatus = 0", null);
+
+            if (consulta.moveToNext()) {
+
+                id = Integer.parseInt(consulta.getString(0));
+
+                idAutoIncrement = id + 1;
+
+            } else {
+
+                idAutoIncrement = id + 1;
+
+            }
         }
     }
 
