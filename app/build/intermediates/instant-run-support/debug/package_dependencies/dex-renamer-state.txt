@@ -1,4 +1,4 @@
-#Mon Oct 09 17:43:51 CDT 2017
+#Wed Oct 11 18:39:24 CDT 2017
 file.2=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\classes_e85ec8d13b1826dcd1136a4c5f783ae586683c5f\\classes.dex
 base.2=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\classes_e85ec8d13b1826dcd1136a4c5f783ae586683c5f
 file.1=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\classes_69974c7e3b6919218550492a1be1ab9616d4c695\\classes.dex

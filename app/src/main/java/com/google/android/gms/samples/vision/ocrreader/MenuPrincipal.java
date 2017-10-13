@@ -20,7 +20,7 @@ public class MenuPrincipal extends AppCompatActivity implements NavigationView.O
 
     ImageButton btnTodas, btnNuevas, btnAceptadas, btnEnviadas, btnCanceladas, btnRechazadas;
 
-    String usuario, password, empresa;
+    String usuario, password, empresa, idUsuario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +50,7 @@ public class MenuPrincipal extends AppCompatActivity implements NavigationView.O
         usuario = intent.getStringExtra("usuario");
         password = intent.getStringExtra("password");
         empresa = intent.getStringExtra("empresa");
+        idUsuario = intent.getStringExtra("idUsuario");
 
     }
 
@@ -103,6 +104,7 @@ public class MenuPrincipal extends AppCompatActivity implements NavigationView.O
             intent.putExtra("usuario", usuario);
             intent.putExtra("password", password);
             intent.putExtra("empresa", empresa);
+            intent.putExtra("idUsuario", idUsuario);
             startActivity(intent);
 
         } else if (id == R.id.MisCitas) {

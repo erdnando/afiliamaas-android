@@ -6,7 +6,7 @@
     density="xhdpi"
     format="10"
     plugin-version="2.3.3"
-    timestamp="1507652123339"
+    timestamp="1507852814948"
     token="4508534380431896730"
     verifier="COMPATIBLE" >
 
@@ -29,14 +29,17 @@
 
     <build
         build-mode="FULL"
-        timestamp="1507651496168"
+        timestamp="1507852454054"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
-            location="C:\Users\aafabre\Downloads\ocr-reader\app\build\outputs\apk\app-debug.apk"
-            type="SPLIT_MAIN" />
+            location="C:\Users\aafabre\Downloads\ocr-reader\app\build\intermediates\split-apk\debug\slices\slice_0.apk"
+            type="SPLIT" />
         <artifact
             location="C:\Users\aafabre\Downloads\ocr-reader\app\build\intermediates\split-apk\debug\slices\slice_2.apk"
             type="SPLIT" />
+        <artifact
+            location="C:\Users\aafabre\Downloads\ocr-reader\app\build\outputs\apk\app-debug.apk"
+            type="SPLIT_MAIN" />
         <artifact
             location="C:\Users\aafabre\Downloads\ocr-reader\app\build\intermediates\split-apk\debug\slices\slice_3.apk"
             type="SPLIT" />
@@ -56,9 +59,6 @@
             location="C:\Users\aafabre\Downloads\ocr-reader\app\build\intermediates\split-apk\debug\slices\slice_8.apk"
             type="SPLIT" />
         <artifact
-            location="C:\Users\aafabre\Downloads\ocr-reader\app\build\intermediates\split-apk\debug\slices\slice_0.apk"
-            type="SPLIT" />
-        <artifact
             location="C:\Users\aafabre\Downloads\ocr-reader\app\build\intermediates\split-apk\debug\slices\slice_5.apk"
             type="SPLIT" />
         <artifact
@@ -69,16 +69,24 @@
             type="SPLIT" />
     </build>
     <build
-        build-mode="COLD"
-        timestamp="1507652047068"
-        verifier="COLD_SWAP_REQUESTED" >
+        build-mode="HOT_WARM"
+        timestamp="1507852552474"
+        verifier="COMPATIBLE" >
         <artifact
-            location="C:\Users\aafabre\Downloads\ocr-reader\app\build\outputs\apk\app-debug.apk"
-            type="SPLIT_MAIN" />
+            location="C:\Users\aafabre\Downloads\ocr-reader\app\build\intermediates\builds\debug\1507852552474\classes.dex"
+            type="RELOAD_DEX" />
     </build>
     <build
         build-mode="HOT_WARM"
-        timestamp="1507652123339"
+        timestamp="1507852764219"
+        verifier="COMPATIBLE" >
+        <artifact
+            location="C:\Users\aafabre\Downloads\ocr-reader\app\build\intermediates\builds\debug\1507852764219\classes.dex"
+            type="RELOAD_DEX" />
+    </build>
+    <build
+        build-mode="HOT_WARM"
+        timestamp="1507852814948"
         verifier="COMPATIBLE" >
         <artifact
             location="C:\Users\aafabre\Downloads\ocr-reader\app\build\intermediates\instant-run-resources\resources-debug.ir.ap_"

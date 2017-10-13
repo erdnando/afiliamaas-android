@@ -1,4 +1,4 @@
-#Tue Oct 10 10:53:05 CDT 2017
+#Thu Oct 12 18:54:21 CDT 2017
 base.0=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\5\\slice_2
 renamed.0=classes.dex
 file.0=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\5\\slice_2\\classes.dex

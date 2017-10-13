@@ -77,10 +77,6 @@ public class Login extends AppCompatActivity {
                     //Si está marcado el checkbox quiere decir que la consulta la hará en el WS
                 } else if (checkNuevo.isChecked()) {
 
-                    txtUsuario.setEnabled(false);
-                    txtPassword.setEnabled(false);
-                    txtEmpresa.setEnabled(false);
-
                     //hace un llamado al Ws de logueo
                     Logueo logueo = new Logueo();
                     logueo.execute();
@@ -167,9 +163,8 @@ public class Login extends AppCompatActivity {
 
                 toast("Usuario existente en el WS");
 
-                //Llamada de metodos de consulta de Buzon y catalogo Activo
+                //Llamada de metodo de consulta de Buzon
                 consultaBuzonActivo();
-                consultaCatalagoActivo();
             } else {
 
                 toast("Login Incorrecto");
@@ -276,6 +271,7 @@ public class Login extends AppCompatActivity {
 
                     //Llamado al método que con tiene en Ws de GetBuzon
                     llamarGetBuzon();
+                    consultaCatalagoActivo();
 
                 } else {
 
@@ -511,6 +507,7 @@ public class Login extends AppCompatActivity {
                 //Una vez hecho todo el proceso de inserciones de buzon y catalogos, iniciamos la actividad de menu principal
                 //donde se cargan todos los valores desde la Bd local
                 Intent intent = new Intent(getApplicationContext(), MenuPrincipal.class);
+                intent.putExtra("idUsuario", IdUsuario);
                 intent.putExtra("usuario", usuario);
                 intent.putExtra("password", password);
                 intent.putExtra("empresa", empresa);
@@ -609,6 +606,7 @@ public class Login extends AppCompatActivity {
         if (fila.moveToNext()) {
 
             Intent intent = new Intent(getApplicationContext(), MenuPrincipal.class);
+            intent.putExtra("idUsuario", fila.getString(0));
             intent.putExtra("usuario", fila.getString(1));
             intent.putExtra("password", fila.getString(2));
             intent.putExtra("empresa", fila.getString(4));
@@ -809,7 +807,9 @@ public class Login extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
 
                         toast("Operación cancelada");
-                        return;
+
+                        dialog.cancel();
+
                     }
                 };
 
@@ -833,6 +833,7 @@ public class Login extends AppCompatActivity {
                 final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(Login.this);
                 alertDialogBuilder.setTitle("Aviso");
                 alertDialogBuilder.setMessage("Tiene solicitudes pendientes. ¿Desea eliminarlas?");
+                alertDialogBuilder.setCancelable(false);
 
                 // Creamos un nuevo OnClickListener para el boton OK que realice la conexion
                 DialogInterface.OnClickListener listenerOk = new DialogInterface.OnClickListener() {
@@ -855,7 +856,8 @@ public class Login extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
 
                         toast("Operación cancelada");
-                        return;
+
+                        dialog.cancel();
                     }
                 };
 

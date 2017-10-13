@@ -156,6 +156,10 @@
         "source": "C:\\Users\\aafabre\\.android\\build-cache\\31184b24869e12fb598fd749ccbc849f44da50ba\\output\\res\\drawable\\abc_text_cursor_material.xml"
     },
     {
+        "merged": "C:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\edittext_redondo_error.xml",
+        "source": "C:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\src\\main\\res\\drawable\\edittext_redondo_error.xml"
+    },
+    {
         "merged": "C:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\design_fab_background.xml",
         "source": "C:\\Users\\aafabre\\.android\\build-cache\\d3f891b02f2fb63067423ff20a09f0a2d0f9af46\\output\\res\\drawable\\design_fab_background.xml"
     },

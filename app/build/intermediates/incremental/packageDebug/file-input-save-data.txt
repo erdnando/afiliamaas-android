@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Mon Oct 09 18:53:08 CDT 2017
+#Thu Oct 12 18:54:22 CDT 2017
 20.base=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_
 143.base=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_
 340.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout-v17\\notification_template_big_media_narrow.xml
@@ -7,7 +7,7 @@
 66.set=ANDROID_RESOURCE
 317.set=ANDROID_RESOURCE
 356.base=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_
-373.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\anim\\design_fab_in.xml
+373.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout-v17\\abc_dialog_title_material.xml
 203.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\mipmap-xxhdpi-v4\\ic_launcher_round.png
 86.base=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_
 389.base=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_
@@ -30,7 +30,7 @@
 192.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\abc_action_menu_layout.xml
 363.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\rectangle.xml
 76.base=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_
-396.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout-v17\\activity_main.xml
+396.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout-v21\\notification_template_icon_group.xml
 259.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\resources.arsc
 97.set=ANDROID_RESOURCE
 348.set=ANDROID_RESOURCE
@@ -46,7 +46,7 @@
 66.base=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_
 189.base=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_
 83.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\abc_list_pressed_holo_light.9.png
-386.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\design_layout_tab_text.xml
+386.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\mipmap-xxhdpi-v4\\ic_empresa.png
 74.set=ANDROID_RESOURCE
 325.set=ANDROID_RESOURCE
 5.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\menu-v11\\global.xml
@@ -140,7 +140,7 @@
 384.base=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_
 3.base=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_
 231.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\color\\abc_hint_foreground_material_light.xml
-402.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\abc_alert_dialog_material.xml
+402.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout-land-v17\\activity_main.xml
 264.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\abc_ic_menu_paste_mtrl_am_alpha.png
 297.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\color\\abc_btn_colored_borderless_text_material.xml
 127.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\abc_action_menu_item_layout.xml
@@ -159,7 +159,7 @@
 322.base=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_
 184.base=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_
 380.set=ANDROID_RESOURCE
-381.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout-v16\\notification_template_custom_big.xml
+381.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\anim\\abc_popup_enter.xml
 24.set=ANDROID_RESOURCE
 0.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\abc_switch_thumb_material.xml
 94.base=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_
@@ -200,7 +200,7 @@
 86.set=ANDROID_RESOURCE
 337.set=ANDROID_RESOURCE
 358.base=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_
-375.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout-v17\\fragment_rechazadas.xml
+375.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\notification_tile_bg.xml
 205.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout-v17\\design_layout_snackbar_include.xml
 88.base=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_
 238.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout-v17\\notification_action.xml
@@ -219,7 +219,7 @@
 365.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\color\\abc_secondary_text_material_light.xml
 115.set=ANDROID_RESOURCE
 78.base=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_
-398.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\abc_spinner_mtrl_am_alpha.9.png
+398.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\abc_ic_menu_cut_mtrl_alpha.png
 228.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-v11\\notification_bg.xml
 400.base=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_
 368.set=ANDROID_RESOURCE
@@ -236,7 +236,7 @@
 355.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\color\\switch_thumb_material_dark.xml
 68.base=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_
 85.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\abc_search_dropdown_item_icons_2line.xml
-388.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\abc_list_divider_mtrl_alpha.9.png
+388.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\abc_ic_voice_search_api_material.xml
 94.set=ANDROID_RESOURCE
 345.set=ANDROID_RESOURCE
 7.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\abc_btn_check_to_on_mtrl_015.png
@@ -325,7 +325,7 @@
 139.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-v21\\abc_ratingbar_material.xml
 140.base=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_
 49.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout-v17\\abc_action_mode_close_item_material.xml
-392.set=ANDROID_RESOURCE
+392.set=DEX
 36.set=ANDROID_RESOURCE
 50.base=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_
 370.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout-v16\\design_bottom_sheet_dialog.xml
@@ -345,7 +345,7 @@
 163.base=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_
 360.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\common_google_signin_btn_icon_dark.xml
 73.base=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_
-393.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\notification_bg.xml
+393.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout-v17\\select_dialog_multichoice_material.xml
 256.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\common_full_open_on_phone.png
 67.set=ANDROID_RESOURCE
 318.set=ANDROID_RESOURCE
@@ -360,7 +360,7 @@
 63.base=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_
 186.base=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_
 80.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\abc_screen_simple_overlay_action_mode.xml
-383.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\abc_ic_menu_overflow_material.xml
+383.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout-v11\\activity_nueva_solicitud2.xml
 44.set=ANDROID_RESOURCE
 2.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\anim\\abc_fade_out.xml
 96.base=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_
@@ -401,7 +401,7 @@
 402.set=ANDROID_RESOURCE
 57.base=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_
 357.set=ANDROID_RESOURCE
-377.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\color-v23\\abc_btn_colored_borderless_text_material.xml
+377.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout-v17\\activity_cargar_solicitud.xml
 207.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-ldrtl-xhdpi-v17\\abc_ic_menu_cut_mtrl_alpha.png
 203.set=ANDROID_RESOURCE
 158.set=ANDROID_RESOURCE
@@ -516,7 +516,7 @@
 52.base=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_
 56.set=ANDROID_RESOURCE
 307.set=ANDROID_RESOURCE
-372.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout-v17\\abc_dialog_title_material.xml
+372.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\edittext_redondo_error.xml
 355.base=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_
 202.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\abc_ic_search_api_material.xml
 85.base=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_
@@ -534,7 +534,7 @@
 207.set=ANDROID_RESOURCE
 362.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\common_google_signin_btn_text_dark.xml
 75.base=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_
-395.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout-v21\\notification_template_icon_group.xml
+395.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\abc_screen_toolbar.xml
 258.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\design_layout_snackbar.xml
 87.set=ANDROID_RESOURCE
 338.set=ANDROID_RESOURCE
@@ -547,7 +547,7 @@
 65.base=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_
 188.base=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_
 82.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout-v17\\activity_login.xml
-385.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\mipmap-xxhdpi-v4\\ic_empresa.png
+385.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\design_navigation_item_separator.xml
 64.set=ANDROID_RESOURCE
 315.set=ANDROID_RESOURCE
 4.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\abc_textfield_search_default_mtrl_alpha.9.png
@@ -591,7 +591,7 @@
 59.base=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_
 377.set=ANDROID_RESOURCE
 300.set=ANDROID_RESOURCE
-379.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout-v11\\notification_template_custom_big.xml
+379.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\calendar_redondo.xml
 209.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout-v17\\notification_template_media_custom.xml
 210.base=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_
 223.set=ANDROID_RESOURCE
@@ -647,7 +647,7 @@
 163.set=ANDROID_RESOURCE
 230.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_6047ab914199fa8e09a8bdb2a26fb22a58573c38\\classes.dex
 2.base=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_
-401.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout-land-v17\\activity_main.xml
+401.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\aceptadas_2.png
 263.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\color-v23\\abc_tint_btn_checkable.xml
 279.base=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_
 296.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\abc_ab_share_pack_mtrl_alpha.9.png
@@ -659,7 +659,7 @@
 140.set=ANDROID_RESOURCE
 70.base=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_
 185.set=ANDROID_RESOURCE
-390.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_868d28b0dc39e16b6b8a27a7d48f44adec4ab35d\\classes.dex
+390.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\common_google_signin_btn_text_dark_pressed.9.png
 227.base=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_
 393.set=ANDROID_RESOURCE
 253.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-v21\\abc_action_bar_item_background_material.xml
@@ -670,7 +670,7 @@
 321.base=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_
 183.base=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_
 370.set=ANDROID_RESOURCE
-380.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\anim\\abc_popup_enter.xml
+380.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout-v11\\notification_template_custom_big.xml
 14.set=ANDROID_RESOURCE
 93.base=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_
 217.base=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_
@@ -711,7 +711,7 @@
 76.set=ANDROID_RESOURCE
 327.set=ANDROID_RESOURCE
 357.base=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_
-374.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\notification_tile_bg.xml
+374.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\anim\\design_fab_in.xml
 204.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\abc_ic_menu_copy_mtrl_am_alpha.png
 87.base=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_
 237.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\abc_textfield_search_activated_mtrl_alpha.9.png
@@ -732,7 +732,8 @@
 364.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\abc_list_longpressed_holo.9.png
 105.set=ANDROID_RESOURCE
 77.base=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_
-397.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\abc_ic_menu_cut_mtrl_alpha.png
+397.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout-v17\\activity_main.xml
+403.set=ANDROID_RESOURCE
 358.set=ANDROID_RESOURCE
 30.set=ANDROID_RESOURCE
 261.base=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_
@@ -747,7 +748,7 @@
 354.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-v11\\abc_textfield_search_material.xml
 67.base=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_
 84.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\abc_ic_menu_selectall_mtrl_alpha.png
-387.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\abc_ic_voice_search_api_material.xml
+387.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\design_layout_tab_text.xml
 84.set=ANDROID_RESOURCE
 335.set=ANDROID_RESOURCE
 6.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\mipmap-xxxhdpi-v4\\ic_launcher_round.png
@@ -836,6 +837,7 @@
 385.base=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_
 4.base=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_
 232.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\canceladas_2.png
+403.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\abc_alert_dialog_material.xml
 265.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\notification_template_media.xml
 298.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\anim\\abc_slide_in_bottom.xml
 128.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\abc_screen_content_include.xml
@@ -844,7 +846,7 @@
 162.base=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_
 160.set=ANDROID_RESOURCE
 72.base=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_
-392.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout-v17\\select_dialog_multichoice_material.xml
+392.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_868d28b0dc39e16b6b8a27a7d48f44adec4ab35d\\classes.dex
 255.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-v21\\avd_show_password_2.xml
 57.set=ANDROID_RESOURCE
 308.set=ANDROID_RESOURCE
@@ -855,8 +857,8 @@
 323.base=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_
 185.base=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_
 62.base=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_
-390.set=DEX
-382.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout-v11\\activity_nueva_solicitud2.xml
+390.set=ANDROID_RESOURCE
+382.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout-v16\\notification_template_custom_big.xml
 34.set=ANDROID_RESOURCE
 1.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\activity_main.xml
 95.base=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_
@@ -901,7 +903,7 @@
 96.set=ANDROID_RESOURCE
 347.set=ANDROID_RESOURCE
 359.base=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_
-376.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout-v17\\activity_cargar_solicitud.xml
+376.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout-v17\\fragment_rechazadas.xml
 206.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\mipmap-mdpi-v4\\ic_launcher_round.png
 89.base=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_
 239.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\fragment_canceladas.xml
@@ -921,7 +923,7 @@
 366.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout-v21\\activity_nueva_solicitud2.xml
 125.set=ANDROID_RESOURCE
 79.base=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_
-399.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\animator-v21\\design_appbar_state_list_animator.xml
+399.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\abc_spinner_mtrl_am_alpha.9.png
 229.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\common_google_signin_btn_text_light_disabled.9.png
 230.base=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_6047ab914199fa8e09a8bdb2a26fb22a58573c38
 401.base=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_
@@ -942,10 +944,10 @@
 69.base=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_
 86.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\common_google_signin_btn_text_light_normal.9.png
 400.set=ANDROID_RESOURCE
-389.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\common_google_signin_btn_text_dark_pressed.9.png
+389.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\abc_list_divider_mtrl_alpha.9.png
 355.set=ANDROID_RESOURCE
 8.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\color\\abc_primary_text_material_light.xml
-390.base=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_868d28b0dc39e16b6b8a27a7d48f44adec4ab35d
+390.base=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_
 278.set=ANDROID_RESOURCE
 201.set=ANDROID_RESOURCE
 270.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\abc_popup_menu_item_layout.xml
@@ -1044,8 +1046,8 @@
 164.base=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_
 361.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\color-v23\\design_tint_password_toggle.xml
 74.base=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_
-394.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\abc_screen_toolbar.xml
-count=403
+394.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\notification_bg.xml
+count=404
 257.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\abc_ic_star_half_black_48dp.png
 77.set=ANDROID_RESOURCE
 328.set=ANDROID_RESOURCE
@@ -1057,7 +1059,7 @@ count=403
 64.base=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_
 187.base=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_
 81.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\abc_item_background_holo_dark.xml
-384.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\design_navigation_item_separator.xml
+384.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\abc_ic_menu_overflow_material.xml
 54.set=ANDROID_RESOURCE
 305.set=ANDROID_RESOURCE
 3.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\mipmap-xhdpi-v4\\ic_candado.png
@@ -1096,7 +1098,7 @@ count=403
 345.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\common_google_signin_btn_text_dark_disabled.9.png
 58.base=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_
 367.set=ANDROID_RESOURCE
-378.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\calendar_redondo.xml
+378.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\color-v23\\abc_btn_colored_borderless_text_material.xml
 208.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\color\\abc_background_cache_hint_selector_material_dark.xml
 213.set=ANDROID_RESOURCE
 168.set=ANDROID_RESOURCE
@@ -1113,6 +1115,7 @@ count=403
 368.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout-v17\\abc_popup_menu_header_item_layout.xml
 145.set=ANDROID_RESOURCE
 232.base=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_
+403.base=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_
 398.set=ANDROID_RESOURCE
 70.set=ANDROID_RESOURCE
 321.set=ANDROID_RESOURCE
@@ -1129,7 +1132,7 @@ count=403
 88.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-v21\\ic_menu_share.xml
 375.set=ANDROID_RESOURCE
 19.set=ANDROID_RESOURCE
-392.base=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_
+392.base=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_868d28b0dc39e16b6b8a27a7d48f44adec4ab35d
 298.set=ANDROID_RESOURCE
 221.set=ANDROID_RESOURCE
 255.base=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_
@@ -1146,7 +1149,7 @@ count=403
 382.base=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_
 153.set=ANDROID_RESOURCE
 1.base=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_
-400.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\aceptadas_2.png
+400.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\animator-v21\\design_appbar_state_list_animator.xml
 7.set=ANDROID_RESOURCE
 198.set=ANDROID_RESOURCE
 262.file=C\:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout-v13\\select_dialog_singlechoice_material.xml

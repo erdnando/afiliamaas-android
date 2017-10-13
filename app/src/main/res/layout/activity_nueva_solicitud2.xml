@@ -657,7 +657,7 @@
                 android:layout_marginTop="18dp"
                 android:background="@drawable/edittext_redondo"
                 android:ems="10"
-                android:hint="Correo Electronico"
+                android:hint="Correo Electronico *"
                 android:inputType="textEmailAddress"
                 android:textAlignment="center" />
 
@@ -1883,7 +1883,7 @@
                 android:layout_below="@+id/ImgExtra5" />
 
             <TextView
-                android:id="@+id/TextXML"
+                android:id="@+id/textPruebas"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignEnd="@+id/textNombreExtra5"
@@ -1904,7 +1904,8 @@
         android:layout_marginTop="55dp"
         android:layout_width="match_parent"
         android:layout_height="310dp"
-        android:layout_below="@+id/RelativePrincipal"/>
-
+        android:layout_below="@+id/RelativePrincipal"
+        android:clickable="false"
+        />
 
 </RelativeLayout>
