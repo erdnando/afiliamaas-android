@@ -140,6 +140,10 @@
         "source": "C:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\src\\main\\res\\layout\\app_bar_menu_principal.xml"
     },
     {
+        "merged": "C:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_dialog.xml",
+        "source": "C:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\src\\main\\res\\layout\\fragment_dialog.xml"
+    },
+    {
         "merged": "C:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_simple_overlay_action_mode.xml",
         "source": "C:\\Users\\aafabre\\.android\\build-cache\\31184b24869e12fb598fd749ccbc849f44da50ba\\output\\res\\layout\\abc_screen_simple_overlay_action_mode.xml"
     },

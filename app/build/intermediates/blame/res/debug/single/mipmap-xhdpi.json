@@ -8,6 +8,10 @@
         "source": "C:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher.png"
     },
     {
+        "merged": "C:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi\\ic_cerrar.png",
+        "source": "C:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\src\\main\\res\\mipmap-xhdpi\\ic_cerrar.png"
+    },
+    {
         "merged": "C:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi\\ic_contact.png",
         "source": "C:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\src\\main\\res\\mipmap-xhdpi\\ic_contact.png"
     },

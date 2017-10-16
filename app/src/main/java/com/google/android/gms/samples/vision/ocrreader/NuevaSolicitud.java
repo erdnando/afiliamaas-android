@@ -205,6 +205,9 @@ public class NuevaSolicitud extends AppCompatActivity {
         setContentView(R.layout.activity_nueva_solicitud2);
 
         consultaBuzonActivo();
+        idAutoIncrement();
+
+        toast(""+idAutoIncrement);
 
         //Creacion del view de TexviewPruebas
         textPruebas = (TextView) findViewById(R.id.textPruebas);
@@ -994,8 +997,7 @@ public class NuevaSolicitud extends AppCompatActivity {
 
                 }
 
-                /*idAutoIncrement();
-
+                /*
                 String Estatus = "6";
                 String comentario = "";
                 String motivo = "0";
@@ -1161,6 +1163,7 @@ public class NuevaSolicitud extends AppCompatActivity {
 
                     toast("Verifique la fecha de nacimiento");
                 }*/
+
             }
         });
 
@@ -1289,7 +1292,7 @@ public class NuevaSolicitud extends AppCompatActivity {
                 break;
 
             case R.id.ImgContrato1New:
-                
+
                 startActivityForResult(abrirCamara, CAMERA_REQUEST3);
 
                 break;
@@ -1704,9 +1707,10 @@ public class NuevaSolicitud extends AppCompatActivity {
 
             if (consulta.moveToNext()) {
 
-                id = Integer.parseInt(consulta.getString(0));
+                if (consulta.getString(0) == null) {
 
-                idAutoIncrement = id + 1;
+                    idAutoIncrement = id + 1;
+                }
 
             } else {
 
@@ -1721,9 +1725,10 @@ public class NuevaSolicitud extends AppCompatActivity {
 
             if (consulta.moveToNext()) {
 
-                id = Integer.parseInt(consulta.getString(0));
+                if (consulta.getString(0) == null) {
 
-                idAutoIncrement = id + 1;
+                    idAutoIncrement = id + 1;
+                }
 
             } else {
 

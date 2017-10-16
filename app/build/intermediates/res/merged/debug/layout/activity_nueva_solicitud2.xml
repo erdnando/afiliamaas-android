@@ -1043,11 +1043,12 @@
                 android:inputType="number"
                 android:maxLength="10"
                 android:textAlignment="center"
-                tools:ignore="RtlCompat" />
+                tools:ignore="RtlCompat"
+                android:layout_toLeftOf="@+id/txtExtension" />
 
             <EditText
                 android:id="@+id/txtExtension"
-                android:layout_width="wrap_content"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_alignBaseline="@+id/txtTelefonoOficina"
                 android:layout_alignBottom="@+id/txtTelefonoOficina"
@@ -1903,9 +1904,10 @@
         android:id="@+id/fragment"
         android:layout_marginTop="55dp"
         android:layout_width="match_parent"
-        android:layout_height="310dp"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/RelativePrincipal"
         android:clickable="false"
-        />
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"/>
 
 </RelativeLayout>
