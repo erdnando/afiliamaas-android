@@ -81,6 +81,10 @@ public class Login extends AppCompatActivity {
                     Logueo logueo = new Logueo();
                     logueo.execute();
 
+                    txtEmpresa.setEnabled(false);
+                    txtUsuario.setEnabled(false);
+                    txtPassword.setEnabled(false);
+
                 } else {
 
                     //La consulta la hará en la base de datos local

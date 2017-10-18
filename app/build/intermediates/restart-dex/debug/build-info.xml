@@ -6,33 +6,26 @@
     density="xhdpi"
     format="10"
     plugin-version="2.3.3"
-    timestamp="1508171159191"
+    timestamp="1508283529981"
     token="4508534380431896730"
     verifier="COLD_SWAP_REQUESTED" >
 
     <task
         name="javac"
-        duration="840" />
+        duration="0" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="76" />
+        duration="0" />
     <task
         name="verifier"
-        duration="27" />
-
-    <artifact
-        location="C:\Users\aafabre\Downloads\ocr-reader\app\build\intermediates\split-apk\debug\slices\slice_2.apk"
-        type="SPLIT" />
-    <artifact
-        location="C:\Users\aafabre\Downloads\ocr-reader\app\build\outputs\apk\app-debug.apk"
-        type="SPLIT_MAIN" />
+        duration="0" />
 
     <build
         build-mode="FULL"
-        timestamp="1508170208740"
+        timestamp="1508282909006"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
             location="C:\Users\aafabre\Downloads\ocr-reader\app\build\intermediates\split-apk\debug\slices\slice_2.apk"
@@ -73,15 +66,7 @@
     </build>
     <build
         build-mode="COLD"
-        timestamp="1508170872492"
-        verifier="COLD_SWAP_REQUESTED" >
-        <artifact
-            location="C:\Users\aafabre\Downloads\ocr-reader\app\build\outputs\apk\app-debug.apk"
-            type="SPLIT_MAIN" />
-    </build>
-    <build
-        build-mode="COLD"
-        timestamp="1508171159191"
+        timestamp="1508283381496"
         verifier="COLD_SWAP_REQUESTED" >
         <artifact
             location="C:\Users\aafabre\Downloads\ocr-reader\app\build\intermediates\split-apk\debug\slices\slice_2.apk"
@@ -90,5 +75,9 @@
             location="C:\Users\aafabre\Downloads\ocr-reader\app\build\outputs\apk\app-debug.apk"
             type="SPLIT_MAIN" />
     </build>
+    <build
+        build-mode="COLD"
+        timestamp="1508283529981"
+        verifier="COLD_SWAP_REQUESTED" />
 
 </instant-run>

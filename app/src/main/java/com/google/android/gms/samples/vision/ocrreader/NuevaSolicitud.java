@@ -2,6 +2,7 @@ package com.google.android.gms.samples.vision.ocrreader;
 
 import android.Manifest;
 import android.content.ContentValues;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
@@ -16,6 +17,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.NestedScrollView;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Base64;
 import android.util.Patterns;
@@ -199,6 +201,14 @@ public class NuevaSolicitud extends AppCompatActivity {
 
     int idAutoIncrement;
 
+    //Estatus incompleto y datos directos para la bd local
+    String EstatusIncompleto = "0";
+
+    String comentario = "";
+    String motivo = "0";
+    String producto = "";
+    String promedio = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -207,7 +217,7 @@ public class NuevaSolicitud extends AppCompatActivity {
         consultaBuzonActivo();
         idAutoIncrement();
 
-        toast(""+idAutoIncrement);
+        //toast(""+idAutoIncrement);
 
         //Creacion del view de TexviewPruebas
         textPruebas = (TextView) findViewById(R.id.textPruebas);
@@ -665,6 +675,28 @@ public class NuevaSolicitud extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                String diaActual, mesActual, anioActual;
+                int anioActualResta;
+
+                Calendar calendar = Calendar.getInstance();
+                diaActual = String.valueOf(calendar.get(Calendar.DAY_OF_MONTH));
+                mesActual = String.valueOf(calendar.get(Calendar.MONTH) + 1);
+                anioActual = String.valueOf(calendar.get(Calendar.YEAR));
+                anioActualResta = calendar.get(Calendar.YEAR);
+
+                String fechaActual = diaActual + "/" + mesActual + "/" + anioActual;
+
+                String diaNac, mesNac, anioNac;
+                int anioNacResta;
+
+                diaNac = String.valueOf(PickerNac.getDayOfMonth());
+                mesNac = String.valueOf(PickerNac.getMonth() + 1);
+                anioNac = String.valueOf(PickerNac.getYear());
+
+                anioNacResta = PickerNac.getYear();
+
+                int edad = anioActualResta - anioNacResta;
+
                 if (txtSolicitanteGeneral.getText().toString().isEmpty() || txtPaternoGeneral.getText().toString().isEmpty() || txtMaternoGeneral.getText().toString().isEmpty()
                         || txtNumeroIdentificacion.getText().toString().isEmpty() || txtRFC.getText().toString().isEmpty() || txtCalle.getText().toString().isEmpty() || txtNoExterior.getText().toString().isEmpty()
                         || txtColonia.getText().toString().isEmpty() || txtCP.getText().toString().isEmpty() || txtTiempoResidencia.getText().toString().isEmpty() || txtMontoVivienda.getText().toString().isEmpty()
@@ -979,8 +1011,9 @@ public class NuevaSolicitud extends AppCompatActivity {
                         toast("Obligatoria la foto del contrato 2");
                     } else if (Base64Firma == null) {
 
-                        toast("Firma obligatori");
+                        toast("Firma obligatoria");
                     }
+
 
                     Fragment fragment = null;
 
@@ -995,174 +1028,146 @@ public class NuevaSolicitud extends AppCompatActivity {
                         scrollNuevaSolicitud.setVisibility(View.GONE);
                     }
 
-                }
+                } else {
 
-                /*
-                String Estatus = "6";
-                String comentario = "";
-                String motivo = "0";
-                String producto = "";
-                String promedio = "";
+                    if (edad >= 18) {
 
-                String diaActual, mesActual, anioActual;
-                int anioActualResta;
+                        if (validarEmail(txtCorreo.getText().toString())) {
 
-                Calendar calendar = Calendar.getInstance();
-                diaActual = String.valueOf(calendar.get(Calendar.DAY_OF_MONTH));
-                mesActual = String.valueOf(calendar.get(Calendar.MONTH) + 1);
-                anioActual = String.valueOf(calendar.get(Calendar.YEAR));
-                anioActualResta = calendar.get(Calendar.YEAR);
+                            String solicitud_xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
+                                    "<SolicitudType xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">\n" +
+                                    "  <Lattitude>19.4140762787095</Lattitude>\n" +
+                                    "  <Longuitud>-99.0129281651914</Longuitud>\n" +
+                                    "  <generales>\n" +
+                                    "    <Tpoidentif>" + PosicionTipoIdentificacion + "</Tpoidentif>\n" +
+                                    "    <Noidenficacion>" + txtNumeroIdentificacion.getText().toString() + "</Noidenficacion>\n" +
+                                    "    <Pmrnombre>" + txtSolicitanteGeneral.getText().toString() + "</Pmrnombre>\n" +
+                                    "    <Sdonombre>" + txtSegundoNombreGeneral.getText().toString() + "</Sdonombre>\n" +
+                                    "    <Apaterno>" + txtPaternoGeneral.getText().toString() + "</Apaterno>\n" +
+                                    "    <Amaterno>" + txtMaternoGeneral.getText().toString() + "</Amaterno>\n" +
+                                    "    <Sexo>" + Sexo + "</Sexo>\n" +
+                                    "    <Nacionalidad>" + PosicionNacionalidadGeneral + "</Nacionalidad>\n" +
+                                    "    <Fechanacdia>" + diaNac + "</Fechanacdia>\n" +
+                                    "    <Rfc>" + txtRFC.getText().toString() + "</Rfc>\n" +
+                                    "    <Edocivil>" + PosicionEdoCivilGeneral + "</Edocivil>\n" +
+                                    "    <Nodependiente>" + ValorNumeroDependientes + "</Nodependiente>\n" +
+                                    "    <Cveperspol>2</Cveperspol>\n" +
+                                    "    <FechasnacMes>" + mesNac + "</FechasnacMes>\n" +
+                                    "    <FechanacAnio>" + anioNac + "</FechanacAnio>\n" +
+                                    "  </generales>\n" +
+                                    "  <doc>\n" +
+                                    "    <IdentificacionFrentePath>" + NombreIdentificacionFrente + "</IdentificacionFrentePath>\n" +
+                                    "    <IdentificacionAtrasPath>" + NombreIdentificacionAnverso + "</IdentificacionAtrasPath>\n" +
+                                    "    <Contrato1Path>" + NombreContrato1 + "</Contrato1Path>\n" +
+                                    "    <Contrato2Path>" + NombreContrato2 + "</Contrato2Path>\n" +
+                                    "    <Extra1>" + NombreExtra1 + "</Extra1>\n" +
+                                    "    <Extra2>" + NombreExtra2 + "</Extra2>\n" +
+                                    "    <Extra3>" + NombreExtra3 + "</Extra3>\n" +
+                                    "    <Extra4>" + NombreExtra4 + "</Extra4>\n" +
+                                    "    <Extra5>" + NombreExtra5 + "</Extra5>\n" +
+                                    "    <FirmaPath>" + NombreFirma + "</FirmaPath>\n" +
+                                    "  </doc>\n" +
+                                    "  <domicilio>\n" +
+                                    "    <Calle>" + txtCalle.getText().toString() + "</Calle>\n" +
+                                    "    <NoInt>" + txtNoInterior.getText().toString() + "</NoInt>\n" +
+                                    "    <NoExt>" + txtNoExterior.getText().toString() + "</NoExt>\n" +
+                                    "    <Cpdom>" + txtCP.getText().toString() + "</Cpdom>\n" +
+                                    "    <Estado>" + PosicionEstadoDomicilio + "</Estado>\n" +
+                                    "    <Delegacion>" + PosicionDelegacionDomicilio + "</Delegacion>\n" +
+                                    "    <Colonia>" + txtColonia.getText().toString() + "</Colonia>\n" +
+                                    "    <TiempoResidencia>" + txtTiempoResidencia.getText().toString() + "</TiempoResidencia>\n" +
+                                    "    <EstatusResidencia>" + PosicionEstatusDomicilio + "</EstatusResidencia>\n" +
+                                    "    <MontoVivienda>" + txtMontoVivienda.getText().toString() + "</MontoVivienda>\n" +
+                                    "    <Email>" + txtCorreo.getText().toString() + "</Email>\n" +
+                                    "    <Telcasa>" + txtTelefonoCasa.getText().toString() + "</Telcasa>\n" +
+                                    "    <Telmovil>" + txtTelefonoCelular.getText().toString() + "</Telmovil>\n" +
+                                    "    <CompaniaMovil>" + PosicionCompaniaMovil + "</CompaniaMovil>\n" +
+                                    "  </domicilio>\n" +
+                                    "  <Personapolitica>\n" +
+                                    "    <EsPersonaPolitica>" + Grupo1 + "</EsPersonaPolitica>\n" +
+                                    "    <TipoParentesco>" + txtParentescoPolitico.getText().toString() + "</TipoParentesco>\n" +
+                                    "    <Descfuncion>" + txtFuncionPolitica.getText().toString() + "</Descfuncion>\n" +
+                                    "    <Descparentesco>" + txtFuncionParentesco.getText().toString() + "</Descparentesco>\n" +
+                                    "    <TieneParentesco>" + Grupo2 + "</TieneParentesco>\n" +
+                                    "  </Personapolitica>\n" +
+                                    "  <Refer>\n" +
+                                    "    <Pmrnombre>" + txtNombrePrimera.getText().toString() + "</Pmrnombre>\n" +
+                                    "    <Sdonombre/>\n" +
+                                    "    <Apaterno>" + txtPaternoPrimera.getText().toString() + "</Apaterno>\n" +
+                                    "    <Amaterno>" + txtMaternoPrimera.getText().toString() + "</Amaterno>\n" +
+                                    "    <Nacionalidad>" + PosicionNacionalidadPrimera + "</Nacionalidad>\n" +
+                                    "    <TelefonoCasa>" + txtTelefonoPrimera.getText().toString() + "</TelefonoCasa>\n" +
+                                    "  </Refer>\n" +
+                                    "  <Refer2>\n" +
+                                    "    <Pmrnombre>" + txtNombreSegunda.getText().toString() + "</Pmrnombre>\n" +
+                                    "    <Sdonombre/>\n" +
+                                    "    <Apaterno>" + txtPaternoSegunda.getText().toString() + "</Apaterno>\n" +
+                                    "    <Amaterno>" + txtMaternoSegunda.getText().toString() + "</Amaterno>\n" +
+                                    "    <Nacionalidad>" + PosicionNacionalidadSegunda + "</Nacionalidad>\n" +
+                                    "    <TelefonoCasa>" + txtTelefonoSegunda.getText().toString() + "</TelefonoCasa>\n" +
+                                    "  </Refer2>\n" +
+                                    "  <Refer3>\n" +
+                                    "    <Pmrnombre>" + txtNombreTercera.getText().toString() + "</Pmrnombre>\n" +
+                                    "    <Sdonombre/>\n" +
+                                    "    <Apaterno>" + txtPaternoTercera.getText().toString() + "</Apaterno>\n" +
+                                    "    <Amaterno>" + txtMaternoTercera.getText().toString() + "</Amaterno>\n" +
+                                    "    <Nacionalidad>" + PosicionNacionalidadTercera + "</Nacionalidad>\n" +
+                                    "    <TelefonoCasa>" + txtTelefonoTercera.getText().toString() + "</TelefonoCasa>\n" +
+                                    "  </Refer3>\n" +
+                                    "  <Promotor>\n" +
+                                    "    <Compania>" + empresa + "</Compania>\n" +
+                                    "    <Usuario>" + usuario + "</Usuario>\n" +
+                                    "    <Contrasenia>" + password + "</Contrasenia>\n" +
+                                    "  </Promotor>\n" +
+                                    "  <FolioLocal>0</FolioLocal>\n" +
+                                    "  <DiaCreacion>" + diaActual + "</DiaCreacion>\n" +
+                                    "  <MesCreacion>" + mesActual + "</MesCreacion>\n" +
+                                    "  <AnioCreacion>" + anioActual + "</AnioCreacion>\n" +
+                                    "  <Deconominos>\n" +
+                                    "    <TipoContrato>" + PosicionTipoContrato + "</TipoContrato>\n" +
+                                    "    <AntiguedadEmpleo>" + txtAntiguedadEmpleo.getText().toString() + "</AntiguedadEmpleo>\n" +
+                                    "    <AniosCasada>" + txtTiempoCasado.getText().toString() + "</AniosCasada>\n" +
+                                    "    <Ingresos>" + txtIngreso.getText().toString() + "</Ingresos>\n" +
+                                    "    <NombreEmpresa>" + txtNombreEmpresa.getText().toString() + "</NombreEmpresa>\n" +
+                                    "    <GiroEmpresa>" + txtGiro.getText().toString() + "</GiroEmpresa>\n" +
+                                    "    <Puesto>" + txtPuesto.getText().toString() + "</Puesto>\n" +
+                                    "    <Domicilio>\n" +
+                                    "      <Calle>" + txtCalleIngresos.getText().toString() + "</Calle>\n" +
+                                    "      <NoInt>" + txtNoInteriorIngresos.getText().toString() + "</NoInt>\n" +
+                                    "      <NoExt>" + txtNoExteriorIngresos.getText().toString() + "</NoExt>\n" +
+                                    "      <Cpdom>" + txtCPIngresos.getText().toString() + "</Cpdom>\n" +
+                                    "      <Estado>" + PosicionEstadoIngresos + "</Estado>\n" +
+                                    "      <Delegacion>" + PosicionDelegacionIngresos + "</Delegacion>\n" +
+                                    "      <Colonia>" + txtColoniaIngresos.getText().toString() + "</Colonia>\n" +
+                                    "      <TiempoResidencia>0</TiempoResidencia>\n" +
+                                    "      <EstatusResidencia>0</EstatusResidencia>\n" +
+                                    "      <MontoVivienda>0</MontoVivienda>\n" +
+                                    "      <Telcasa>" + txtTelefonoOficina.getText().toString() + "</Telcasa>\n" +
+                                    "      <Telmovil/>\n" +
+                                    "    </Domicilio>\n" +
+                                    "    <OtrosIngresos>" + txtOtrosIngresos.getText().toString() + "</OtrosIngresos>\n" +
+                                    "    <FuenteOtrosIngresos>" + txtFuenteIngresos.getText().toString() + "</FuenteOtrosIngresos>\n" +
+                                    "  </Deconominos>\n" +
+                                    "</SolicitudType>";
 
-                String fechaActual = diaActual + "/" + mesActual + "/" + anioActual;
+                            EstatusIncompleto = "6";
 
-                String diaNac, mesNac, anioNac;
-                int anioNacResta;
+                            consultaInsertar(idAutoIncrement, fechaActual, EstatusIncompleto, idUsuario, comentario, motivo, fechaActual, solicitud_xml, promedio, producto, Base64Contrato1, Base64Contrato2, Base64IdentificacionAnverso, Base64IdentificacionFrente, Base64Firma, Base64Extra1, Base64Extra2, Base64Extra3, Base64Extra4, Base64Extra5);
 
-                diaNac = String.valueOf(PickerNac.getDayOfMonth());
-                mesNac = String.valueOf(PickerNac.getMonth() + 1);
-                anioNac = String.valueOf(PickerNac.getYear());
+                            Intent intent = new Intent(getApplicationContext(), MenuPrincipal.class);
+                            startActivity(intent);
+                            finish();
 
-                anioNacResta = PickerNac.getYear();
+                        } else {
 
-                int edad = anioActualResta - anioNacResta;
-
-                if (edad >= 18) {
-
-                    if (validarEmail(txtCorreo.getText().toString())) {
-
-                        String solicitud_xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
-                                "<SolicitudType xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">\n" +
-                                "  <Lattitude>19.4140762787095</Lattitude>\n" +
-                                "  <Longuitud>-99.0129281651914</Longuitud>\n" +
-                                "  <generales>\n" +
-                                "    <Tpoidentif>" + PosicionTipoIdentificacion + "</Tpoidentif>\n" +
-                                "    <Noidenficacion>" + txtNumeroIdentificacion.getText().toString() + "</Noidenficacion>\n" +
-                                "    <Pmrnombre>" + txtSolicitanteGeneral.getText().toString() + "</Pmrnombre>\n" +
-                                "    <Sdonombre>" + txtSegundoNombreGeneral.getText().toString() + "</Sdonombre>\n" +
-                                "    <Apaterno>" + txtPaternoGeneral.getText().toString() + "</Apaterno>\n" +
-                                "    <Amaterno>" + txtMaternoGeneral.getText().toString() + "</Amaterno>\n" +
-                                "    <Sexo>" + Sexo + "</Sexo>\n" +
-                                "    <Nacionalidad>" + PosicionNacionalidadGeneral + "</Nacionalidad>\n" +
-                                "    <Fechanacdia>" + diaNac + "</Fechanacdia>\n" +
-                                "    <Rfc>" + txtRFC.getText().toString() + "</Rfc>\n" +
-                                "    <Edocivil>" + PosicionEdoCivilGeneral + "</Edocivil>\n" +
-                                "    <Nodependiente>" + ValorNumeroDependientes + "</Nodependiente>\n" +
-                                "    <Cveperspol>2</Cveperspol>\n" +
-                                "    <FechasnacMes>" + mesNac + "</FechasnacMes>\n" +
-                                "    <FechanacAnio>" + anioNac + "</FechanacAnio>\n" +
-                                "  </generales>\n" +
-                                "  <doc>\n" +
-                                "    <IdentificacionFrentePath>" + NombreIdentificacionFrente + "</IdentificacionFrentePath>\n" +
-                                "    <IdentificacionAtrasPath>" + NombreIdentificacionAnverso + "</IdentificacionAtrasPath>\n" +
-                                "    <Contrato1Path>" + NombreContrato1 + "</Contrato1Path>\n" +
-                                "    <Contrato2Path>" + NombreContrato2 + "</Contrato2Path>\n" +
-                                "    <Extra1>" + NombreExtra1 + "</Extra1>\n" +
-                                "    <Extra2>" + NombreExtra2 + "</Extra2>\n" +
-                                "    <Extra3>" + NombreExtra3 + "</Extra3>\n" +
-                                "    <Extra4>" + NombreExtra4 + "</Extra4>\n" +
-                                "    <Extra5>" + NombreExtra5 + "</Extra5>\n" +
-                                "    <FirmaPath>" + NombreFirma + "</FirmaPath>\n" +
-                                "  </doc>\n" +
-                                "  <domicilio>\n" +
-                                "    <Calle>" + txtCalle.getText().toString() + "</Calle>\n" +
-                                "    <NoInt>" + txtNoInterior.getText().toString() + "</NoInt>\n" +
-                                "    <NoExt>" + txtNoExterior.getText().toString() + "</NoExt>\n" +
-                                "    <Cpdom>" + txtCP.getText().toString() + "</Cpdom>\n" +
-                                "    <Estado>" + PosicionEstadoDomicilio + "</Estado>\n" +
-                                "    <Delegacion>" + PosicionDelegacionDomicilio + "</Delegacion>\n" +
-                                "    <Colonia>" + txtColonia.getText().toString() + "</Colonia>\n" +
-                                "    <TiempoResidencia>" + txtTiempoResidencia.getText().toString() + "</TiempoResidencia>\n" +
-                                "    <EstatusResidencia>" + PosicionEstatusDomicilio + "</EstatusResidencia>\n" +
-                                "    <MontoVivienda>" + txtMontoVivienda.getText().toString() + "</MontoVivienda>\n" +
-                                "    <Email>" + txtCorreo.getText().toString() + "</Email>\n" +
-                                "    <Telcasa>" + txtTelefonoCasa.getText().toString() + "</Telcasa>\n" +
-                                "    <Telmovil>" + txtTelefonoCelular.getText().toString() + "</Telmovil>\n" +
-                                "    <CompaniaMovil>" + PosicionCompaniaMovil + "</CompaniaMovil>\n" +
-                                "  </domicilio>\n" +
-                                "  <Personapolitica>\n" +
-                                "    <EsPersonaPolitica>" + Grupo1 + "</EsPersonaPolitica>\n" +
-                                "    <TipoParentesco>" + txtParentescoPolitico.getText().toString() + "</TipoParentesco>\n" +
-                                "    <Descfuncion>" + txtFuncionPolitica.getText().toString() + "</Descfuncion>\n" +
-                                "    <Descparentesco>" + txtFuncionParentesco.getText().toString() + "</Descparentesco>\n" +
-                                "    <TieneParentesco>" + Grupo2 + "</TieneParentesco>\n" +
-                                "  </Personapolitica>\n" +
-                                "  <Refer>\n" +
-                                "    <Pmrnombre>" + txtNombrePrimera.getText().toString() + "</Pmrnombre>\n" +
-                                "    <Sdonombre/>\n" +
-                                "    <Apaterno>" + txtPaternoPrimera.getText().toString() + "</Apaterno>\n" +
-                                "    <Amaterno>" + txtMaternoPrimera.getText().toString() + "</Amaterno>\n" +
-                                "    <Nacionalidad>" + PosicionNacionalidadPrimera + "</Nacionalidad>\n" +
-                                "    <TelefonoCasa>" + txtTelefonoPrimera.getText().toString() + "</TelefonoCasa>\n" +
-                                "  </Refer>\n" +
-                                "  <Refer2>\n" +
-                                "    <Pmrnombre>" + txtNombreSegunda.getText().toString() + "</Pmrnombre>\n" +
-                                "    <Sdonombre/>\n" +
-                                "    <Apaterno>" + txtPaternoSegunda.getText().toString() + "</Apaterno>\n" +
-                                "    <Amaterno>" + txtMaternoSegunda.getText().toString() + "</Amaterno>\n" +
-                                "    <Nacionalidad>" + PosicionNacionalidadSegunda + "</Nacionalidad>\n" +
-                                "    <TelefonoCasa>" + txtTelefonoSegunda.getText().toString() + "</TelefonoCasa>\n" +
-                                "  </Refer2>\n" +
-                                "  <Refer3>\n" +
-                                "    <Pmrnombre>" + txtNombreTercera.getText().toString() + "</Pmrnombre>\n" +
-                                "    <Sdonombre/>\n" +
-                                "    <Apaterno>" + txtPaternoTercera.getText().toString() + "</Apaterno>\n" +
-                                "    <Amaterno>" + txtMaternoTercera.getText().toString() + "</Amaterno>\n" +
-                                "    <Nacionalidad>" + PosicionNacionalidadTercera + "</Nacionalidad>\n" +
-                                "    <TelefonoCasa>" + txtTelefonoTercera.getText().toString() + "</TelefonoCasa>\n" +
-                                "  </Refer3>\n" +
-                                "  <Promotor>\n" +
-                                "    <Compania>" + empresa + "</Compania>\n" +
-                                "    <Usuario>" + usuario + "</Usuario>\n" +
-                                "    <Contrasenia>" + password + "</Contrasenia>\n" +
-                                "  </Promotor>\n" +
-                                "  <FolioLocal>0</FolioLocal>\n" +
-                                "  <DiaCreacion>" + diaActual + "</DiaCreacion>\n" +
-                                "  <MesCreacion>" + mesActual + "</MesCreacion>\n" +
-                                "  <AnioCreacion>" + anioActual + "</AnioCreacion>\n" +
-                                "  <Deconominos>\n" +
-                                "    <TipoContrato>" + PosicionTipoContrato + "</TipoContrato>\n" +
-                                "    <AntiguedadEmpleo>" + txtAntiguedadEmpleo.getText().toString() + "</AntiguedadEmpleo>\n" +
-                                "    <AniosCasada>" + txtTiempoCasado.getText().toString() + "</AniosCasada>\n" +
-                                "    <Ingresos>" + txtIngreso.getText().toString() + "</Ingresos>\n" +
-                                "    <NombreEmpresa>" + txtNombreEmpresa.getText().toString() + "</NombreEmpresa>\n" +
-                                "    <GiroEmpresa>" + txtGiro.getText().toString() + "</GiroEmpresa>\n" +
-                                "    <Puesto>" + txtPuesto.getText().toString() + "</Puesto>\n" +
-                                "    <Domicilio>\n" +
-                                "      <Calle>" + txtCalleIngresos.getText().toString() + "</Calle>\n" +
-                                "      <NoInt>" + txtNoInteriorIngresos.getText().toString() + "</NoInt>\n" +
-                                "      <NoExt>" + txtNoExteriorIngresos.getText().toString() + "</NoExt>\n" +
-                                "      <Cpdom>" + txtCPIngresos.getText().toString() + "</Cpdom>\n" +
-                                "      <Estado>" + PosicionEstadoIngresos + "</Estado>\n" +
-                                "      <Delegacion>" + PosicionDelegacionIngresos + "</Delegacion>\n" +
-                                "      <Colonia>" + txtColoniaIngresos.getText().toString() + "</Colonia>\n" +
-                                "      <TiempoResidencia>0</TiempoResidencia>\n" +
-                                "      <EstatusResidencia>0</EstatusResidencia>\n" +
-                                "      <MontoVivienda>0</MontoVivienda>\n" +
-                                "      <Telcasa>" + txtTelefonoOficina.getText().toString() + "</Telcasa>\n" +
-                                "      <Telmovil/>\n" +
-                                "    </Domicilio>\n" +
-                                "    <OtrosIngresos>" + txtOtrosIngresos.getText().toString() + "</OtrosIngresos>\n" +
-                                "    <FuenteOtrosIngresos>" + txtFuenteIngresos.getText().toString() + "</FuenteOtrosIngresos>\n" +
-                                "  </Deconominos>\n" +
-                                "</SolicitudType>";
-
-                        insertarSolicitud(idAutoIncrement, fechaActual, Estatus, idUsuario, comentario, motivo, fechaActual, solicitud_xml, promedio, producto, Base64Contrato1, Base64Contrato2, Base64IdentificacionAnverso, Base64IdentificacionFrente, Base64Firma, Base64Extra1, Base64Extra2, Base64Extra3, Base64Extra4, Base64Extra5);
-
-                        Intent intent = new Intent(getApplicationContext(), MenuPrincipal.class);
-                        startActivity(intent);
-                        finish();
-
-                        //borrar();
+                            toast("Email no valido");
+                        }
 
                     } else {
 
-                        toast("Email no valido");
+                        toast("Verifique la fecha de nacimiento");
                     }
-
-                } else {
-
-                    toast("Verifique la fecha de nacimiento");
-                }*/
+                }
 
             }
         });
@@ -1407,10 +1412,167 @@ public class NuevaSolicitud extends AppCompatActivity {
 
                 if (checkBox.isChecked()) {
 
-                    toast("Marcado");
+                    String diaActual, mesActual, anioActual;
+                    int anioActualResta;
+
+                    Calendar calendar = Calendar.getInstance();
+                    diaActual = String.valueOf(calendar.get(Calendar.DAY_OF_MONTH));
+                    mesActual = String.valueOf(calendar.get(Calendar.MONTH) + 1);
+                    anioActual = String.valueOf(calendar.get(Calendar.YEAR));
+                    anioActualResta = calendar.get(Calendar.YEAR);
+
+                    String fechaActual = diaActual + "/" + mesActual + "/" + anioActual;
+
+                    String diaNac, mesNac, anioNac;
+                    int anioNacResta;
+
+                    diaNac = String.valueOf(PickerNac.getDayOfMonth());
+                    mesNac = String.valueOf(PickerNac.getMonth() + 1);
+                    anioNac = String.valueOf(PickerNac.getYear());
+
+                    anioNacResta = PickerNac.getYear();
+
+                    int edad = anioActualResta - anioNacResta;
+
+                    if (edad >= 18) {
+
+                        if (validarEmail(txtCorreo.getText().toString())) {
+
+                            String solicitud_xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
+                                    "<SolicitudType xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">\n" +
+                                    "  <Lattitude>19.4140762787095</Lattitude>\n" +
+                                    "  <Longuitud>-99.0129281651914</Longuitud>\n" +
+                                    "  <generales>\n" +
+                                    "    <Tpoidentif>" + PosicionTipoIdentificacion + "</Tpoidentif>\n" +
+                                    "    <Noidenficacion>" + txtNumeroIdentificacion.getText().toString() + "</Noidenficacion>\n" +
+                                    "    <Pmrnombre>" + txtSolicitanteGeneral.getText().toString() + "</Pmrnombre>\n" +
+                                    "    <Sdonombre>" + txtSegundoNombreGeneral.getText().toString() + "</Sdonombre>\n" +
+                                    "    <Apaterno>" + txtPaternoGeneral.getText().toString() + "</Apaterno>\n" +
+                                    "    <Amaterno>" + txtMaternoGeneral.getText().toString() + "</Amaterno>\n" +
+                                    "    <Sexo>" + Sexo + "</Sexo>\n" +
+                                    "    <Nacionalidad>" + PosicionNacionalidadGeneral + "</Nacionalidad>\n" +
+                                    "    <Fechanacdia>" + diaNac + "</Fechanacdia>\n" +
+                                    "    <Rfc>" + txtRFC.getText().toString() + "</Rfc>\n" +
+                                    "    <Edocivil>" + PosicionEdoCivilGeneral + "</Edocivil>\n" +
+                                    "    <Nodependiente>" + ValorNumeroDependientes + "</Nodependiente>\n" +
+                                    "    <Cveperspol>2</Cveperspol>\n" +
+                                    "    <FechasnacMes>" + mesNac + "</FechasnacMes>\n" +
+                                    "    <FechanacAnio>" + anioNac + "</FechanacAnio>\n" +
+                                    "  </generales>\n" +
+                                    "  <doc>\n" +
+                                    "    <IdentificacionFrentePath>" + NombreIdentificacionFrente + "</IdentificacionFrentePath>\n" +
+                                    "    <IdentificacionAtrasPath>" + NombreIdentificacionAnverso + "</IdentificacionAtrasPath>\n" +
+                                    "    <Contrato1Path>" + NombreContrato1 + "</Contrato1Path>\n" +
+                                    "    <Contrato2Path>" + NombreContrato2 + "</Contrato2Path>\n" +
+                                    "    <Extra1>" + NombreExtra1 + "</Extra1>\n" +
+                                    "    <Extra2>" + NombreExtra2 + "</Extra2>\n" +
+                                    "    <Extra3>" + NombreExtra3 + "</Extra3>\n" +
+                                    "    <Extra4>" + NombreExtra4 + "</Extra4>\n" +
+                                    "    <Extra5>" + NombreExtra5 + "</Extra5>\n" +
+                                    "    <FirmaPath>" + NombreFirma + "</FirmaPath>\n" +
+                                    "  </doc>\n" +
+                                    "  <domicilio>\n" +
+                                    "    <Calle>" + txtCalle.getText().toString() + "</Calle>\n" +
+                                    "    <NoInt>" + txtNoInterior.getText().toString() + "</NoInt>\n" +
+                                    "    <NoExt>" + txtNoExterior.getText().toString() + "</NoExt>\n" +
+                                    "    <Cpdom>" + txtCP.getText().toString() + "</Cpdom>\n" +
+                                    "    <Estado>" + PosicionEstadoDomicilio + "</Estado>\n" +
+                                    "    <Delegacion>" + PosicionDelegacionDomicilio + "</Delegacion>\n" +
+                                    "    <Colonia>" + txtColonia.getText().toString() + "</Colonia>\n" +
+                                    "    <TiempoResidencia>" + txtTiempoResidencia.getText().toString() + "</TiempoResidencia>\n" +
+                                    "    <EstatusResidencia>" + PosicionEstatusDomicilio + "</EstatusResidencia>\n" +
+                                    "    <MontoVivienda>" + txtMontoVivienda.getText().toString() + "</MontoVivienda>\n" +
+                                    "    <Email>" + txtCorreo.getText().toString() + "</Email>\n" +
+                                    "    <Telcasa>" + txtTelefonoCasa.getText().toString() + "</Telcasa>\n" +
+                                    "    <Telmovil>" + txtTelefonoCelular.getText().toString() + "</Telmovil>\n" +
+                                    "    <CompaniaMovil>" + PosicionCompaniaMovil + "</CompaniaMovil>\n" +
+                                    "  </domicilio>\n" +
+                                    "  <Personapolitica>\n" +
+                                    "    <EsPersonaPolitica>" + Grupo1 + "</EsPersonaPolitica>\n" +
+                                    "    <TipoParentesco>" + txtParentescoPolitico.getText().toString() + "</TipoParentesco>\n" +
+                                    "    <Descfuncion>" + txtFuncionPolitica.getText().toString() + "</Descfuncion>\n" +
+                                    "    <Descparentesco>" + txtFuncionParentesco.getText().toString() + "</Descparentesco>\n" +
+                                    "    <TieneParentesco>" + Grupo2 + "</TieneParentesco>\n" +
+                                    "  </Personapolitica>\n" +
+                                    "  <Refer>\n" +
+                                    "    <Pmrnombre>" + txtNombrePrimera.getText().toString() + "</Pmrnombre>\n" +
+                                    "    <Sdonombre/>\n" +
+                                    "    <Apaterno>" + txtPaternoPrimera.getText().toString() + "</Apaterno>\n" +
+                                    "    <Amaterno>" + txtMaternoPrimera.getText().toString() + "</Amaterno>\n" +
+                                    "    <Nacionalidad>" + PosicionNacionalidadPrimera + "</Nacionalidad>\n" +
+                                    "    <TelefonoCasa>" + txtTelefonoPrimera.getText().toString() + "</TelefonoCasa>\n" +
+                                    "  </Refer>\n" +
+                                    "  <Refer2>\n" +
+                                    "    <Pmrnombre>" + txtNombreSegunda.getText().toString() + "</Pmrnombre>\n" +
+                                    "    <Sdonombre/>\n" +
+                                    "    <Apaterno>" + txtPaternoSegunda.getText().toString() + "</Apaterno>\n" +
+                                    "    <Amaterno>" + txtMaternoSegunda.getText().toString() + "</Amaterno>\n" +
+                                    "    <Nacionalidad>" + PosicionNacionalidadSegunda + "</Nacionalidad>\n" +
+                                    "    <TelefonoCasa>" + txtTelefonoSegunda.getText().toString() + "</TelefonoCasa>\n" +
+                                    "  </Refer2>\n" +
+                                    "  <Refer3>\n" +
+                                    "    <Pmrnombre>" + txtNombreTercera.getText().toString() + "</Pmrnombre>\n" +
+                                    "    <Sdonombre/>\n" +
+                                    "    <Apaterno>" + txtPaternoTercera.getText().toString() + "</Apaterno>\n" +
+                                    "    <Amaterno>" + txtMaternoTercera.getText().toString() + "</Amaterno>\n" +
+                                    "    <Nacionalidad>" + PosicionNacionalidadTercera + "</Nacionalidad>\n" +
+                                    "    <TelefonoCasa>" + txtTelefonoTercera.getText().toString() + "</TelefonoCasa>\n" +
+                                    "  </Refer3>\n" +
+                                    "  <Promotor>\n" +
+                                    "    <Compania>" + empresa + "</Compania>\n" +
+                                    "    <Usuario>" + usuario + "</Usuario>\n" +
+                                    "    <Contrasenia>" + password + "</Contrasenia>\n" +
+                                    "  </Promotor>\n" +
+                                    "  <FolioLocal>0</FolioLocal>\n" +
+                                    "  <DiaCreacion>" + diaActual + "</DiaCreacion>\n" +
+                                    "  <MesCreacion>" + mesActual + "</MesCreacion>\n" +
+                                    "  <AnioCreacion>" + anioActual + "</AnioCreacion>\n" +
+                                    "  <Deconominos>\n" +
+                                    "    <TipoContrato>" + PosicionTipoContrato + "</TipoContrato>\n" +
+                                    "    <AntiguedadEmpleo>" + txtAntiguedadEmpleo.getText().toString() + "</AntiguedadEmpleo>\n" +
+                                    "    <AniosCasada>" + txtTiempoCasado.getText().toString() + "</AniosCasada>\n" +
+                                    "    <Ingresos>" + txtIngreso.getText().toString() + "</Ingresos>\n" +
+                                    "    <NombreEmpresa>" + txtNombreEmpresa.getText().toString() + "</NombreEmpresa>\n" +
+                                    "    <GiroEmpresa>" + txtGiro.getText().toString() + "</GiroEmpresa>\n" +
+                                    "    <Puesto>" + txtPuesto.getText().toString() + "</Puesto>\n" +
+                                    "    <Domicilio>\n" +
+                                    "      <Calle>" + txtCalleIngresos.getText().toString() + "</Calle>\n" +
+                                    "      <NoInt>" + txtNoInteriorIngresos.getText().toString() + "</NoInt>\n" +
+                                    "      <NoExt>" + txtNoExteriorIngresos.getText().toString() + "</NoExt>\n" +
+                                    "      <Cpdom>" + txtCPIngresos.getText().toString() + "</Cpdom>\n" +
+                                    "      <Estado>" + PosicionEstadoIngresos + "</Estado>\n" +
+                                    "      <Delegacion>" + PosicionDelegacionIngresos + "</Delegacion>\n" +
+                                    "      <Colonia>" + txtColoniaIngresos.getText().toString() + "</Colonia>\n" +
+                                    "      <TiempoResidencia>0</TiempoResidencia>\n" +
+                                    "      <EstatusResidencia>0</EstatusResidencia>\n" +
+                                    "      <MontoVivienda>0</MontoVivienda>\n" +
+                                    "      <Telcasa>" + txtTelefonoOficina.getText().toString() + "</Telcasa>\n" +
+                                    "      <Telmovil/>\n" +
+                                    "    </Domicilio>\n" +
+                                    "    <OtrosIngresos>" + txtOtrosIngresos.getText().toString() + "</OtrosIngresos>\n" +
+                                    "    <FuenteOtrosIngresos>" + txtFuenteIngresos.getText().toString() + "</FuenteOtrosIngresos>\n" +
+                                    "  </Deconominos>\n" +
+                                    "</SolicitudType>";
+
+                            EstatusIncompleto = "0";
+
+                            consultaInsertar(idAutoIncrement, fechaActual, EstatusIncompleto, idUsuario, comentario, motivo, fechaActual, solicitud_xml, promedio, producto, Base64Contrato1, Base64Contrato2, Base64IdentificacionAnverso, Base64IdentificacionFrente, Base64Firma, Base64Extra1, Base64Extra2, Base64Extra3, Base64Extra4, Base64Extra5);
+
+                            toast("Se guardó la información");
+
+                        } else {
+
+                            toast("Email no valido");
+                        }
+
+                    } else {
+
+                        toast("Verifique la fecha de nacimiento");
+                    }
+
                 } else {
 
-                    toast("No marcado");
+                    toast("No se guardó la información");
                 }
 
                 fragment = new FragmentDialog();
@@ -1646,6 +1808,50 @@ public class NuevaSolicitud extends AppCompatActivity {
     }
 
     @Override
+    public void onBackPressed() {
+
+        runOnUiThread(new Runnable() {
+            public void run() {
+
+                // Instanciamos un nuevo AlertDialog Builder y le asociamos titulo y mensaje
+                final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(NuevaSolicitud.this);
+                alertDialogBuilder.setTitle("Aviso");
+                alertDialogBuilder.setMessage("Se perderán todos los datos, ¿Está seguro que quiere salir?");
+                alertDialogBuilder.setCancelable(false);
+
+                // Creamos un nuevo OnClickListener para el boton OK que realice la conexion
+                DialogInterface.OnClickListener listenerOk = new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        Intent intent = new Intent(getApplicationContext(), MenuPrincipal.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                };
+
+                // Creamos un nuevo OnClickListener para el boton Cancelar
+                DialogInterface.OnClickListener listenerCancelar = new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        dialog.cancel();
+                    }
+                };
+
+                // Asignamos los botones positivo y negativo a sus respectivos listeners
+                alertDialogBuilder.setPositiveButton("SI", listenerOk);
+                alertDialogBuilder.setNegativeButton("NO", listenerCancelar);
+
+                AlertDialog alertDialog = alertDialogBuilder.create();
+                alertDialog.show();
+            }
+        });
+    }
+
+    @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
 
         if (requestCode == 0) {
@@ -1709,13 +1915,13 @@ public class NuevaSolicitud extends AppCompatActivity {
 
                 if (consulta.getString(0) == null) {
 
+                    idAutoIncrement =  1;
+                }else {
+
+                    id = Integer.parseInt(consulta.getString(0));
+
                     idAutoIncrement = id + 1;
                 }
-
-            } else {
-
-                idAutoIncrement = id + 1;
-
             }
 
         } else if (buzon.equals("B")) {
@@ -1727,18 +1933,18 @@ public class NuevaSolicitud extends AppCompatActivity {
 
                 if (consulta.getString(0) == null) {
 
+                    idAutoIncrement =  1;
+                }else {
+
+                    id = Integer.parseInt(consulta.getString(0));
+
                     idAutoIncrement = id + 1;
                 }
-
-            } else {
-
-                idAutoIncrement = id + 1;
-
             }
         }
     }
 
-    public void insertarSolicitud(long idSolicitud, String fechaAlta, String estatus, String idUsuario, String comentario, String motivo, String fechaModificacion, String solicitudXML, String promedio, String producto, String contrato1, String contrato2, String identificacionAnverso, String identificacionFrente, String firma, String extra1, String extra2, String extra3, String extra4, String extra5) {
+    public void consultaInsertar(int idSolicitud, String fechaAlta, String estatus, String idUsuario, String comentario, String motivo, String fechaModificacion, String solicitudXML, String promedio, String producto, String contrato1, String contrato2, String identificacionAnverso, String identificacionFrente, String firma, String extra1, String extra2, String extra3, String extra4, String extra5) {
 
         AdminSQLite admin = new AdminSQLite(getApplicationContext(), "usuario", null, 1);
 
@@ -1746,31 +1952,75 @@ public class NuevaSolicitud extends AppCompatActivity {
 
             SQLiteDatabase db = admin.getWritableDatabase();
 
-            ContentValues registro = new ContentValues();
+           Cursor consulta = db.rawQuery("select * from BUZON_A where estatus = 0 and id_solicitud = "+idAutoIncrement, null);
 
-            registro.put("id_solicitud", idSolicitud);
-            registro.put("fecha_alta", String.valueOf(fechaAlta));
-            registro.put("estatus", Integer.parseInt(estatus));
-            registro.put("id_usuario", Integer.parseInt(idUsuario));
-            registro.put("comentario", comentario);
-            registro.put("motivo", Integer.parseInt(motivo));
-            registro.put("fecha_modificacion", String.valueOf(fechaModificacion));
-            registro.put("solicitud_xml", solicitudXML);
-            registro.put("promedio_scoring", promedio);
-            registro.put("producto", producto);
+            if (consulta.moveToNext()){
 
-            registro.put("Doc_C164", contrato1);
-            registro.put("Doc_C264", contrato2);
-            registro.put("Doc_IA64", identificacionAnverso);
-            registro.put("Doc_IF64", identificacionFrente);
-            registro.put("F164", firma);
-            registro.put("Ext1", extra1);
-            registro.put("Ext2", extra2);
-            registro.put("Ext3", extra3);
-            registro.put("Ext4", extra4);
-            registro.put("Ext5", extra5);
+                ContentValues actualizar = new ContentValues();
 
-            db.insert("BUZON_A", null, registro);
+                actualizar.put("id_solicitud", idSolicitud);
+                actualizar.put("fecha_alta", String.valueOf(fechaAlta));
+                actualizar.put("estatus", Integer.parseInt(estatus));
+                actualizar.put("id_usuario", Integer.parseInt(idUsuario));
+                actualizar.put("comentario", comentario);
+                actualizar.put("motivo", Integer.parseInt(motivo));
+                actualizar.put("fecha_modificacion", String.valueOf(fechaModificacion));
+                actualizar.put("solicitud_xml", solicitudXML);
+                actualizar.put("promedio_scoring", promedio);
+                actualizar.put("producto", producto);
+
+                actualizar.put("Doc_C164", contrato1);
+                actualizar.put("Doc_C264", contrato2);
+                actualizar.put("Doc_IA64", identificacionAnverso);
+                actualizar.put("Doc_IF64", identificacionFrente);
+                actualizar.put("F164", firma);
+                actualizar.put("Ext1", extra1);
+                actualizar.put("Ext2", extra2);
+                actualizar.put("Ext3", extra3);
+                actualizar.put("Ext4", extra4);
+                actualizar.put("Ext5", extra5);
+
+                int cant = db.update("BUZON_A", actualizar, "id_solicitud = "+idAutoIncrement, null);
+
+                if (cant == 1) {
+
+                    toast("Existe y actualizado");
+
+                } else {
+
+                    toast("Existe pero no actualizado");
+                }
+
+            }else {
+
+                ContentValues registro = new ContentValues();
+
+                registro.put("id_solicitud", idSolicitud);
+                registro.put("fecha_alta", String.valueOf(fechaAlta));
+                registro.put("estatus", Integer.parseInt(estatus));
+                registro.put("id_usuario", Integer.parseInt(idUsuario));
+                registro.put("comentario", comentario);
+                registro.put("motivo", Integer.parseInt(motivo));
+                registro.put("fecha_modificacion", String.valueOf(fechaModificacion));
+                registro.put("solicitud_xml", solicitudXML);
+                registro.put("promedio_scoring", promedio);
+                registro.put("producto", producto);
+
+                registro.put("Doc_C164", contrato1);
+                registro.put("Doc_C264", contrato2);
+                registro.put("Doc_IA64", identificacionAnverso);
+                registro.put("Doc_IF64", identificacionFrente);
+                registro.put("F164", firma);
+                registro.put("Ext1", extra1);
+                registro.put("Ext2", extra2);
+                registro.put("Ext3", extra3);
+                registro.put("Ext4", extra4);
+                registro.put("Ext5", extra5);
+
+                db.insert("BUZON_A", null, registro);
+
+                toast("No Existe pero fue agregado");
+            }
 
             db.close();
 
@@ -1778,31 +2028,75 @@ public class NuevaSolicitud extends AppCompatActivity {
 
             SQLiteDatabase db = admin.getWritableDatabase();
 
-            ContentValues registro = new ContentValues();
+            Cursor consulta = db.rawQuery("select * from BUZON_B where estatus = 0 and id_solicitud = "+idAutoIncrement, null);
 
-            registro.put("id_solicitud", idSolicitud);
-            registro.put("fecha_alta", String.valueOf(fechaAlta));
-            registro.put("estatus", Integer.parseInt(estatus));
-            registro.put("id_usuario", Integer.parseInt(idUsuario));
-            registro.put("comentario", comentario);
-            registro.put("motivo", Integer.parseInt(motivo));
-            registro.put("fecha_modificacion", String.valueOf(fechaModificacion));
-            registro.put("solicitud_xml", solicitudXML);
-            registro.put("promedio_scoring", promedio);
-            registro.put("producto", producto);
+            if (consulta.moveToNext()){
 
-            registro.put("Doc_C164", contrato1);
-            registro.put("Doc_C264", contrato2);
-            registro.put("Doc_IA64", identificacionAnverso);
-            registro.put("Doc_IF64", identificacionFrente);
-            registro.put("F164", firma);
-            registro.put("Ext1", extra1);
-            registro.put("Ext2", extra2);
-            registro.put("Ext3", extra3);
-            registro.put("Ext4", extra4);
-            registro.put("Ext5", extra5);
+                ContentValues actualizar = new ContentValues();
 
-            db.insert("BUZON_B", null, registro);
+                actualizar.put("id_solicitud", idSolicitud);
+                actualizar.put("fecha_alta", String.valueOf(fechaAlta));
+                actualizar.put("estatus", Integer.parseInt(estatus));
+                actualizar.put("id_usuario", Integer.parseInt(idUsuario));
+                actualizar.put("comentario", comentario);
+                actualizar.put("motivo", Integer.parseInt(motivo));
+                actualizar.put("fecha_modificacion", String.valueOf(fechaModificacion));
+                actualizar.put("solicitud_xml", solicitudXML);
+                actualizar.put("promedio_scoring", promedio);
+                actualizar.put("producto", producto);
+
+                actualizar.put("Doc_C164", contrato1);
+                actualizar.put("Doc_C264", contrato2);
+                actualizar.put("Doc_IA64", identificacionAnverso);
+                actualizar.put("Doc_IF64", identificacionFrente);
+                actualizar.put("F164", firma);
+                actualizar.put("Ext1", extra1);
+                actualizar.put("Ext2", extra2);
+                actualizar.put("Ext3", extra3);
+                actualizar.put("Ext4", extra4);
+                actualizar.put("Ext5", extra5);
+
+                int cant = db.update("BUZON_B", actualizar, "id_solicitud = "+idAutoIncrement, null);
+
+                if (cant == 1) {
+
+                    toast("Existe y actualizado");
+
+                } else {
+
+                    toast("Existe pero no actualizado");
+                }
+
+            }else {
+
+                ContentValues registro = new ContentValues();
+
+                registro.put("id_solicitud", idSolicitud);
+                registro.put("fecha_alta", String.valueOf(fechaAlta));
+                registro.put("estatus", Integer.parseInt(estatus));
+                registro.put("id_usuario", Integer.parseInt(idUsuario));
+                registro.put("comentario", comentario);
+                registro.put("motivo", Integer.parseInt(motivo));
+                registro.put("fecha_modificacion", String.valueOf(fechaModificacion));
+                registro.put("solicitud_xml", solicitudXML);
+                registro.put("promedio_scoring", promedio);
+                registro.put("producto", producto);
+
+                registro.put("Doc_C164", contrato1);
+                registro.put("Doc_C264", contrato2);
+                registro.put("Doc_IA64", identificacionAnverso);
+                registro.put("Doc_IF64", identificacionFrente);
+                registro.put("F164", firma);
+                registro.put("Ext1", extra1);
+                registro.put("Ext2", extra2);
+                registro.put("Ext3", extra3);
+                registro.put("Ext4", extra4);
+                registro.put("Ext5", extra5);
+
+                db.insert("BUZON_B", null, registro);
+
+                toast("No Existe pero fue agregado");
+            }
 
             db.close();
 

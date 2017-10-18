@@ -178,7 +178,7 @@
             android:layout_toEndOf="@+id/conector5"
             android:layout_toRightOf="@+id/conector5"
             android:background="#64B5F6"
-            android:text="Doc"
+            android:text="DOC"
             android:textAlignment="center"
             android:textColor="#FFFFFF"
             android:textSize="20sp" />
