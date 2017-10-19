@@ -42,15 +42,19 @@
             android:label="OCR" />
         <activity
             android:name=".NuevaSolicitud"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".MenuPrincipal"
             android:label="Home"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".CargarSolicitud"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Imagen" />
+
+        <activity android:name=".Configuracion"
+            android:label="Configuración"></activity>
     </application>
 
 </manifest>

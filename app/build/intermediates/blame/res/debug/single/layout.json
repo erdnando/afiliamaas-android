@@ -48,6 +48,10 @@
         "source": "C:\\Users\\aafabre\\.android\\build-cache\\31184b24869e12fb598fd749ccbc849f44da50ba\\output\\res\\layout\\abc_action_menu_item_layout.xml"
     },
     {
+        "merged": "C:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_configuracion.xml",
+        "source": "C:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\src\\main\\res\\layout\\activity_configuracion.xml"
+    },
+    {
         "merged": "C:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_rechazadas.xml",
         "source": "C:\\Users\\aafabre\\Downloads\\ocr-reader\\app\\src\\main\\res\\layout\\fragment_rechazadas.xml"
     },

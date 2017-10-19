@@ -1910,4 +1910,14 @@
         android:paddingLeft="8dp"
         android:paddingRight="8dp"/>
 
+    <FrameLayout
+        android:id="@+id/fragmentFirma"
+        android:layout_marginTop="55dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/RelativePrincipal"
+        android:clickable="false"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"/>
+
 </RelativeLayout>

@@ -40,6 +40,7 @@ public class Configuracion extends AppCompatActivity {
                                     mensaje("Ha comenzado la sincronización");
 
                                     switchConfiguracion.setChecked(true);
+                                    //
 
                                 }
                             });

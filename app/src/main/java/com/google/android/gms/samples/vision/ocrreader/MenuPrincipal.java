@@ -122,6 +122,9 @@ public class MenuPrincipal extends AppCompatActivity implements NavigationView.O
 
         } else if (id == R.id.Configuracion) {
 
+            Intent intent = new Intent(getApplicationContext(), Configuracion.class);
+            startActivity(intent);
+
         } else if (id == R.id.Salir) {
 
             Intent intent = new Intent(getApplicationContext(), Login.class);

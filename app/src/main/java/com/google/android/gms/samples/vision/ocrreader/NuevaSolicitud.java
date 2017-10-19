@@ -1402,9 +1402,12 @@ public class NuevaSolicitud extends AppCompatActivity {
                     ft.hide(fragment);
                     ft.commit();
 
-                    scrollNuevaSolicitud.setVisibility(View.VISIBLE);
-                    btnEnviarSolicitud.setClickable(true);
                 }
+
+                scrollNuevaSolicitud.setVisibility(View.VISIBLE);
+                btnEnviarSolicitud.setClickable(true);
+
+                break;
 
             case R.id.aceptar:
 
@@ -1583,8 +1586,8 @@ public class NuevaSolicitud extends AppCompatActivity {
                     ft.hide(fragment);
                     ft.commit();
 
-                    scrollNuevaSolicitud.setVisibility(View.VISIBLE);
                 }
+                scrollNuevaSolicitud.setVisibility(View.VISIBLE);
 
                 break;
         }
@@ -1915,8 +1918,8 @@ public class NuevaSolicitud extends AppCompatActivity {
 
                 if (consulta.getString(0) == null) {
 
-                    idAutoIncrement =  1;
-                }else {
+                    idAutoIncrement = 1;
+                } else {
 
                     id = Integer.parseInt(consulta.getString(0));
 
@@ -1933,8 +1936,8 @@ public class NuevaSolicitud extends AppCompatActivity {
 
                 if (consulta.getString(0) == null) {
 
-                    idAutoIncrement =  1;
-                }else {
+                    idAutoIncrement = 1;
+                } else {
 
                     id = Integer.parseInt(consulta.getString(0));
 
@@ -1952,9 +1955,9 @@ public class NuevaSolicitud extends AppCompatActivity {
 
             SQLiteDatabase db = admin.getWritableDatabase();
 
-           Cursor consulta = db.rawQuery("select * from BUZON_A where estatus = 0 and id_solicitud = "+idAutoIncrement, null);
+            Cursor consulta = db.rawQuery("select * from BUZON_A where estatus = 0 and id_solicitud = " + idAutoIncrement, null);
 
-            if (consulta.moveToNext()){
+            if (consulta.moveToNext()) {
 
                 ContentValues actualizar = new ContentValues();
 
@@ -1980,7 +1983,7 @@ public class NuevaSolicitud extends AppCompatActivity {
                 actualizar.put("Ext4", extra4);
                 actualizar.put("Ext5", extra5);
 
-                int cant = db.update("BUZON_A", actualizar, "id_solicitud = "+idAutoIncrement, null);
+                int cant = db.update("BUZON_A", actualizar, "id_solicitud = " + idAutoIncrement, null);
 
                 if (cant == 1) {
 
@@ -1991,7 +1994,7 @@ public class NuevaSolicitud extends AppCompatActivity {
                     toast("Existe pero no actualizado");
                 }
 
-            }else {
+            } else {
 
                 ContentValues registro = new ContentValues();
 
@@ -2028,9 +2031,9 @@ public class NuevaSolicitud extends AppCompatActivity {
 
             SQLiteDatabase db = admin.getWritableDatabase();
 
-            Cursor consulta = db.rawQuery("select * from BUZON_B where estatus = 0 and id_solicitud = "+idAutoIncrement, null);
+            Cursor consulta = db.rawQuery("select * from BUZON_B where estatus = 0 and id_solicitud = " + idAutoIncrement, null);
 
-            if (consulta.moveToNext()){
+            if (consulta.moveToNext()) {
 
                 ContentValues actualizar = new ContentValues();
 
@@ -2056,7 +2059,7 @@ public class NuevaSolicitud extends AppCompatActivity {
                 actualizar.put("Ext4", extra4);
                 actualizar.put("Ext5", extra5);
 
-                int cant = db.update("BUZON_B", actualizar, "id_solicitud = "+idAutoIncrement, null);
+                int cant = db.update("BUZON_B", actualizar, "id_solicitud = " + idAutoIncrement, null);
 
                 if (cant == 1) {
 
@@ -2067,7 +2070,7 @@ public class NuevaSolicitud extends AppCompatActivity {
                     toast("Existe pero no actualizado");
                 }
 
-            }else {
+            } else {
 
                 ContentValues registro = new ContentValues();
 

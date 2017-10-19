@@ -41,7 +41,7 @@ public class Lienzo extends View{
         mPaint.setColor(Color.parseColor("#000000"));
         mPaint.setStyle(Paint.Style.STROKE);
         mPaint.setStrokeJoin(Paint.Join.ROUND);
-        mPaint.setStrokeWidth(4f);
+        mPaint.setStrokeWidth(12f);
 
     }
 
@@ -59,6 +59,9 @@ public class Lienzo extends View{
     protected void onDraw(Canvas canvas) {
 
         canvas.drawPath(mPath, mPaint);
+
+        //canvas.drawLines(mPath, 0, -4, mPaint);
+        //canvas.drawLines(mPath, 2, -4, mPaint);
     }
 
     private void StartTouch(float x, float y){
